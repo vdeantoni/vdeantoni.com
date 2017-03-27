@@ -6,4 +6,4 @@ var app = express();
 app.use(compression());
 app.use('/', express.static(__dirname + '/dist'));
 
-app.listen(8088);
+app.listen(80);
