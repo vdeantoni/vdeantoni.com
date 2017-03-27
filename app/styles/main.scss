@@ -59,6 +59,8 @@ header {
     text-align: center;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.2) 100%), url(../images/background.jpg);
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center bottom;
     color: white;
     cursor: default;
     .container {
