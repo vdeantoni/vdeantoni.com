@@ -1,4 +1,6 @@
 import React from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faReact } from "@fortawesome/free-brands-svg-icons"
 // import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,6 +10,7 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <FontAwesomeIcon icon={faReact} />
     <h1 className="hover:bg-black my-16 text-red-500">Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
