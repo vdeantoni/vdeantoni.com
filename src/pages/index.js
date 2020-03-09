@@ -1,23 +1,36 @@
 import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faReact } from "@fortawesome/free-brands-svg-icons"
-// import { Link } from "gatsby"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import { graphql } from "gatsby"
 
-const IndexPage = () => (
+import me from "../assets/images/me.jpg"
+
+export const query = graphql`
+  query MyQuery {
+    allMarkdownRemark(filter: { frontmatter: { title: { eq: "About" } } }) {
+      edges {
+        node {
+          html
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Home" />
-    <FontAwesomeIcon icon={faReact} />
-    <h1 className="hover:bg-black my-16 text-red-500">Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `500px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    {/* <Link to="/page-2/">Go to page 2</Link> */}
+    <SEO title="About" />
+    <section className="min-h-main-screen flex flex-col-reverse items-center md:flex-row">
+      <div
+        className="ty-rich-text flex-1"
+        dangerouslySetInnerHTML={{
+          __html: data.allMarkdownRemark.edges[0].node.html,
+        }}
+      />
+      <div className="flex-1 flex justify-center md:pt-16">
+        <img className="rounded-full p-8 max-w-sm" src={me}></img>
+      </div>
+    </section>
   </Layout>
 )
 
