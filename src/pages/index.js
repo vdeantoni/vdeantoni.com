@@ -1,7 +1,20 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import me from "../assets/images/me.jpg"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+
+export const query = graphql`
+  query {
+    file(name: { eq: "me" }) {
+      childImageSharp {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -27,7 +40,11 @@ const IndexPage = ({ data }) => (
         </p>
       </div>
       <div className="flex-1 flex justify-center md:pt-16">
-        <img className="rounded-full p-8 max-w-sm" src={me} alt="Vinicius De Antoni"></img>
+        <Img
+          fluid={data.file.childImageSharp.fluid}
+          className="rounded-full p-8 max-w-sm w-full"
+          alt="Vinicius De Antoni"
+        ></Img>
       </div>
     </section>
   </Layout>
