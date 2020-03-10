@@ -9,10 +9,3 @@ Throughout my career I've worked with several different technologies in a variet
 
 Motivated and eager for knowledge, I am very interested in customer facing applications and distributed systems, and I also have passion for game development, artificial intelligence and music.
 
-<!-- ## Skills
-* Java
-* Javascript and Typescript
-* HTML and CSS
-* Frameworks: Spring, NodeJS, Angular, React, Vue, .NET
-* SQL and NoSQL
-* AWS -->
