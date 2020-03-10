@@ -7,7 +7,7 @@
 
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Logo from "../assets/svgs/logo.svg"
 
 const Layout = ({ children }) => {
@@ -16,6 +16,10 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          menuLinks {
+            name
+            link
+          }
         }
       }
     }
@@ -28,31 +32,23 @@ const Layout = ({ children }) => {
       <header className="bg-gray-800 sticky top-0">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center">
-            <Logo className="h-8 w-8 mr-4"/>
+            <Logo className="h-8 w-8 mr-4" />
             <h1 className="ty-h5 text-white text-shadow">
               {data.site.siteMetadata.title}
             </h1>
           </div>
           <nav className="hidden md:flex">
             <div className="ml-10 flex items-baseline">
-              <a
-                href="#"
-                className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-              >
-                Resume
-              </a>
-              <a
-                href="#"
-                className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-              >
-                Contact
-              </a>
+              {data.site.siteMetadata.menuLinks.map(link => (
+                //className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
+
+                <Link
+                  to={link.link}
+                  className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
           </nav>
           <div className="-mr-2 flex md:hidden">
@@ -86,24 +82,16 @@ const Layout = ({ children }) => {
         </div>
         <nav className={`${open ? "" : "hidden"} md:hidden`}>
           <div className="px-2 pt-2 pb-3 sm:px-3">
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Resume
-            </a>
-            <a
-              href="#"
-              className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-            >
-              Contact
-            </a>
+            {data.site.siteMetadata.menuLinks.map(link => (
+              //className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
+
+              <Link
+                to={link.link}
+                className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </nav>
       </header>

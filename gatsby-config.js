@@ -2,7 +2,21 @@ module.exports = {
   siteMetadata: {
     title: `Vinicius De Antoni`,
     description: `Web site about Vinicius De Antoni.`,
-    author: `@vdeantoni`,
+    author: `@vinideantoni`,
+    menuLinks: [
+      {
+        name: 'Home',
+        link: '/'
+      },
+      {
+        name: 'Resume',
+        link: '/resume'
+      },
+      {
+        name: 'Contact',
+        link: '/contact'
+      }
+    ]
   },
   plugins: [
     `gatsby-transformer-remark`,
