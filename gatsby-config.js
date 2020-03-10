@@ -6,15 +6,15 @@ module.exports = {
     menuLinks: [
       {
         name: 'Home',
-        link: '/'
+        path: '/'
       },
       {
         name: 'Resume',
-        link: '/resume'
+        path: '/resume'
       },
       {
         name: 'Contact',
-        link: '/contact'
+        path: '/contact'
       }
     ]
   },

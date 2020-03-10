@@ -1,0 +1,44 @@
+companies:
+  - name: Riot Games
+    image: riot
+    roles:
+      - title: Software Engineer
+        start: 2020-01-31T00:00:00.000Z
+        end:
+        location: Los Angeles, CA - USA
+  - name: Blizzard Entertainment
+    image: blizzard
+    roles:
+      - title: Lead Software Engineer
+        start: 2019-03-01T00:00:00.000Z
+        end: 2019-10-23T00:00:00.000Z
+        location: Irvine, CA - USA
+        blurb: Worked as Lead Software Engineer on the Battle.net Desktop Application.
+        responsibilities:
+          - Define the technical direction of the Battle.net Desktop App.
+          - Lead a team of 10+ software engineers.
+        contributions: []
+      - title: Lead Software Engineer
+        start: 2016-03-01T00:00:00.000Z
+        end: 2019-03-01T00:00:00.000Z
+        location: Irvine, CA - USA
+        blurb: Worked as Lead Software Engineer within the Battle.net E-commerce group.
+        responsibilities:
+          - Drive tech initiatives on Shop and Account Management.
+          - Lead a team of 10 software engineers.
+        contributions: []
+      - title: Software Engineer
+        start: 2014-10-14T00:00:00.000Z
+        end: 2016-03-01T00:00:00.000Z
+        location: Irvine, CA - USA
+        blurb: Worked as Software Engineer on Battle.net.
+        responsibilities: []
+        contributions:
+          - Designed and implemented a checkout workflow framework for an e-commerce web application, using Java and Spring.
+          - Profiled distributed systems to improve performance under heavy load. I was able to get significant results by revisiting caching policies, fixing bugs and improving code base to be more scalable.
+          - Integrated web applications with Splunkcloud and Appdynamics. Allowing developers to have access to real time logs, metrics and alarms.
+  - name: Amazon
+    image: amazon
+    roles:
+      - title: Software Developer Engineer
+
