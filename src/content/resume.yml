@@ -41,4 +41,82 @@ companies:
     image: amazon
     roles:
       - title: Software Developer Engineer
-
+        start: 2013-10-01T00:00:00.000Z
+        end: 2014-10-01T00:00:00.000Z
+        location: Seattle, WA - USA
+        blurb: Worked as a Software Developer Engineer on the Digital Software and Video Games team.
+        responsibilities: []
+        contributions:
+          - Worked on the Amazon Instant Access (AIA) web services, implementing the API and the Java and PHP SDKs.
+          - Implemented a web application available on the Amazon's developer portal, that allowed third party vendors to create and test their profiles before starting selling digital items. Backend developed with Java and SpringMVC and frontend with angularjs.
+      - title: Software Developer Engineer
+        start: 2012-10-01T00:00:00.000Z
+        end: 2013-10-01T00:00:00.000Z
+        location: Seattle, WA - USA
+        blurb: Worked as a Software Engineer on Silk, the Kindle Fire web browser.
+        responsibilities: []
+        contributions:
+          - Implemented a service using Javascript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the browser.
+          - Worked with the Slipstream team to enhance the browsing experience by delivering a lightweight and functional image map while the actual page was loading on the background.
+          - Implemented a tool that automated screenshot comparison using ImageMagick and Java to validate Slipstream screenshots.
+  - name: HP
+    image: hp
+    roles:
+      - title: Software Designer
+        start: 2010-10-01T00:00:00.000Z
+        end: 2012-09-01T00:00:00.000Z
+        location: Porto Alegre, RS - Brazil
+        blurb: Worked as a Software Designer on HP ePrint Services (Cloud printing).
+        responsibilities:
+          - Design and development of a distributed solution for a location based search service with MongoDB and Node.js.
+          - Maintenance, bug fixing and add of new features on the REST API which is developed using JAVA and allows client applications to create jobs through the cloud.
+          - Development of a client application for Android available on Android Market (HP ePrint Service).
+          - Development of a off-ramp REST API and a web application that allows HP partners to release jobs.
+          - Development of a administration portal with J2EE (Servlets/JSP and Struts 2).
+        contributions: []
+      - title: Software Designer
+        start: 2007-07-01T00:00:00.000Z
+        end: 2010-10-01T00:00:00.000Z
+        location: Porto Alegre, RS - Brazil
+        blurb: Worked as a Software Designer on HP FutureSmart (integrated printer firmware and solutions platform).
+        responsibilities: []
+        contributions:
+          - Design and implementation of an embedded HTTP server.
+          - WCF port for Compact .NET.
+          - Development of a MVC Web framework to support other teams.
+          - Development of Web Services with WCF.
+  - name: Conecta IT
+    image: conectait
+    roles:
+      - title: Web Developer
+        start: 2006-10-01T00:00:00.000Z
+        end: 2007-07-01T00:00:00.000Z
+        location: Porto Alegre, RS - Brazil
+        blurb: Worked as a contractor for various local companies
+        responsibilities:
+          - Development of financial reports, interactive charts, CRUD pages by utilizing PHP, Javascript, C and Oracle
+          - J2EE development, JSP, JSF, Spring MVC and Struts 2
+        contributions: []
+  - name: Constat
+    image: constat
+    roles:
+      - title: Web Developer
+        start: 2005-06-01T00:00:00.000Z
+        end: 2006-10-01T00:00:00.000Z
+        location: Caxias Do Sul, RS - Brazil
+        blurb: As a web developer I worked on the development of a attention management software on both server and client side. The application was implemented using PHP and a SQL Server database.
+        responsibilities: []
+        contributions: []
+  - name: X-NEO
+    image: xneo
+    roles:
+      - title: Web Developer
+        start: 2005-06-01T00:00:00.000Z
+        end: 2006-10-01T00:00:00.000Z
+        location: Caxias Do Sul, RS - Brazil
+        blurb: Started as an intern and returned as a full time employee.
+        responsibilities: []
+        contributions:
+          - Designed and developed web sites by utilizing PHP, Javascript, Flash and MySQL
+          - Integration of AJAX technology on existing applications
+          - Cross-browser development
