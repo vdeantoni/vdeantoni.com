@@ -7,27 +7,19 @@ import Img from "gatsby-image"
 
 export const query = graphql`
   query {
-    riot: file(name: { eq: "riot" }) {
-      childImageSharp {
-        fluid(maxWidth: 64) {
-          ...GatsbyImageSharpFluid
-        }
+    companies: allFile(
+      filter: {
+        sourceInstanceName: { eq: "images" }
+        relativeDirectory: { eq: "companies" }
       }
-    }
-
-    blizzard: file(name: { eq: "blizzard" }) {
-      childImageSharp {
-        fluid(maxWidth: 64) {
-          ...GatsbyImageSharpFluid
+    ) {
+      nodes {
+        childImageSharp {
+          fluid(maxWidth: 64) {
+            ...GatsbyImageSharpFluid
+          }
         }
-      }
-    }
-
-    amazon: file(name: { eq: "amazon" }) {
-      childImageSharp {
-        fluid(maxWidth: 67) {
-          ...GatsbyImageSharpFluid
-        }
+        name
       }
     }
   }
@@ -44,15 +36,17 @@ const ResumePage = ({ data }) => {
       <SEO title="Resume" />
       <section className="min-h-main-screen">
         <h1 className="ty-h1 mb-12">Resume</h1>
-
         {resume.companies.map(company => (
           <div key={company.name} className="flex">
             <div className="w-32 h-32 flex justify-center items-start">
               <Img
-                fluid={data[company.image].childImageSharp.fluid}
+                fluid={
+                  data.companies.nodes.find(node => node.name === company.image)
+                    .childImageSharp.fluid
+                }
                 alt={`${company.name}'s logo`}
-                className="w-20 h-20"
-                imgStyle={{ objectFit: 'fill' }}
+                className="w-20"
+                imgStyle={{ objectFit: "contain" }}
               ></Img>
             </div>
             <h2 className="ty-h6">{company.name}</h2>
