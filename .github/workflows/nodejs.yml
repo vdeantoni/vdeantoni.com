@@ -20,18 +20,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Build with Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build --if-present
       env:
-        CI: true
-  deploy: 
-    runs-on: ubuntu-latest
-    steps:    
+        CI: true 
     - uses: jakejarvis/s3-sync-action@master
+      name: Deploy to S3
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
