@@ -332,7 +332,7 @@ module.exports = {
       '0': '0',
       full: '100%',
       screen: '100vh',
-      'main-screen': 'calc(100vh - 6rem)'
+      'main-screen': 'calc(100vh - 10rem)'
     },
     minWidth: {
       '0': '0',
@@ -686,7 +686,7 @@ module.exports = {
       },
       link: {
         fontWeight: theme('fontWeight.bold'),
-        color: theme('colors.blue.400'),
+        color: theme('colors.blue.800'),
         '&:hover': {
           color: theme('colors.blue.600'),
           textDecoration: 'underline',

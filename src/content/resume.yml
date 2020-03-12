@@ -1,6 +1,7 @@
 companies:
   - name: Riot Games
     image: riot
+    link: http://www.riotgames.com
     roles:
       - title: Software Engineer
         start: 2020-01-31T00:00:00.000Z
@@ -9,6 +10,7 @@ companies:
         items: []
   - name: Blizzard Entertainment
     image: blizzard
+    link: http://www.blizzard.com
     roles:
       - title: Lead Software Engineer
         start: 2019-03-01T00:00:00.000Z
@@ -37,6 +39,7 @@ companies:
           - Integrated web applications with Splunkcloud and Appdynamics. Allowing developers to have access to real time logs, metrics and alarms.
   - name: Amazon
     image: amazon
+    link: http://www.amazon.com
     roles:
       - title: Software Developer Engineer
         start: 2013-10-01T00:00:00.000Z
@@ -57,6 +60,7 @@ companies:
           - Implemented a tool that automated screenshot comparison using ImageMagick and Java to validate Slipstream screenshots.
   - name: HP
     image: hp
+    link: http://www.hp.com
     roles:
       - title: Software Designer
         start: 2010-10-01T00:00:00.000Z
@@ -81,6 +85,7 @@ companies:
           - Development of Web Services with WCF.
   - name: Conecta IT
     image: conectait
+    link: http://www.conectait.com.br
     roles:
       - title: Web Developer
         start: 2006-10-01T00:00:00.000Z
@@ -92,6 +97,7 @@ companies:
           - J2EE development, JSP, JSF, Spring MVC and Struts 2.
   - name: Constat
     image: constat
+    link: http://www.constat.com/
     roles:
       - title: Web Developer
         start: 2005-06-01T00:00:00.000Z
@@ -101,6 +107,7 @@ companies:
         items: []
   - name: X-NEO
     image: xneo
+    link: http://www.xneo.com.br
     roles:
       - title: Web Developer
         start: 2004-11-01T00:00:00.000Z
@@ -114,6 +121,7 @@ companies:
 schools:
   - name: Universidade Federal do Rio Grande do Sul (UFRGS)
     image: ufrgs
+    link: http://www.ufrgs.br/
     degree: Master
     field: Computer Science, Artificial Inteligence
     start: 2011-03-01T00:00:00.000Z
@@ -121,6 +129,7 @@ schools:
     location: Porto Alegre, RS - Brazil
   - name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
     image: pucrs
+    link: http://www.pucrs.br/
     degree: Bachelor
     field: Computer Science
     start: 2006-06-01T00:00:00.000Z
@@ -128,6 +137,7 @@ schools:
     location: Porto Alegre, RS - Brazil
   - name: Centro Tecnologico de Caxias Do Sul (CETEC)
     image: cetec
+    link: https://www.ucs.br/site/cetec/
     degree: Technical
     field: Computer Science
     start: 2002-03-01T00:00:00.000Z
