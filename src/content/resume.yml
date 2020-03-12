@@ -88,8 +88,8 @@ companies:
         location: Porto Alegre, RS - Brazil
         blurb: Worked as a contractor for various local companies
         items:
-          - Development of financial reports, interactive charts, CRUD pages by utilizing PHP, Javascript, C and Oracle
-          - J2EE development, JSP, JSF, Spring MVC and Struts 2
+          - Development of financial reports, interactive charts, CRUD pages by utilizing PHP, Javascript, C and Oracle.
+          - J2EE development, JSP, JSF, Spring MVC and Struts 2.
   - name: Constat
     image: constat
     roles:
@@ -108,6 +108,37 @@ companies:
         location: Caxias Do Sul, RS - Brazil
         blurb: Started as an intern and returned as a full time employee.
         items:
-          - Designed and developed web sites by utilizing PHP, Javascript, Flash and MySQL
-          - Integration of AJAX technology on existing applications
-          - Cross-browser development
+          - Designed and developed web sites by utilizing PHP, Javascript, Flash and MySQL.
+          - Integration of AJAX technology on existing applications.
+          - Cross-browser development.
+schools:
+  - name: Universidade Federal do Rio Grande do Sul (UFRGS)
+    image: ufrgs
+    degree: Master
+    field: Computer Science, Artificial Inteligence
+    start: 2011-03-01T00:00:00.000Z
+    end: 2013-12-01T00:00:00.000Z
+    location: Porto Alegre, RS - Brazil
+  - name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
+    image: pucrs
+    degree: Bachelor
+    field: Computer Science
+    start: 2006-06-01T00:00:00.000Z
+    end: 2010-12-01T00:00:00.000Z
+    location: Porto Alegre, RS - Brazil
+  - name: Centro Tecnologico de Caxias Do Sul (CETEC)
+    image: cetec
+    degree: Technical
+    field: Computer Science
+    start: 2002-03-01T00:00:00.000Z
+    end: 2005-06-01T00:00:00.000Z
+    location: Caxias Do Sul, RS - Brazil
+publications:
+  - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
+    link: https://dl.acm.org/doi/10.5555/2615731.2617483
+    date: 2014-05-01T00:00:00.000Z
+certifications:
+  - name: "Oracle: Java Standard Edition 5 Programmer Certified Professional"
+    date: 2009-01-01T00:00:00.000Z
+  - name: "TS: Microsoft .NET Framework – Application Development Foundation"
+    date: 2008-01-01T00:00:00.000Z
