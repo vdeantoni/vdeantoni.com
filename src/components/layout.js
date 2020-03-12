@@ -5,10 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Logo from "../assets/svgs/logo.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import Logo from "../assets/svgs/logo.svg";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -19,6 +20,11 @@ const Layout = ({ children }) => {
           menuLinks {
             name
             path
+          }
+          contactLinks {
+            name
+            link
+            icon
           }
         }
       }
@@ -40,12 +46,11 @@ const Layout = ({ children }) => {
           <nav className="hidden md:flex">
             <div className="ml-10 flex items-baseline">
               {data.site.siteMetadata.menuLinks.map(link => (
-                //className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-
                 <Link
                   key={link.name}
                   to={link.path}
                   className="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  activeClassName="text-white bg-gray-900"
                 >
                   {link.name}
                 </Link>
@@ -84,12 +89,11 @@ const Layout = ({ children }) => {
         <nav className={`${open ? "" : "hidden"} md:hidden`}>
           <div className="px-2 pt-2 pb-3 sm:px-3">
             {data.site.siteMetadata.menuLinks.map(link => (
-              //className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
-
               <Link
                 key={link.name}
                 to={link.path}
                 className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                activeClassName="text-white bg-gray-900"
               >
                 {link.name}
               </Link>
@@ -100,11 +104,24 @@ const Layout = ({ children }) => {
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8">{children}</main>
 
-      <footer className="bg-gray-200 h-8">
-        <span>
-          © {new Date().getFullYear()}, Built with {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </span>
+      <footer className="relative flex items-center justify-center bg-gray-200 h-16 mt-8 px-8">
+        <div className="flex flex-1 justify-center">
+          {data.site.siteMetadata.contactLinks.map(link => (
+            <a
+              key={link.name}
+              title={link.name}
+              href={link.link}
+              className="ty-link mx-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={link.icon} />
+            </a>
+          ))}
+        </div>
+        <div className="absolute right-0 pr-8 text-sm">
+          © {new Date().getFullYear()}
+        </div>
       </footer>
     </>
   )

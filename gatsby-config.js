@@ -5,29 +5,57 @@ module.exports = {
     author: `@vinideantoni`,
     menuLinks: [
       {
-        name: 'Home',
-        path: '/'
+        name: "Home",
+        path: "/",
       },
       {
-        name: 'Resume',
-        path: '/resume'
+        name: "Resume",
+        path: "/resume",
+      },
+    ],
+    contactLinks: [
+      {
+        name: "Email",
+        link: "mailto:vinicius@deantoni.com.br",
+        icon: ["fas", "envelope"],
       },
       {
-        name: 'Contact',
-        path: '/contact'
-      }
-    ]
+        name: "LinkedIn",
+        link: "http://www.linkedin.com/in/vdeantoni",
+        icon: ["fab", "linkedin"],
+      },
+      {
+        name: "Stack Overflow",
+        link: "http://stackoverflow.com/users/621767/deantoni?tab=profile",
+        icon: ["fab", "stack-overflow"],
+      },
+      {
+        name: "Github",
+        link: "https://github.com/deantoni",
+        icon: ["fab", "github"],
+      },
+      {
+        name: "Facebook",
+        link: "http://facebook.com/vinideantoni",
+        icon: ["fab", "facebook"],
+      },
+      {
+        name: "Twitter",
+        link: "http://twitter.com/vinideantoni",
+        icon: ["fab", "twitter"],
+      },
+    ],
   },
   plugins: [
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /assets\/svgs/
-        }
-      }
+          include: /assets\/svgs/,
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -66,9 +94,9 @@ module.exports = {
         postCssPlugins: [
           require(`tailwindcss`)(`./tailwind.config.js`),
           require(`autoprefixer`),
-          require(`cssnano`)
-        ]
-      }
+          require(`cssnano`),
+        ],
+      },
     },
   ],
 }
