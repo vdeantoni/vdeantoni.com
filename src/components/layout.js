@@ -10,6 +10,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import Logo from "../assets/svgs/logo.svg";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -107,7 +108,7 @@ const Layout = ({ children }) => {
       <footer className="relative flex items-center justify-center bg-gray-200 h-16 mt-8 px-8">
         <div className="flex flex-1 justify-center">
           {data.site.siteMetadata.contactLinks.map(link => (
-            <a
+            <OutboundLink
               key={link.name}
               title={link.name}
               href={link.link}
@@ -116,7 +117,7 @@ const Layout = ({ children }) => {
               rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={link.icon} />
-            </a>
+            </OutboundLink>
           ))}
         </div>
         <div className="absolute right-0 pr-8 text-sm">

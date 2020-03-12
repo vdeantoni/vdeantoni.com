@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Vinicius De Antoni`,
-    description: `Web site about Vinicius De Antoni.`,
+    description: `Web site about the software engineer Vinicius De Antoni.`,
+    siteUrl: `http://www.deantoni.com.br`,
     author: `@vinideantoni`,
     menuLinks: [
       {
@@ -47,6 +48,13 @@ module.exports = {
     ],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-76372620-1",
+      },
+    },
+    `gatsby-plugin-sitemap`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {
@@ -97,6 +105,6 @@ module.exports = {
           require(`cssnano`),
         ],
       },
-    },
+    }
   ],
 }
