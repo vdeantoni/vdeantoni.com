@@ -1,18 +1,22 @@
-companies:
-  - name: Riot Games
+items:
+  - type: company
+    name: Riot Games
     image: riot
     link: http://www.riotgames.com
-    roles:
-      - title: Software Engineer
+    subItems:
+      - type: role
+        title: Software Engineer
         start: 2020-01-31T00:00:00.000Z
         end:
         location: Los Angeles, CA - USA
         items: []
-  - name: Blizzard Entertainment
+  - type: company
+    name: Blizzard Entertainment
     image: blizzard
     link: http://www.blizzard.com
-    roles:
-      - title: Lead Software Engineer
+    subItems:
+      - type: role
+        title: Lead Software Engineer
         start: 2019-03-01T00:00:00.000Z
         end: 2019-10-23T00:00:00.000Z
         location: Irvine, CA - USA
@@ -20,7 +24,8 @@ companies:
         items:
           - Define the technical direction of the Battle.net Desktop App.
           - Lead a team of 10+ software engineers.
-      - title: Lead Software Engineer
+      - type: role
+        title: Lead Software Engineer
         start: 2016-03-01T00:00:00.000Z
         end: 2019-03-01T00:00:00.000Z
         location: Irvine, CA - USA
@@ -28,7 +33,8 @@ companies:
         items:
           - Drive tech initiatives on Shop and Account Management.
           - Lead a team of 10 software engineers.
-      - title: Software Engineer
+      - type: role
+        title: Software Engineer
         start: 2014-11-14T00:00:00.000Z
         end: 2016-03-01T00:00:00.000Z
         location: Irvine, CA - USA
@@ -37,11 +43,13 @@ companies:
           - Designed and implemented a checkout workflow framework for an e-commerce web application, using Java and Spring.
           - Profiled distributed systems to improve performance under heavy load. I was able to get significant results by revisiting caching policies, fixing bugs and improving code base to be more scalable.
           - Integrated web applications with Splunkcloud and Appdynamics. Allowing developers to have access to real time logs, metrics and alarms.
-  - name: Amazon
+  - type: company
+    name: Amazon
     image: amazon
     link: http://www.amazon.com
-    roles:
-      - title: Software Developer Engineer
+    subItems:
+      - type: role
+        title: Software Developer Engineer
         start: 2013-10-01T00:00:00.000Z
         end: 2014-10-01T00:00:00.000Z
         location: Seattle, WA - USA
@@ -49,7 +57,8 @@ companies:
         items:
           - Worked on the Amazon Instant Access (AIA) web services, implementing the API and the Java and PHP SDKs.
           - Implemented a web application available on the Amazon's developer portal, that allowed third party vendors to create and test their profiles before starting selling digital items. Backend developed with Java and SpringMVC and frontend with angularjs.
-      - title: Software Developer Engineer
+      - type: role
+        title: Software Developer Engineer
         start: 2012-10-01T00:00:00.000Z
         end: 2013-10-01T00:00:00.000Z
         location: Seattle, WA - USA
@@ -58,11 +67,13 @@ companies:
           - Implemented a service using Javascript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the browser.
           - Worked with the Slipstream team to enhance the browsing experience by delivering a lightweight and functional image map while the actual page was loading on the background.
           - Implemented a tool that automated screenshot comparison using ImageMagick and Java to validate Slipstream screenshots.
-  - name: HP
+  - type: company
+    name: HP
     image: hp
     link: http://www.hp.com
-    roles:
-      - title: Software Designer
+    subItems:
+      - type: role
+        title: Software Designer
         start: 2010-10-01T00:00:00.000Z
         end: 2012-09-01T00:00:00.000Z
         location: Porto Alegre, RS - Brazil
@@ -73,7 +84,8 @@ companies:
           - Development of a client application for Android available on Android Market (HP ePrint Service).
           - Development of a off-ramp REST API and a web application that allows HP partners to release jobs.
           - Development of a administration portal with J2EE (Servlets/JSP and Struts 2).
-      - title: Software Designer
+      - type: role
+        title: Software Designer
         start: 2007-07-01T00:00:00.000Z
         end: 2010-10-01T00:00:00.000Z
         location: Porto Alegre, RS - Brazil
@@ -83,11 +95,13 @@ companies:
           - WCF port for Compact .NET.
           - Development of a MVC Web framework to support other teams.
           - Development of Web Services with WCF.
-  - name: Conecta IT
+  - type: company
+    name: Conecta IT
     image: conectait
     link: http://www.conectait.com.br
-    roles:
-      - title: Web Developer
+    subItems:
+      - type: role
+        title: Web Developer
         start: 2006-10-01T00:00:00.000Z
         end: 2007-07-01T00:00:00.000Z
         location: Porto Alegre, RS - Brazil
@@ -95,21 +109,25 @@ companies:
         items:
           - Development of financial reports, interactive charts, CRUD pages by utilizing PHP, Javascript, C and Oracle.
           - J2EE development, JSP, JSF, Spring MVC and Struts 2.
-  - name: Constat
+  - type: company
+    name: Constat
     image: constat
     link: http://www.constat.com/
-    roles:
-      - title: Web Developer
+    subItems:
+      - type: role
+        title: Web Developer
         start: 2005-06-01T00:00:00.000Z
         end: 2006-10-01T00:00:00.000Z
         location: Caxias Do Sul, RS - Brazil
         blurb: As a web developer I worked on the development of a attention management software on both server and client side. The application was implemented using PHP and a SQL Server database.
         items: []
-  - name: X-NEO
+  - type: company
+    name: X-NEO
     image: xneo
     link: http://www.xneo.com.br
-    roles:
-      - title: Web Developer
+    subItems:
+      - type: role
+        title: Web Developer
         start: 2004-11-01T00:00:00.000Z
         end: 2005-06-01T00:00:00.000Z
         location: Caxias Do Sul, RS - Brazil
@@ -118,37 +136,49 @@ companies:
           - Designed and developed web sites by utilizing PHP, Javascript, Flash and MySQL.
           - Integration of AJAX technology on existing applications.
           - Cross-browser development.
-schools:
-  - name: Universidade Federal do Rio Grande do Sul (UFRGS)
+  - type: school
+    name: Universidade Federal do Rio Grande do Sul (UFRGS)
     image: ufrgs
     link: http://www.ufrgs.br/
-    degree: Master
-    field: Computer Science, Artificial Inteligence
-    start: 2011-03-01T00:00:00.000Z
-    end: 2013-12-01T00:00:00.000Z
-    location: Porto Alegre, RS - Brazil
-  - name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
+    subItems:
+      - type: program
+        degree: Master
+        field: Computer Science, Artificial Inteligence
+        start: 2011-03-01T00:00:00.000Z
+        end: 2013-12-01T00:00:00.000Z
+        location: Porto Alegre, RS - Brazil
+  - type: school
+    name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
     image: pucrs
     link: http://www.pucrs.br/
-    degree: Bachelor
-    field: Computer Science
-    start: 2006-06-01T00:00:00.000Z
-    end: 2010-12-01T00:00:00.000Z
-    location: Porto Alegre, RS - Brazil
-  - name: Centro Tecnologico de Caxias Do Sul (CETEC)
+    subItems:
+      - type: program
+        degree: Bachelor
+        field: Computer Science
+        start: 2006-06-01T00:00:00.000Z
+        end: 2010-12-01T00:00:00.000Z
+        location: Porto Alegre, RS - Brazil
+  - type: school
+    name: Centro Tecnologico de Caxias Do Sul (CETEC)
     image: cetec
     link: https://www.ucs.br/site/cetec/
-    degree: Technical
-    field: Computer Science
-    start: 2002-03-01T00:00:00.000Z
-    end: 2005-06-01T00:00:00.000Z
-    location: Caxias Do Sul, RS - Brazil
-publications:
-  - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
+    subItems:
+      - type: program
+        degree: Technical
+        field: Computer Science
+        start: 2002-03-01T00:00:00.000Z
+        end: 2005-06-01T00:00:00.000Z
+        location: Caxias Do Sul, RS - Brazil
+  - type: publication
+    name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
+    image: agent
     link: https://dl.acm.org/doi/10.5555/2615731.2617483
     date: 2014-05-01T00:00:00.000Z
-certifications:
-  - name: "Oracle: Java Standard Edition 5 Programmer Certified Professional"
-    date: 2009-01-01T00:00:00.000Z
-  - name: "TS: Microsoft .NET Framework – Application Development Foundation"
-    date: 2008-01-01T00:00:00.000Z
+  - type: certification
+    name: "Oracle: Java Standard Edition 5 Programmer Certified Professional"
+    image: java
+    date: 2011-02-04T00:00:00.000Z
+  - type: certification
+    name: "TS: Microsoft .NET Framework – Application Development Foundation"
+    image: dot-net
+    date: 2010-01-29T00:00:00.000Z
