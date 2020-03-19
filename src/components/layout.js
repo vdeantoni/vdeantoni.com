@@ -5,12 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { graphql, Link, useStaticQuery } from "gatsby";
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import Logo from "../assets/svgs/logo.svg";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import React, { useState } from "react"
+import Logo from "../assets/svgs/logo.svg"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -120,16 +119,12 @@ const Layout = ({ children }) => {
             </OutboundLink>
           ))}
         </div>
-        <div className="absolute right-0 pr-8 text-sm">
+        <div className="absolute right-0 pr-8 text-xs">
           © {new Date().getFullYear()}
         </div>
       </footer>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
