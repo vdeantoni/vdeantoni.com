@@ -61,6 +61,7 @@ const Layout = ({ children }) => {
             <button
               onClick={() => setOpen(!open)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              aria-label="Toggle Menu"
             >
               <svg
                 className="h-6 w-6"
