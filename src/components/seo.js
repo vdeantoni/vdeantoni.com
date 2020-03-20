@@ -26,6 +26,7 @@ function SEO({
             author
             siteUrl
             image
+            imageSecure
           }
         }
       }
@@ -61,6 +62,10 @@ function SEO({
         {
           property: `og:image`,
           content: site.siteMetadata.image,
+        },
+        {
+          property: `og:image:secure_url`,
+          content: site.siteMetadata.imageSecure,
         },
         {
           property: `og:locale`,
