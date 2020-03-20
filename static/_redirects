@@ -1,0 +1,6 @@
+# Redirect domain aliases to primary domain
+https://deantoni.com.br/* https://vdeantoni.com/:splat 301!
+https://www.deantoni.com.br/* https://vdeantoni.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
+https://vdeantoni.netlify.com/* https://vdeantoni.com/:splat 301!
