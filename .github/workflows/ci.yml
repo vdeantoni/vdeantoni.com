@@ -17,6 +17,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name : GITHUB CONTEXT
+      env: 
+        GITHUB_CONTEXT: ${{ toJson(github) }} 
+      run: echo "$GITHUB_CONTEXT"
     - name: Build with Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -35,4 +39,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         SOURCE_DIR: 'public'
     - name: Deploy to Netlify
-      run: curl -X POST -d {} ${{secrets.NETLIFY_BUILD_HOOK_URL}}
+      uses: netlify/actions/cli@master
+      with:
+        args: deploy --dir=public --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --site ${{ secrets.NETLIFY_SITE_ID }} --message "Deploy from Github"
