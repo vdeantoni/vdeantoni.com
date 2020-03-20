@@ -17,10 +17,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name : GITHUB CONTEXT
-      env: 
-        GITHUB_CONTEXT: ${{ toJson(github) }} 
-      run: echo "$GITHUB_CONTEXT"
     - name: Build with Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -41,4 +37,4 @@ jobs:
     - name: Deploy to Netlify
       uses: netlify/actions/cli@master
       with:
-        args: deploy --dir=public --prod --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }} --message="Deploy from Github ( ${{ github.sha }} )"
+        args: deploy --dir=public --prod --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }} --message='Deploy from Github ( ${{ github.sha }} )'
