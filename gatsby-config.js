@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         name: "Github",
-        link: "https://github.com/deantoni",
+        link: "https://github.com/vdeantoni",
         icon: ["fab", "github"],
       },
       {
