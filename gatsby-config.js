@@ -3,7 +3,8 @@ module.exports = {
     title: `Vinicius De Antoni`,
     description: `Web site about the software engineer Vinicius De Antoni.`,
     siteUrl: `https://vdeantoni.com`,
-    image: `https://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
+    image: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
+    imageSecure: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     author: `@vinideantoni`,
     menuLinks: [
       {
