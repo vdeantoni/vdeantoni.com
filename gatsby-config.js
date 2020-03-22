@@ -6,16 +6,6 @@ module.exports = {
     image: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     imageSecure: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     author: `@vinideantoni`,
-    menuLinks: [
-      {
-        name: "Home",
-        path: "/",
-      },
-      {
-        name: "Resume",
-        path: "/resume",
-      },
-    ],
     contactLinks: [
       {
         name: "Email",
