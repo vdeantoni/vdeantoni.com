@@ -11,17 +11,20 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import {
   faFacebook,
   faLinkedin,
+  faMedium,
   faStackOverflow,
   faGithub,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons"
 
 library.add(
   faFacebook,
   faLinkedin,
+  faMedium,
   faStackOverflow,
   faGithub,
   faTwitter,
-  faEnvelope
+  faEnvelope,
+  faAngleDoubleUp
 )

@@ -9,13 +9,18 @@ module.exports = {
     contactLinks: [
       {
         name: "Email",
-        link: "mailto:vinicius@deantoni.com.br",
+        link: "mailto:admin@vdeantoni.com",
         icon: ["fas", "envelope"],
       },
       {
         name: "LinkedIn",
         link: "http://www.linkedin.com/in/vdeantoni",
         icon: ["fab", "linkedin"],
+      },
+      {
+        name: "Medium",
+        link: "http://www.linkedin.com/in/vdeantoni",
+        icon: ["fab", "medium"],
       },
       {
         name: "Stack Overflow",
@@ -84,6 +89,13 @@ module.exports = {
         theme_color: `#000000`,
         display: `minimal-ui`,
         icon: `src/assets/svgs/logo.svg`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-medium-feed`,
+      options: {
+        userName: `@vdeantoni`, // Medium user name
+        name: `MediumFeed`, // GraphQL query AllMediumFeed
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
