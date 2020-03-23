@@ -10,7 +10,7 @@ const Home = () => {
       query {
         image: file(name: { eq: "me" }) {
           childImageSharp {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 350) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -64,8 +64,9 @@ const Home = () => {
             <h2 className="ty-h5 mb-4">Latest publication</h2>
 
             <OutboundLink
-              className="flex"
+              className="flex ty-link text-black"
               href={latestPublication.nodes[0].link}
+              target="_blank"
             >
               <div className="">
                 <img
