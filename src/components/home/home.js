@@ -69,7 +69,10 @@ const Home = () => {
             >
               <div className="">
                 <img
-                  src={latestPublication.nodes[0].thumbnail}
+                  src={latestPublication.nodes[0].thumbnail.replace(
+                    "/max/1400/",
+                    "/fit/c/128/128/"
+                  )}
                   className="object-cover"
                   style={{ width: 128, height: 128 }}
                 ></img>
