@@ -22,7 +22,16 @@ const Item = ({ item, images }) => {
         </div>
       )}
       <div className={item.image ? "mt-8 sm:mt-0 sm:ml-8" : ""}>
-        <h3 className="ty-h6">{item.name}</h3>
+        <OutboundLink
+          title={item.name}
+          href={item.link}
+          className="ty-link ty-h6 text-black"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {item.name}
+        </OutboundLink>
+
         {item.type === "company" && <TimeDifference periods={item.subItems} />}
 
         {(item.type === "publication" || item.type === "certification") && (
