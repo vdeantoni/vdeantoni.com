@@ -177,8 +177,10 @@ items:
   - type: certification
     name: "Oracle: Java Standard Edition 5 Programmer Certified Professional"
     image: java
+    link: https://education.oracle.com/java-and-dev-tech/java-se/product_267?certPage=true
     date: 2011-02-04T00:00:00.000Z
   - type: certification
     name: "TS: Microsoft .NET Framework – Application Development Foundation"
     image: dot-net
+    link: https://social.technet.microsoft.com/wiki/contents/articles/7720.exam-70-536-ts-microsoft-net-framework-application-development-foundation.aspx
     date: 2010-01-29T00:00:00.000Z
