@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
 
       <footer className="relative flex items-center justify-center bg-gray-200 h-16 px-8">
         <div className="flex flex-1 justify-center">
-          {data.site.siteMetadata.contactLinks.map(link => (
+          {data.site.siteMetadata.contactLinks.map((link) => (
             <OutboundLink
               key={link.name}
               title={link.name}
