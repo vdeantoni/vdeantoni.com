@@ -10,7 +10,7 @@ const Header = ({ title, contactLinks }) => {
   const [y, setY] = useState(0)
 
   useEffect(() => {
-    scrollY.onChange(latest => {
+    scrollY.onChange((latest) => {
       setY(latest)
     })
     return () => {
@@ -18,7 +18,8 @@ const Header = ({ title, contactLinks }) => {
     }
   })
 
-  const scrollToTop = () => {
+  const scrollToTop = (e) => {
+    e.preventDefault()
     window.scroll({ top: 0, left: 0, behavior: "smooth" })
   }
 
@@ -34,7 +35,7 @@ const Header = ({ title, contactLinks }) => {
         <div className="flex-1 flex items-center">
           <motion.a
             animate={{ scale: y ? 0.75 : 1 }}
-            href="javascript:void(0)"
+            href="/"
             onClick={scrollToTop}
             className="h-8 w-8 mr-4"
           >
@@ -63,7 +64,7 @@ const Header = ({ title, contactLinks }) => {
             initial="hide"
             animate={y ? "show" : ""}
           >
-            {contactLinks.map(link => (
+            {contactLinks.map((link) => (
               <motion.span
                 key={link.name}
                 variants={{

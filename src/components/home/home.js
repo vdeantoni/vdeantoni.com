@@ -74,6 +74,7 @@ const Home = () => {
                     "/max/1400/",
                     "/fit/c/128/128/"
                   )}
+                  alt="Publication thumbnail"
                   className="object-cover"
                   style={{ width: 128, height: 128 }}
                 ></img>

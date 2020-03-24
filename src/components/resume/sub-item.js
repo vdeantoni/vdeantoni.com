@@ -18,7 +18,7 @@ const SubItem = ({ subItem }) => {
 
       <ul>
         {subItem.items &&
-          subItem.items.map(item => (
+          subItem.items.map((item) => (
             <li
               key={item}
               className="text-sm list-inside list-disc leading-relaxed"
