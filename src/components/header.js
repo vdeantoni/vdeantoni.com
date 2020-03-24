@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Logo from "../assets/svgs/logo.svg"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 
-const Header = ({ title, contactLinks }) => {
+const Header = ({ title, siteUrl, contactLinks }) => {
   const { scrollY } = useViewportScroll()
   const [y, setY] = useState(0)
 
@@ -18,10 +18,10 @@ const Header = ({ title, contactLinks }) => {
     }
   })
 
-  const scrollToTop = (e) => {
-    e.preventDefault()
-    window.scroll({ top: 0, left: 0, behavior: "smooth" })
-  }
+  // const scrollToTop = (e) => {
+  //   e.preventDefault()
+  //   window.scroll({ top: 0, left: 0, behavior: "smooth" })
+  // }
 
   return (
     <motion.header
@@ -35,8 +35,7 @@ const Header = ({ title, contactLinks }) => {
         <div className="flex-1 flex items-center">
           <motion.a
             animate={{ scale: y ? 0.75 : 1 }}
-            href="/"
-            onClick={scrollToTop}
+            href={siteUrl}
             className="h-8 w-8 mr-4"
           >
             <Logo className="h-full w-full" />
