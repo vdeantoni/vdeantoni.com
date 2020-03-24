@@ -3,6 +3,7 @@ import Img from "gatsby-image"
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
+import { formatDate } from "../../utils/date"
 
 const Home = () => {
   const { image, latestPublication } = useStaticQuery(
@@ -21,7 +22,7 @@ const Home = () => {
             title
             thumbnail
             link
-            date(fromNow: true)
+            date
           }
         }
       }
@@ -88,7 +89,7 @@ const Home = () => {
                   {latestPublication.nodes[0].title}
                 </h3>
                 <p className="text-sm opacity-75">
-                  {latestPublication.nodes[0].date}
+                  {formatDate(latestPublication.nodes[0].date)}
                 </p>
               </div>
             </OutboundLink>
