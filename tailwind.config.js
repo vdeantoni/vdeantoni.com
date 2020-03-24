@@ -347,6 +347,7 @@ module.exports = {
       full: "100%",
       screen: "100vh",
       "main-screen": "calc(100vh - 4rem)",
+      "main-screen-no-footer": "calc(100vh - 8rem)",
     },
     minWidth: {
       "0": "0",
