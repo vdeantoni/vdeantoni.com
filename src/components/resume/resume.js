@@ -83,25 +83,25 @@ const Resume = () => {
         <Section
           title="Experience"
           images={images.companies}
-          items={resume.items.filter(item => item.type === "company")}
+          items={resume.items.filter((item) => item.type === "company")}
         />
 
         <Section
           title="Education"
           images={images.schools}
-          items={resume.items.filter(item => item.type === "school")}
+          items={resume.items.filter((item) => item.type === "school")}
         />
 
         <Section
           title="Publications"
           images={images.publications}
-          items={resume.items.filter(item => item.type === "publication")}
+          items={resume.items.filter((item) => item.type === "publication")}
         />
 
         <Section
           title="Certifications"
           images={images.certifications}
-          items={resume.items.filter(item => item.type === "certification")}
+          items={resume.items.filter((item) => item.type === "certification")}
         />
       </div>
     </section>

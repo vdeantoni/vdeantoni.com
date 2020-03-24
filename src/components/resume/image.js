@@ -8,7 +8,7 @@ const Image = ({ images, image, title }) => {
   return (
     <Img
       fluid={
-        images.nodes.find(node => node.name === image).childImageSharp.fluid
+        images.nodes.find((node) => node.name === image).childImageSharp.fluid
       }
       alt={`${title}'s image`}
       className="w-20"
