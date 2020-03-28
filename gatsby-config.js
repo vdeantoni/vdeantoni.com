@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         name: "Medium",
-        link: "http://www.linkedin.com/in/vdeantoni",
+        link: "https://medium.com/@vdeantoni",
         icon: ["fab", "medium"],
       },
       {
