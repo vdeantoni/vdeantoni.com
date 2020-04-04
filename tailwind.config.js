@@ -256,6 +256,7 @@ module.exports = {
       ],
     },
     fontSize: {
+      "2xs": "0.50rem",
       xs: "0.75rem",
       sm: "0.875rem",
       base: "1rem",
@@ -715,7 +716,7 @@ module.exports = {
         opacity: theme("opacity.90"),
         transitionDuration: theme("transitionDuration.200"),
         "&:hover": {
-          opacity: theme("opacity.100")
+          opacity: theme("opacity.100"),
         },
       },
       richText: {

@@ -18,11 +18,6 @@ const Header = ({ title, siteUrl, contactLinks }) => {
     }
   })
 
-  // const scrollToTop = (e) => {
-  //   e.preventDefault()
-  //   window.scroll({ top: 0, left: 0, behavior: "smooth" })
-  // }
-
   return (
     <motion.header
       animate={{ opacity: y ? 0.95 : 1 }}
