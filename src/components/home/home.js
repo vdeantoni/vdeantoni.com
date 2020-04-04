@@ -1,9 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
-import { formatDate } from "../../utils/date"
+import React from "react"
 
 const Home = () => {
   const { image, latestPublication } = useStaticQuery(
@@ -17,12 +16,25 @@ const Home = () => {
           }
         }
 
-        latestPublication: allMediumFeed(limit: 1) {
+        latestPublication: allMediumPost(
+          sort: { fields: [createdAt], order: DESC }
+          limit: 1
+        ) {
           nodes {
+            id
             title
-            thumbnail
-            link
-            date
+            virtuals {
+              subtitle
+              previewImage {
+                imageId
+              }
+              tags {
+                name
+              }
+              readingTime
+            }
+            createdAt
+            uniqueSlug
           }
         }
       }
@@ -66,21 +78,18 @@ const Home = () => {
 
             <OutboundLink
               className="flex ty-link text-black"
-              href={latestPublication.nodes[0].link}
+              href={`https://medium.com/@vdeantoni/${latestPublication.nodes[0].uniqueSlug}`}
               target="_blank"
             >
               <div className="">
                 <img
-                  src={latestPublication.nodes[0].thumbnail.replace(
-                    "/max/1400/",
-                    "/fit/c/128/128/"
-                  )}
+                  src={`https://miro.medium.com/fit/c/128/128/${latestPublication.nodes[0].virtuals.previewImage.imageId}`}
                   alt="Publication thumbnail"
                   className="object-cover"
                   style={{ width: 128, height: 128 }}
                 ></img>
               </div>
-              <div className="flex-1 ml-4">
+              <div className="flex-1 flex flex-col ml-4">
                 <h4 className="mb-1">
                   <FontAwesomeIcon icon={["fab", "medium"]} className="mr-1" />
                   Medium
@@ -89,8 +98,20 @@ const Home = () => {
                   {latestPublication.nodes[0].title}
                 </h3>
                 <p className="text-sm opacity-75">
-                  {formatDate(latestPublication.nodes[0].date)}
+                  {latestPublication.nodes[0].virtuals.subtitle}
                 </p>
+                <div className="flex-1 flex justify-around items-end">
+                  {(latestPublication.nodes[0].virtuals.tags || []).map(
+                    (tag) => (
+                      <div
+                        key={`tag-${tag.name}`}
+                        className="text-xs font-thin border-gray-300 rounded border-solid border p-1"
+                      >
+                        {tag.name}
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             </OutboundLink>
           </div>

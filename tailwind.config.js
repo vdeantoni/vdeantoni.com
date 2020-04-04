@@ -711,13 +711,11 @@ module.exports = {
         fontSize: theme("fontSize.xl"),
       },
       link: {
-        fontWeight: theme("fontWeight.bold"),
         color: theme("colors.blue.800"),
         opacity: theme("opacity.90"),
         transitionDuration: theme("transitionDuration.200"),
         "&:hover": {
-          opacity: theme("opacity.100"),
-          textDecoration: "underline",
+          opacity: theme("opacity.100")
         },
       },
       richText: {
