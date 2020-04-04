@@ -77,20 +77,26 @@ const Home = () => {
             <h2 className="ty-h5 mb-4">Latest publication</h2>
 
             <OutboundLink
-              className="flex ty-link text-black"
+              className="flex flex-col md:flex-row ty-link text-black"
               href={`https://medium.com/@vdeantoni/${latestPublication.nodes[0].uniqueSlug}`}
               target="_blank"
             >
-              <div className="">
+              <div className="flex-shrink-0">
+                <img
+                  src={`https://miro.medium.com/fit/c/768/128/${latestPublication.nodes[0].virtuals.previewImage.imageId}`}
+                  alt="Publication thumbnail"
+                  className="object-cover md:hidden"
+                  style={{ width: 768, height: 128 }}
+                ></img>
                 <img
                   src={`https://miro.medium.com/fit/c/128/128/${latestPublication.nodes[0].virtuals.previewImage.imageId}`}
                   alt="Publication thumbnail"
-                  className="object-cover"
+                  className="object-cover hidden md:block"
                   style={{ width: 128, height: 128 }}
                 ></img>
               </div>
-              <div className="flex-1 flex flex-col ml-4">
-                <h4 className="mb-1">
+              <div className="flex-1 flex flex-col md:ml-4">
+                <h4 className="mt-1 md:mt-0 mb-1">
                   <FontAwesomeIcon icon={["fab", "medium"]} className="mr-1" />
                   Medium
                 </h4>
@@ -100,12 +106,12 @@ const Home = () => {
                 <p className="text-sm opacity-75">
                   {latestPublication.nodes[0].virtuals.subtitle}
                 </p>
-                <div className="flex-1 flex justify-around items-end">
+                <div className="mt-2 md:mt-0 flex flex-grow  md:justify-around items-end flex-no-wrap">
                   {(latestPublication.nodes[0].virtuals.tags || []).map(
                     (tag) => (
                       <div
                         key={`tag-${tag.name}`}
-                        className="text-xs font-thin border-gray-300 rounded border-solid border p-1"
+                        className="text-2xs md:text-xs font-thin border-gray-300 rounded border-solid border mr-1 md:mr-0 p-1 whitespace-no-wrap"
                       >
                         {tag.name}
                       </div>
