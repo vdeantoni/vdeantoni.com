@@ -92,10 +92,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-medium-feed`,
+      resolve: `gatsby-source-medium`,
       options: {
-        userName: `@vdeantoni`, // Medium user name
-        name: `MediumFeed`, // GraphQL query AllMediumFeed
+        username: `@vdeantoni`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
