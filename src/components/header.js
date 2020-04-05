@@ -1,11 +1,14 @@
 import classNames from "classnames"
 import { motion, useViewportScroll } from "framer-motion"
-import React, { useState, useEffect } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { useEffect, useState } from "react"
 import Logo from "../assets/svgs/logo.svg"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
+import { DesktopNav } from "./nav/desktop-nav"
+import { MobileNav } from "./nav/mobile-nav"
+import { MobileNavToggle } from "./nav/mobile-nav-toggle"
 
-const Header = ({ title, siteUrl, contactLinks }) => {
+const Header = ({ title, siteUrl, contactLinks, menuLinks }) => {
+  const [open, setOpen] = useState(false)
+
   const { scrollY } = useViewportScroll()
   const [y, setY] = useState(0)
 
@@ -24,7 +27,8 @@ const Header = ({ title, siteUrl, contactLinks }) => {
       className={classNames("sticky", "top-0", "z-1", "bg-gray-800")}
     >
       <motion.div
-        animate={{ maxHeight: y ? "2rem" : "4rem" }}
+        animate={{ maxHeight: y > 0 ? "2rem" : "4rem" }}
+        initial={false}
         className="container flex items-center justify-between h-16"
       >
         <div className="flex-1 flex items-center">
@@ -47,39 +51,24 @@ const Header = ({ title, siteUrl, contactLinks }) => {
               {title}
             </motion.h1>
           </div>
-          <motion.div
-            variants={{
-              show: {
-                transition: {
-                  staggerChildren: 0.1,
-                },
-              },
-            }}
-            initial="hide"
-            animate={y ? "show" : ""}
-          >
-            {contactLinks.map((link) => (
-              <motion.span
-                key={link.name}
-                variants={{
-                  hide: { opacity: 0 },
-                  show: { opacity: 1 },
-                }}
-              >
-                <OutboundLink
-                  title={link.name}
-                  href={link.link}
-                  className="ty-link text-white mx-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon icon={link.icon} />
-                </OutboundLink>
-              </motion.span>
-            ))}
-          </motion.div>
+
+          <DesktopNav
+            menuLinks={menuLinks}
+            y={y}
+            className="hidden md:block"
+          ></DesktopNav>
+          <MobileNavToggle
+            open={open}
+            setOpen={setOpen}
+            className="md:hidden"
+          ></MobileNavToggle>
         </div>
       </motion.div>
+      <MobileNav
+        menuLinks={menuLinks}
+        open={open}
+        className={`${open ? "" : "hidden"} md:hidden`}
+      ></MobileNav>
     </motion.header>
   )
 }
