@@ -5,7 +5,7 @@ import React from "react"
 export const MediumCard = ({ post }) => {
   return (
     <OutboundLink
-      className="flex flex-col md:flex-row ty-link text-black"
+      className="flex flex-col md:flex-row ty-link"
       href={`https://medium.com/@vdeantoni/${post.uniqueSlug}`}
       target="_blank"
     >

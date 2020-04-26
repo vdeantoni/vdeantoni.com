@@ -8,6 +8,8 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+      light: { raw: "(prefers-color-scheme: light)" },
+      dark: { raw: "(prefers-color-scheme: dark)" },
     },
     colors: {
       transparent: "transparent",
@@ -712,6 +714,9 @@ module.exports = {
       },
       link: {
         color: theme("colors.blue.800"),
+        "@screen dark": {
+          color: theme("colors.gray.200"),
+        },
         opacity: theme("opacity.90"),
         transitionDuration: theme("transitionDuration.200"),
         "&:hover": {
@@ -875,5 +880,21 @@ module.exports = {
       textUnset: true, // whether to generate utilities to unset text properties
       componentPrefix: "ty-", // the prefix to use for text style classes
     }),
+    function ({ addBase, config }) {
+      addBase({
+        "@screen light": {
+          body: {
+            color: config("theme.colors.black"),
+            backgroundColor: config("theme.colors.white"),
+          },
+        },
+        "@screen dark": {
+          body: {
+            color: config("theme.colors.gray.200"),
+            backgroundColor: config("theme.colors.gray.900"),
+          },
+        },
+      })
+    },
   ],
 }

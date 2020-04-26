@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
 
       <main>{children}</main>
 
-      <footer className="relative flex items-center justify-center bg-gray-200 h-16 px-8">
+      <footer className="relative flex items-center justify-center bg-gray-200 dark:bg-gray-800 h-16 px-8">
         <div className="flex flex-1 justify-center">
           {data.site.siteMetadata.contactLinks.map((link) => (
             <OutboundLink

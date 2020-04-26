@@ -25,7 +25,7 @@ const Item = ({ item, images }) => {
         <OutboundLink
           title={item.name}
           href={item.link}
-          className="ty-link ty-h6 text-black"
+          className="ty-link ty-h6"
           target="_blank"
           rel="noopener noreferrer"
         >
