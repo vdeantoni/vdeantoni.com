@@ -2,7 +2,7 @@
   "name": "personal-website",
   "private": true,
   "description": "Vinicius De Antoni's personal website",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "author": "Vinicius De Antoni <vdeantoni@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
