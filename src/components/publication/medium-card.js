@@ -6,18 +6,18 @@ export const MediumCard = ({ post }) => {
   return (
     <OutboundLink
       className="flex flex-col md:flex-row ty-link"
-      href={`https://medium.com/@vdeantoni/${post.uniqueSlug}`}
+      href={post.link}
       target="_blank"
     >
       <div className="flex-shrink-0">
         <img
-          src={`https://miro.medium.com/fit/c/768/128/${post.virtuals.previewImage.imageId}`}
+          src={post.images.mobile}
           alt="Publication thumbnail"
           className="object-cover md:hidden"
           style={{ width: 768, height: 128 }}
         ></img>
         <img
-          src={`https://miro.medium.com/fit/c/128/128/${post.virtuals.previewImage.imageId}`}
+          src={post.images.desktop}
           alt="Publication thumbnail"
           className="object-cover hidden md:block"
           style={{ width: 128, height: 128 }}
@@ -29,9 +29,9 @@ export const MediumCard = ({ post }) => {
           Medium
         </h4>
         <h3 className="font-bold leading-tight">{post.title}</h3>
-        <p className="text-sm opacity-75">{post.virtuals.subtitle}</p>
+        <p className="text-sm opacity-75">{post.subtitle}</p>
         <div className="mt-2 md:mt-0 flex flex-grow  md:justify-around items-end flex-no-wrap">
-          {(post.virtuals.tags || []).map((tag) => (
+          {(post.tags || []).map((tag) => (
             <div
               key={`tag-${tag.name}`}
               className="text-2xs md:text-xs font-thin border-gray-300 rounded border-solid border mr-1 md:mr-0 p-1 whitespace-no-wrap"
