@@ -5,6 +5,7 @@ import { Blurb } from "../components/home/blurb"
 import Layout from "../components/layout"
 import { MediumCard } from "../components/publication/medium-card"
 import SEO from "../components/seo"
+import publications from "../content/publications.yml"
 
 export const query = graphql`
   query {
@@ -15,33 +16,11 @@ export const query = graphql`
         }
       }
     }
-
-    latestPublication: allMediumPost(
-      sort: { fields: [createdAt], order: DESC }
-      limit: 1
-    ) {
-      nodes {
-        id
-        title
-        virtuals {
-          subtitle
-          previewImage {
-            imageId
-          }
-          tags {
-            name
-          }
-          readingTime
-        }
-        createdAt
-        uniqueSlug
-      }
-    }
   }
 `
 
 const IndexPage = ({ data }) => {
-  const { image, latestPublication } = data
+  const { image } = data
 
   return (
     <Layout>
@@ -64,7 +43,7 @@ const IndexPage = ({ data }) => {
           <div className="self-start my-8">
             <h2 className="ty-h5 mb-4">Latest publication</h2>
 
-            <MediumCard post={latestPublication.nodes[0]}></MediumCard>
+            <MediumCard post={publications.items[0]}></MediumCard>
           </div>
         </div>
       </section>
