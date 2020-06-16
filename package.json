@@ -1,5 +1,5 @@
 {
-  "name": "personal-website",
+  "name": "vdeantoni.com",
   "private": true,
   "description": "Vinicius De Antoni's personal website",
   "version": "0.1.0",
@@ -22,12 +22,11 @@
     "gatsby-plugin-sharp": "^2.6.11",
     "gatsby-plugin-sitemap": "^2.4.5",
     "gatsby-source-filesystem": "^2.3.11",
-    "gatsby-source-medium": "^2.3.4",
     "gatsby-transformer-remark": "^2.8.15",
     "gatsby-transformer-sharp": "^2.5.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "prettier": "^2.0.5",
