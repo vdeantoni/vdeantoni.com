@@ -1,6 +1,21 @@
 items:
 
   - type: medium
+    id: a0bc9e2df171
+    date: 2020-06-16T00:00:00.000Z
+    title: React Functional Components and Lodash High-Order Functions
+    subtitle: How to seamlessly use lodash high-order functions like debounce and throttle in your react functional components.
+    images:
+      mobile: https://miro.medium.com/fit/c/768/128/0*_5NBtpiYu5oouBLw
+      desktop: https://miro.medium.com/fit/c/128/128/0*_5NBtpiYu5oouBLw
+    link: https://medium.com/@vdeantoni/react-functional-components-and-lodash-high-order-functions-a0bc9e2df171
+    tags:
+      - name: React
+      - name: JavaScript
+      - name: Lodash
+      - name: Programming
+
+  - type: medium
     id: d32fe672062b
     date: 2020-04-26T00:00:00.000Z
     title: How to Enable Dark Mode With Tailwind CSS (and Pure CSS)
