@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import React from "react"
 import { Blurb } from "../components/home/blurb"
@@ -40,10 +40,14 @@ const IndexPage = ({ data }) => {
               <Blurb></Blurb>
             </div>
           </div>
-          <div className="self-start my-8">
+          <div className="self-start my-8 lg:w-1/2">
             <h2 className="ty-h5 mb-4">Latest publication</h2>
 
             <MediumCard post={publications.items[0]}></MediumCard>
+
+            <Link title="View All" to="/publications" className="ty-link text-right block mt-2">
+              View All
+            </Link>
           </div>
         </div>
       </section>
