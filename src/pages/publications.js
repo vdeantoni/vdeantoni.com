@@ -16,7 +16,7 @@ const PublicationsPage = () => {
           <h1 className="ty-h1 py-12">Publications</h1>
           <ul className="max-w-3xl">
             {posts.map((post) => (
-              <li key={`post-${post.id}`} className="mb-8 last:mb-0">
+              <li key={`post-${post.id}`} className="mb-12 last:mb-0">
                 <MediumCard post={post}></MediumCard>
               </li>
             ))}
