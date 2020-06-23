@@ -14,12 +14,12 @@
         <g>
             <g>
                 <g clip-path="url(#clipbDpnxacQ)">
-                    <use xlink:href="#l2WF6GA60c" opacity="1" fill-opacity="0" stroke="#FFF" stroke-width="80" stroke-opacity="1"></use>
+                    <use xlink:href="#l2WF6GA60c" opacity="1" fill-opacity="0" stroke="currentColor" stroke-width="80" stroke-opacity="1"></use>
                 </g>
             </g>
             <g>
                 <g>
-                    <use xlink:href="#bgRMjsdh9" opacity="1" fill-opacity="0" stroke="#FFF" stroke-width="39" stroke-opacity="1"></use>
+                    <use xlink:href="#bgRMjsdh9" opacity="1" fill-opacity="0" stroke="currentColor" stroke-width="39" stroke-opacity="1"></use>
                 </g>
             </g>
         </g>
