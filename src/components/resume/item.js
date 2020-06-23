@@ -7,7 +7,7 @@ import { formatDate } from "../../utils/date"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 const Item = ({ item, images }) => {
   return (
-    <li className="flex flex-col sm:flex-row mb-10 pb-10 border-b last:mb-0 last:pb-0 last:border-none">
+    <li className="flex flex-col sm:flex-row py-10 last:py-0">
       {item.image && (
         <div className="w-20 flex justify-center items-start flex-shrink-0">
           <OutboundLink
