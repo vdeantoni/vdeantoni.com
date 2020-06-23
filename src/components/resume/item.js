@@ -13,7 +13,6 @@ const Item = ({ item, images }) => {
           <OutboundLink
             title={item.name}
             href={item.link}
-            className="ty-link"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -25,7 +24,7 @@ const Item = ({ item, images }) => {
         <OutboundLink
           title={item.name}
           href={item.link}
-          className="ty-link ty-h6"
+          className="heading text-xl"
           target="_blank"
           rel="noopener noreferrer"
         >
