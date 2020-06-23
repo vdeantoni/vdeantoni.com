@@ -19,10 +19,7 @@ export const MobileNavToggle = ({ open, setOpen, className }) => {
       animate={open ? "open" : "closed"}
       onClick={() => setOpen(!open)}
       className={classnames(
-        "ty-link",
-        "text-gray-200",
         "focus:outline-none",
-        "focus:text-white",
         className
       )}
       aria-label="Toggle Menu"

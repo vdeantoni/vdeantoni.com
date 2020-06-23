@@ -16,7 +16,7 @@ import {
   faGithub,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope, faAngleDoubleUp } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope, faAngleDoubleUp, faLightbulb } from "@fortawesome/free-solid-svg-icons"
 
 library.add(
   faFacebook,
@@ -26,5 +26,6 @@ library.add(
   faGithub,
   faTwitter,
   faEnvelope,
-  faAngleDoubleUp
+  faAngleDoubleUp,
+  faLightbulb
 )

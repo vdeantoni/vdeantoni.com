@@ -1,7 +1,6 @@
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import React from "react"
-import { Blurb } from "../components/home/blurb"
 import Layout from "../components/layout"
 import { MediumCard } from "../components/publication/medium-card"
 import SEO from "../components/seo"
@@ -36,16 +35,37 @@ const IndexPage = ({ data }) => {
                 alt="Vinicius De Antoni"
               ></Img>
             </div>
-            <div className="md:flex-1 ty-rich-text text-justify">
-              <Blurb></Blurb>
+            <div className="md:flex-1 text-justify">
+              <h1 className="heading text-6xl py-12">Hello,</h1>
+              <p className="leading-relaxed">
+                I am a generalist software engineer experienced on developing
+                backend services for web, desktop and mobile applications as
+                well as building user experiences with web technologies.
+              </p>
+              <p className="mt-3 leading-relaxed">
+                Throughout my career I've worked with several different
+                technologies in a variety of problem spaces. From embedded
+                software for printers to a costumer support system, from
+                e-commerce platforms to desktop applications.
+              </p>
+              <p className="mt-3 leading-relaxed">
+                Motivated and eager for knowledge, I am very interested in
+                customer facing applications and distributed systems, and I also
+                have passion for game development, artificial intelligence and
+                music.
+              </p>
             </div>
           </div>
-          <div className="self-start my-8 lg:w-1/2">
-            <h2 className="ty-h5 mb-4">Latest publication</h2>
+          <div className="self-start my-12 lg:w-1/2">
+            <h2 className="heading text-2xl mb-4">Latest publication</h2>
 
             <MediumCard post={publications.items[0]}></MediumCard>
 
-            <Link title="View All" to="/publications" className="ty-link text-right block mt-2">
+            <Link
+              title="View All"
+              to="/publications"
+              className="text-right block mt-2"
+            >
               View All
             </Link>
           </div>

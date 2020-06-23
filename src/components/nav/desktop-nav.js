@@ -1,8 +1,7 @@
-import classnames from "classnames"
-import { Link } from "gatsby"
-import React from "react"
+import { Link } from "gatsby";
+import React from "react";
 
-export const DesktopNav = ({ menuLinks, y, className }) => {
+export const DesktopNav = ({ menuLinks, className }) => {
   return (
     <div className={className}>
       {menuLinks.map((link) => (
@@ -10,16 +9,8 @@ export const DesktopNav = ({ menuLinks, y, className }) => {
           key={`menu-${link.name}`}
           title={link.name}
           to={link.path}
-          className={classnames(
-            "ty-link",
-            "ml-4",
-            { "pb-1": !y },
-            "text-sm",
-            "font-medium",
-            "text-gray-200",
-            "hover:border-b-2"
-          )}
-          activeClassName="text-white opacity-100 border-b-2"
+          className="ml-4 pb-1 text-sm font-medium hover:border-b-2"
+          activeClassName="opacity-100 border-b-2"
         >
           {link.name}
         </Link>
