@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../assets/svgs/logo.svg";
-import DarkModeToggle from "./dark-mode-toggle";
 import { DesktopNav } from "./nav/desktop-nav";
 import { MobileNav } from "./nav/mobile-nav";
 import { MobileNavToggle } from "./nav/mobile-nav-toggle";
@@ -25,8 +24,6 @@ const Header = ({ title, siteUrl, contactLinks, menuLinks }) => {
             menuLinks={menuLinks}
             className="hidden md:block"
           ></DesktopNav>
-
-          <DarkModeToggle />
 
           <MobileNavToggle
             open={open}

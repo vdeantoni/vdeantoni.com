@@ -1,8 +1,8 @@
 :root {
   --color-text-default: #000000;
-  --color-bg-default: #ffffff;
+  --color-bg-default: #F7FAFC;
 
-  --color-text-nav: #ffffff;
+  --color-text-nav: #F7FAFC;
   --color-bg-nav: #2D3748;
 
   --color-text-footer: #000000;
@@ -10,13 +10,13 @@
 }
 
 .dark {
-    --color-text-default: #ffffff;
+    --color-text-default: #F7FAFC;
     --color-bg-default: #1A202C;
 
-    --color-text-nav: #ffffff;
+    --color-text-nav: #F7FAFC;
     --color-bg-nav: #2D3748;
 
-    --color-text-footer: #ffffff;
+    --color-text-footer: #F7FAFC;
     --color-bg-footer: #2D3748;
 }
 
