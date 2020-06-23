@@ -38,13 +38,10 @@ export const MobileNav = ({ menuLinks, open, className }) => {
             title={link.name}
             to={link.path}
             className={classnames(
-              "ty-link",
               "text-sm",
-
               "font-medium",
-              "text-gray-200"
             )}
-            activeClassName="text-white opacity-100"
+            activeClassName="opacity-100"
           >
             {link.name}
           </Link>

@@ -82,7 +82,7 @@ const ResumePage = ({ data }) => {
 
       <section>
         <div className="container">
-          <h1 className="ty-h1 py-12">Resume</h1>
+          <h1 className="heading text-6xl py-12">Resume</h1>
           <Section
             title="Experience"
             images={images.companies}
