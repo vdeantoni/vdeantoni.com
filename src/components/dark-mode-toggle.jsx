@@ -37,10 +37,11 @@ const DarkModeToggle = () => {
         "cursor-pointer",
         "px-4",
         "focus:outline-none",
-        dark ? "text-black" : " text-white"
+        "text-sm",
+        dark ? "text-black" : " text-yellow-500"
       )}
     >
-      <FontAwesomeIcon icon="lightbulb"></FontAwesomeIcon>
+      <FontAwesomeIcon icon="lightbulb"></FontAwesomeIcon> {dark ? "Off" : "On"}
     </button>
   )
 }

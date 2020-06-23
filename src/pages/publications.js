@@ -14,9 +14,9 @@ const PublicationsPage = () => {
       <section>
         <div className="container min-h-main-screen pb-8">
           <h1 className="heading text-6xl py-12">Publications</h1>
-          <ul className="max-w-3xl">
+          <ul className="divide-y divide-opacity-25">
             {posts.map((post) => (
-              <li key={`post-${post.id}`} className="mb-12 last:mb-0">
+              <li key={`post-${post.id}`} className="py-6 last:py-0">
                 <MediumCard post={post}></MediumCard>
               </li>
             ))}

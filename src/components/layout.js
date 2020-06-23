@@ -5,11 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { graphql, useStaticQuery } from "gatsby";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
-import React from "react";
-import Header from "./header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { graphql, useStaticQuery } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
+import React from "react"
+import Header from "./header"
+import DarkModeToggle from "./dark-mode-toggle"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -43,24 +44,26 @@ const Layout = ({ children }) => {
 
       <main className="flex-1 text-default bg-default">{children}</main>
 
-      <footer className="text-footer bg-footer relative flex items-center justify-center h-16 px-8">
-        <div className="flex flex-1 justify-center">
-          {data.site.siteMetadata.contactLinks.map((link) => (
-            <OutboundLink
-              key={link.name}
-              title={link.name}
-              href={link.link}
-              className="mx-2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={link.icon} />
-            </OutboundLink>
-          ))}
-
-        </div>
-        <div className="absolute right-0 pr-8 text-xs">
-          © {new Date().getFullYear()}
+      <footer className="text-footer bg-footer h-16 pt-3">
+        <div className="container flex flex-col items-center relative">
+          <div className="flex justify-center">
+            {data.site.siteMetadata.contactLinks.map((link) => (
+              <OutboundLink
+                key={link.name}
+                title={link.name}
+                href={link.link}
+                className="mx-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={link.icon} />
+              </OutboundLink>
+            ))}
+          </div>
+          <div className="text-xs mt-1">© {new Date().getFullYear()}</div>
+          <div className="absolute right-0 mt-2">
+            <DarkModeToggle />
+          </div>
         </div>
       </footer>
     </div>

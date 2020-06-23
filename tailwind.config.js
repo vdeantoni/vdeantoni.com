@@ -18,6 +18,9 @@ module.exports = {
       },
       borderColor: theme => ({
         default: theme('currentColor'),
+      }),
+      divideColor: theme => ({
+        default: theme('currentColor'),
       })
     },
   },
