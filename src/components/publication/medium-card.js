@@ -30,11 +30,11 @@ export const MediumCard = ({ post }) => {
         </h4>
         <h3 className="font-bold leading-tight">{post.title}</h3>
         <p className="text-sm opacity-75">{post.subtitle}</p>
-        <div className="mt-2 flex flex-grow items-end flex-no-wrap">
+        <div className="mt-2 flex flex-grow items-end flex-wrap">
           {(post.tags || []).map((tag) => (
             <div
               key={`tag-${tag.name}`}
-              className="text-2xs md:text-xs font-thin border-gray-300 rounded border-solid border mr-1 md:mr-0 p-1 whitespace-no-wrap mx-4"
+              className="text-2xs md:text-xs font-thin border-gray-300 rounded border-solid border p-1 whitespace-no-wrap mx-2 mt-2"
             >
               {tag.name}
             </div>
