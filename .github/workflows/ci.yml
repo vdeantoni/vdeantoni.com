@@ -26,9 +26,9 @@ jobs:
       with:
         build: npm run build
         start: npm run serve
-        wait-on: http://localhost:9000
+        wait-on: http://localhost:8000
       env:
-        CI: true 
+        CI: true
     - name: Deploy to Netlify
       uses: netlify/actions/cli@master
       with:
