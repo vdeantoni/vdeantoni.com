@@ -1,0 +1,147 @@
+import { useSiteMetadata, useColorMode } from "@reflexjs/gatsby-theme-core";
+import useMetadata from "../../src/hooks/use-metadata.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../images/logo.svg";
+
+export const HeaderBlock = ({ ...props }) => {
+  const [showMenu, setShowMenu] = React.useState(false);
+  const navName = "main";
+  return (
+    <Header
+      position={["sticky", "relative"]}
+      top="0"
+      bg="background"
+      zIndex="1000"
+      {...props}
+    >
+      <Container>
+        <Flexbox d={["none", "flex"]} justifyContent="space-between" py="1">
+          <Branding />
+          <NavMenu name={navName} gap={[0, 8]} ml="null|12" />
+          <SocialLinks ml="auto" mr="4" borderRightWidth="1px" pr="4" />
+          <ModeToggle ml="0" />
+        </Flexbox>
+      </Container>
+      <Flexbox
+        d={["flex", "none"]}
+        flexDirection="column"
+        justifyContent="center"
+      >
+        <Flexbox
+          justifyContent="space-between"
+          w="full"
+          pl="4"
+          pr="1"
+          visibility={showMenu ? "hidden" : "visible"}
+          transition="all .15s ease-in"
+        >
+          <Branding />
+          <Button
+            variant="link"
+            outline="none"
+            onClick={() => setShowMenu(true)}
+          >
+            <Icon name="menu" size="7" />
+          </Button>
+        </Flexbox>
+        <Div
+          position="absolute"
+          zIndex="1000"
+          bg="background"
+          top="4"
+          left="4"
+          right="4"
+          px="4"
+          rounded="xl"
+          overflow="scroll"
+          boxShadow="3xl"
+          border="1px solid"
+          borderColor="border"
+          transform={`scale(${showMenu ? 1 : 0.95})`}
+          visibility={showMenu ? "visible" : "hidden"}
+          opacity={showMenu ? 1 : 0}
+          transition="all .25s ease-in"
+          transformOrigin="100% 0"
+          maxHeight="95vh"
+        >
+          <Flexbox justifyContent="space-between" w="full" py="2" px="0">
+            <Branding />
+            <Button variant="link" onClick={() => setShowMenu(false)} mr={-3}>
+              <Icon name="x" size="6" />
+            </Button>
+          </Flexbox>
+          <NavMenu name={navName} gap={[0, 8]} borderTopWidth="1px" />
+          <Flexbox py="4" justifyContent="space-between">
+            <SocialLinks />
+            <ModeToggle ml="auto" />
+          </Flexbox>
+        </Div>
+      </Flexbox>
+    </Header>
+  );
+};
+
+export const Branding = () => {
+  const { title } = useSiteMetadata();
+  return (
+    <A href="/" fontSize="2xl" fontWeight="semibold" color="text">
+      <Logo width="32px" height="32px" />
+      <Span ml="4">{title}</Span>
+    </A>
+  );
+};
+
+export const ModeToggle = ({ ...props }) => {
+  const [colorMode, setColorMode] = useColorMode();
+  return (
+    <Button
+      variant="icon"
+      onClick={() => setColorMode(colorMode === "default" ? "dark" : "default")}
+      ml={[2, 4]}
+      hoverColor="primary"
+      focusColor="text"
+      {...props}
+    >
+      <Icon name={colorMode === "default" ? "sun" : "moon"} size="5" />
+      <VisuallyHidden>Toggle mode</VisuallyHidden>
+    </Button>
+  );
+};
+
+export const SocialLinks = ({ ...props }) => {
+  const { contactLinks } = useMetadata();
+  return (
+    <Grid col="repeat(7, auto)" gap="1" {...props}>
+      {contactLinks &&
+        contactLinks.map((link) => (
+          <A
+            href={link.link}
+            key={link.name}
+            title={link.name}
+            target="_blank"
+            mx="2"
+            color="text"
+          >
+            <FontAwesomeIcon icon={link.icon} />
+          </A>
+        ))}
+    </Grid>
+  );
+  return (
+    <Grid col="repeat(2, auto)" gap="5" {...props}>
+      <A href="https://twitter.com/arshadcn" target="_blank">
+        <Icon name="twitter" size="5" />
+        <VisuallyHidden>Follow on Twitter</VisuallyHidden>
+      </A>
+      <A
+        href="https://github.com/reflexjs/reflex"
+        target="_blank"
+        color="text"
+        hoverColor="primary"
+      >
+        <Icon name="instagram" size="5" />
+        <VisuallyHidden>Follow on Instagram</VisuallyHidden>
+      </A>
+    </Grid>
+  );
+};

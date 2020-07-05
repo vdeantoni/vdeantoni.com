@@ -1,25 +1,13 @@
+require(`dotenv`).config();
+
 module.exports = {
   siteMetadata: {
-    title: `Vinicius De Antoni`,
-    description: `Web site about the software engineer Vinicius De Antoni.`,
-    siteUrl: `https://vdeantoni.com`,
+    title: "vdeantoni.com",
+    description: "Web site about the software engineer Vinicius De Antoni",
+    siteUrl: process.env.SITE_URL || "https://vdeantoni.com",
     image: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     imageSecure: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     author: `@vinideantoni`,
-    menuLinks: [
-      {
-        name: "Home",
-        path: "/",
-      },
-      {
-        name: "Publications",
-        path: "/publications",
-      },
-      {
-        name: "Resume",
-        path: "/resume",
-      },
-    ],
     contactLinks: [
       {
         name: "Email",
@@ -59,64 +47,34 @@ module.exports = {
     ],
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
+    `@reflexjs/gatsby-theme-base`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        trackingId: "UA-76372620-1",
-        head: true,
+        name: `Vinicius De Antoni`,
+        short_name: `vdeantoni`,
+        start_url: `/`,
+        background_color: `#FFFFFF`,
+        theme_color: `#000000`,
+        display: `standalone`,
+        icon: `content/images/logo.svg`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-sitemap`,
-    `gatsby-transformer-remark`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /assets\/svgs/,
+          include: /images\/.*\.svg$/,
         },
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `content`,
-        path: `${__dirname}/src/content/`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#FFFFFF`,
-        theme_color: `#000000`,
-        display: `minimal-ui`,
-        icon: `src/assets/svgs/logo.svg`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-    {
-      resolve: "gatsby-plugin-postcss",
-      options: {
-        postCssPlugins: [
-          require(`tailwindcss`)(`./tailwind.config.js`),
-          require(`autoprefixer`),
-          require(`cssnano`),
-        ],
+        trackingId: "UA-76372620-1",
       },
     },
   ],
-}
+};
