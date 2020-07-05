@@ -1,0 +1,20 @@
+import posts from "../../src/data/posts.yml";
+import SEO from "../../src/components/seo.jsx";
+
+<SEO title="Posts" description="A page with a list of all my public posts." />
+
+<Section py="8|12">
+  <Container>
+    <H1 m="0" fontWeight="extrabold" lineHeight="tight">
+      Posts
+    </H1>
+    <Grid col="1" gap="10|20" mt="10">
+      {posts &&
+        posts.map((post, index) => (
+          <Div key={index}>
+            <Block src="post-teaser" post={post} />
+          </Div>
+        ))}
+    </Grid>
+  </Container>
+</Section>

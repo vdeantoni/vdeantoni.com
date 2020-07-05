@@ -1,0 +1,99 @@
+- type: medium
+  id: a0bc9e2df171
+  date: 2020-06-16T00:00:00.000Z
+  title: React Functional Components and Lodash High-Order Functions
+  subtitle: How to seamlessly use lodash high-order functions like debounce and throttle in your react functional components.
+  image: https://miro.medium.com/fit/c/800/250/0*_5NBtpiYu5oouBLw
+  link: https://medium.com/@vdeantoni/react-functional-components-and-lodash-high-order-functions-a0bc9e2df171
+  timeToRead: 2
+  tags:
+    - name: React
+    - name: JavaScript
+    - name: Lodash
+    - name: Programming
+
+- type: medium
+  id: d32fe672062b
+  date: 2020-04-26T00:00:00.000Z
+  title: How to Enable Dark Mode With Tailwind CSS (and Pure CSS)
+  subtitle: Add color scheme responsiveness to your web app
+  image: https://miro.medium.com/fit/c/800/250/0*nPqmfH2wUFrx2BET
+  link: https://medium.com/better-programming/how-to-enable-dark-mode-with-tailwindcss-and-pure-css-d32fe672062b?source=friends_link&sk=ba0ec01c41c9e9447b56a63faefef043
+  timeToRead: 3
+  tags:
+    - name: CSS
+    - name: Tailwind CSS
+    - name: Web Design
+    - name: UI
+
+- type: medium
+  id: 6cd9f31d1169
+  date: 2020-04-11T00:00:00.000Z
+  title: 5 Front-End Interview Coding Challenges
+  subtitle: Questions you might face during a job interview, and their solutions
+  image: https://miro.medium.com/fit/c/800/250/0*GUXw_sZxaEPGbpiN
+  link: https://medium.com/better-programming/5-front-end-interview-coding-challenges-6cd9f31d1169?source=friends_link&sk=5a02ae1cd3b19b69db70a1e9c6d2947f
+  timeToRead: 8
+  tags:
+    - name: Interview Questions
+    - name: Programming
+    - name: JavaScript
+    - name: React
+    - name: Node.js
+
+- type: medium
+  id: 4de2f6cbd069
+  date: 2020-04-06T00:00:00.000Z
+  title: All the Command-Line Keyboard Shortcuts You Need to Know
+  subtitle: Level up your CLI skills with these keyboard shortcuts
+  image: https://miro.medium.com/fit/c/800/250/0*19x65BNHhTsfdp22
+  link: https://medium.com/better-programming/boost-your-command-line-productivity-with-keyboard-shortcuts-4de2f6cbd069?source=friends_link&sk=41d5a75f3e9b0d997b38c7f22b8563d2
+  timeToRead: 5
+  tags:
+    - name: Command-Line
+    - name: Programming
+    - name: Productivity
+    - name: Technology
+
+- type: medium
+  id: 985aa162ba5d
+  date: 2020-04-01T00:00:00.000Z
+  title: Boost Your Command-Line Productivity With Fuzzy Finder
+  subtitle: Level up your CLI skills with fzf
+  image: https://miro.medium.com/fit/c/800/250/0*2gM4xgptP1BVLOFe
+  link: https://medium.com/better-programming/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d?source=friends_link&sk=f1fc4d89f07f33331e13dcdbd34f06f6
+  timeToRead: 14
+  tags:
+    - name: Command-Line
+    - name: Programming
+    - name: Productivity
+    - name: Technology
+
+- type: medium
+  id: 659f5588b883
+  date: 2020-03-26T00:00:00.000Z
+  title: How to Set Up Your Mac for Web Development in 2020
+  subtitle: A guide to getting your Mac ready for web development — recommending tools, shortcuts, tips and tricks, and more
+  image: https://miro.medium.com/fit/c/800/250/0*zD6qM5Tg2aQcA-BY
+  link: https://medium.com/better-programming/setting-up-your-mac-for-web-development-in-2020-659f5588b883?source=friends_link&sk=c4bde4559d8871a88f5d127ce14f7931
+  timeToRead: 15
+  tags:
+    - name: Web Development
+    - name: Command-Line
+    - name: Programming
+    - name: Apple
+
+- type: medium
+  id: 45719d82d1a3
+  date: 2020-03-22T00:00:00.000Z
+  title: Create a Proximity Graph Animation
+  subtitle: An introduction to 2D HTML5 Canvas and the animation loop
+  image: https://miro.medium.com/fit/c/800/250/1*a4tiXdRcOxYEQn-SyV6Jcw.png
+  link: https://medium.com/better-programming/creating-a-proximity-graph-animation-an-introduction-to-html5-canvas-and-the-animation-loop-45719d82d1a3?source=friends_link&sk=dc7df0f0bca9b3c2dad86c2f8e49d996
+  timeToRead: 7
+  tags:
+    - name: HTML
+    - name: JavaScript
+    - name: Animation
+    - name: UI
+    - name: Programming

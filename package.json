@@ -1,57 +1,37 @@
 {
-  "name": "vdeantoni.com",
+  "name": "vdeantoni",
+  "version": "0.1.9",
   "private": true,
-  "description": "Vinicius De Antoni's personal website",
-  "version": "2.4.5",
-  "author": "Vinicius De Antoni <vdeantoni@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "start": "gatsby develop",
+    "serve": "gatsby serve --port 8000",
+    "clean": "gatsby clean",
+    "dev": "gatsby clean && gatsby develop",
+    "preview": "npm run build && npm run serve",
+    "cypress": "cypress open",
+    "format" : "npx prettier --write \"**/*.{js,jsx,json,md,mdx}\""
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "classnames": "^2.2.6",
-    "framer-motion": "^1.11.1",
-    "gatsby": "^2.23.7",
-    "gatsby-image": "^2.4.7",
-    "gatsby-plugin-google-analytics": "^2.3.4",
-    "gatsby-plugin-manifest": "^2.4.12",
-    "gatsby-plugin-offline": "^3.2.11",
-    "gatsby-plugin-postcss": "^2.3.4",
-    "gatsby-plugin-react-helmet": "^3.3.4",
+    "@reflexjs/gatsby-theme-base": "^0.1.9",
+    "date-fns": "^2.14.0",
+    "gatsby": "^2.22.11",
+    "gatsby-image": "^2.4.12",
+    "gatsby-plugin-google-analytics": "^2.3.10",
+    "gatsby-plugin-manifest": "^2.4.17",
+    "gatsby-plugin-react-helmet": "^3.3.9",
     "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.6.12",
-    "gatsby-plugin-sitemap": "^2.4.5",
-    "gatsby-source-filesystem": "^2.3.12",
-    "gatsby-transformer-remark": "^2.8.17",
-    "gatsby-transformer-sharp": "^2.5.5",
+    "gatsby-plugin-sitemap": "^2.4.10",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "cypress": "^4.9.0",
-    "prettier": "^2.0.5",
-    "tailwindcss": "^1.4.6"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve --port 8000",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "cypress": "cypress open"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "cypress": "^4.9.0"
   }
 }
