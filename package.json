@@ -1,6 +1,6 @@
 {
   "name": "vdeantoni",
-  "version": "0.1.9",
+  "version": "3.0.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -11,7 +11,7 @@
     "dev": "gatsby clean && gatsby develop",
     "preview": "npm run build && npm run serve",
     "cypress": "cypress open",
-    "format" : "npx prettier --write \"**/*.{js,jsx,json,md,mdx}\""
+    "format": "npx prettier --write \"**/*.{js,jsx,json,md,mdx}\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
