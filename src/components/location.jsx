@@ -1,8 +1,8 @@
 import React from "react";
-import { Div } from "@reflexjs/components";
+import { Box } from "theme-ui";
 
 const Location = ({ location, ...props }) => {
-  return <Div {...props}>{location}</Div>;
+  return <Box {...props}>{location}</Box>;
 };
 
 export default Location;

@@ -1,5 +1,7 @@
 require(`dotenv`).config();
 
+const path = require(`path`);
+
 module.exports = {
   siteMetadata: {
     title: "vdeantoni.com",
@@ -8,6 +10,20 @@ module.exports = {
     image: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     imageSecure: `http://gravatar.com/avatar/e59021f2412e79c4b5d5056ef9f712bc?s=400`,
     author: `@vinideantoni`,
+    navLinks: [
+      {
+        name: "Home",
+        link: "/",
+      },
+      {
+        name: "Posts",
+        link: "/posts",
+      },
+      {
+        name: "Resume",
+        link: "/resume",
+      },
+    ],
     contactLinks: [
       {
         name: "Email",
@@ -47,9 +63,18 @@ module.exports = {
     ],
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
-    `@reflexjs/gatsby-theme-base`,
+    `gatsby-plugin-theme-ui`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -59,7 +84,7 @@ module.exports = {
         background_color: `#FFFFFF`,
         theme_color: `#000000`,
         display: `standalone`,
-        icon: `content/images/logo.svg`, // This path is relative to the root of the site.
+        icon: `src/images/logo.svg`, // This path is relative to the root of the site.
       },
     },
     {

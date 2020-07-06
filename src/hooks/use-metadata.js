@@ -7,6 +7,10 @@ const useMetadata = () => {
         siteMetadata {
           title
           author
+          navLinks {
+            link
+            name
+          }
           contactLinks {
             icon
             link

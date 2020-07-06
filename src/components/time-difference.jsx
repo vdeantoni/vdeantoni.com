@@ -1,6 +1,6 @@
 import React from "react";
 import { formatTimeDifference } from "../utils/date";
-import { Div } from "@reflexjs/components";
+import { Box } from "theme-ui";
 
 const TimeDifference = ({ periods, ...props }) => {
   if (!periods || periods.length < 1) {
@@ -8,9 +8,9 @@ const TimeDifference = ({ periods, ...props }) => {
   }
 
   return (
-    <Div {...props}>
+    <Box {...props}>
       {formatTimeDifference(periods[periods.length - 1].start, periods[0].end)}
-    </Div>
+    </Box>
   );
 };
 

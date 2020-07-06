@@ -1,17 +1,29 @@
-import React from "react";
-import SEO from "../components/seo";
+/** @jsx jsx */
+import { jsx } from "theme-ui";
+import React from 'react'
 
-import { Section, Container, Flexbox, H1 } from "@reflexjs/components";
+import SEO from "../components/seo";
+import Header from "../components/header";
+import { Container, Styled } from "theme-ui";
+import Footer from "../components/footer";
 
 const NotFoundPage = () => (
-  <Section py="8|12">
-    <Container>
-      <SEO title="404: Not found" />
-      <Flexbox justifyContent="center">
-        <H1>404: NOT FOUND</H1>
-      </Flexbox>
+  <>
+    <Header />
+    <SEO title="404: Page Not Found" />
+    <Container py={[8, 12]}>
+      <Styled.h1
+        sx={{
+          m: 0,
+          fontWeight: "extrabold",
+          lineHeight: "tight",
+        }}
+      >
+        404: Page Not Found
+      </Styled.h1>
     </Container>
-  </Section>
+    <Footer />
+  </>
 );
 
 export default NotFoundPage;
