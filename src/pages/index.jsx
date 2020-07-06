@@ -76,7 +76,7 @@ const IndexPage = ({ data }) => {
             </Styled.p>
           </Flex>
         </Grid>
-        <Styled.h3>Latest post</Styled.h3>
+        <Styled.h3 as="h2">Latest post</Styled.h3>
         <Grid
           columns="1"
           gap={[8, 12, 16]}
