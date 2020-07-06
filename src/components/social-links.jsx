@@ -20,6 +20,7 @@ const SocialLinks = ({ ...props }) => {
               key={link.name}
               title={link.name}
               target="_blank"
+              rel="noopener noreferrer"
               sx={{ mx: 2, ...navLinkStyle }}
             >
               <FontAwesomeIcon icon={link.icon} />

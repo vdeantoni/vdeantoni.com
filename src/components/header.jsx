@@ -25,6 +25,7 @@ const ModeToggle = ({ ...props }) => {
   const [colorMode, setColorMode] = useColorMode();
   return (
     <Button
+      aria-label="Toggle color mode"
       variant="icon"
       onClick={() => setColorMode(colorMode === "default" ? "dark" : "default")}
       sx={{ ml: [2], ...navLinkStyle }}
@@ -98,6 +99,7 @@ const Header = () => {
         >
           <Branding />
           <Button
+            aria-label="Open menu"
             variant="link"
             sx={{ outline: "none", py: 3, px: 4 }}
             onClick={() => setShowMenu(true)}
@@ -137,7 +139,11 @@ const Header = () => {
             }}
           >
             <Branding />
-            <Button variant="link" onClick={() => setShowMenu(false)}>
+            <Button
+              aria-label="Close menu"
+              variant="link"
+              onClick={() => setShowMenu(false)}
+            >
               <FontAwesomeIcon icon={["fas", "times"]} size="2x" />
             </Button>
           </Flex>

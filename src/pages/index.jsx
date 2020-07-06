@@ -85,7 +85,12 @@ const IndexPage = ({ data }) => {
           <PostTeaser post={posts[0]} />
         </Grid>
         <Flex sx={{ justifyContent: "flex-end" }}>
-          <Button as={Link} to="/posts" variant="primary" sx={{ mt: 6 }}>
+          <Button
+            as={Link}
+            to="/posts"
+            variant="primary"
+            sx={{ mt: 6 }}
+          >
             View all
             <FontAwesomeIcon icon={["fas", "arrow-right"]} sx={{ ml: 2 }} />
           </Button>
