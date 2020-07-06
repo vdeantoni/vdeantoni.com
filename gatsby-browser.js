@@ -7,7 +7,17 @@ import {
   faStackOverflow,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faAward,
+  faBars,
+  faBriefcase,
+  faEnvelope,
+  faMoon,
+  faSun,
+  faTimes,
+  faUniversity,
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faFacebook,
@@ -16,5 +26,13 @@ library.add(
   faStackOverflow,
   faGithub,
   faTwitter,
-  faEnvelope
+  faEnvelope,
+  faArrowRight,
+  faSun,
+  faMoon,
+  faBars,
+  faTimes,
+  faBriefcase,
+  faUniversity,
+  faAward
 );
