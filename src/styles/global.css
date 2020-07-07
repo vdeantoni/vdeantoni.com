@@ -1,0 +1,138 @@
+@import "./vars.css";
+
+@tailwind base;
+
+/* Custom utilities */
+.actionable {
+  @apply cursor-pointer transition-all duration-150 ease-in;
+}
+
+.heading {
+  @apply text-heading font-sans font-semibold leading-tight tracking-tight;
+}
+
+.absolute-center {
+  @apply absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Base styles - START */
+body {
+  @apply text-text bg-background text-base;
+}
+
+a,
+.a {
+  @apply inline-flex items-center text-primary no-underline;
+  @apply actionable;
+}
+
+a:hover,
+.a:hover,
+a:focus,
+.a:focus,
+a:active,
+.a:active {
+  @apply text-primaryHover;
+}
+
+h1,
+.h1 {
+  @apply heading text-4xl;
+}
+h2,
+.h2 {
+  @apply heading text-3xl;
+}
+h3,
+.h3 {
+  @apply heading text-2xl;
+}
+h4,
+.h4 {
+  @apply heading text-xl;
+}
+h5,
+.h5 {
+  @apply heading text-lg;
+}
+h6,
+.h6 {
+  @apply heading text-base;
+}
+
+@screen md {
+  h1,
+  .h1 {
+    @apply text-5xl;
+  }
+  h2,
+  .h2 {
+    @apply text-4xl;
+  }
+  h3,
+  .h3 {
+    @apply text-3xl;
+  }
+  h4,
+  .h4 {
+    @apply text-2xl;
+  }
+  h5,
+  .h5 {
+    @apply text-xl;
+  }
+  h6,
+  .h6 {
+    @apply text-lg;
+  }
+}
+
+@screen lg {
+  h1,
+  .h1 {
+    @apply text-6xl;
+  }
+  h2,
+  .h2 {
+    @apply text-5xl;
+  }
+  h3,
+  .h3 {
+    @apply text-4xl;
+  }
+  h4,
+  .h4 {
+    @apply text-3xl;
+  }
+  h5,
+  .h5 {
+    @apply text-2xl;
+  }
+  h6,
+  .h6 {
+    @apply text-xl;
+  }
+}
+
+/* Base styles - END */
+
+@tailwind components;
+
+/* Components - START */
+.button {
+  @apply inline-flex items-center text-white no-underline bg-primary content-center leading-none rounded-md border-0 px-5 py-3 uppercase shadow-xs;
+  @apply actionable;
+}
+
+.button:hover,
+.button:focus,
+.button:active {
+  @apply text-white bg-primaryHover shadow-md;
+}
+/* Components - END */
+
+@tailwind utilities;

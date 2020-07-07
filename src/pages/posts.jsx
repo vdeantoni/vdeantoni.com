@@ -1,44 +1,24 @@
-/** @jsx jsx */
-import { jsx, Styled, Box } from "theme-ui";
-
+import * as $ from "classnames";
 import React from "react";
-import posts from "../data/posts.yml";
-import SEO from "../components/seo.jsx";
-import { Container, Grid } from "theme-ui";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Layout from "../components/layout/layout";
 import PostTeaser from "../components/post-teaser";
+import SEO from "../components/seo.jsx";
+import posts from "../data/posts.yml";
 
 const PostsPage = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <SEO
         title="Posts"
         description="A page with a list of all my public posts."
       />
-      <Container py={[8, 12]}>
-        <Styled.h1
-          sx={{
-            m: 0,
-            fontWeight: "extrabold",
-            lineHeight: "tight",
-          }}
-        >
-          Posts
-        </Styled.h1>
+      <h1 className={$("font-extrabold")}>Posts</h1>
 
-        <Grid columns="1" gap={[10, 20]} sx={{ mt: 10 }}>
-          {posts &&
-            posts.map((post, index) => (
-              <Box key={index}>
-                <PostTeaser post={post} />
-              </Box>
-            ))}
-        </Grid>
-      </Container>
-      <Footer />
-    </>
+      <div className={$("grid", "grid-cols-1", "gap-10", "md:gap-20", "mt-10")}>
+        {posts &&
+          posts.map((post, index) => <PostTeaser key={index} post={post} />)}
+      </div>
+    </Layout>
   );
 };
 

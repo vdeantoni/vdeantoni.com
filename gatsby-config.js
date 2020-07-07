@@ -24,7 +24,7 @@ module.exports = {
         link: "/resume",
       },
     ],
-    contactLinks: [
+    socialLinks: [
       {
         name: "Email",
         link: "mailto:admin@vdeantoni.com",
@@ -74,7 +74,7 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

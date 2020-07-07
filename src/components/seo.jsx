@@ -7,7 +7,7 @@
 
 import React from "react";
 import { Helmet } from "react-helmet";
-import useMetadata from "../hooks/use-metadata";
+import useSiteMetadata from "../hooks/use-site-metadata";
 
 function SEO({
   title,
@@ -16,7 +16,7 @@ function SEO({
   locale = "en_US",
   meta = [],
 }) {
-  const siteMetadata = useMetadata();
+  const siteMetadata = useSiteMetadata();
 
   const metaDescription = description || siteMetadata.description;
 

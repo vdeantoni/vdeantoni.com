@@ -172,7 +172,7 @@ export default {
       color: "text",
       fontFamily: "body",
       fontWeight: "normal",
-      fontSize: ["sm", "md", "lg"],
+      fontSize: "md",
       lineHeight: "normal",
       letterSpacing: "normal",
 
@@ -240,10 +240,6 @@ export default {
     fontWeight: "semibold",
     lineHeight: "tight",
     letterSpacing: "tight",
-
-    a: {
-      color: "text",
-    },
   },
   actionable: {
     cursor: "pointer",

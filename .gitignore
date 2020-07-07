@@ -71,8 +71,8 @@ yarn-error.log
 
 .netlify/
 
-# VS Code
-.vscode/
+# Snipsnap
+.vscode/snipsnap.code-snippets
 
 # Cypress
 cypress/videos

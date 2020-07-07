@@ -1,258 +1,156 @@
-/** @jsx jsx */
-import { jsx, Styled, Box } from "theme-ui";
-
-import React from "react";
-import resume from "../data/resume.yml";
-import SEO from "../components/seo.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Container, Grid, Flex } from "theme-ui";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import * as $ from "classnames";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
+import React from "react";
+import Layout from "../components/layout/layout";
+import Location from "../components/location";
+import SEO from "../components/seo.jsx";
 import TimeDifference from "../components/time-difference";
 import TimePeriod from "../components/time-period";
-import Location from "../components/location";
+import resume from "../data/resume.yml";
+import "../styles/resume.css";
+import SectionGrid from "../components/styled/section-grid";
 
 const ResumePage = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <SEO
         title="Resume"
         description="A page with information about my employment and education history"
       />
-      <Container py={[8, 12]}>
-        <Styled.h1
-          sx={{
-            m: 0,
-            fontWeight: "extrabold",
-            lineHeight: "tight",
-          }}
-        >
-          Resume
-        </Styled.h1>
+      <h1 className={$("font-extrabold")}>Resume</h1>
 
-        <Styled.h4
-          sx={{
-            mt: 10,
-            fontWeight: "extrabold",
-            lineHeight: "tight",
-          }}
-        >
-          <Flex>
-            <FontAwesomeIcon
-              icon={["fas", "briefcase"]}
-              size="1x"
-              sx={{ mr: 2 }}
-            />{" "}
-            Employment
-          </Flex>
-        </Styled.h4>
-        {resume &&
-          resume
-            .filter((r) => r.type === "company")
-            .map((entry, entryIndex) => (
-              <Box key={entryIndex}>
-                <Grid
-                  columns={["1", "1", "350px 1fr", "400px 1fr"]}
-                  gap={[10, 20]}
-                  sx={{ alignItems: "flex-start", mt: 10 }}
-                >
-                  <Flex
-                    sx={{
-                      flexDirection: "column",
-                      alignItems: [null, null, "flex-end"],
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        fontSize: "lg",
-                        fontWeight: "bold",
-                      }}
+      <h2 className={$("h4", "mt-10")}>
+        <FontAwesomeIcon
+          icon={["fas", "briefcase"]}
+          size="1x"
+          className={$("mr-3", "align-text-top")}
+        />
+        Employment
+      </h2>
+      {resume
+        .filter((r) => r.type === "company")
+        .map((entry, entryIndex) => (
+          <SectionGrid key={entryIndex}>
+            <div className={$("flex", "flex-col", "lg:items-end")}>
+              <h3 className={$("h6")}>{entry.name}</h3>
+              <TimeDifference
+                periods={entry.items}
+                className={$("opacity-50")}
+              />
+            </div>
+            <div>
+              {entry.items &&
+                entry.items.map((item, itemIndex) => (
+                  <div key={itemIndex} className={$("timeline")}>
+                    <div
+                      className={$("point", "text-lg", {
+                        first: entryIndex === 0,
+                      })}
                     >
-                      {entry.name}
-                    </Box>
-                    <Box>
-                      <TimeDifference
-                        periods={entry.items}
-                        sx={{ opacity: 0.5 }}
-                      />
-                    </Box>
-                  </Flex>
-                  <Box>
-                    {entry.items &&
-                      entry.items.map((item, itemIndex) => (
-                        <Box
-                          key={itemIndex}
-                          sx={{
-                            position: "relative",
-                            "::before": {
-                              content: '""',
-                              position: "absolute",
-                              top: 1,
-                              left: "-2.55rem",
-                              width: "1px",
-                              borderLeft: "1px dashed",
-                              borderColor: "text",
-                              opacity: 0.12,
-                              height: "calc(100% + 1rem)",
-                            },
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              fontSize: "lg",
-                              position: "relative",
-                              "::before": {
-                                content: '""',
-                                position: "absolute",
-                                top: "5px",
-                                left: -12,
-                                width: 4,
-                                height: 4,
-                                borderRadius: 4,
-                                opacity: entryIndex === 0 ? 1 : 0.75,
-                                backgroundColor: "primary",
-                              },
-                            }}
+                      {item.title}
+                    </div>
+                    <TimePeriod
+                      start={item.start}
+                      end={item.end}
+                      className={$("text-sm", "opacity-50")}
+                    />
+                    <Location
+                      location={item.location}
+                      className={$("text-sm", "opacity-50")}
+                    />
+                    <div className={$("mt-2")}>{item.blurb}</div>
+                    <ul
+                      className={$("list-inside", "list-disc", "mt-2", "mb-4")}
+                    >
+                      {item.subItems &&
+                        item.subItems.map((subItem, subItemIndex) => (
+                          <li
+                            key={subItemIndex}
+                            className={$("text-sm", "leading-relaxed")}
                           >
-                            {item.title}
-                          </Box>
-                          <TimePeriod
-                            start={item.start}
-                            end={item.end}
-                            sx={{ fontSize: "sm", opacity: 0.5 }}
-                          />
-                          <Location
-                            location={item.location}
-                            sx={{ fontSize: "sm", opacity: 0.5 }}
-                          />
-                          <Box sx={{ fontSize: "md", mt: 2 }}>{item.blurb}</Box>
-                          <Styled.ul>
-                            {item.subItems &&
-                              item.subItems.map((subItem, subItemIndex) => (
-                                <Styled.li
-                                  key={subItemIndex}
-                                  sx={{ fontSize: "sm", lineHeight: "relaxed" }}
-                                >
-                                  {subItem}
-                                </Styled.li>
-                              ))}
-                          </Styled.ul>
-                        </Box>
-                      ))}
-                  </Box>
-                </Grid>
-              </Box>
-            ))}
-        <Styled.h4
-          sx={{
-            mt: 10,
-            fontWeight: "extrabold",
-            lineHeight: "tight",
-          }}
-        >
-          <Flex>
-            <FontAwesomeIcon
-              icon={["fas", "university"]}
-              size="1x"
-              sx={{ mr: 2 }}
-            />{" "}
-            Education
-          </Flex>
-        </Styled.h4>
-        {resume &&
-          resume
-            .filter((r) => r.type === "school")
-            .map((entry, entryIndex) => (
-              <Grid
-                key={entryIndex}
-                columns={["1", "1", "350px 1fr", "400px 1fr"]}
-                gap={[10, 20]}
-                sx={{ alignItems: "flex-start", mt: 10 }}
-              >
-                <Box
-                  sx={{
-                    fontSize: "lg",
-                    fontWeight: "bold",
-                    textAlign: ["left", "left", "right"],
-                  }}
-                >
-                  {entry.name}
-                </Box>
-                <Box>
-                  <Box sx={{ fontSize: "lg" }}>{entry.degree}</Box>
-                  <TimePeriod
-                    start={entry.start}
-                    end={entry.end}
-                    sx={{ fontSize: "sm", opacity: 0.5 }}
-                  />
-                  <Location
-                    location={entry.location}
-                    sx={{ fontSize: "sm", opacity: 0.5 }}
-                  />
+                            {subItem}
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                ))}
+            </div>
+          </SectionGrid>
+        ))}
 
-                  <Box sx={{ fontSize: "md", mt: 2 }}>{entry.field}</Box>
+      <h2 className={$("h4", "mt-10")}>
+        <FontAwesomeIcon
+          icon={["fas", "university"]}
+          size="1x"
+          className={$("mr-3")}
+        />
+        Education
+      </h2>
 
-                  {entry.publications &&
-                    entry.publications.map((publication, publicationIndex) => (
-                      <Styled.a
-                        key={publicationIndex}
-                        href={publication.link}
-                        sx={{
-                          mt: "2",
-                          fontSize: "md",
-                        }}
-                      >
-                        {publication.name}
-                      </Styled.a>
-                    ))}
-                </Box>
-              </Grid>
-            ))}
-        <Styled.h4
-          sx={{
-            mt: 10,
-            fontWeight: "extrabold",
-            lineHeight: "tight",
-          }}
-        >
-          <Flex>
-            <FontAwesomeIcon icon={["fas", "award"]} size="1x" sx={{ mr: 2 }} />{" "}
-            Certifications
-          </Flex>
-        </Styled.h4>
-        {resume &&
-          resume
-            .filter((r) => r.type === "certification")
-            .map((entry, entryIndex) => (
-              <Grid
-                key={entryIndex}
-                columns={["1", "1", "350px 1fr", "400px 1fr"]}
-                gap={[10, 20]}
-                sx={{ alignItems: "flex-start", mt: 10 }}
-              >
-                <Box
-                  sx={{
-                    fontSize: "lg",
-                    fontWeight: "bold",
-                    textAlign: ["left", "left", "right"],
-                  }}
-                >
-                  {entry.entity}
-                </Box>
-                <Box>
-                  <Box sx={{ fontSize: "lg" }}>{entry.name}</Box>
-                  <TimePeriod
-                    start={entry.start}
-                    end={entry.end}
-                    sx={{ fontSize: "sm", opacity: 0.5 }}
-                  />
-                </Box>
-              </Grid>
-            ))}
-      </Container>
-      <Footer />
-    </>
+      {resume
+        .filter((r) => r.type === "school")
+        .map((entry, entryIndex) => (
+          <SectionGrid key={entryIndex}>
+            <h3 className={$("h6", "text-left", "lg:text-right")}>
+              {entry.name}
+            </h3>
+            <div>
+              <div className={$("text-lg")}>{entry.degree}</div>
+              <TimePeriod
+                start={entry.start}
+                end={entry.end}
+                className={$("text-sm", "opacity-50")}
+              />
+              <Location
+                location={entry.location}
+                className={$("text-sm", "opacity-50")}
+              />
+
+              <div className={$("mt-2")}>{entry.field}</div>
+
+              {entry.publications &&
+                entry.publications.map((publication, publicationIndex) => (
+                  <OutboundLink
+                    key={publicationIndex}
+                    href={publication.link}
+                    rel="noopener noreferrer"
+                    className={$("mt-2")}
+                  >
+                    {publication.name}
+                  </OutboundLink>
+                ))}
+            </div>
+          </SectionGrid>
+        ))}
+
+      <h2 className={$("h4", "mt-10")}>
+        <FontAwesomeIcon
+          icon={["fas", "award"]}
+          size="1x"
+          className={$("mr-3")}
+        />
+        Certifications
+      </h2>
+
+      {resume
+        .filter((r) => r.type === "certification")
+        .map((entry, entryIndex) => (
+          <SectionGrid key={entryIndex}>
+            <h3 className={$("h6", "text-left", "lg:text-right")}>
+              {entry.entity}
+            </h3>
+            <div>
+              <div sx={{ fontSize: "lg" }}>{entry.name}</div>
+              <TimePeriod
+                start={entry.start}
+                end={entry.end}
+                className={$("text-sm", "opacity-50")}
+              />
+            </div>
+          </SectionGrid>
+        ))}
+    </Layout>
   );
 };
 
