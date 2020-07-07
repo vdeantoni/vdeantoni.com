@@ -21,10 +21,8 @@
       location: Irvine, CA - USA
       blurb: Worked as Lead Software Engineer on the Battle.net Desktop Application.
       subItems:
-        - Defined the technical direction of the Battle.net Desktop App.
-        - Led a team of 10+ software engineers.
-        - Worked on a complete UI refresh for the Battle.net Desktop App, including a tech stack migration from C++/Qt to Web technologies.
-        - Designed and implemented a new content experience for the Battle.net Desktop App, including a new JAVA web service implemented with Java 11 and WebFlux that can deliver relevant and personalized content to millions of players.
+        - Led a team of 10+ software engineers and defined the technical direction of the Battle.net desktop application, including a complete UI refresh for the Battle.net desktop app, including a tech stack migration from C++/Qt to Web technologies.
+        - Worked on the new content experience for the Battle.net desktop app, including a new Java web service implemented with Java 11 and WebFlux that could deliver relevant and personalized content to millions of players.
     - type: role
       title: Lead Software Engineer
       start: 2016-03-01T00:00:00.000Z
@@ -32,10 +30,9 @@
       location: Irvine, CA - USA
       blurb: Worked as Lead Software Engineer within the Battle.net E-commerce group.
       subItems:
-        - Drove tech initiatives on Shop and Account Management.
-        - Led a team of 10 software engineers.
+        - Led a team of 8 software engineers and defined the technical direction of the Battle.net Shop.
+        - Headed a major overhaul of Blizzard Shop, including a complete redesign and a tech stack migration from Java/Freemarker to Java/Angular.
         - Ensured 99.9% availability of our digital storefronts.
-        - Was responsible for a major overhaul of Blizzard Shop, including a complete redesign and a tech stack migration from Java/Freemarker to Java/Angular.
     - type: role
       title: Software Engineer
       start: 2014-11-14T00:00:00.000Z
@@ -43,9 +40,9 @@
       location: Irvine, CA - USA
       blurb: Worked as Software Engineer on Battle.net.
       subItems:
-        - Worked on a shared platform for Blizzard Checkout, which could be embedded as an overlay in the game clients, in the desktop app and in mobile devices.
-        - Designed and implemented a checkout workflow framework for an e-commerce web application, using Java and Spring.
-        - Profiled distributed systems to improve performance under heavy load. I was able to get significant results by revisiting caching policies, fixing bugs and improving code base to be more scalable.
+        - Worked on a multi-platform solution for Blizzard Checkout, which was used as an overlay in the game clients, in the desktop app and in mobile devices.
+        - Designed and implemented a checkout workflow framework for an e-commerce web application using Java and Spring.
+        - Profiled distributed systems to improve performance under heavy load. I was able to get significant results by revisiting caching policies, fixing bugs, and improving the codebase to be more scalable.
         - Integrated web applications with Splunkcloud and Appdynamics. Allowing developers to have access to real time logs, metrics and alarms.
 - type: company
   name: Amazon
@@ -59,8 +56,8 @@
       location: Seattle, WA - USA
       blurb: Worked as a Software Developer Engineer on the Digital Software and Video Games team.
       subItems:
-        - Worked on the Amazon Instant Access (AIA) web services, implementing the API and the Java and PHP SDKs.
-        - Implemented a web application available on the Amazon's developer portal, that allowed third party vendors to create and test their profiles before starting selling digital items. Backend developed with Java and SpringMVC and frontend with angularjs.
+        - Worked on the Amazon Instant Access (AIA) web services, where I implemented the API and the Java and PHP SDKs.
+        - Implemented a web application available on Amazon's developer portal that allowed third-party vendors to create and test their profiles before selling digital items. Developed the back end with Java and SpringMVC and front end with AngularJS.
     - type: role
       title: Software Developer Engineer
       start: 2012-10-01T00:00:00.000Z
@@ -70,7 +67,7 @@
       subItems:
         - Implemented a service using Javascript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the browser.
         - Worked with the Slipstream team to enhance the browsing experience by delivering a lightweight and functional image map while the actual page was loading on the background.
-        - Implemented a tool that automated screenshot comparison using ImageMagick and Java to validate Slipstream screenshots.
+        - Implemented a web service using JavaScript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the Kindle Fire browser.
 - type: company
   name: HP
   image: hp
@@ -83,9 +80,9 @@
       location: Porto Alegre, RS - Brazil
       blurb: Worked as a Software Designer on HP ePrint Services (Cloud printing).
       subItems:
-        - Designed and developed a distributed solution for a location based search service with MongoDB and Node.js.
-        - Worked on maintenance, bug fixing and add of new features on the REST API which is developed using JAVA and allows client applications to create print jobs through the cloud.
-        - Developed a Android application available on Google Play (HP ePrint Service).
+        - Designed and developed a distributed solution for a location-based search service with MongoDB and Node.js.
+        - Added new features as well as bug fixing to a REST service, which was developed using JAVA and allowed client applications to create print jobs through the cloud.
+        - Developed an Android application available on the Play store (HP ePrint Service).
         - Developed a REST API and a web application that allowed HP partners to release print jobs.
         - Developed an administration portal with J2EE (Servlets/JSP and Struts 2).
     - type: role
@@ -95,10 +92,10 @@
       location: Porto Alegre, RS - Brazil
       blurb: Worked as a Software Designer on HP FutureSmart (integrated printer firmware and solutions platform).
       subItems:
-        - Designed and implemented an embedded HTTP server.
+        - Designed and implemented an embedded HTTP server for printers.
         - Worked on a WCF port for Compact .NET.
         - Designed and developed a MVC Web framework to support other teams.
-        - Implemented a series of  Web Services with WCF.
+        - Implemented a series of Web Services with WCF.
 - type: company
   name: Conecta IT
   image: conectait
@@ -109,10 +106,11 @@
       start: 2006-10-01T00:00:00.000Z
       end: 2007-07-01T00:00:00.000Z
       location: Porto Alegre, RS - Brazil
-      blurb: Worked as a contractor for various local companies
+      blurb: Worked as a contractor for various local companies.
       subItems:
-        - Created financial reports, interactive charts, CRUD pages by utilizing PHP, Javascript, C and Oracle.
-        - Worked with J2EE, JSP, JSF, Spring MVC and Struts 2.
+        - Developed financial reports, interactive charts, CRUD pages by utilizing PHP, JavaScript, C, and Oracle.
+        - Developed J2EE applications with JSP, JSF, Spring MVC, and Struts 2.
+        - Improved database performance by correctly utilizing indices and store procedures.
 - type: company
   name: Constat
   image: constat
@@ -123,8 +121,11 @@
       start: 2005-06-01T00:00:00.000Z
       end: 2006-10-01T00:00:00.000Z
       location: Caxias Do Sul, RS - Brazil
-      blurb: As a web developer I worked on the development of a attention management software on both server and client side. The application was implemented using PHP and a SQL Server database.
-      subItems: []
+      blurb: Worked for a local company as a web developer.
+      subItems:
+        - Developed a customer service management software. Worked on both server and client-side. The application was implemented using PHP and a SQL Server database.
+        - Worked on adding cross-browser support for Firefox, IE, and Opera.
+        - Introduced new technologies (like Ajax) to improve UX.
 - type: company
   name: X-NEO
   image: xneo
@@ -135,11 +136,11 @@
       start: 2004-11-01T00:00:00.000Z
       end: 2005-06-01T00:00:00.000Z
       location: Caxias Do Sul, RS - Brazil
-      blurb: Started as an intern and returned as a full time employee.
+      blurb: Started as a web developer intern and returned as a full time employee.
       subItems:
-        - Designed and developed web sites by utilizing PHP, Javascript, Flash and MySQL.
-        - Worked on integrating AJAX technology on existing applications.
-        - Worked on Cross-browser support.
+        - Designed and developed web sites by utilizing PHP, JavaScript, Flash, and MySQL.
+        - Integrated Ajax technology on existing applications.
+        - Added cross-browser support to existing applications.
 - type: school
   name: Universidade Federal do Rio Grande do Sul (UFRGS)
   image: ufrgs
@@ -150,10 +151,10 @@
   end: 2013-12-01T00:00:00.000Z
   location: Porto Alegre, RS - Brazil
   publications:
-  - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
-    image: agent
-    link: https://dl.acm.org/doi/10.5555/2615731.2617483
-    date: 2014-05-01T00:00:00.000Z
+    - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
+      image: agent
+      link: https://dl.acm.org/doi/10.5555/2615731.2617483
+      date: 2014-05-01T00:00:00.000Z
 - type: school
   name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
   image: pucrs

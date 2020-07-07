@@ -47,12 +47,12 @@ const IndexPage = ({ data }) => {
 
           <p className={$("text-lg", "leading-relaxed", "mt-10")}>
             My name is Vinicius De Antoni, and I am a generalist software
-            engineer experienced on developing backend services for web, desktop
+            engineer experienced in developing back-end services for web, desktop
             and mobile applications as well as building user experiences with
             web technologies.
           </p>
           <p className={$("text-lg", "leading-relaxed", "mt-4")}>
-            Throughout my career I've worked with several different technologies
+            Throughout my career, I've worked with several different technologies
             in a variety of problem spaces. From embedded software for printers
             to a costumer support system, from e-commerce platforms to desktop
             applications.
@@ -73,7 +73,7 @@ const IndexPage = ({ data }) => {
           "md:gap-12",
           "lg:gap-16",
           "items-center",
-          "mt-8"
+          "mt-10",
         )}
       >
         <PostTeaser post={posts[0]} />
