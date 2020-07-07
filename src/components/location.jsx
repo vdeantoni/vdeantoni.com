@@ -1,8 +1,7 @@
 import React from "react";
-import { Box } from "theme-ui";
 
-const Location = ({ location, ...props }) => {
-  return <Box {...props}>{location}</Box>;
+const Location = ({ location, className }) => {
+  return <div className={className}>{location}</div>;
 };
 
 export default Location;

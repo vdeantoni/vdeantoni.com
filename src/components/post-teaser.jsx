@@ -1,66 +1,51 @@
-/** @jsx jsx */
-import { jsx, Styled, Grid, Flex } from "theme-ui";
+import * as $ from "classnames";
 import { format } from "date-fns";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
+import React from "react";
+import SectionGrid from "./styled/section-grid";
 
 export const PostTeaser = ({ post, ...props }) => (
   <article {...props}>
-    <Grid
-      columns={["1", "1", "350px 1fr", "400px 1fr"]}
-      gap={[4, 4, 10]}
-      sx={{ alignItems: "flex-start" }}
-    >
+    <SectionGrid>
       {post.image && (
-        <Styled.a
+        <OutboundLink
           href={post.link}
-          sx={{ display: "block", overflow: "hidden" }}
+          rel="noopener noreferrer"
+          className={$("block", "overflow-hidden")}
         >
-          <Styled.img
+          <img
             src={post.image}
             title={post.title}
             alt={post.title}
-            sx={{
-              ml: [null, null, "-25%"],
-            }}
+            className={$("h-full", "object-none")}
           />
-        </Styled.a>
+        </OutboundLink>
       )}
-      <Flex
-        sx={{
-          flexDirection: "column",
-          alignItems: "flex-start",
-          alignSelf: "stretch",
-        }}
-      >
+      <div className={$("flex", "flex-col", "items-start", "self-stretch")}>
         {post.title && (
-          <Styled.h2
-            sx={{
-              mt: 0,
-              mb: 4,
-              fontSize: ["2xl", "2xl", "3xl", "4xl"],
-            }}
-          >
-            <Styled.a href={post.link}>{post.title}</Styled.a>
-          </Styled.h2>
+          <h2 className={$("h3", "mb-4")}>
+            <OutboundLink
+              href={post.link}
+              rel="noopener noreferrer"
+              className={$("block", "overflow-hidden")}
+            >
+              {post.title}
+            </OutboundLink>
+          </h2>
         )}
-        {post.subtitle && <Styled.p sx={{ mt: 1 }}>{post.subtitle}</Styled.p>}
-        <Flex
-          sx={{
-            flex: 1,
-            alignItems: "flex-end",
-            pb: "2",
-          }}
-        >
+        {post.subtitle && <p className={$("mt-1")}>{post.subtitle}</p>}
+        <div className={$("flex", "flex-1", "items-end", "pb-2")}>
           {post.date && (
             <time dateTime={post.date}>
               {format(new Date(post.date), "MM/dd/yyyy")}
             </time>
           )}
           {post.timeToRead && (
-            <span sx={{ ml: 2 }}> - {post.timeToRead} min read</span>
+            <span className={$("ml-2")}> - {post.timeToRead} min read</span>
           )}
-        </Flex>
-      </Flex>
-    </Grid>
+        </div>
+      </div>
+    </SectionGrid>
   </article>
 );
 

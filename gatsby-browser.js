@@ -1,3 +1,4 @@
+import "./src/styles/global.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faFacebook,

@@ -1,12 +1,11 @@
 import React from "react";
 import { formatDate } from "../utils/date";
-import { Box } from "theme-ui";
 
-const TimePeriod = ({ start, end, ...props }) => {
+const TimePeriod = ({ start, end, className }) => {
   return (
-    <Box {...props}>
+    <div className={className}>
       {formatDate(start) + ` – ` + (end ? formatDate(end) : "Present")}
-    </Box>
+    </div>
   );
 };
 

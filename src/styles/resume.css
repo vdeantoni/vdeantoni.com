@@ -1,0 +1,30 @@
+.timeline {
+  @apply relative;
+}
+
+.timeline::before {
+  @apply absolute opacity-10 h-full;
+
+  content: "";
+  top: 1.25rem;
+  left: -2.55rem;
+  border-left: 1px dashed;
+}
+
+.timeline .point {
+  @apply relative;
+}
+
+.timeline .point::before {
+  @apply absolute rounded-md bg-primary opacity-50;
+
+  content: "";
+  top: 5px;
+  left: -3rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.timeline .point.first::before {
+  @apply opacity-100;
+}
