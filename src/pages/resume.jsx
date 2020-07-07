@@ -31,7 +31,7 @@ const ResumePage = () => {
       {resume
         .filter((r) => r.type === "company")
         .map((entry, entryIndex) => (
-          <SectionGrid key={entryIndex}>
+          <SectionGrid key={entryIndex} className={$("mt-10")}>
             <div className={$("flex", "flex-col", "lg:items-end")}>
               <h3 className={$("h6")}>{entry.name}</h3>
               <TimeDifference
@@ -91,7 +91,7 @@ const ResumePage = () => {
       {resume
         .filter((r) => r.type === "school")
         .map((entry, entryIndex) => (
-          <SectionGrid key={entryIndex}>
+          <SectionGrid key={entryIndex} className={$("mt-10")}>
             <h3 className={$("h6", "text-left", "lg:text-right")}>
               {entry.name}
             </h3>
@@ -136,7 +136,7 @@ const ResumePage = () => {
       {resume
         .filter((r) => r.type === "certification")
         .map((entry, entryIndex) => (
-          <SectionGrid key={entryIndex}>
+          <SectionGrid key={entryIndex} className={$("mt-10")}>
             <h3 className={$("h6", "text-left", "lg:text-right")}>
               {entry.entity}
             </h3>

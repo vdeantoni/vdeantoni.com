@@ -34,7 +34,7 @@ export const PostTeaser = ({ post, ...props }) => (
           </h2>
         )}
         {post.subtitle && <p className={$("mt-1")}>{post.subtitle}</p>}
-        <div className={$("flex", "flex-1", "items-end", "pb-2")}>
+        <div className={$("flex", "flex-1", "items-end")}>
           {post.date && (
             <time dateTime={post.date}>
               {format(new Date(post.date), "MM/dd/yyyy")}

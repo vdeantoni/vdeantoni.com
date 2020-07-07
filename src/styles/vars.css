@@ -3,8 +3,8 @@
   --color-background: #fff;
   --color-heading: #07070a;
 
-  --color-primary: #06f;
-  --color-primary-hover: #005ae0;
+  --color-primary: #3b9bd7;
+  --color-primary-hover: #237eb7;
 
   --color-secondary: #07070a;
   --color-secondary-hover: #191924;
@@ -21,11 +21,11 @@
 
 :root[data-color-scheme="dark"] {
   --color-text: #fff;
-  --color-background: #191924;
+  --color-background: #0d202d;
   --color-heading: #fff;
 
-  --color-primary: #3385ff;
-  --color-primary-hover: #005ae0;
+  --color-primary: #3b9bd7;
+  --color-primary-hover: #237eb7;
 
   --color-secondary: #07070a;
   --color-secondary-hover: #191924;

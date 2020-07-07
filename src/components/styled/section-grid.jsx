@@ -1,7 +1,7 @@
 import * as $ from "classnames";
 import React from "react";
 
-const SectionGrid = ({ children }) => {
+const SectionGrid = ({ className = "", children }) => {
   return (
     <div
       className={$(
@@ -11,8 +11,8 @@ const SectionGrid = ({ children }) => {
         "lg:grid-cols-2-left-fixed-400",
         "gap-10",
         "md:gap-20",
-        "mt-10",
-        "items-start"
+        "items-start",
+        className
       )}
     >
       {children}
