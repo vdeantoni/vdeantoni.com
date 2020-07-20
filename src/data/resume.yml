@@ -1,3 +1,28 @@
+- type: skills
+  items:
+    - name: Javascript
+    - name: Typescript
+    - name: Java
+    - name: Spring
+    - name: Node.js
+    - name: HTML
+    - name: CSS
+    - name: Tailwind CSS
+    - name: Angular
+    - name: RxJS
+    - name: React
+    - name: Gatsby
+    - name: Next.js
+    - name: Vue.js
+    - name: Ember
+    - name: REST
+    - name: GraphQL
+    - name: SQL
+    - name: NoSQL
+    - name: AWS
+    - name: CI/CD
+    - name: Puppeteer
+    - name: Cypress
 - type: company
   name: Riot Games
   image: riot

@@ -22,6 +22,30 @@ const ResumePage = () => {
 
       <h2 className={$("h4", "mt-10")}>
         <FontAwesomeIcon
+          icon={["fas", "code"]}
+          size="1x"
+          className={$("mr-3", "align-text-top")}
+        />
+        Skills
+      </h2>
+      <div className={$("mt-10")}>
+        <div className={$("flex", "justify-start", "flex-wrap")}>
+          {resume
+            .filter((r) => r.type === "skills")
+            .flatMap((s) => s.items)
+            .map((entry, entryIndex) => (
+              <div
+                key={entryIndex}
+                className={$("border", "rounded-lg", "px-3", "py-1", "m-2")}
+              >
+                {entry.name}
+              </div>
+            ))}
+        </div>
+      </div>
+
+      <h2 className={$("h4", "mt-10")}>
+        <FontAwesomeIcon
           icon={["fas", "briefcase"]}
           size="1x"
           className={$("mr-3", "align-text-top")}
@@ -95,8 +119,8 @@ const ResumePage = () => {
             <h3 className={$("h6", "text-left", "lg:text-right")}>
               {entry.name}
             </h3>
-            <div>
-              <div className={$("text-lg")}>{entry.degree}</div>
+            <div className={$("timeline")}>
+              <div className={$("text-lg", "point")}>{entry.degree}</div>
               <TimePeriod
                 start={entry.start}
                 end={entry.end}
@@ -140,8 +164,8 @@ const ResumePage = () => {
             <h3 className={$("h6", "text-left", "lg:text-right")}>
               {entry.entity}
             </h3>
-            <div>
-              <div sx={{ fontSize: "lg" }}>{entry.name}</div>
+            <div className={$("timeline")}>
+              <div className={$("text-lg", "point")}>{entry.name}</div>
               <TimePeriod
                 start={entry.start}
                 end={entry.end}

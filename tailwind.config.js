@@ -20,11 +20,11 @@ module.exports = {
       muted: "var(--color-muted)",
       mutedHover: "var(--color-muted-hover)",
     },
-    borderColor: {
-      default: "var(--color-border)",
-      hover: "var(--color-border-hover)",
-    },
     extend: {
+      borderColor: {
+        default: "var(--color-border)",
+        hover: "var(--color-border-hover)",
+      },
       opacity: {
         "10": 0.1,
       },
