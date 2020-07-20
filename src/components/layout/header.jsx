@@ -7,6 +7,7 @@ import useSiteMetadata from "../../hooks/use-site-metadata.js";
 import Logo from "../../images/logo.svg";
 import NavLinks from "./nav-links.jsx";
 import SocialLinks from "./social-links.jsx";
+import { motion, useAnimation } from "framer-motion";
 
 const Branding = () => {
   const { title } = useSiteMetadata();
@@ -19,18 +20,34 @@ const Branding = () => {
 };
 
 const ColorSchemeToggle = ({ className }) => {
+  const controls = useAnimation();
   const [colorScheme, setColorScheme] = useColorScheme();
   return (
     <button
-      aria-label="Toggle color mode"
-      onClick={() =>
-        setColorScheme(colorScheme === "default" ? "dark" : "default")
-      }
-      className={$("a", "text-text", "hover:text-primary", className)}
+      title="Toggle color mode"
+      onClick={() => {
+        controls.stop();
+        controls.start({
+          rotate: 360,
+          transition: { duration: 1 },
+          transitionEnd: { rotate: 0 },
+        });
+        setColorScheme(colorScheme === "default" ? "dark" : "default");
+      }}
+      className={$(
+        "a",
+        "text-text",
+        "hover:text-primary",
+        "focus:outline-none",
+        "overflow:hidden",
+        className
+      )}
     >
-      <FontAwesomeIcon
-        icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]}
-      />
+      <motion.div animate={controls}>
+        <FontAwesomeIcon
+          icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]}
+        />
+      </motion.div>
     </button>
   );
 };

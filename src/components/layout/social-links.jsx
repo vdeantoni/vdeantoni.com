@@ -18,7 +18,10 @@ const SocialLinks = ({ className = "" }) => {
             rel="noopener noreferrer"
             className={$("mx-2", "text-text", "hover:text-primary")}
           >
-            <FontAwesomeIcon icon={link.icon} />
+            <FontAwesomeIcon
+              icon={link.icon}
+              className={$("transform", "transition-all", "hover:scale-110")}
+            />
           </OutboundLink>
         ))}
     </div>

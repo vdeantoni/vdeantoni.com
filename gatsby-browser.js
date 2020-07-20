@@ -18,6 +18,7 @@ import {
   faSun,
   faTimes,
   faUniversity,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -35,5 +36,6 @@ library.add(
   faTimes,
   faBriefcase,
   faUniversity,
-  faAward
+  faAward,
+  faCode
 );
