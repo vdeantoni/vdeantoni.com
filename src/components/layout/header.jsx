@@ -34,7 +34,7 @@ const ColorSchemeToggle = ({ className }) => {
         });
         setColorScheme(colorScheme === "default" ? "dark" : "default");
       }}
-      className={$("a", "text-text", "hover:text-primary", "focus:outline-none", "overflow:hidden", className)}
+      className={$("a", "text-text", "focus:outline-none", "overflow:hidden", className)}
     >
       <motion.div animate={controls}>
         <FontAwesomeIcon icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]} />

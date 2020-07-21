@@ -4,12 +4,13 @@ const useRequestAnimationFrame = (callback, deps = []) => {
   const ref = useRef(0);
 
   const loop = () => {
-    callback();
     ref.current = requestAnimationFrame(loop);
+    callback();
   };
 
   useEffect(() => {
     ref.current = requestAnimationFrame(loop);
+
     return () => {
       cancelAnimationFrame(ref.current);
     };
