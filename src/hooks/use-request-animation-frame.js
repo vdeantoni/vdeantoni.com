@@ -14,6 +14,7 @@ const useRequestAnimationFrame = (callback, deps = []) => {
     return () => {
       cancelAnimationFrame(ref.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 };
 
