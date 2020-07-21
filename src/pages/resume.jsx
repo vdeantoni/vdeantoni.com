@@ -14,18 +14,11 @@ import SectionGrid from "../components/styled/section-grid";
 const ResumePage = () => {
   return (
     <Layout>
-      <SEO
-        title="Resume"
-        description="A page with information about my employment and education history"
-      />
+      <SEO title="Resume" description="A page with information about my employment and education history" />
       <h1 className={$("font-extrabold")}>Resume</h1>
 
       <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon
-          icon={["fas", "code"]}
-          size="1x"
-          className={$("mr-3", "align-text-top")}
-        />
+        <FontAwesomeIcon icon={["fas", "code"]} size="1x" className={$("mr-3", "align-text-top")} />
         Skills
       </h2>
       <div className={$("mt-10")}>
@@ -34,10 +27,7 @@ const ResumePage = () => {
             .filter((r) => r.type === "skills")
             .flatMap((s) => s.items)
             .map((entry, entryIndex) => (
-              <div
-                key={entryIndex}
-                className={$("border", "rounded-lg", "px-3", "py-1", "m-2")}
-              >
+              <div key={entryIndex} className={$("border", "rounded-lg", "px-3", "py-1", "m-2")}>
                 {entry.name}
               </div>
             ))}
@@ -45,11 +35,7 @@ const ResumePage = () => {
       </div>
 
       <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon
-          icon={["fas", "briefcase"]}
-          size="1x"
-          className={$("mr-3", "align-text-top")}
-        />
+        <FontAwesomeIcon icon={["fas", "briefcase"]} size="1x" className={$("mr-3", "align-text-top")} />
         Employment
       </h2>
       {resume
@@ -58,10 +44,7 @@ const ResumePage = () => {
           <SectionGrid key={entryIndex} className={$("mt-10")}>
             <div className={$("flex", "flex-col", "lg:items-end")}>
               <h3 className={$("h6")}>{entry.name}</h3>
-              <TimeDifference
-                periods={entry.items}
-                className={$("opacity-50")}
-              />
+              <TimeDifference periods={entry.items} className={$("opacity-50")} />
             </div>
             <div>
               {entry.items &&
@@ -74,25 +57,13 @@ const ResumePage = () => {
                     >
                       {item.title}
                     </div>
-                    <TimePeriod
-                      start={item.start}
-                      end={item.end}
-                      className={$("text-sm", "opacity-50")}
-                    />
-                    <Location
-                      location={item.location}
-                      className={$("text-sm", "opacity-50")}
-                    />
+                    <TimePeriod start={item.start} end={item.end} className={$("text-sm", "opacity-50")} />
+                    <Location location={item.location} className={$("text-sm", "opacity-50")} />
                     <div className={$("mt-2")}>{item.blurb}</div>
-                    <ul
-                      className={$("list-inside", "list-disc", "mt-2", "mb-4")}
-                    >
+                    <ul className={$("list-inside", "list-disc", "mt-2", "mb-4")}>
                       {item.subItems &&
                         item.subItems.map((subItem, subItemIndex) => (
-                          <li
-                            key={subItemIndex}
-                            className={$("text-sm", "leading-relaxed")}
-                          >
+                          <li key={subItemIndex} className={$("text-sm", "leading-relaxed")}>
                             {subItem}
                           </li>
                         ))}
@@ -104,11 +75,7 @@ const ResumePage = () => {
         ))}
 
       <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon
-          icon={["fas", "university"]}
-          size="1x"
-          className={$("mr-3")}
-        />
+        <FontAwesomeIcon icon={["fas", "university"]} size="1x" className={$("mr-3")} />
         Education
       </h2>
 
@@ -116,20 +83,11 @@ const ResumePage = () => {
         .filter((r) => r.type === "school")
         .map((entry, entryIndex) => (
           <SectionGrid key={entryIndex} className={$("mt-10")}>
-            <h3 className={$("h6", "text-left", "lg:text-right")}>
-              {entry.name}
-            </h3>
+            <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.name}</h3>
             <div className={$("timeline")}>
               <div className={$("text-lg", "point")}>{entry.degree}</div>
-              <TimePeriod
-                start={entry.start}
-                end={entry.end}
-                className={$("text-sm", "opacity-50")}
-              />
-              <Location
-                location={entry.location}
-                className={$("text-sm", "opacity-50")}
-              />
+              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-50")} />
+              <Location location={entry.location} className={$("text-sm", "opacity-50")} />
 
               <div className={$("mt-2")}>{entry.field}</div>
 
@@ -149,11 +107,7 @@ const ResumePage = () => {
         ))}
 
       <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon
-          icon={["fas", "award"]}
-          size="1x"
-          className={$("mr-3")}
-        />
+        <FontAwesomeIcon icon={["fas", "award"]} size="1x" className={$("mr-3")} />
         Certifications
       </h2>
 
@@ -161,16 +115,10 @@ const ResumePage = () => {
         .filter((r) => r.type === "certification")
         .map((entry, entryIndex) => (
           <SectionGrid key={entryIndex} className={$("mt-10")}>
-            <h3 className={$("h6", "text-left", "lg:text-right")}>
-              {entry.entity}
-            </h3>
+            <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.entity}</h3>
             <div className={$("timeline")}>
               <div className={$("text-lg", "point")}>{entry.name}</div>
-              <TimePeriod
-                start={entry.start}
-                end={entry.end}
-                className={$("text-sm", "opacity-50")}
-              />
+              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-50")} />
             </div>
           </SectionGrid>
         ))}

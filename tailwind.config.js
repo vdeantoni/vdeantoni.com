@@ -32,6 +32,9 @@ module.exports = {
         "2-left-fixed-350": "350px 1fr",
         "2-left-fixed-400": "400px 1fr",
       },
+      zIndex: {
+        "-1": "-1",
+      },
     },
   },
   variants: {},

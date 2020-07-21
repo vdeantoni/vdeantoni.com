@@ -1,3 +1,4 @@
+import React from "react";
 import "./src/styles/global.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -20,6 +21,7 @@ import {
   faUniversity,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
+import { RecoilRoot } from "recoil";
 
 library.add(
   faFacebook,
@@ -39,3 +41,5 @@ library.add(
   faAward,
   faCode
 );
+
+export const wrapRootElement = ({ element }) => <RecoilRoot>{element}</RecoilRoot>;
