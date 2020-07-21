@@ -6,10 +6,10 @@ import useColorScheme from "../../hooks/use-color-scheme";
 
 const AREA_PER_POINT = 10000;
 
-const MIN_VELOCITY = -0.1;
-const MAX_VELOCITY = 0.1;
+const MIN_VELOCITY = -0.08;
+const MAX_VELOCITY = 0.08;
 
-const MAX_SIZE = 10;
+const MAX_SIZE = 8;
 
 const ABSORB_FORCE = 1.25;
 
@@ -26,12 +26,12 @@ const createPoint = (w, h) => ({
 
 const drawPoint = (ctx, p) => {
   const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
-  gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+  gradient.addColorStop(0, "rgba(255, 255, 255, 0.5)");
   gradient.addColorStop(0.9, "rgba(255, 255, 255, 0)");
 
   ctx.beginPath();
   ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
-  ctx.fillStyle = p.size > 1 ? gradient : "rgba(255, 255, 255, 1)";
+  ctx.fillStyle = p.size > 1 ? gradient : "rgba(255, 255, 255, 0.5)";
   ctx.fill();
 };
 
