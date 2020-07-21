@@ -28,11 +28,13 @@ const distance = (p1, p2) => Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
 
 const Background = ({ className }) => {
   const [colorScheme] = useColorScheme();
+
   const [points, setPoints] = useState([]);
 
   const canvasRef = useRef(null);
 
   useRequestAnimationFrame(() => {
+    if (colorScheme !== "dark") return;
     if (!canvasRef.current) return;
 
     const w = canvasRef.current.width;
@@ -45,8 +47,8 @@ const Background = ({ className }) => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
       var gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
-      gradient.addColorStop(0, colorScheme === "default" ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 1)");
-      gradient.addColorStop(0.5, colorScheme === "default" ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0)");
+      gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+      gradient.addColorStop(0.5, "rgba(255, 255, 255, 0)");
       ctx.fillStyle = gradient;
       ctx.fill();
     });
