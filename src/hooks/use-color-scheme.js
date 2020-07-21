@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { atom, useRecoilState } from "recoil";
+
+const colorSchemeState = atom({
+  key: "colorSchemeState", // unique ID (with respect to other atoms/selectors)
+  default: sessionStorage.getItem("color-scheme") ?? "default", // default value (aka initial value)
+});
 
 const useColorScheme = () => {
-  const [scheme, setScheme] = useState("default");
-
-  useEffect(() => {
-    const initialState = sessionStorage.getItem("color-scheme") ?? "default";
-    setScheme(initialState);
-  }, []);
+  const [scheme, setScheme] = useRecoilState(colorSchemeState);
 
   useEffect(() => {
     sessionStorage.setItem("color-scheme", scheme);

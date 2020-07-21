@@ -37,6 +37,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "recoil": "0.0.10",
     "tailwindcss": "^1.5.1"
   },
   "devDependencies": {

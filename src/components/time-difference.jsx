@@ -6,11 +6,7 @@ const TimeDifference = ({ periods, className }) => {
     return null;
   }
 
-  return (
-    <div className={className}>
-      {formatTimeDifference(periods[periods.length - 1].start, periods[0].end)}
-    </div>
-  );
+  return <div className={className}>{formatTimeDifference(periods[periods.length - 1].start, periods[0].end)}</div>;
 };
 
 export default TimeDifference;

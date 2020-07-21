@@ -34,19 +34,10 @@ const ColorSchemeToggle = ({ className }) => {
         });
         setColorScheme(colorScheme === "default" ? "dark" : "default");
       }}
-      className={$(
-        "a",
-        "text-text",
-        "hover:text-primary",
-        "focus:outline-none",
-        "overflow:hidden",
-        className
-      )}
+      className={$("a", "text-text", "hover:text-primary", "focus:outline-none", "overflow:hidden", className)}
     >
       <motion.div animate={controls}>
-        <FontAwesomeIcon
-          icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]}
-        />
+        <FontAwesomeIcon icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]} />
       </motion.div>
     </button>
   );
@@ -56,41 +47,14 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header
-      className={$("sticky", "md:relative", "top-0", "bg-background", "z-10")}
-    >
-      <nav
-        className={$(
-          "hidden",
-          "md:flex",
-          "justify-between",
-          "items-center",
-          "py-1"
-        )}
-      >
+    <header className={$("sticky", "md:relative", "top-0", "bg-background", "md:bg-transparent", "z-10")}>
+      <nav className={$("hidden", "md:flex", "justify-between", "items-center", "py-1")}>
         <Branding />
         <NavLinks className={$("ml-0", "md:ml-8", "lg:ml-12")} />
-        <SocialLinks
-          className={$(
-            "ml-auto",
-            "mr-4",
-            "border-r",
-            "pr-4",
-            "none",
-            "lg:block"
-          )}
-        />
+        <SocialLinks className={$("ml-auto", "mr-4", "border-r", "pr-4", "none", "lg:block")} />
         <ColorSchemeToggle className={$("ml-0")} />
       </nav>
-      <div
-        className={$(
-          "flex",
-          "md:hidden",
-          "flex-col",
-          "justify-center",
-          "items-center"
-        )}
-      >
+      <div className={$("flex", "md:hidden", "flex-col", "justify-center", "items-center")}>
         <nav
           className={$(
             "flex",
@@ -110,12 +74,7 @@ const Header = () => {
           <button
             aria-label="Open menu"
             onClick={() => setShowMenu(true)}
-            className={$(
-              "outline-none",
-              "text-text",
-              "hover:text-text",
-              "py-3"
-            )}
+            className={$("outline-none", "text-text", "hover:text-text", "py-3")}
           >
             <FontAwesomeIcon icon={["fas", "bars"]} size="2x" />
           </button>
@@ -147,16 +106,7 @@ const Header = () => {
             { "scale-90": !showMenu }
           )}
         >
-          <div
-            className={$(
-              "flex",
-              "justify-between",
-              "items-center",
-              "w-full",
-              "py-2",
-              "px-0"
-            )}
-          >
+          <div className={$("flex", "justify-between", "items-center", "w-full", "py-2", "px-0")}>
             <Branding />
             <button
               aria-label="Close menu"

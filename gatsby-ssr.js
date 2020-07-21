@@ -1,4 +1,5 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 
 const init = () => {
   const getPreferredColorScheme = () => {
@@ -17,8 +18,7 @@ const init = () => {
     return "default";
   };
 
-  const colorScheme =
-    sessionStorage.getItem("color-scheme") ?? getPreferredColorScheme();
+  const colorScheme = sessionStorage.getItem("color-scheme") ?? getPreferredColorScheme();
 
   document.documentElement.setAttribute("data-color-scheme", colorScheme);
 
@@ -32,3 +32,5 @@ const InitScript = ({ script }) => {
 export const onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents(<InitScript script={init} key="init-script" />);
 };
+
+export const wrapRootElement = ({ element }) => <RecoilRoot>{element}</RecoilRoot>;

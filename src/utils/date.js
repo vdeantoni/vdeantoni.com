@@ -28,7 +28,5 @@ export const formatDate = (date, options) => {
     month: "short",
   };
 
-  return new Intl.DateTimeFormat("en-US", options).format(
-    date ? new Date(date) : new Date()
-  );
+  return new Intl.DateTimeFormat("en-US", options).format(date ? new Date(date) : new Date());
 };
