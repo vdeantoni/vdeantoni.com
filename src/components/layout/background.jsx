@@ -87,7 +87,6 @@ const Background = ({ className }) => {
   const canvasRef = useRef(null);
 
   useRequestAnimationFrame(() => {
-    if (colorScheme !== "dark") return;
     if (!canvasRef.current) return;
     if (!points.length) return;
 
@@ -96,6 +95,8 @@ const Background = ({ className }) => {
 
     const ctx = canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, w, h);
+
+    if (colorScheme !== "dark") return;
 
     points.forEach((p) => {
       drawPoint(ctx, p);
