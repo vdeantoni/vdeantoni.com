@@ -11,9 +11,7 @@ const MAX_VELOCITY = 0.08;
 
 const MAX_SIZE = 8;
 
-const ABSORB_FORCE = 1.25;
-
-const MATURE_AGE = 3000;
+const MATURE_AGE = 5000;
 
 const createPoint = (w, h) => ({
   x: random(w),
@@ -25,13 +23,15 @@ const createPoint = (w, h) => ({
 });
 
 const drawPoint = (ctx, p) => {
+  const age = +new Date() - p.created;
+  const opacity = age < MATURE_AGE ? convertRange(age, [0, MATURE_AGE], [1, 0.5]) : 0.5;
   const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
-  gradient.addColorStop(0, "rgba(255, 255, 255, 0.5)");
+  gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
   gradient.addColorStop(0.9, "rgba(255, 255, 255, 0)");
 
   ctx.beginPath();
   ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
-  ctx.fillStyle = p.size > 1 ? gradient : "rgba(255, 255, 255, 0.5)";
+  ctx.fillStyle = p.size > 1 ? gradient : `rgba(255, 255, 255, ${opacity})`;
   ctx.fill();
 };
 
@@ -47,6 +47,23 @@ const distance = (p1, p2) => Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
 
 const convertRange = (value, r1, r2) => {
   return ((value - r1[0]) * (r2[1] - r2[0])) / (r1[1] - r1[0]) + r2[0];
+};
+
+const applyForce = (p1, p2, d) => {
+  const force = p1.size / d ** 2 / p2.size;
+  if (force >= 0.0001) {
+    if (p2.x < p1.x) {
+      p2.v[0] = Math.min(p2.v[0] + force, MAX_VELOCITY);
+    } else if (p2.x > p1.x) {
+      p2.v[0] = Math.max(p2.v[0] - force, MIN_VELOCITY);
+    }
+
+    if (p2.y < p1.y) {
+      p2.v[1] = Math.min(p2.v[1] + force, MAX_VELOCITY);
+    } else if (p2.y > p1.y) {
+      p2.v[1] = Math.max(p2.v[1] - force, MIN_VELOCITY);
+    }
+  }
 };
 
 const Background = ({ className }) => {
@@ -73,12 +90,22 @@ const Background = ({ className }) => {
 
     points.forEach((p) => {
       movePoint(p, w, h);
-    });
 
-    points.forEach((p) => {
+      if (p.v[0] > MAX_VELOCITY) {
+        p.v[0] -= 0.005;
+      } else if (p.v[0] < MIN_VELOCITY) {
+        p.v[0] += 0.005;
+      }
+
+      if (p.v[1] > MAX_VELOCITY) {
+        p.v[1] -= 0.005;
+      } else if (p.v[1] < MIN_VELOCITY) {
+        p.v[1] += 0.005;
+      }
+
       if (p.absorbed > 0) {
-        p.size++;
-        p.absorbed--;
+        p.size += 0.1;
+        p.absorbed -= 0.1;
       }
     });
 
@@ -90,12 +117,12 @@ const Background = ({ className }) => {
         newPoints.push(
           ...range(0, p.size).map(() => {
             const p1 = createPoint(w, h);
+            p1.size = 1;
             p1.x = p.x + random(-p.size, p.size);
             p1.y = p.y + random(-p.size, p.size);
-            p1.size = 1;
             p1.v = [
-              convertRange(p1.x - p.x, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]),
-              convertRange(p1.y - p.y, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]),
+              convertRange(p1.x - p.x, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]) * random(10, 20),
+              convertRange(p1.y - p.y, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]) * random(10, 20),
             ];
 
             return p1;
@@ -113,9 +140,12 @@ const Background = ({ className }) => {
           const [big, small] = p1.size >= p2.size ? [p1, p2] : [p2, p1];
 
           if (+new Date() - small.created >= MATURE_AGE) {
-            if (d <= big.size * ABSORB_FORCE + small.size) {
-              big.absorbed += small.size;
+            if (d <= big.size + small.size) {
+              big.absorbed += small.size + small.absorbed;
               bin.add(small);
+            } else {
+              applyForce(big, small, d);
+              applyForce(small, big, d);
             }
           }
         }
