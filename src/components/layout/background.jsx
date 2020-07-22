@@ -13,6 +13,8 @@ const MAX_SIZE = 8;
 
 const MATURE_AGE = 5000;
 
+const HUES = [0, 60, 240];
+
 const createPoint = (w, h) => ({
   x: random(w),
   y: random(h),
@@ -20,18 +22,29 @@ const createPoint = (w, h) => ({
   size: random(1, 3),
   absorbed: 0,
   created: +new Date(),
+  hue: HUES[random(0, HUES.length - 1)],
+  sat: random(50, 100),
+  light: random(75, 100),
 });
+
+const isMature = (p) => +new Date() - p.created >= MATURE_AGE;
 
 const drawPoint = (ctx, p) => {
   const age = +new Date() - p.created;
-  const opacity = age < MATURE_AGE ? convertRange(age, [0, MATURE_AGE], [1, 0.5]) : 0.5;
+  const opacity =
+    age < MATURE_AGE / 2
+      ? convertRange(age, [0, MATURE_AGE / 2], [0, 100])
+      : age < MATURE_AGE
+      ? convertRange(age, [MATURE_AGE / 2, MATURE_AGE], [100, 50])
+      : 50;
+
   const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size);
-  gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
-  gradient.addColorStop(0.9, "rgba(255, 255, 255, 0)");
+  gradient.addColorStop(0, `hsla(${p.hue}, ${p.sat}%, ${p.light}%, ${opacity}%)`);
+  gradient.addColorStop(0.9, `transparent`);
 
   ctx.beginPath();
   ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
-  ctx.fillStyle = p.size > 1 ? gradient : `rgba(255, 255, 255, ${opacity})`;
+  ctx.fillStyle = p.size > 1 ? gradient : `hsla(${p.hue}, ${p.sat}%, ${p.light}%, ${opacity}%)`;
   ctx.fill();
 };
 
@@ -50,19 +63,19 @@ const convertRange = (value, r1, r2) => {
 };
 
 const applyForce = (p1, p2, d) => {
-  const force = p1.size / d ** 2 / p2.size;
-  if (force >= 0.0001) {
-    if (p2.x < p1.x) {
-      p2.v[0] = Math.min(p2.v[0] + force, MAX_VELOCITY);
-    } else if (p2.x > p1.x) {
-      p2.v[0] = Math.max(p2.v[0] - force, MIN_VELOCITY);
-    }
+  if (!isMature(p1) || !isMature(p2)) return;
 
-    if (p2.y < p1.y) {
-      p2.v[1] = Math.min(p2.v[1] + force, MAX_VELOCITY);
-    } else if (p2.y > p1.y) {
-      p2.v[1] = Math.max(p2.v[1] - force, MIN_VELOCITY);
-    }
+  const force = (p1.size / d ** 2) * (p1.size / p2.size);
+  if (p2.x < p1.x) {
+    p2.v[0] = Math.min(p2.v[0] + force, MAX_VELOCITY);
+  } else if (p2.x > p1.x) {
+    p2.v[0] = Math.max(p2.v[0] - force, MIN_VELOCITY);
+  }
+
+  if (p2.y < p1.y) {
+    p2.v[1] = Math.min(p2.v[1] + force, MAX_VELOCITY);
+  } else if (p2.y > p1.y) {
+    p2.v[1] = Math.max(p2.v[1] - force, MIN_VELOCITY);
   }
 };
 
@@ -121,8 +134,8 @@ const Background = ({ className }) => {
             p1.x = p.x + random(-p.size, p.size);
             p1.y = p.y + random(-p.size, p.size);
             p1.v = [
-              convertRange(p1.x - p.x, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]) * random(10, 20),
-              convertRange(p1.y - p.y, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]) * random(10, 20),
+              convertRange(p1.x - p.x, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]) * random(p.size, p.size * 1.5),
+              convertRange(p1.y - p.y, [-p.size, p.size], [MIN_VELOCITY, MAX_VELOCITY]) * random(p.size, p.size * 1.5),
             ];
 
             return p1;
@@ -139,13 +152,13 @@ const Background = ({ className }) => {
 
           const [big, small] = p1.size >= p2.size ? [p1, p2] : [p2, p1];
 
-          if (+new Date() - small.created >= MATURE_AGE) {
+          applyForce(big, small, d);
+          applyForce(small, big, d);
+
+          if (isMature(small)) {
             if (d <= big.size + small.size) {
               big.absorbed += small.size + small.absorbed;
               bin.add(small);
-            } else {
-              applyForce(big, small, d);
-              applyForce(small, big, d);
             }
           }
         }
