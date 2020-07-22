@@ -9,12 +9,6 @@ const init = () => {
       return "dark";
     }
 
-    const lightQuery = "(prefers-color-scheme: light)";
-    const lightMQL = window.matchMedia ? window.matchMedia(lightQuery) : {};
-    if (lightMQL.media === lightQuery && lightMQL.matches) {
-      return "light";
-    }
-
     return "default";
   };
 
