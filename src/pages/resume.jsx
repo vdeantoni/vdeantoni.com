@@ -10,6 +10,7 @@ import TimePeriod from "../components/time-period";
 import resume from "../data/resume.yml";
 import "../styles/resume.css";
 import SectionGrid from "../components/styled/section-grid";
+import Skills from "../components/skills";
 
 const ResumePage = () => {
   return (
@@ -22,16 +23,7 @@ const ResumePage = () => {
         Skills
       </h2>
       <div className={$("mt-10")}>
-        <div className={$("flex", "justify-start", "flex-wrap")}>
-          {resume
-            .filter((r) => r.type === "skills")
-            .flatMap((s) => s.items)
-            .map((entry, entryIndex) => (
-              <div key={entryIndex} className={$("border", "rounded-lg", "px-3", "py-1", "m-2")}>
-                {entry.name}
-              </div>
-            ))}
-        </div>
+        <Skills data={resume.filter((r) => r.type === "skills").flatMap((s) => s.items)} />
       </div>
 
       <h2 className={$("h4", "mt-10")}>
