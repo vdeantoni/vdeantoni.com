@@ -36,7 +36,7 @@ const ResumePage = () => {
           <SectionGrid key={entryIndex} className={$("mt-10")}>
             <div className={$("flex", "flex-col", "lg:items-end")}>
               <h3 className={$("h6")}>{entry.name}</h3>
-              <TimeDifference periods={entry.items} className={$("opacity-50")} />
+              <TimeDifference periods={entry.items} className={$("opacity-75")} />
             </div>
             <div>
               {entry.items &&
@@ -49,8 +49,8 @@ const ResumePage = () => {
                     >
                       {item.title}
                     </div>
-                    <TimePeriod start={item.start} end={item.end} className={$("text-sm", "opacity-50")} />
-                    <Location location={item.location} className={$("text-sm", "opacity-50")} />
+                    <TimePeriod start={item.start} end={item.end} className={$("text-sm", "opacity-75")} />
+                    <Location location={item.location} className={$("text-sm", "opacity-75")} />
                     <div className={$("mt-2")}>{item.blurb}</div>
                     <ul className={$("list-inside", "list-disc", "mt-2", "mb-4")}>
                       {item.subItems &&
@@ -78,8 +78,8 @@ const ResumePage = () => {
             <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.name}</h3>
             <div className={$("timeline")}>
               <div className={$("text-lg", "point")}>{entry.degree}</div>
-              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-50")} />
-              <Location location={entry.location} className={$("text-sm", "opacity-50")} />
+              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-75")} />
+              <Location location={entry.location} className={$("text-sm", "opacity-75")} />
 
               <div className={$("mt-2")}>{entry.field}</div>
 
@@ -110,7 +110,7 @@ const ResumePage = () => {
             <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.entity}</h3>
             <div className={$("timeline")}>
               <div className={$("text-lg", "point")}>{entry.name}</div>
-              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-50")} />
+              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-75")} />
             </div>
           </SectionGrid>
         ))}
