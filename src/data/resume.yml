@@ -1,28 +1,101 @@
 - type: skills
   items:
     - name: Javascript
+      group: Fullstack
+      value: 140
     - name: Typescript
+      group: Fullstack
+      value: 120
     - name: Java
+      group: Backend
+      value: 110
     - name: Spring
+      group: Backend
+      value: 80
     - name: Node.js
+      group: Backend
+      value: 100
+    - name: C#
+      group: Backend
+      value: 50
+    - name: C++
+      group: Backend
+      value: 30
+    - name: PHP
+      group: Backend
+      value: 35
     - name: HTML
+      group: Frontend
+      value: 100
     - name: CSS
+      group: Frontend
+      value: 100
     - name: Tailwind CSS
+      group: Frontend
+      value: 100
     - name: Angular
+      group: Frontend
+      value: 90
     - name: RxJS
+      group: Frontend
+      value: 80
     - name: React
+      group: Frontend
+      value: 90
     - name: Gatsby
+      group: Frontend
+      value: 90
     - name: Next.js
+      group: Fullstack
+      value: 80
     - name: Vue.js
+      group: Frontend
+      value: 50
     - name: Ember
+      group: Frontend
+      value: 40
     - name: REST
+      group: Fullstack
+      value: 100
     - name: GraphQL
+      group: Fullstack
+      value: 75
     - name: SQL
+      group: Backend
+      value: 100
     - name: NoSQL
+      group: Backend
+      value: 100
     - name: AWS
+      group: DevOps
+      value: 60
     - name: CI/CD
+      group: DevOps
+      value: 90
+    - name: Jenkins
+      group: DevOps
+      value: 80
+    - name: Selenium
+      group: QA
+      value: 70
     - name: Puppeteer
+      group: QA
+      value: 85
     - name: Cypress
+      group: QA
+      value: 90
+    - name: D3.js
+      group: Frontend
+      value: 40
+    - name: Git
+      group: Fullstack
+      value: 100
+    - name: SEO
+      group: Frontend
+      value: 90
+    - name: Android
+      group: Frontend
+      value: 50
 - type: company
   name: Riot Games
   image: riot
