@@ -9,7 +9,7 @@ export const PostTeaser = ({ post, ...props }) => (
     <SectionGrid>
       {post.image && (
         <OutboundLink href={post.link} rel="noopener noreferrer" className={$("block", "overflow-hidden")}>
-          <img src={post.image} title={post.title} alt={post.title} className={$("h-full", "object-none")} />
+          <img loading="lazy" src={post.image} title={post.title} alt={post.title} className={$("h-full", "object-none")} />
         </OutboundLink>
       )}
       <div className={$("flex", "flex-col", "items-start", "self-stretch")}>
