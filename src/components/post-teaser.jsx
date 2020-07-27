@@ -5,29 +5,35 @@ import React from "react";
 import SectionGrid from "./styled/section-grid";
 
 export const PostTeaser = ({ post, ...props }) => (
-  <article {...props}>
-    <SectionGrid>
-      {post.image && (
-        <OutboundLink href={post.link} rel="noopener noreferrer" className={$("block", "overflow-hidden")}>
-          <img loading="lazy" src={post.image} title={post.title} alt={post.title} className={$("h-full", "object-none")} />
-        </OutboundLink>
-      )}
-      <div className={$("flex", "flex-col", "items-start", "self-stretch")}>
-        {post.title && (
-          <h2 className={$("h3", "mb-4")}>
-            <OutboundLink href={post.link} rel="noopener noreferrer" className={$("block", "overflow-hidden")}>
-              {post.title}
-            </OutboundLink>
-          </h2>
+  <OutboundLink href={post.link} rel="noopener noreferrer" className={$("group")}>
+    <article {...props}>
+      <SectionGrid>
+        {post.image && (
+          <div className={$("block", "overflow-hidden", "group-hover:shadow-outline-angled", "actionable")}>
+            <img
+              loading="lazy"
+              src={post.image}
+              title={post.title}
+              alt={post.title}
+              className={$("h-full", "object-none")}
+            />
+          </div>
         )}
-        {post.subtitle && <p className={$("mt-1")}>{post.subtitle}</p>}
-        <div className={$("flex", "flex-1", "items-end")}>
-          {post.date && <time dateTime={post.date}>{format(new Date(post.date), "MM/dd/yyyy")}</time>}
-          {post.timeToRead && <span className={$("ml-2")}> - {post.timeToRead} min read</span>}
+        <div className={$("flex", "flex-col", "items-start", "self-stretch")}>
+          {post.title && (
+            <h2 className={$("h3", "mb-4", "text-primary", "group-hover:text-primaryHover", "actionable")}>
+              {post.title}
+            </h2>
+          )}
+          {post.subtitle && <p className={$("mt-1", "text-text")}>{post.subtitle}</p>}
+          <div className={$("flex", "flex-1", "items-end", "text-text", "opacity-75")}>
+            {post.date && <time dateTime={post.date}>{format(new Date(post.date), "MM/dd/yyyy")}</time>}
+            {post.timeToRead && <span className={$("ml-2")}> - {post.timeToRead} min read</span>}
+          </div>
         </div>
-      </div>
-    </SectionGrid>
-  </article>
+      </SectionGrid>
+    </article>
+  </OutboundLink>
 );
 
 export default PostTeaser;

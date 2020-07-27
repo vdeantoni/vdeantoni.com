@@ -15,6 +15,8 @@ const Background = ({ className }) => {
     if (!canvasRef.current) return;
     if (!field) return;
 
+    canvasRef.current.getContext("2d").clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+
     if (colorScheme !== "dark") return;
 
     field.draw(canvasRef.current);
