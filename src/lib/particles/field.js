@@ -48,7 +48,6 @@ export default class Field {
 
   draw(canvas) {
     const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, this.w, this.h);
 
     this.particles.forEach((p) => {
       p.draw(ctx);

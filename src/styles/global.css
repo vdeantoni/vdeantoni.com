@@ -4,11 +4,11 @@
 
 /* Custom utilities */
 .actionable {
-  @apply cursor-pointer transition-all duration-150 ease-in;
+  @apply transition-all duration-150 ease-in cursor-pointer;
 }
 
 .heading {
-  @apply text-heading font-sans font-semibold leading-tight tracking-tight;
+  @apply font-sans font-semibold leading-tight tracking-tight text-heading;
 }
 
 .absolute-center {
@@ -21,12 +21,12 @@
 
 /* Base styles - START */
 body {
-  @apply text-text bg-background text-base;
+  @apply text-base text-text bg-background;
 }
 
 a,
 .a {
-  @apply inline-flex items-center text-primary no-underline;
+  @apply inline-flex items-center no-underline text-primary;
   @apply actionable;
 }
 
@@ -41,27 +41,27 @@ a:active,
 
 h1,
 .h1 {
-  @apply heading text-4xl;
+  @apply text-4xl heading;
 }
 h2,
 .h2 {
-  @apply heading text-3xl;
+  @apply text-3xl heading;
 }
 h3,
 .h3 {
-  @apply heading text-2xl;
+  @apply text-2xl heading;
 }
 h4,
 .h4 {
-  @apply heading text-xl;
+  @apply text-xl heading;
 }
 h5,
 .h5 {
-  @apply heading text-lg;
+  @apply text-lg heading;
 }
 h6,
 .h6 {
-  @apply heading text-base;
+  @apply text-base heading;
 }
 
 @screen md {
@@ -124,14 +124,14 @@ h6,
 
 /* Components - START */
 .button {
-  @apply inline-flex items-center text-white no-underline bg-primary content-center leading-none rounded-md border-0 px-5 py-3 uppercase shadow-xs;
+  @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline uppercase border-0 rounded-md shadow-xs bg-primary;
   @apply actionable;
 }
 
 .button:hover,
 .button:focus,
 .button:active {
-  @apply text-white bg-primaryHover shadow-md;
+  @apply text-white shadow-md bg-primaryHover;
 }
 /* Components - END */
 

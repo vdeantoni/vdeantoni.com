@@ -35,8 +35,14 @@ module.exports = {
       zIndex: {
         "-1": "-1",
       },
+      boxShadow: {
+        "outline-angled": "8px 8px 0px 0px var(--color-primary-hover)"
+      }
     },
   },
-  variants: {},
+  variants: {
+    textColor: ["responsive", "hover", "focus", "group-hover"],
+    boxShadow: ['responsive', 'hover', 'focus', "group-hover"],
+  },
   plugins: [],
 };
