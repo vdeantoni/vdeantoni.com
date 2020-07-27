@@ -45,5 +45,5 @@ jobs:
     - name: Upload results as an artifact
       uses: actions/upload-artifact@v2
       with:
-        name: lighthouse
-        path: './lighthouse'
+        name: report
+        path: './report'
