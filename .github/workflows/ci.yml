@@ -33,3 +33,17 @@ jobs:
       uses: netlify/actions/cli@master
       with:
         args: deploy --dir=public --prod --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }} --message="${{ github.sha }}"
+
+  lighthouse:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Audit live URL with Lighthouse
+      uses: jakejarvis/lighthouse-action@master
+      with:
+        url: 'https://vdeantoni.com/'
+    - name: Upload results as an artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: lighthouse
+        path: './lighthouse'
