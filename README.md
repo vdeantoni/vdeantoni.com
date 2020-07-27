@@ -6,7 +6,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f26929f9-23ac-4b78-a60d-00a58662e2d3/deploy-status)](https://app.netlify.com/sites/vdeantoni/deploys)
 
 ## Overview
-This is code repository for [vdeantoni.com](https://vdeantoni.com).
+This is the code repository for [vdeantoni.com](https://vdeantoni.com).
 
 The current version is built with [Gatsby](https://www.gatsbyjs.org/) and [Tailwind CSS](https://tailwindcss.com/), the style guide is inspired by [Reflex](https://reflexjs.org/).
 
