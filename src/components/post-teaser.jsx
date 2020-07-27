@@ -5,7 +5,7 @@ import React from "react";
 import SectionGrid from "./styled/section-grid";
 
 export const PostTeaser = ({ post, ...props }) => (
-  <OutboundLink href={post.link} rel="noopener noreferrer" className={$("group")}>
+  <OutboundLink href={post.link} rel="noopener noreferrer" className={$("group")} title={post.title}>
     <article {...props}>
       <SectionGrid>
         {post.image && (
