@@ -1,7 +1,7 @@
 import { random } from "lodash";
 
-export const MIN_VELOCITY = -0.08;
-export const MAX_VELOCITY = 0.08;
+export const MIN_VELOCITY = -0.06;
+export const MAX_VELOCITY = 0.06;
 
 const HUES = [0, 60, 240];
 
@@ -22,21 +22,20 @@ export default class Particle {
     this.hsl = hsl;
 
     this.created = +new Date();
+
+    this.matureAge = MATURE_AGE;
   }
 
   get age() {
     return +new Date() - this.created;
   }
 
-  get matureAge() {
-    return MATURE_AGE;
-  }
-
   get opacity() {
-    return this.age < this.matureAge / 2
-      ? convertRange(this.age, [0, this.matureAge / 2], [0, 100])
-      : this.age < this.matureAge
-      ? convertRange(this.age, [this.matureAge / 2, this.matureAge], [100, 50])
+    const age = this.age;
+    return age < this.matureAge / 2
+      ? convertRange(age, [0, this.matureAge / 2], [0, 100])
+      : age < this.matureAge
+      ? convertRange(age, [this.matureAge / 2, this.matureAge], [100, 50])
       : 50;
   }
 

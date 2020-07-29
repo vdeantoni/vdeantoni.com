@@ -5,10 +5,8 @@ export default class ParticleFragment extends Particle {
     super(x, y, v, r, hsl);
 
     this.maxAge = undefined;
-  }
 
-  get matureAge() {
-    return MATURE_AGE / 2;
+    this.matureAge = MATURE_AGE / 4;
   }
 
   move(w, h) {

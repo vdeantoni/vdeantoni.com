@@ -4,6 +4,7 @@ import ParticleBody from "./particle-body";
 import ParticleFragment from "./particle-fragment";
 
 const AREA_PER_POINT = 10000;
+const MAX_DISTANCE = Math.sqrt(AREA_PER_POINT) * 2;
 const MAX_SIZE = 8;
 
 const createBody = (w, h) => {
@@ -95,6 +96,10 @@ export default class Field {
             }
 
             const d = p1.distance(p2);
+
+            if (d > MAX_DISTANCE) {
+              return;
+            }
 
             const [big, small] = p1.r >= p2.r ? [p1, p2] : [p2, p1];
 
