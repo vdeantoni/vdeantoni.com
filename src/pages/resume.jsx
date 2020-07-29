@@ -5,12 +5,13 @@ import React from "react";
 import Layout from "../components/layout/layout";
 import Location from "../components/location";
 import SEO from "../components/seo.jsx";
+import Skills from "../components/skills";
+import SectionGrid from "../components/styled/section-grid";
 import TimeDifference from "../components/time-difference";
 import TimePeriod from "../components/time-period";
 import resume from "../data/resume.yml";
 import "../styles/resume.css";
-import SectionGrid from "../components/styled/section-grid";
-import Skills from "../components/skills";
+import { formatDate } from "../utils/date";
 
 const ResumePage = () => {
   return (
@@ -110,7 +111,7 @@ const ResumePage = () => {
             <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.entity}</h3>
             <div className={$("timeline")}>
               <div className={$("text-lg", "point")}>{entry.name}</div>
-              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-75")} />
+              <div className={$("text-sm", "opacity-75")}>{formatDate(entry.date)}</div>
             </div>
           </SectionGrid>
         ))}
