@@ -28,7 +28,7 @@ export const PostTeaser = ({ post, ...props }) => (
           {post.subtitle && <p className={$("mt-1", "text-text")}>{post.subtitle}</p>}
           <div className={$("flex", "flex-1", "items-end", "text-text", "opacity-75")}>
             {post.date && <time dateTime={post.date}>{format(new Date(post.date), "MM/dd/yyyy")}</time>}
-            {post.timeToRead && <span className={$("ml-2")}> - {post.timeToRead} min read</span>}
+            {post.timeToRead && <span className={$("ml-2")}> · {post.timeToRead} min read</span>}
           </div>
         </div>
       </SectionGrid>
