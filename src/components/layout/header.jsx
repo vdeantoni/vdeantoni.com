@@ -11,10 +11,31 @@ import { motion, useAnimation } from "framer-motion";
 
 const Branding = () => {
   const { title } = useSiteMetadata();
+  const [colorScheme] = useColorScheme();
   return (
-    <Link to="/" className={$("text-2xl", "font-semibold", "text-text")}>
-      <Logo width="32px" height="32px" />
-      <span className={$("ml-4")}>{title}</span>
+    <Link to="/" className={$("text-2xl", "font-semibold", "text-text", "group")}>
+      <Logo
+        width="40px"
+        height="40px"
+        className={$(
+          "text-black",
+          "bg-white",
+          "rounded-full",
+          "border-black",
+          "border",
+          "actionable",
+          {
+            "group-hover:bg-primaryHover": colorScheme === "dark",
+          },
+          {
+            "group-hover:text-primaryHover": colorScheme !== "dark",
+          },
+          {
+            "group-hover:border-primaryHover": colorScheme !== "dark",
+          }
+        )}
+      />
+      <span className={$("ml-2")}>{title}</span>
     </Link>
   );
 };

@@ -21,10 +21,11 @@ module.exports = {
       mutedHover: "var(--color-muted-hover)",
     },
     extend: {
-      borderColor: {
+      borderColor: theme =>({
         default: "var(--color-border)",
         hover: "var(--color-border-hover)",
-      },
+        ...theme("colors")
+      }),
       opacity: {
         "10": 0.1,
       },
@@ -36,13 +37,15 @@ module.exports = {
         "-1": "-1",
       },
       boxShadow: {
-        "outline-angled": "8px 8px 0px 0px var(--color-primary-hover)"
-      }
+        "outline-angled": "8px 8px 0px 0px var(--color-primary-hover)",
+      },
     },
   },
   variants: {
     textColor: ["responsive", "hover", "focus", "group-hover"],
-    boxShadow: ['responsive', 'hover', 'focus', "group-hover"],
+    backgroundColor: ["responsive", "hover", "focus", "group-hover"],
+    borderColor: ["responsive", "hover", "focus", "group-hover"],
+    boxShadow: ["responsive", "hover", "focus", "group-hover"],
   },
   plugins: [],
 };

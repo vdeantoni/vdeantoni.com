@@ -8,6 +8,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import useSiteMetadata from "../hooks/use-site-metadata";
+import logo from "../images/favicon.png";
 
 function SEO({ title, description = "", lang = "en", locale = "en_US", meta = [] }) {
   const siteMetadata = useSiteMetadata();
@@ -75,7 +76,9 @@ function SEO({ title, description = "", lang = "en", locale = "en_US", meta = []
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link rel="icon" href={logo} />
+    </Helmet>
   );
 }
 
