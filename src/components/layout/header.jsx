@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import $ from "classnames";
+import { motion, useAnimation } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import useColorScheme from "../../hooks/use-color-scheme.js";
@@ -7,11 +8,9 @@ import useSiteMetadata from "../../hooks/use-site-metadata.js";
 import Logo from "../../images/logo.svg";
 import NavLinks from "./nav-links.jsx";
 import SocialLinks from "./social-links.jsx";
-import { motion, useAnimation } from "framer-motion";
 
 const Branding = () => {
   const { title } = useSiteMetadata();
-  const [colorScheme] = useColorScheme();
   return (
     <Link to="/" className={$("text-2xl", "font-semibold", "text-text", "group")}>
       <Logo
@@ -24,15 +23,8 @@ const Branding = () => {
           "border-black",
           "border",
           "actionable",
-          {
-            "group-hover:bg-primaryHover": colorScheme === "dark",
-          },
-          {
-            "group-hover:text-primaryHover": colorScheme !== "dark",
-          },
-          {
-            "group-hover:border-primaryHover": colorScheme !== "dark",
-          }
+          "group-hover:text-primaryHover",
+          "group-hover:border-primaryHover"
         )}
       />
       <span className={$("ml-3")}>{title}</span>
@@ -46,7 +38,7 @@ const ColorSchemeToggle = ({ className }) => {
   return (
     <button
       title="Toggle color mode"
-      onClick={() => {
+      onClick={(e) => {
         controls.stop();
         controls.start({
           rotate: 360,
@@ -54,8 +46,9 @@ const ColorSchemeToggle = ({ className }) => {
           transitionEnd: { rotate: 0 },
         });
         setColorScheme(colorScheme === "default" ? "dark" : "default");
+        e.currentTarget.blur();
       }}
-      className={$("a", "text-text", "focus:outline-none", "overflow:hidden", className)}
+      className={$("a", "text-text", "overflow:hidden", className)}
     >
       <motion.div animate={controls}>
         <FontAwesomeIcon icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]} />
