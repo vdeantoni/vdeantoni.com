@@ -15,7 +15,7 @@ The current version is built with [Gatsby](https://www.gatsbyjs.org/) and [Tailw
 ## Requirements
   * [Node.js](https://nodejs.org/)
   * [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/)
-  
+
 ## Install
 ```
 npm install
