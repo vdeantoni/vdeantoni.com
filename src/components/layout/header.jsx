@@ -35,7 +35,7 @@ const Branding = () => {
           }
         )}
       />
-      <span className={$("ml-2")}>{title}</span>
+      <span className={$("ml-3")}>{title}</span>
     </Link>
   );
 };
