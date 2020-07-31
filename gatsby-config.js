@@ -101,5 +101,12 @@ module.exports = {
         trackingId: "UA-76372620-1",
       },
     },
+    {
+      resolve: "@sentry/gatsby",
+      options: {
+          dsn: "https://5a4561df5ba745d8b6f7103e2e8ea107@o428318.ingest.sentry.io/5373641",
+          tracesSampleRate: 1
+      }
+    },
   ],
 };
