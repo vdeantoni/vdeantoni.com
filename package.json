@@ -1,8 +1,7 @@
 {
-  "name": "vdeantoni",
-  "private": true,
-  "description": "Vinicius De Antoni's personal website",
+  "name": "vdeantoni.com",
   "version": "3.0.0",
+  "private": true,
   "author": "Vinicius De Antoni <vdeantoni@gmail.com>",
   "license": "MIT",
   "scripts": {
