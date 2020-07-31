@@ -33,6 +33,15 @@ jobs:
       uses: netlify/actions/cli@master
       with:
         args: deploy --dir=public --prod --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }} --message="${{ github.sha }}"
+    - name: Create Sentry release
+      uses: getsentry/action-release@v1.0.0
+      env:
+        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        SENTRY_ORG: vdeantoni
+        SENTRY_PROJECT: vdeantoni
+      with:
+        environment: production
+        version: ${{ github.event.release.tag_name }}
 
   lighthouse:
     needs: build
