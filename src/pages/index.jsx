@@ -34,17 +34,17 @@ const IndexPage = ({ data }) => {
         <div className={$("flex", "flex-col", "items-center", "md:items-start")}>
           <h1 className={$("font-extrabold")}>Hello,</h1>
 
-          <p className={$("text-lg", "leading-relaxed", "mt-10")}>
+          <p className={$("text-lg", "leading-loose", "mt-10")}>
             My name is Vinicius De Antoni, and I am a generalist software engineer experienced in developing back-end
             services for web, desktop and mobile applications as well as building user experiences with web
             technologies.
           </p>
-          <p className={$("text-lg", "leading-relaxed", "mt-4")}>
+          <p className={$("text-lg", "leading-loose", "mt-4")}>
             Throughout my career, I've worked with several different technologies in a variety of problem spaces. From
             embedded software for printers to a costumer support system, from e-commerce platforms to desktop
             applications.
           </p>
-          <p className={$("text-lg", "leading-relaxed", "mt-4")}>
+          <p className={$("text-lg", "leading-loose", "mt-4")}>
             Motivated and eager for knowledge, I am very interested in customer facing applications and distributed
             systems, and I also have passion for game development, artificial intelligence and music.
           </p>
