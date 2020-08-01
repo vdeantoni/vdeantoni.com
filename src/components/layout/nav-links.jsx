@@ -14,7 +14,8 @@ const NavLinks = ({ footer = false, className, ...props }) => {
             key={link.name}
             to={link.link}
             title={link.name}
-            activeClassName="text-primary"
+            activeClassName="active text-primary"
+            partiallyActive={link.link !== "/"}
             className={$("text-text", "text-base", "md:border-b-0", { "py-3": !footer }, { "border-b": !footer })}
           >
             {link.name}

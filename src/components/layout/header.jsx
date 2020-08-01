@@ -12,7 +12,7 @@ import SocialLinks from "./social-links.jsx";
 const Branding = () => {
   const { title } = useSiteMetadata();
   return (
-    <Link to="/" className={$("text-2xl", "font-semibold", "text-text", "group")}>
+    <Link to="/" className={$("branding", "text-2xl", "font-semibold", "text-text", "group")}>
       <Logo
         width="40px"
         height="40px"
@@ -62,14 +62,14 @@ const Header = () => {
 
   return (
     <header className={$("sticky", "md:relative", "top-0", "bg-background", "md:bg-transparent", "z-10")}>
-      <nav className={$("hidden", "md:flex", "justify-between", "items-center", "py-1")}>
+      <nav className={$("desktop", "hidden", "md:flex", "justify-between", "items-center", "py-1")}>
         <Branding />
         <NavLinks className={$("ml-0", "md:ml-8", "lg:ml-12")} />
         <SocialLinks className={$("ml-auto", "mr-4", "border-r", "pr-4", "none", "lg:block")} />
         <ColorSchemeToggle className={$("ml-0")} />
       </nav>
-      <div className={$("flex", "md:hidden", "flex-col", "justify-center", "items-center")}>
-        <nav
+      <nav className={$("mobile", "flex", "md:hidden", "flex-col", "justify-center", "items-center")}>
+        <div
           className={$(
             "flex",
             "w-full",
@@ -92,8 +92,8 @@ const Header = () => {
           >
             <FontAwesomeIcon icon={["fas", "bars"]} size="2x" />
           </button>
-        </nav>
-        <nav
+        </div>
+        <div
           className={$(
             "absolute",
             "top-0",
@@ -135,8 +135,8 @@ const Header = () => {
             <SocialLinks />
             <ColorSchemeToggle className={$("ml-auto")} />
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 };
