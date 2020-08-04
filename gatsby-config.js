@@ -72,6 +72,14 @@ module.exports = {
         path: path.join(__dirname, `src`, `images`),
       },
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images\/.*\.svg$/,
+        },
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
@@ -87,14 +95,7 @@ module.exports = {
         icon: `src/images/favicon.png`,
       },
     },
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /images\/.*\.svg$/,
-        },
-      },
-    },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -104,9 +105,9 @@ module.exports = {
     {
       resolve: "@sentry/gatsby",
       options: {
-          dsn: "https://5a4561df5ba745d8b6f7103e2e8ea107@o428318.ingest.sentry.io/5373641",
-          tracesSampleRate: 1
-      }
+        dsn: "https://5a4561df5ba745d8b6f7103e2e8ea107@o428318.ingest.sentry.io/5373641",
+        tracesSampleRate: 1,
+      },
     },
   ],
 };
