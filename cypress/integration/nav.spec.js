@@ -27,14 +27,18 @@ describe("Navigation", () => {
         cy.get("nav.desktop a[title=Posts]").should("exist");
         cy.get("nav.desktop a[title=Resume]").should("exist");
       });
-      it("should take you to the correct page", () => {
+      it("should take you to the posts page", () => {
         cy.visit("/");
         cy.get("nav.desktop a[title=Posts]").click();
         cy.path().should("eq", "/posts");
-
+      });
+      it("should take you to the resume page", () => {
+        cy.visit("/");
         cy.get("nav.desktop a[title=Resume]").click();
         cy.path().should("eq", "/resume");
-
+      });
+      it("should take you to the home page", () => {
+        cy.visit("/posts");
         cy.get("nav.desktop a[title=Home]").click();
         cy.path().should("eq", "/");
       });
