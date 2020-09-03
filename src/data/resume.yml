@@ -97,6 +97,17 @@
       group: Frontend
       value: 50
 - type: company
+  name: Apple
+  image: apple
+  link: http://www.apple.com
+  items:
+    - type: role
+      title: Software Engineer
+      start: 2020-08-24T00:00:00.000Z
+      end:
+      location: Los Angeles, CA - USA
+      blurb: Working as a Fullstack Engineer on the Apple TV+.
+- type: company
   name: Riot Games
   image: riot
   link: http://www.riotgames.com
@@ -104,9 +115,9 @@
     - type: role
       title: Software Engineer
       start: 2020-01-31T00:00:00.000Z
-      end:
+      end: 2020-08-28T00:00:00.000Z
       location: Los Angeles, CA - USA
-      blurb: On a epic quest to improve the League Client.
+      blurb: Worked as a Software Engineer on the League Client where I was responsible for designing and implementing several performance improvements and bug fixes.
 - type: company
   name: Blizzard Entertainment
   image: blizzard
