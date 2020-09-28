@@ -106,7 +106,7 @@
       start: 2020-08-24T00:00:00.000Z
       end:
       location: Los Angeles, CA - USA
-      blurb: Working as a Fullstack Engineer on the Apple TV+.
+      blurb: Working as a Software Engineer on the Apple TV+ team.
 - type: company
   name: Riot Games
   image: riot
@@ -117,7 +117,10 @@
       start: 2020-01-31T00:00:00.000Z
       end: 2020-08-28T00:00:00.000Z
       location: Los Angeles, CA - USA
-      blurb: Worked as a Software Engineer on the League Client where I was responsible for designing and implementing several performance improvements and bug fixes.
+      blurb: Worked as a Software Engineer on the League of Legends Client team.
+      subItems:
+        - Was responsible for several performance improvements and bug fixes. Technologies included Javascript, Ember and webpack.
+        - Designed and implemented a solution to lazy load plugins to speed up the bootstrap process which was a big pain point for players. By lazy loading non-core plugins, bootstrap times were reduced by 50% for the 90th percentile.
 - type: company
   name: Blizzard Entertainment
   image: blizzard
