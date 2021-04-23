@@ -69,11 +69,10 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-.netlify/
-
-# Snipsnap
-.vscode/snipsnap.code-snippets
-
 # Cypress
 cypress/videos
 cypress/screenshots
+
+# IDE
+.vscode
+.idea

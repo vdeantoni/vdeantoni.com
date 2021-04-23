@@ -96,6 +96,12 @@
     - name: Android
       group: Frontend
       value: 50
+    - name: Bazel
+      group: Fullstack
+      value: 60
+    - name: Webpack
+      group: Frontend
+      value: 80
 - type: company
   name: Apple
   image: apple
@@ -105,8 +111,15 @@
       title: Software Engineer
       start: 2020-08-24T00:00:00.000Z
       end:
-      location: Los Angeles, CA - USA
+      location: Culver City, CA - USA
       blurb: Working as a Software Engineer on the Apple TV+ team.
+      subItems:
+        - Building tools to manage Apple TV+ original content.
+        - Frontend development using React, Typescript and Webpack.
+        - Backend development using Java, Dropwizard and Guice.
+        - Protobuf and REST APIs.
+        - Test automation with Cypress.
+        - Build and Test with Bazel.
 - type: company
   name: Riot Games
   image: riot
