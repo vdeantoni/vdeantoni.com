@@ -16,13 +16,13 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2.3.4
     - name: Build with Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2.1.5
       with:
         node-version: ${{ matrix.node-version }}
     - name: Cypress run
-      uses: cypress-io/github-action@v1
+      uses: cypress-io/github-action@v2.9.7
       with:
         build: npm run build
         start: npm run serve
@@ -34,7 +34,7 @@ jobs:
       with:
         args: deploy --dir=public --prod --auth=${{ secrets.NETLIFY_AUTH_TOKEN }} --site=${{ secrets.NETLIFY_SITE_ID }} --message="${{ github.sha }}"
     - name: Create Sentry release
-      uses: getsentry/action-release@v1.0.0
+      uses: getsentry/action-release@v1.1.5
       env:
         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         SENTRY_ORG: vdeantoni
