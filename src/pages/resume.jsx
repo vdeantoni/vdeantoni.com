@@ -4,7 +4,7 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import React from "react";
 import Layout from "../components/layout/layout";
 import Location from "../components/location";
-import SEO from "../components/seo.jsx";
+import Seo from "../components/seo.jsx";
 import Skills from "../components/skills";
 import SectionGrid from "../components/styled/section-grid";
 import TimeDifference from "../components/time-difference";
@@ -16,7 +16,7 @@ import { formatDate } from "../utils/date";
 const ResumePage = () => {
   return (
     <Layout>
-      <SEO title="Resume" description="A page with information about my employment and education history" />
+      <Seo title="Resume" description="A page with information about my employment and education history" />
       <h1 className={$("font-extrabold")}>Resume</h1>
 
       <h2 className={$("h4", "mt-10")}>

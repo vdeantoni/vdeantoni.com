@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 import React from "react";
 import Layout from "../components/layout/layout";
 import PostTeaser from "../components/post-teaser";
-import SEO from "../components/seo.jsx";
+import Seo from "../components/seo.jsx";
 import posts from "../data/posts.yml";
 
 export const query = graphql`
@@ -24,7 +24,7 @@ const IndexPage = ({ data }) => {
   const { image } = data;
   return (
     <Layout>
-      <SEO title="Home" />
+      <Seo title="Home" />
       <div className={$("grid", "grid-cols-1", "md:grid-cols-2", "gap-8", "md:gap-12", "md:gap-16")}>
         <Img
           fluid={image.childImageSharp.fluid}
