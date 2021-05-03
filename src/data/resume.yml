@@ -112,12 +112,12 @@
       start: 2020-08-24T00:00:00.000Z
       end:
       location: Culver City, CA - USA
-      blurb: Working as a Software Engineer on the Apple TV+ team.
+      blurb: Working as a Software Engineer on the Apple Media Products team.
       subItems:
-        - Building tools to manage Apple TV+ original content.
-        - Frontend development using React, Typescript and Webpack.
-        - Backend development using Java, Dropwizard and Guice.
-        - Protobuf and REST APIs.
+        - Full-stack development with React, Typescript and Webpack on the frontend and Java, Dropwizard and Guice on the backend.
+        - Micro-service architecture with Protobuf and REST APIs.
+        - PostgreSQL
+        - Kafka
         - Test automation with Cypress.
         - Build and Test with Bazel.
 - type: company
