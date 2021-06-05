@@ -102,6 +102,9 @@
     - name: Webpack
       group: Frontend
       value: 80
+    - name: Electron
+      group: Frontend
+      value: 100
 - type: company
   name: Apple
   image: apple
@@ -119,6 +122,7 @@
         - PostgreSQL
         - Kafka
         - Test automation with Cypress.
+        - Electron and Node.js.
         - Build and Test with Bazel.
 - type: company
   name: Riot Games
