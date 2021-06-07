@@ -30,6 +30,7 @@
     "gatsby": "^3.6.2",
     "gatsby-image": "^3.6.0",
     "gatsby-plugin-google-analytics": "^3.6.0",
+    "gatsby-plugin-image": "^1.6.0",
     "gatsby-plugin-manifest": "^3.6.0",
     "gatsby-plugin-offline": "^4.6.0",
     "gatsby-plugin-postcss": "^4.6.0",

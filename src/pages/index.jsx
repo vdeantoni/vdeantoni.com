@@ -1,23 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as $ from "classnames";
 import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import Layout from "../components/layout/layout";
 import PostTeaser from "../components/post-teaser";
 import Seo from "../components/seo.jsx";
 import posts from "../data/posts.yml";
 
-export const query = graphql`
-  query {
-    image: file(name: { eq: "me" }) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+export const query = graphql`{
+  image: file(name: {eq: "me"}) {
+    childImageSharp {
+      gatsbyImageData(width: 500, layout: CONSTRAINED)
     }
   }
+}
 `;
 
 const IndexPage = ({ data }) => {
@@ -26,11 +23,10 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Seo title="Home" />
       <div className={$("grid", "grid-cols-1", "md:grid-cols-2", "gap-8", "md:gap-12", "md:gap-16")}>
-        <Img
-          fluid={image.childImageSharp.fluid}
+        <GatsbyImage
+          image={image.childImageSharp.gatsbyImageData}
           alt="Vinicius De Antoni"
-          className={$("w-full", "h-auto", "rounded-lg", "md:order-1")}
-        ></Img>
+          className={$("w-full", "h-auto", "rounded-lg", "md:order-1")} />
         <div className={$("flex", "flex-col", "items-center", "md:items-start")}>
           <h1 className={$("font-extrabold")}>Hello,</h1>
 
