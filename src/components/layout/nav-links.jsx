@@ -7,7 +7,7 @@ const NavLinks = ({ footer = false, className, ...props }) => {
   const { navLinks } = useSiteMetadata();
 
   return (
-    <div className={$("grid", "grid-cols-1", "md:grid-cols-3", "gap-0", "md:gap-2", "lg:gap-4", className)}>
+    <div className={$("grid", "grid-cols-1", "md:grid-cols-4", "gap-0", "md:gap-2", "lg:gap-4", className)}>
       {navLinks &&
         navLinks.map((link) => (
           <Link
@@ -16,7 +16,7 @@ const NavLinks = ({ footer = false, className, ...props }) => {
             title={link.name}
             activeClassName="active text-primary"
             partiallyActive={link.link !== "/"}
-            className={$("text-text", "text-base", "md:border-b-0", { "py-3": !footer }, { "border-b": !footer })}
+            className={$("text-text", "text-base", "m-auto", "md:border-b-0", { "py-3": !footer }, { "border-b": !footer })}
           >
             {link.name}
           </Link>
