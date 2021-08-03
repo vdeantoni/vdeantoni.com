@@ -9,13 +9,13 @@ export const PostTeaser = ({ post, ...props }) => (
     <article {...props}>
       <SectionGrid>
         {post.image && (
-          <div className={$("block", "overflow-hidden", "group-hover:shadow-outline-angled", "actionable")}>
+          <div className={$("overflow-hidden", "group-hover:shadow-outline-angled", "actionable")}>
             <img
               loading="lazy"
               src={post.image}
               title={post.title}
               alt={post.title}
-              className={$("h-full", "max-h-60", "object-none")}
+              className={$("w-full", "h-40", "lg:h-60", "object-cover")}
             />
           </div>
         )}
