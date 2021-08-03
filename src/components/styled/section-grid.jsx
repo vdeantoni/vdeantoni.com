@@ -9,8 +9,8 @@ const SectionGrid = ({ className = "", children }) => {
         "grid-cols-1",
         "lg:grid-cols-2-left-fixed-350",
         "lg:grid-cols-2-left-fixed-400",
-        "gap-10",
-        "md:gap-20",
+        "gap-5",
+        "lg:gap-10",
         "items-start",
         className
       )}
