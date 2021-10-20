@@ -1,4 +1,4 @@
-import * as $ from "classnames";
+import cn from "classnames";
 import React from "react";
 import NavLinks from "./nav-links.jsx";
 import SocialLinks from "./social-links.jsx";
@@ -7,12 +7,12 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 const Footer = () => {
   return (
     <footer>
-      <div className={$("flex", "flex-col", "md:flex-row", "items-start", "md:items-center", "justify-center")}>
-        <NavLinks footer={true} className={$("gap-4", "my-6", "md:my-0", "md:hidden")} />
+      <div className={cn("flex", "flex-col", "md:flex-row", "items-start", "md:items-center", "justify-center")}>
+        <NavLinks footer={true} className={cn("gap-4", "my-6", "md:my-0", "md:hidden")} />
         <SocialLinks />
       </div>
       <div
-        className={$(
+        className={cn(
           "border-t",
           "text-sm",
           "flex",
@@ -25,13 +25,13 @@ const Footer = () => {
           "md:mt-6"
         )}
       >
-        <div className={$("text-sm")}>
+        <div className={cn("text-sm")}>
           This site is{" "}
           <OutboundLink href="https://github.com/vdeantoni/vdeantoni.com" target="_blank" rel="noopener noreferrer">
             open source.
           </OutboundLink>
         </div>
-        <div className={$("text-sm", "self-end")}>© {new Date().getFullYear()}</div>
+        <div className={cn("text-sm", "self-end")}>© {new Date().getFullYear()}</div>
       </div>
     </footer>
   );

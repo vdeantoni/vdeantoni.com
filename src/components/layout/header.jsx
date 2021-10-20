@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import $ from "classnames";
+import cn from "classnames";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
@@ -12,11 +12,11 @@ import SocialLinks from "./social-links.jsx";
 const Branding = () => {
   const { title } = useSiteMetadata();
   return (
-    <Link to="/" className={$("branding", "text-2xl", "font-semibold", "text-text", "group")}>
+    <Link to="/" className={cn("branding", "text-2xl", "font-semibold", "text-text", "group")}>
       <Logo
         width="40px"
         height="40px"
-        className={$(
+        className={cn(
           "text-black",
           "bg-white",
           "rounded-full",
@@ -27,7 +27,7 @@ const Branding = () => {
           "group-hover:border-primaryHover"
         )}
       />
-      <span className={$("ml-3")}>{title}</span>
+      <span className={cn("ml-3")}>{title}</span>
     </Link>
   );
 };
@@ -48,7 +48,7 @@ const ColorSchemeToggle = ({ className }) => {
         setColorScheme(colorScheme === "default" ? "dark" : "default");
         e.currentTarget.blur();
       }}
-      className={$("a", "text-text", "overflow:hidden", className)}
+      className={cn("a", "text-text", "overflow:hidden", className)}
     >
       <motion.div animate={controls}>
         <FontAwesomeIcon icon={colorScheme === "default" ? ["fas", "sun"] : ["fas", "moon"]} />
@@ -61,16 +61,16 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className={$("sticky", "md:relative", "top-0", "bg-background", "md:bg-transparent", "z-10")}>
-      <nav className={$("desktop", "hidden", "md:flex", "justify-between", "items-center", "py-1")}>
+    <header className={cn("sticky", "md:relative", "top-0", "bg-background", "md:bg-transparent", "z-10")}>
+      <nav className={cn("desktop", "hidden", "md:flex", "justify-between", "items-center", "py-1")}>
         <Branding />
-        <NavLinks className={$("ml-0", "md:ml-8", "lg:ml-12")} />
-        <SocialLinks className={$("ml-auto", "mr-4", "border-r", "pr-4", "none", "lg:block")} />
-        <ColorSchemeToggle className={$("ml-0")} />
+        <NavLinks className={cn("ml-0", "md:ml-8", "lg:ml-12")} />
+        <SocialLinks className={cn("ml-auto", "mr-4", "border-r", "pr-4", "none", "lg:block")} />
+        <ColorSchemeToggle className={cn("ml-0")} />
       </nav>
-      <nav className={$("mobile", "flex", "md:hidden", "flex-col", "justify-center", "items-center")}>
+      <nav className={cn("mobile", "flex", "md:hidden", "flex-col", "justify-center", "items-center")}>
         <div
-          className={$(
+          className={cn(
             "flex",
             "w-full",
             "justify-between",
@@ -88,13 +88,13 @@ const Header = () => {
           <button
             aria-label="Open menu"
             onClick={() => setShowMenu(true)}
-            className={$("outline-none", "text-text", "hover:text-text", "py-3")}
+            className={cn("outline-none", "text-text", "hover:text-text", "py-3")}
           >
             <FontAwesomeIcon icon={["fas", "bars"]} size="2x" />
           </button>
         </div>
         <div
-          className={$(
+          className={cn(
             "absolute",
             "top-0",
             "left-0",
@@ -120,20 +120,20 @@ const Header = () => {
             { "scale-90": !showMenu }
           )}
         >
-          <div className={$("flex", "justify-between", "items-center", "w-full", "py-2", "px-0")}>
+          <div className={cn("flex", "justify-between", "items-center", "w-full", "py-2", "px-0")}>
             <Branding />
             <button
               aria-label="Close menu"
               onClick={() => setShowMenu(false)}
-              className={$("outline-none", "text-text", "hover:text-text")}
+              className={cn("outline-none", "text-text", "hover:text-text")}
             >
               <FontAwesomeIcon icon={["fas", "times"]} size="2x" />
             </button>
           </div>
-          <NavLinks className={$("border-t")} />
-          <div className={$("flex", "justify-between", "items-center", "py-4")}>
+          <NavLinks className={cn("border-t")} />
+          <div className={cn("flex", "justify-between", "items-center", "py-4")}>
             <SocialLinks />
-            <ColorSchemeToggle className={$("ml-auto")} />
+            <ColorSchemeToggle className={cn("ml-auto")} />
           </div>
         </div>
       </nav>

@@ -1,4 +1,4 @@
-import * as $ from "classnames";
+import cn from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import useColorScheme from "../../hooks/use-color-scheme";
 import useRequestAnimationFrame from "../../hooks/use-request-animation-frame";
@@ -32,7 +32,7 @@ const Background = ({ className }) => {
   }, []);
 
   return (
-    <div className={$(className)}>
+    <div className={cn(className)}>
       <canvas ref={canvasRef}></canvas>
     </div>
   );
