@@ -3,31 +3,33 @@
 @tailwind base;
 
 /* Custom utilities */
-.actionable {
-  @apply transition-all duration-150 ease-in cursor-pointer;
-}
+@layer utilities {
+    .actionable {
+        @apply transition-all duration-150 ease-in cursor-pointer;
+    }
 
-.heading {
-  @apply font-sans font-semibold leading-tight tracking-tight text-heading;
-}
+    .heading {
+        @apply font-sans font-semibold leading-tight tracking-tight text-heading;
+    }
 
-.absolute-center {
-  @apply absolute;
+    .absolute-center {
+        @apply absolute;
 
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
 }
 
 /* Base styles - START */
 body {
-  @apply text-base text-text bg-background;
+    @apply text-base text-text bg-background;
 }
 
 a,
 .a {
-  @apply inline-flex items-center no-underline text-primary;
-  @apply actionable;
+    @apply inline-flex items-center no-underline text-primary;
+    @apply actionable;
 }
 
 a:hover,
@@ -36,86 +38,101 @@ a:focus,
 .a:focus,
 a:active,
 .a:active {
-  @apply text-primaryHover;
+    @apply text-primaryHover;
 }
 
 h1,
 .h1 {
-  @apply text-4xl heading;
+    @apply text-4xl heading;
 }
+
 h2,
 .h2 {
-  @apply text-3xl heading;
+    @apply text-3xl heading;
 }
+
 h3,
 .h3 {
-  @apply text-2xl heading;
+    @apply text-2xl heading;
 }
+
 h4,
 .h4 {
-  @apply text-xl heading;
+    @apply text-xl heading;
 }
+
 h5,
 .h5 {
-  @apply text-lg heading;
+    @apply text-lg heading;
 }
+
 h6,
 .h6 {
-  @apply text-base heading;
+    @apply text-base heading;
 }
 
 @screen md {
-  h1,
-  .h1 {
-    @apply text-5xl;
-  }
-  h2,
-  .h2 {
-    @apply text-4xl;
-  }
-  h3,
-  .h3 {
-    @apply text-3xl;
-  }
-  h4,
-  .h4 {
-    @apply text-2xl;
-  }
-  h5,
-  .h5 {
-    @apply text-xl;
-  }
-  h6,
-  .h6 {
-    @apply text-lg;
-  }
+    h1,
+    .h1 {
+        @apply text-5xl;
+    }
+
+    h2,
+    .h2 {
+        @apply text-4xl;
+    }
+
+    h3,
+    .h3 {
+        @apply text-3xl;
+    }
+
+    h4,
+    .h4 {
+        @apply text-2xl;
+    }
+
+    h5,
+    .h5 {
+        @apply text-xl;
+    }
+
+    h6,
+    .h6 {
+        @apply text-lg;
+    }
 }
 
 @screen lg {
-  h1,
-  .h1 {
-    @apply text-6xl;
-  }
-  h2,
-  .h2 {
-    @apply text-5xl;
-  }
-  h3,
-  .h3 {
-    @apply text-4xl;
-  }
-  h4,
-  .h4 {
-    @apply text-3xl;
-  }
-  h5,
-  .h5 {
-    @apply text-2xl;
-  }
-  h6,
-  .h6 {
-    @apply text-xl;
-  }
+    h1,
+    .h1 {
+        @apply text-6xl;
+    }
+
+    h2,
+    .h2 {
+        @apply text-5xl;
+    }
+
+    h3,
+    .h3 {
+        @apply text-4xl;
+    }
+
+    h4,
+    .h4 {
+        @apply text-3xl;
+    }
+
+    h5,
+    .h5 {
+        @apply text-2xl;
+    }
+
+    h6,
+    .h6 {
+        @apply text-xl;
+    }
 }
 
 /* Base styles - END */
@@ -124,15 +141,16 @@ h6,
 
 /* Components - START */
 .button {
-  @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline uppercase border-0 rounded-md shadow-sm bg-primary;
-  @apply actionable;
+    @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline uppercase border-0 rounded-md shadow-sm bg-primary;
+    @apply actionable;
 }
 
 .button:hover,
 .button:focus,
 .button:active {
-  @apply text-white shadow-md bg-primaryHover;
+    @apply text-white shadow-md bg-primaryHover;
 }
+
 /* Components - END */
 
 @tailwind utilities;

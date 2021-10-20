@@ -1,114 +1,7 @@
-- type: skills
-  items:
-    - name: Javascript
-      group: Fullstack
-      value: 140
-    - name: Typescript
-      group: Fullstack
-      value: 120
-    - name: Java
-      group: Backend
-      value: 110
-    - name: Spring
-      group: Backend
-      value: 80
-    - name: Node.js
-      group: Backend
-      value: 100
-    - name: C#
-      group: Backend
-      value: 50
-    - name: C++
-      group: Backend
-      value: 30
-    - name: PHP
-      group: Backend
-      value: 35
-    - name: HTML
-      group: Frontend
-      value: 100
-    - name: CSS
-      group: Frontend
-      value: 100
-    - name: Tailwind CSS
-      group: Frontend
-      value: 100
-    - name: Angular
-      group: Frontend
-      value: 90
-    - name: RxJS
-      group: Frontend
-      value: 80
-    - name: React
-      group: Frontend
-      value: 90
-    - name: Gatsby
-      group: Frontend
-      value: 90
-    - name: Next.js
-      group: Fullstack
-      value: 80
-    - name: Vue.js
-      group: Frontend
-      value: 50
-    - name: Ember
-      group: Frontend
-      value: 40
-    - name: REST
-      group: Fullstack
-      value: 100
-    - name: GraphQL
-      group: Fullstack
-      value: 75
-    - name: SQL
-      group: Backend
-      value: 100
-    - name: NoSQL
-      group: Backend
-      value: 100
-    - name: AWS
-      group: DevOps
-      value: 60
-    - name: CI/CD
-      group: DevOps
-      value: 90
-    - name: Jenkins
-      group: DevOps
-      value: 80
-    - name: Selenium
-      group: QA
-      value: 70
-    - name: Puppeteer
-      group: QA
-      value: 85
-    - name: Cypress
-      group: QA
-      value: 90
-    - name: D3.js
-      group: Frontend
-      value: 40
-    - name: Git
-      group: Fullstack
-      value: 100
-    - name: SEO
-      group: Frontend
-      value: 90
-    - name: Android
-      group: Frontend
-      value: 50
-    - name: Bazel
-      group: Fullstack
-      value: 60
-    - name: Webpack
-      group: Frontend
-      value: 80
-    - name: Electron
-      group: Frontend
-      value: 100
 - type: company
   name: Apple
-  image: apple
-  link: http://www.apple.com
+  slug: apple
+  link: https://www.apple.com
   items:
     - type: role
       title: Software Engineer
@@ -126,8 +19,8 @@
         - Build and Test with Bazel.
 - type: company
   name: Riot Games
-  image: riot
-  link: http://www.riotgames.com
+  slug: riot
+  link: https://www.riotgames.com
   items:
     - type: role
       title: Software Engineer
@@ -140,8 +33,8 @@
         - Designed and implemented a solution to lazy load plugins to speed up the bootstrap process which was a big pain point for players. By lazy loading non-core plugins, bootstrap times were reduced by 50% for the 90th percentile.
 - type: company
   name: Blizzard Entertainment
-  image: blizzard
-  link: http://www.blizzard.com
+  slug: blizzard
+  link: https://www.blizzard.com
   items:
     - type: role
       title: Lead Software Engineer
@@ -175,8 +68,8 @@
         - Integrated web applications with Splunkcloud and Appdynamics. Allowing developers to have access to real time logs, metrics and alarms.
 - type: company
   name: Amazon
-  image: amazon
-  link: http://www.amazon.com
+  slug: amazon
+  link: https://www.amazon.com
   items:
     - type: role
       title: Software Developer Engineer
@@ -199,8 +92,8 @@
         - Implemented a web service using JavaScript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the Kindle Fire browser.
 - type: company
   name: HP
-  image: hp
-  link: http://www.hp.com
+  slug: hp
+  link: https://www.hp.com
   items:
     - type: role
       title: Software Designer
@@ -227,8 +120,8 @@
         - Implemented a series of Web Services with WCF.
 - type: company
   name: Conecta IT
-  image: conectait
-  link: http://www.conectait.com.br
+  slug: conectait
+  link: https://www.conectait.com.br
   items:
     - type: role
       title: Web Developer
@@ -242,8 +135,8 @@
         - Improved database performance by correctly utilizing indices and store procedures.
 - type: company
   name: Constat
-  image: constat
-  link: http://www.constat.com/
+  slug: constat
+  link: https://www.constat.com/
   items:
     - type: role
       title: Web Developer
@@ -257,8 +150,8 @@
         - Introduced new technologies (like Ajax) to improve UX.
 - type: company
   name: X-NEO
-  image: xneo
-  link: http://www.xneo.com.br
+  slug: xneo
+  link: https://www.xneo.com.br
   items:
     - type: role
       title: Web Developer
@@ -272,7 +165,7 @@
         - Added cross-browser support to existing applications.
 - type: school
   name: Universidade Federal do Rio Grande do Sul (UFRGS)
-  image: ufrgs
+  slug: ufrgs
   link: http://www.ufrgs.br/
   degree: Master
   field: Computer Science, Artificial Intelligence
@@ -281,12 +174,11 @@
   location: Porto Alegre, RS - Brazil
   publications:
     - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
-      image: agent
-      link: https://dl.acm.org/doi/10.5555/2615731.2617483
+      url: https://dl.acm.org/doi/10.5555/2615731.2617483
       date: 2014-05-01T00:00:00.000Z
 - type: school
   name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
-  image: pucrs
+  slug: pucrs
   link: http://www.pucrs.br/
   degree: Bachelor
   field: Computer Science
@@ -295,7 +187,7 @@
   location: Porto Alegre, RS - Brazil
 - type: school
   name: Centro Tecnologico de Caxias Do Sul (CETEC)
-  image: cetec
+  slug: cetec
   link: https://www.ucs.br/site/cetec/
   degree: Technical
   field: Information Technology
@@ -304,13 +196,15 @@
   location: Caxias Do Sul, RS - Brazil
 - type: certification
   entity: Oracle
+  technology: Java
   name: "Java Standard Edition 5 Programmer Certified Professional"
-  image: java
+  slug: java
   link: https://education.oracle.com/java-and-dev-tech/java-se/product_267?certPage=true
   date: 2011-02-04T00:00:00.000Z
 - type: certification
   entity: Microsoft
+  technology: .NET
   name: "TS: Microsoft .NET Framework – Application Development Foundation"
-  image: dot-net
+  slug: dot-net
   link: https://social.technet.microsoft.com/wiki/contents/articles/7720.exam-70-536-ts-microsoft-net-framework-application-development-foundation.aspx
   date: 2010-01-29T00:00:00.000Z

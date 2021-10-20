@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   purge: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
   theme: {
     colors: {
@@ -15,21 +16,24 @@ module.exports = {
       primaryHover: "var(--color-primary-hover)",
       secondary: "var(--color-secondary)",
       secondaryHover: "var(--color-secondary-hover)",
+      tertiary: "var(--color-tertiary)",
+      tertiaryHover: "var(--color-tertiary-hover)",
       accent: "var(--color-accent)",
       accentHover: "var(--color-accent-hover)",
       muted: "var(--color-muted)",
       mutedHover: "var(--color-muted-hover)",
     },
     extend: {
-      borderColor: theme =>({
-        default: "var(--color-border)",
+      borderColor: (theme) => ({
+        DEFAULT: "var(--color-border)",
         hover: "var(--color-border-hover)",
-        ...theme("colors")
+        ...theme("colors"),
       }),
       opacity: {
-        "10": 0.1,
+        10: 0.1,
       },
       gridTemplateColumns: {
+        "2-left-fixed-200": "200px 1fr",
         "2-left-fixed-350": "350px 1fr",
         "2-left-fixed-400": "400px 1fr",
       },

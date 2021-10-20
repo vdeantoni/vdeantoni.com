@@ -1,120 +1,174 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as $ from "classnames";
+import cn from "classnames";
+import { addYears, formatISO } from "date-fns";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { groupBy } from "lodash";
 import React from "react";
 import Layout from "../components/layout/layout";
-import Location from "../components/location";
 import Seo from "../components/seo.jsx";
-import Skills from "../components/skills";
 import SectionGrid from "../components/styled/section-grid";
-import TimeDifference from "../components/time-difference";
-import TimePeriod from "../components/time-period";
+import Timeline from "../components/timeline";
 import resume from "../data/resume.yml";
-import "../styles/resume.css";
-import { formatDate } from "../utils/date";
+import { formatDate, formatTimeDifference } from "../utils/date";
+
+const timeDifference = (periods) => {
+  if (!periods || periods.length < 1) {
+    return null;
+  }
+
+  return formatTimeDifference(periods[periods.length - 1].start, periods[0].end);
+};
+
+const timePeriod = (start, end) => {
+  return `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
+};
+
+const SectionTitle = ({ title, icon }) => {
+  return (
+    <h2 className={cn("h4", "mt-10", "flex", "items-center")}>
+      <FontAwesomeIcon icon={["fas", icon]} size="1x" className={cn("mr-3")} />
+      {title}
+    </h2>
+  );
+};
+
+const EntryTitle = ({ title, subTitle, slug }) => {
+  return (
+    <div className={cn("flex", "flex-col", "md:items-end", "md:sticky", "top-2")}>
+      <h3 id={slug} className={cn("h6")}>
+        {title}
+      </h3>
+      <span className={cn("opacity-75")}>{subTitle}</span>
+    </div>
+  );
+};
+
+const EntryItem = ({ title, start, end, location, blurb, subItems, links, itemColor }) => {
+  return (
+    <div
+      className={cn(
+        "relative",
+        "before:hidden",
+        "md:before:block",
+        "before:absolute",
+        "before:opacity-50",
+        "before:h-full",
+        "before:top-[1.25rem]",
+        "before:left-[-1.2rem]",
+        "before:border-dashed",
+        "before:border-l"
+      )}
+    >
+      <div
+        className={cn(
+          "relative",
+          "text-lg",
+          "before:hidden",
+          "md:before:block",
+          "before:absolute",
+          "before:rounded-md",
+          "before:opacity-50",
+          "before:top-[5px]",
+          "before:left-[-1.65rem]",
+          "before:w-[1rem]",
+          "before:h-[1rem]",
+          itemColor === "secondary"
+            ? "before:bg-secondary"
+            : itemColor === "tertiary"
+            ? "before:bg-tertiary"
+            : "before:bg-primary"
+        )}
+      >
+        {title}
+      </div>
+      <div className={cn("text-sm", "opacity-75")}>{timePeriod(start, end)}</div>
+      <div className={cn("text-sm", "opacity-75")}>{location}</div>
+      <div className={cn("mt-2")}>{blurb}</div>
+      <ul className={cn("list-inside", "list-disc", "mt-2", "mb-4")}>
+        {subItems?.map((subItem, subItemIndex) => (
+          <li key={subItemIndex} className={cn("text-sm", "leading-relaxed")}>
+            {subItem}
+          </li>
+        ))}
+      </ul>
+
+      {links?.map((link, linkIndex) => (
+        <OutboundLink key={linkIndex} href={link.url} rel="noopener noreferrer" className={cn("mt-2")}>
+          {link.name}
+        </OutboundLink>
+      ))}
+    </div>
+  );
+};
 
 const ResumePage = () => {
+  const { company: companies, school: schools, certification: certifications } = groupBy(resume, "type");
+
   return (
     <Layout>
       <Seo title="Resume" description="A page with information about my employment and education history" />
-      <h1 className={$("font-extrabold")}>Resume</h1>
+      <h1 className={cn("font-extrabold")}>Resume</h1>
 
-      <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon icon={["fas", "code"]} size="1x" className={$("mr-3", "align-text-top")} />
-        Skills
-      </h2>
-      <div className={$("mt-10")}>
-        <Skills data={resume.filter((r) => r.type === "skills").flatMap((s) => s.items)} />
+      <div className={"hidden md:block"}>
+        <SectionTitle title="Timeline" icon="stream" />
+        <div className={cn("mt-10")}>
+          <Timeline data={resume} />
+        </div>
       </div>
 
-      <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon icon={["fas", "briefcase"]} size="1x" className={$("mr-3", "align-text-top")} />
-        Employment
-      </h2>
-      {resume
-        .filter((r) => r.type === "company")
-        .map((entry, entryIndex) => (
-          <SectionGrid key={entryIndex} className={$("mt-10")}>
-            <div className={$("flex", "flex-col", "lg:items-end")}>
-              <h3 className={$("h6")}>{entry.name}</h3>
-              <TimeDifference periods={entry.items} className={$("opacity-75")} />
-            </div>
-            <div>
-              {entry.items &&
-                entry.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className={$("timeline")}>
-                    <div
-                      className={$("point", "text-lg", {
-                        first: entryIndex === 0,
-                      })}
-                    >
-                      {item.title}
-                    </div>
-                    <TimePeriod start={item.start} end={item.end} className={$("text-sm", "opacity-75")} />
-                    <Location location={item.location} className={$("text-sm", "opacity-75")} />
-                    <div className={$("mt-2")}>{item.blurb}</div>
-                    <ul className={$("list-inside", "list-disc", "mt-2", "mb-4")}>
-                      {item.subItems &&
-                        item.subItems.map((subItem, subItemIndex) => (
-                          <li key={subItemIndex} className={$("text-sm", "leading-relaxed")}>
-                            {subItem}
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                ))}
-            </div>
-          </SectionGrid>
-        ))}
+      <SectionTitle title="Employment" icon="briefcase" />
+      {companies.map((entry, entryIndex) => (
+        <SectionGrid key={entryIndex} className={cn("mt-10")}>
+          <EntryTitle title={entry.name} slug={entry.slug} subTitle={timeDifference(entry.items)} />
+          <div>
+            {entry.items?.map((item, itemIndex) => (
+              <EntryItem
+                key={itemIndex}
+                title={item.title}
+                itemColor="primary"
+                start={item.start}
+                end={item.end}
+                location={item.location}
+                blurb={item.blurb}
+                subItems={item.subItems}
+              />
+            ))}
+          </div>
+        </SectionGrid>
+      ))}
 
-      <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon icon={["fas", "university"]} size="1x" className={$("mr-3")} />
-        Education
-      </h2>
+      <SectionTitle title="Education" icon="university" />
+      {schools.map((entry, entryIndex) => (
+        <SectionGrid key={entryIndex} className={cn("mt-10")}>
+          <EntryTitle title={entry.name} slug={entry.slug} />
+          <div>
+            <EntryItem
+              title={entry.degree}
+              itemColor="secondary"
+              start={entry.start}
+              end={entry.end}
+              location={entry.location}
+              blurb={entry.field}
+              links={entry.publications}
+            />
+          </div>
+        </SectionGrid>
+      ))}
 
-      {resume
-        .filter((r) => r.type === "school")
-        .map((entry, entryIndex) => (
-          <SectionGrid key={entryIndex} className={$("mt-10")}>
-            <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.name}</h3>
-            <div className={$("timeline")}>
-              <div className={$("text-lg", "point")}>{entry.degree}</div>
-              <TimePeriod start={entry.start} end={entry.end} className={$("text-sm", "opacity-75")} />
-              <Location location={entry.location} className={$("text-sm", "opacity-75")} />
-
-              <div className={$("mt-2")}>{entry.field}</div>
-
-              {entry.publications &&
-                entry.publications.map((publication, publicationIndex) => (
-                  <OutboundLink
-                    key={publicationIndex}
-                    href={publication.link}
-                    rel="noopener noreferrer"
-                    className={$("mt-2")}
-                  >
-                    {publication.name}
-                  </OutboundLink>
-                ))}
-            </div>
-          </SectionGrid>
-        ))}
-
-      <h2 className={$("h4", "mt-10")}>
-        <FontAwesomeIcon icon={["fas", "award"]} size="1x" className={$("mr-3")} />
-        Certifications
-      </h2>
-
-      {resume
-        .filter((r) => r.type === "certification")
-        .map((entry, entryIndex) => (
-          <SectionGrid key={entryIndex} className={$("mt-10")}>
-            <h3 className={$("h6", "text-left", "lg:text-right")}>{entry.entity}</h3>
-            <div className={$("timeline")}>
-              <div className={$("text-lg", "point")}>{entry.name}</div>
-              <div className={$("text-sm", "opacity-75")}>{formatDate(entry.date)}</div>
-            </div>
-          </SectionGrid>
-        ))}
+      <SectionTitle title="Certifications" icon="award" />
+      {certifications.map((entry, entryIndex) => (
+        <SectionGrid key={entryIndex} className={cn("mt-10")}>
+          <EntryTitle title={entry.entity} slug={entry.slug} />
+          <div>
+            <EntryItem
+              title={entry.name}
+              itemColor="tertiary"
+              start={entry.date}
+              end={formatISO(addYears(new Date(entry.date), 1))}
+            />
+          </div>
+        </SectionGrid>
+      ))}
     </Layout>
   );
 };
