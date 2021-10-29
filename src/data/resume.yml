@@ -38,7 +38,7 @@
   items:
     - type: role
       title: Lead Software Engineer
-      start: 2019-03-01T00:00:00.000Z
+      start: 2019-03-02T00:00:00.000Z
       end: 2019-10-23T00:00:00.000Z
       location: Irvine, CA - USA
       blurb: Worked as Lead Software Engineer on the Battle.net Desktop Application.
@@ -47,8 +47,8 @@
         - Worked on the new content experience for the Battle.net desktop app, including a new Java web service implemented with Java 11 and WebFlux that could deliver relevant and personalized content to millions of players.
     - type: role
       title: Lead Software Engineer
-      start: 2016-03-01T00:00:00.000Z
-      end: 2019-03-01T00:00:00.000Z
+      start: 2016-03-02T00:00:00.000Z
+      end: 2019-02-28T00:00:00.000Z
       location: Irvine, CA - USA
       blurb: Worked as Lead Software Engineer within the Battle.net E-commerce group.
       subItems:
@@ -58,7 +58,7 @@
     - type: role
       title: Software Engineer
       start: 2014-11-14T00:00:00.000Z
-      end: 2016-03-01T00:00:00.000Z
+      end: 2016-02-28T00:00:00.000Z
       location: Irvine, CA - USA
       blurb: Worked as Software Engineer on Battle.net.
       subItems:
@@ -73,8 +73,8 @@
   items:
     - type: role
       title: Software Developer Engineer
-      start: 2013-10-01T00:00:00.000Z
-      end: 2014-10-01T00:00:00.000Z
+      start: 2013-10-02T00:00:00.000Z
+      end: 2014-10-30T00:00:00.000Z
       location: Seattle, WA - USA
       blurb: Worked as a Software Developer Engineer on the Digital Software and Video Games team.
       subItems:
@@ -82,8 +82,8 @@
         - Implemented a web application available on Amazon's developer portal that allowed third-party vendors to create and test their profiles before selling digital items. Developed the back end with Java and SpringMVC and front end with AngularJS.
     - type: role
       title: Software Developer Engineer
-      start: 2012-10-01T00:00:00.000Z
-      end: 2013-10-01T00:00:00.000Z
+      start: 2012-10-02T00:00:00.000Z
+      end: 2013-09-30T00:00:00.000Z
       location: Seattle, WA - USA
       blurb: Worked as a Software Engineer on Silk, the Kindle Fire web browser.
       subItems:
@@ -97,8 +97,8 @@
   items:
     - type: role
       title: Software Designer
-      start: 2010-10-01T00:00:00.000Z
-      end: 2012-09-01T00:00:00.000Z
+      start: 2010-10-02T00:00:00.000Z
+      end: 2012-09-30T00:00:00.000Z
       location: Porto Alegre, RS - Brazil
       blurb: Worked as a Software Designer on HP ePrint Services (Cloud printing).
       subItems:
@@ -109,8 +109,8 @@
         - Developed an administration portal with J2EE (Servlets/JSP and Struts 2).
     - type: role
       title: Software Designer
-      start: 2007-07-01T00:00:00.000Z
-      end: 2010-10-01T00:00:00.000Z
+      start: 2007-07-02T00:00:00.000Z
+      end: 2010-09-30T00:00:00.000Z
       location: Porto Alegre, RS - Brazil
       blurb: Worked as a Software Designer on HP FutureSmart (integrated printer firmware and solutions platform).
       subItems:
@@ -125,8 +125,8 @@
   items:
     - type: role
       title: Web Developer
-      start: 2006-10-01T00:00:00.000Z
-      end: 2007-07-01T00:00:00.000Z
+      start: 2006-10-02T00:00:00.000Z
+      end: 2007-06-30T00:00:00.000Z
       location: Porto Alegre, RS - Brazil
       blurb: Worked as a contractor for various local companies.
       subItems:
@@ -140,8 +140,8 @@
   items:
     - type: role
       title: Web Developer
-      start: 2005-06-01T00:00:00.000Z
-      end: 2006-10-01T00:00:00.000Z
+      start: 2005-06-02T00:00:00.000Z
+      end: 2006-09-30T00:00:00.000Z
       location: Caxias Do Sul, RS - Brazil
       blurb: Worked for a local company as a web developer.
       subItems:
@@ -155,8 +155,8 @@
   items:
     - type: role
       title: Web Developer
-      start: 2004-11-01T00:00:00.000Z
-      end: 2005-06-01T00:00:00.000Z
+      start: 2004-12-02T00:00:00.000Z
+      end: 2005-05-30T00:00:00.000Z
       location: Caxias Do Sul, RS - Brazil
       blurb: Started as a web developer intern and returned as a full time employee.
       subItems:
@@ -166,11 +166,11 @@
 - type: school
   name: Universidade Federal do Rio Grande do Sul (UFRGS)
   slug: ufrgs
-  link: http://www.ufrgs.br/
+  link: https://www.ufrgs.br/
   degree: Master
   field: Computer Science, Artificial Intelligence
-  start: 2011-03-01T00:00:00.000Z
-  end: 2013-12-01T00:00:00.000Z
+  start: 2011-03-02T00:00:00.000Z
+  end: 2013-11-30T00:00:00.000Z
   location: Porto Alegre, RS - Brazil
   publications:
     - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
@@ -179,11 +179,11 @@
 - type: school
   name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
   slug: pucrs
-  link: http://www.pucrs.br/
+  link: https://www.pucrs.br/
   degree: Bachelor
   field: Computer Science
-  start: 2006-06-01T00:00:00.000Z
-  end: 2010-12-01T00:00:00.000Z
+  start: 2006-06-02T00:00:00.000Z
+  end: 2010-12-30T00:00:00.000Z
   location: Porto Alegre, RS - Brazil
 - type: school
   name: Centro Tecnologico de Caxias Do Sul (CETEC)
@@ -191,8 +191,8 @@
   link: https://www.ucs.br/site/cetec/
   degree: Technical
   field: Information Technology
-  start: 2002-03-01T00:00:00.000Z
-  end: 2005-06-01T00:00:00.000Z
+  start: 2002-03-02T00:00:00.000Z
+  end: 2005-06-30T00:00:00.000Z
   location: Caxias Do Sul, RS - Brazil
 - type: certification
   entity: Oracle

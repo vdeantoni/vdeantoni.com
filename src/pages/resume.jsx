@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import { addYears, formatISO } from "date-fns";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import { groupBy } from "lodash";
+import { first, groupBy, last } from "lodash";
 import React from "react";
 import Layout from "../components/layout/layout";
 import Seo from "../components/seo.jsx";
@@ -16,7 +16,7 @@ const timeDifference = (periods) => {
     return null;
   }
 
-  return formatTimeDifference(periods[periods.length - 1].start, periods[0].end);
+  return formatTimeDifference(last(periods).start, first(periods).end);
 };
 
 const timePeriod = (start, end) => {
@@ -38,7 +38,7 @@ const EntryTitle = ({ title, subTitle, slug }) => {
       <h3 id={slug} className={cn("h6")}>
         {title}
       </h3>
-      <span className={cn("opacity-75")}>{subTitle}</span>
+      <span className={cn("opacity-75", "text-sm")}>{subTitle}</span>
     </div>
   );
 };

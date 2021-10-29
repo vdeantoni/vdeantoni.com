@@ -1,3 +1,4 @@
+import { differenceInMonths } from "date-fns";
 import { plural } from "./strings";
 
 export const formatTimeDifference = (start, end) => {
@@ -6,15 +7,15 @@ export const formatTimeDifference = (start, end) => {
   const startDate = new Date(start);
   const endDate = end ? new Date(end) : new Date();
 
-  const diff = Math.abs(endDate.getTime() - startDate.getTime());
-  const diffMonths = Math.floor(diff / 1000 / 60 / 60 / 24 / 30);
+  const diff = differenceInMonths(endDate, startDate);
 
-  const years = Math.floor(diffMonths / 12);
+  const years = Math.floor(diff / 12);
+  const months = years ? diff - years * 12 : diff;
+
   if (years) {
     result += `${years} ${plural(years, ["yrs", "yr", "yrs"])} `;
   }
 
-  const months = years ? Math.floor(diffMonths % years) : diffMonths;
   if (months) {
     result += `${months} ${plural(months, ["mos", "mo", "mos"])} `;
   }
