@@ -8,13 +8,14 @@ import PostTeaser from "../components/post-teaser";
 import Seo from "../components/seo.jsx";
 import posts from "../data/posts.yml";
 
-export const query = graphql`{
-  image: file(name: {eq: "me"}) {
-    childImageSharp {
-      gatsbyImageData(width: 500, layout: CONSTRAINED)
+export const query = graphql`
+  {
+    image: file(name: { eq: "me" }) {
+      childImageSharp {
+        gatsbyImageData(width: 500, layout: CONSTRAINED)
+      }
     }
   }
-}
 `;
 
 const IndexPage = ({ data }) => {
@@ -26,7 +27,8 @@ const IndexPage = ({ data }) => {
         <GatsbyImage
           image={image.childImageSharp.gatsbyImageData}
           alt="Vinicius De Antoni"
-          className={cn("w-full", "h-auto", "rounded-lg", "md:order-1")} />
+          className={cn("w-full", "h-auto", "rounded-lg", "md:order-1")}
+        />
         <div className={cn("flex", "flex-col", "items-center", "md:items-start")}>
           <h1 className={cn("font-extrabold")}>Hello,</h1>
 
@@ -51,9 +53,12 @@ const IndexPage = ({ data }) => {
         <PostTeaser post={posts[0]} />
       </div>
       <div className={cn("flex", "justify-end")}>
-        <Link to="/posts" className={cn("button", "mt-6")}>
+        <Link to="/posts" className={cn("button", "mt-6", "group")}>
           View all
-          <FontAwesomeIcon icon={["fas", "arrow-right"]} className={cn("ml-2")} />
+          <FontAwesomeIcon
+            icon={["fas", "arrow-right"]}
+            className={cn("ml-2", "group-hover:translate-x-1.5", "transition")}
+          />
         </Link>
       </div>
     </Layout>

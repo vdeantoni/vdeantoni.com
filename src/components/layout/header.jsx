@@ -65,8 +65,8 @@ const Header = () => {
       <nav className={cn("desktop", "hidden", "md:flex", "justify-between", "items-center", "py-1")}>
         <Branding />
         <NavLinks className={cn("ml-0", "md:ml-8", "lg:ml-12")} />
-        <SocialLinks className={cn("ml-auto", "mr-4", "border-r", "pr-4", "none", "lg:block")} />
-        <ColorSchemeToggle className={cn("ml-0")} />
+        <SocialLinks className={cn("ml-auto", "mr-4", "border-r", "pr-2", "none", "lg:block")} />
+        <ColorSchemeToggle className={cn("mt-[-0.25rem]")} />
       </nav>
       <nav className={cn("mobile", "flex", "md:hidden", "flex-col", "justify-center", "items-center")}>
         <div

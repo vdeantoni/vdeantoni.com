@@ -141,7 +141,7 @@ h6,
 
 /* Components - START */
 .button {
-    @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline uppercase border-0 rounded-md shadow-sm bg-primary;
+    @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline border-0 rounded-md shadow-sm bg-primary;
     @apply actionable;
 }
 

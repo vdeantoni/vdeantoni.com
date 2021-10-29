@@ -1,8 +1,8 @@
 import cn from "classnames";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import React from "react";
 import NavLinks from "./nav-links.jsx";
 import SocialLinks from "./social-links.jsx";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
 
 const Footer = () => {
   return (
@@ -26,7 +26,7 @@ const Footer = () => {
         )}
       >
         <div className={cn("text-sm")}>
-          This site is{" "}
+          This web site is{" "}
           <OutboundLink href="https://github.com/vdeantoni/vdeantoni.com" target="_blank" rel="noopener noreferrer">
             open source.
           </OutboundLink>

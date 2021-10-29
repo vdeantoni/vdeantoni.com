@@ -7,7 +7,7 @@ import useSiteMetadata from "../../hooks/use-site-metadata";
 const SocialLinks = ({ className = "" }) => {
   const { socialLinks } = useSiteMetadata();
   return (
-    <div className={cn("grid", "grid-cols-7", "gap-1", className)}>
+    <div className={cn("flex", className)}>
       {socialLinks &&
         socialLinks.map((link) => (
           <OutboundLink

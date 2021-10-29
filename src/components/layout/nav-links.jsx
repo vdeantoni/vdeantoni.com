@@ -7,7 +7,7 @@ const NavLinks = ({ footer = false, className, ...props }) => {
   const { navLinks } = useSiteMetadata();
 
   return (
-    <div className={cn("grid", "grid-cols-1", "md:grid-cols-4", "gap-0", "md:gap-2", "lg:gap-4", className)}>
+    <div className={cn("flex", "flex-col", "md:flex-row", "gap-0", "md:gap-2", "lg:gap-8", className)}>
       {navLinks &&
         navLinks.map((link) => (
           <Link
