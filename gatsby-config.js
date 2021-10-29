@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         name: "LinkedIn",
-        link: "http://www.linkedin.com/in/vdeantoni",
+        link: "https://www.linkedin.com/in/vdeantoni",
         icon: ["fab", "linkedin"],
       },
       {
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         name: "Stack Overflow",
-        link: "http://stackoverflow.com/users/621767/deantoni?tab=profile",
+        link: "https://stackoverflow.com/users/621767/deantoni?tab=profile",
         icon: ["fab", "stack-overflow"],
       },
       {
@@ -55,13 +55,8 @@ module.exports = {
         icon: ["fab", "github"],
       },
       {
-        name: "Facebook",
-        link: "http://facebook.com/vinideantoni",
-        icon: ["fab", "facebook"],
-      },
-      {
         name: "Twitter",
-        link: "http://twitter.com/vinideantoni",
+        link: "https://twitter.com/vinideantoni",
         icon: ["fab", "twitter"],
       },
     ],

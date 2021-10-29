@@ -1,12 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faFacebook,
-  faGithub,
-  faLinkedin,
-  faMedium,
-  faStackOverflow,
-  faTwitter
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faMedium, faStackOverflow, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowRight,
   faAward,
@@ -18,14 +11,13 @@ import {
   faStream,
   faSun,
   faTimes,
-  faUniversity
+  faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { RecoilRoot } from "recoil";
 import "./src/styles/global.css";
 
 library.add(
-  faFacebook,
   faLinkedin,
   faMedium,
   faStackOverflow,
