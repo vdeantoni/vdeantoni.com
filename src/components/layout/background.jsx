@@ -6,6 +6,7 @@ import { random, range } from "lodash";
 import React, { Suspense, useRef } from "react";
 import { Color, TextureLoader } from "three";
 import useColorScheme from "../../hooks/use-color-scheme";
+import { useEventListener } from "../../hooks/use-event-listener";
 import cloudTexture from "../../images/cloud.png";
 
 const fogColor = new Color(0x0d202d);
@@ -18,6 +19,13 @@ const Cloud = (props) => {
   const cloudMap = useLoader(TextureLoader, cloudTexture);
   const mesh = useRef();
 
+  const y = useRef(props.position[1]);
+
+  useEventListener("scroll", (e) => {
+    const scrollTop = document.documentElement.scrollTop;
+    mesh.current.position.y = y.current - scrollTop * 0.01;
+  });
+
   useFrame(() => {
     mesh.current.rotation.z += 0.001;
   });
@@ -28,6 +36,28 @@ const Cloud = (props) => {
       <meshLambertMaterial map={cloudMap} transparent={true} opacity={0.15} />
     </mesh>
   );
+};
+
+const StarField = (props) => {
+  const ref = useRef();
+  const r = 0.01;
+  const v = 0.004 * r;
+
+  const mouse = useRef([0, 0]);
+
+  useEventListener("mousemove", ({ x, y }) => (mouse.current = [x, y]));
+
+  useFrame((state) => {
+    const vx = ((mouse.current[0] - window.innerWidth / 2) / window.innerWidth) * 2;
+    const vy = ((mouse.current[1] - window.innerHeight / 2) / window.innerHeight) * 2;
+
+    ref.current.rotation.y += v * vx;
+    ref.current.rotation.x += v * vy;
+
+    ref.current.rotation.z -= v;
+  });
+
+  return <Stars ref={ref} radius={140} depth={50} count={2000} factor={4} saturation={0} fade />;
 };
 
 const Background = ({ className }) => {
@@ -58,7 +88,6 @@ const Background = ({ className }) => {
 
         <ambientLight color={0x555555} />
         <pointLight color={0xcc6600} intensity={50} distance={450} decay={1.7} position={[-600, -250, 0]} />
-
         <pointLight color={0x3677ac} intensity={50} distance={450} decay={1.7} position={[600, 250, 0]} />
 
         <Suspense fallback={<></>}>
@@ -67,7 +96,7 @@ const Background = ({ className }) => {
           ))}
         </Suspense>
 
-        <Stars radius={140} depth={50} count={5000} factor={4} saturation={0} fade />
+        <StarField />
       </Canvas>
     </motion.div>
   );
