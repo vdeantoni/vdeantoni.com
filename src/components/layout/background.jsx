@@ -15,6 +15,41 @@ const clouds = range(0, 100).map(() => ({
   rotation: [0, 0, Math.random() * 2 - Math.PI],
 }));
 
+const Lights = () => {
+  const colors = [0x3b9bd7, 0xd7773b, 0x4dd73b];
+  const colorIndex = useRef(random(0, colors.length - 1));
+  const intensityDirection = useRef("up");
+
+  const lightRef = useRef();
+
+  useFrame(() => {
+    if (intensityDirection.current === "up") {
+      lightRef.current.intensity += 0.0005;
+
+      if (lightRef.current.intensity >= 0.3) {
+        intensityDirection.current = "down";
+      }
+    }
+
+    if (intensityDirection.current === "down") {
+      lightRef.current.intensity -= 0.0005;
+
+      if (lightRef.current.intensity <= 0) {
+        intensityDirection.current = "up";
+        colorIndex.current = (colorIndex.current + 1) % colors.length;
+        lightRef.current.color = new Color(colors[colorIndex.current]);
+      }
+    }
+  });
+
+  return (
+    <>
+      <ambientLight color={0x555555} />
+      <directionalLight ref={lightRef} color={colors[colorIndex.current]} intensity={0} position={[0, 0, 1]} />
+    </>
+  );
+};
+
 const Cloud = (props) => {
   const cloudMap = useLoader(TextureLoader, cloudTexture);
   const mesh = useRef();
@@ -38,7 +73,7 @@ const Cloud = (props) => {
   );
 };
 
-const StarField = (props) => {
+const StarField = () => {
   const ref = useRef();
   const r = 0.01;
   const v = 0.004 * r;
@@ -86,9 +121,7 @@ const Background = ({ className }) => {
         <color attach="background" args={[fogColor]} />
         <fogExp2 color={fogColor} density={0.001} />
 
-        <ambientLight color={0x555555} />
-        <pointLight color={0xcc6600} intensity={50} distance={450} decay={1.7} position={[-600, -250, 0]} />
-        <pointLight color={0x3677ac} intensity={50} distance={450} decay={1.7} position={[600, 250, 0]} />
+        <Lights />
 
         <Suspense fallback={<></>}>
           {clouds.map((props, n) => (

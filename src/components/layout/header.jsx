@@ -61,7 +61,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className={cn("sticky", "md:relative", "top-0", "bg-background", "md:bg-transparent", "z-10")}>
+    <header className={cn("sticky", "md:relative", "top-0", "bg-transparent", "z-10")}>
       <nav className={cn("desktop", "hidden", "md:flex", "justify-between", "items-center", "py-1")}>
         <Branding />
         <NavLinks className={cn("ml-0", "md:ml-8", "lg:ml-12")} />
