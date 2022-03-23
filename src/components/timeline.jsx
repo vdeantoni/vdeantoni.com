@@ -39,7 +39,7 @@ const TimelineItem = ({ name, slug, items, years, itemColor }) => {
           "p-1",
           borderColor,
           borderColorHover,
-          "border-b-4",
+          "border-b-8",
           "whitespace-nowrap",
           "actionable"
         )}
@@ -54,7 +54,7 @@ const TimelineItem = ({ name, slug, items, years, itemColor }) => {
 const Timeline = ({ data = [] }) => {
   const { company: companies, school: schools, certification: certifications } = groupBy(data, "type");
 
-  const years = range(2002, new Date().getFullYear() + 1);
+  const years = range(2002, new Date().getFullYear());
 
   return (
     <div className={cn("grid")} style={{ gridTemplateColumns: `repeat(${years.length * 12}, minmax(0, 1fr))` }}>
