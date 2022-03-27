@@ -1,4 +1,19 @@
 - type: medium
+  id: 62d1a2883416
+  date: 2022-03-27T00:00:00.000Z
+  title: Implementing a Dark Mode switch
+  subtitle: Add color scheme responsiveness to your web app
+  image: https://miro.medium.com/fit/c/1024/250/0*nPqmfH2wUFrx2BET
+  link: https://vdeantoni.medium.com/implementing-a-dark-mode-switch-62d1a2883416?sk=37c2b0de2ec6018ae453545360574efb
+  timeToRead: 3
+  tags:
+    - name: CSS
+    - name: Javascript
+    - name: Web Development
+    - name: Web Design
+    - name: UI
+
+- type: medium
   id: a7a1f53f6462
   date: 2021-04-23T00:00:00.000Z
   title: How to Set Up Your MacBook for Web Development in 2021
@@ -39,20 +54,6 @@
     - name: JavaScript
     - name: Lodash
     - name: Programming
-
-- type: medium
-  id: d32fe672062b
-  date: 2020-04-26T00:00:00.000Z
-  title: How to Enable Dark Mode With Tailwind CSS (and Pure CSS)
-  subtitle: Add color scheme responsiveness to your web app
-  image: https://miro.medium.com/fit/c/1024/250/0*nPqmfH2wUFrx2BET
-  link: https://medium.com/better-programming/how-to-enable-dark-mode-with-tailwindcss-and-pure-css-d32fe672062b?source=friends_link&sk=ba0ec01c41c9e9447b56a63faefef043
-  timeToRead: 3
-  tags:
-    - name: CSS
-    - name: Tailwind CSS
-    - name: Web Design
-    - name: UI
 
 - type: medium
   id: 6cd9f31d1169
