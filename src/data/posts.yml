@@ -1,4 +1,17 @@
 - type: medium
+  id: b8fd0656b28b
+  date: 2022-03-28T00:00:00.000Z
+  title: Request batching in React
+  subtitle: Improve your react application performance by reducing the number of API calls
+  image: https://miro.medium.com/fit/c/1024/250/0*B7X43kTWeCcNztU6
+  link: https://vdeantoni.medium.com/request-batching-in-react-b8fd0656b28b?sk=ac3bb7523fd69b532b353b5d8160b32a
+  timeToRead: 2
+  tags:
+    - name: Javascript
+    - name: Web Development
+    - name: React
+
+- type: medium
   id: 62d1a2883416
   date: 2022-03-27T00:00:00.000Z
   title: Implementing a Dark Mode switch
