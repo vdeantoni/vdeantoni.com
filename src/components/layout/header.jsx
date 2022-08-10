@@ -27,7 +27,7 @@ const Branding = () => {
           "group-hover:border-primaryHover"
         )}
       />
-      <span className={cn("ml-3")}>{title}</span>
+      <span className={cn("hidden", "md:block", "ml-3")}>{title}</span>
     </Link>
   );
 };
@@ -38,15 +38,21 @@ const ColorSchemeToggle = ({ className }) => {
   return (
     <button
       title="Toggle color mode"
-      onClick={(e) => {
+      onClick={async (e) => {
         controls.stop();
-        controls.start({
-          rotate: 360,
-          transition: { duration: 1 },
-          transitionEnd: { rotate: 0 },
+        e.currentTarget.blur();
+        await controls.start({
+          y: -20,
+          opacity: 0,
+          transition: { duration: 0.3 },
+          transitionEnd: { y: 10 }
         });
         setColorScheme(colorScheme === "default" ? "dark" : "default");
-        e.currentTarget.blur();
+        await controls.start({
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.5 }
+        });
       }}
       className={cn("a", "text-text", "overflow:hidden", className)}
     >

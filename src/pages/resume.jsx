@@ -111,7 +111,7 @@ const ResumePage = () => {
 
       <div className={"hidden md:block"}>
         <SectionTitle title="Timeline" icon="stream" />
-        <div className={cn("mt-10")}>
+        <div className={cn("mt-10", "xl:w-[calc(100vw-4rem)]", "xl:ml-[calc(36rem-50vw)]")}>
           <Timeline data={resume} />
         </div>
       </div>

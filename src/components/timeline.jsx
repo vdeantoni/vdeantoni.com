@@ -24,8 +24,7 @@ const TimelineItem = ({ name, slug, items, years, itemColor }) => {
   return (
     <a
       href={`#${slug}`}
-      title={name}
-      className={cn("group", "flex", "justify-center", "overflow-hidden")}
+      className={cn("group", "flex", "justify-center", "overflow-hidden", "hover:overflow-visible")}
       style={{
         gridColumn: `${getStartIndex(items, years)} / span ${getSpanSize(items, years)}`,
       }}
