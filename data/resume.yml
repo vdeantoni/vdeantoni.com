@@ -1,0 +1,221 @@
+- type: company
+  name: Apple
+  slug: apple
+  link: https://www.apple.com
+  items:
+    - type: role
+      title: Software Engineer
+      start: "2020-08-24T00:00:00.000-08:00"
+      end:
+      location: Culver City, CA - USA
+      blurb: Working as a Software Engineer on the Apple Media Products team.
+      subItems:
+        - Full-stack development with React, Typescript and Webpack on the frontend and Java, Dropwizard and Guice on the backend.
+        - Micro-service architecture with Protobuf and REST APIs.
+        - PostgreSQL
+        - Kafka
+        - Test automation with Cypress.
+        - Electron and Node.js.
+        - Build and Test with Bazel.
+- type: company
+  name: Career Foundry
+  slug: career-foundry
+  link: https://www.careerfoundry.com
+  items:
+    - type: role
+      title: Mentor
+      start: "2021-10-01T00:00:00.000-08:00"
+      end:
+      location: USA
+      blurb: I mentor web development students. I review their projects and provide feedback. I also provide insights into what being a Web Developer is like, and how to be successful in the field.
+- type: company
+  name: Riot Games
+  slug: riot
+  link: https://www.riotgames.com
+  items:
+    - type: role
+      title: Software Engineer
+      start: "2020-01-31T00:00:00.000-08:00"
+      end: "2020-08-28T00:00:00.000-08:00"
+      location: Los Angeles, CA - USA
+      blurb: Worked as a Software Engineer on the League of Legends Client team.
+      subItems:
+        - Was responsible for several performance improvements and bug fixes. Technologies included Javascript, Ember and webpack.
+        - Designed and implemented a solution to lazy load plugins to speed up the bootstrap process which was a big pain point for players. By lazy loading non-core plugins, bootstrap times were reduced by 50% for the 90th percentile.
+- type: company
+  name: Blizzard Entertainment
+  slug: blizzard
+  link: https://www.blizzard.com
+  items:
+    - type: role
+      title: Lead Software Engineer
+      start: "2019-03-01T00:00:00.000-08:00"
+      end: "2019-10-23T00:00:00.000-08:00"
+      location: Irvine, CA - USA
+      blurb: Worked as Lead Software Engineer on the Battle.net Desktop Application.
+      subItems:
+        - Led a team of 10+ software engineers and defined the technical direction of the Battle.net desktop application, including a complete UI refresh for the Battle.net desktop app, including a tech stack migration from C++/Qt to Web technologies.
+        - Worked on the new content experience for the Battle.net desktop app, including a new Java web service implemented with Java 11 and WebFlux that could deliver relevant and personalized content to millions of players.
+    - type: role
+      title: Lead Software Engineer
+      start: "2016-03-01T00:00:00.000-08:00"
+      end: "2019-02-28T00:00:00.000-08:00"
+      location: Irvine, CA - USA
+      blurb: Worked as Lead Software Engineer within the Battle.net E-commerce group.
+      subItems:
+        - Led a team of 8 software engineers and defined the technical direction of the Battle.net Shop.
+        - Headed a major overhaul of Blizzard Shop, including a complete redesign and a tech stack migration from Java/Freemarker to Java/Angular.
+        - Ensured 99.9% availability of our digital storefronts.
+    - type: role
+      title: Software Engineer
+      start: "2014-11-14T00:00:00.000-08:00"
+      end: "2016-02-28T00:00:00.000-08:00"
+      location: Irvine, CA - USA
+      blurb: Worked as Software Engineer on Battle.net.
+      subItems:
+        - Worked on a multi-platform solution for Blizzard Checkout, which was used as an overlay in the game clients, in the desktop app and in mobile devices.
+        - Designed and implemented a checkout workflow framework for an e-commerce web application using Java and Spring.
+        - Profiled distributed systems to improve performance under heavy load. I was able to get significant results by revisiting caching policies, fixing bugs, and improving the codebase to be more scalable.
+        - Integrated web applications with Splunkcloud and Appdynamics. Allowing developers to have access to real time logs, metrics and alarms.
+- type: company
+  name: Amazon
+  slug: amazon
+  link: https://www.amazon.com
+  items:
+    - type: role
+      title: Software Developer Engineer
+      start: "2013-10-01T00:00:00.000-08:00"
+      end: "2014-10-30T00:00:00.000-08:00"
+      location: Seattle, WA - USA
+      blurb: Worked as a Software Developer Engineer on the Digital Software and Video Games team.
+      subItems:
+        - Worked on the Amazon Instant Access (AIA) web services, where I implemented the API and the Java and PHP SDKs.
+        - Implemented a web application available on Amazon's developer portal that allowed third-party vendors to create and test their profiles before selling digital items. Developed the back end with Java and SpringMVC and front end with AngularJS.
+    - type: role
+      title: Software Developer Engineer
+      start: "2012-10-01T00:00:00.000-08:00"
+      end: "2013-09-30T00:00:00.000-08:00"
+      location: Seattle, WA - USA
+      blurb: Worked as a Software Engineer on Silk, the Kindle Fire web browser.
+      subItems:
+        - Implemented a service using Javascript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the browser.
+        - Worked with the Slipstream team to enhance the browsing experience by delivering a lightweight and functional image map while the actual page was loading on the background.
+        - Implemented a web service using JavaScript/PhantomJS to extract relevant images from any given URL. Those images were used as thumbnails on the trending pages section of the Kindle Fire browser.
+- type: company
+  name: HP
+  slug: hp
+  link: https://www.hp.com
+  items:
+    - type: role
+      title: Software Designer
+      start: "2010-10-01T00:00:00.000-08:00"
+      end: "2012-09-30T00:00:00.000-08:00"
+      location: Porto Alegre, RS - Brazil
+      blurb: Worked as a Software Designer on HP ePrint Services (Cloud printing).
+      subItems:
+        - Designed and developed a distributed solution for a location-based search service with MongoDB and Node.js.
+        - Added new features as well as bug fixing to a REST service, which was developed using JAVA and allowed client applications to create print jobs through the cloud.
+        - Developed an Android application available on the Play store (HP ePrint Service).
+        - Developed a REST API and a web application that allowed HP partners to release print jobs.
+        - Developed an administration portal with J2EE (Servlets/JSP and Stru"ts 2).
+    - type: role
+      title: Software Designer
+      start: "2007-07-01T00:00:00.000-08:00"
+      end: "2010-09-30T00:00:00.000-08:00"
+      location: Porto Alegre, RS - Brazil
+      blurb: Worked as a Software Designer on HP FutureSmart (integrated printer firmware and solutions platform).
+      subItems:
+        - Designed and implemented an embedded HTTP server for printers.
+        - Worked on a WCF port for Compact .NET.
+        - Designed and developed a MVC Web framework to support other teams.
+        - Implemented a series of Web Services with WCF.
+- type: company
+  name: Conecta IT
+  slug: conectait
+  link: https://www.conectait.com.br
+  items:
+    - type: role
+      title: Web Developer
+      start: "2006-10-01T00:00:00.000-08:00"
+      end: "2007-06-30T00:00:00.000-08:00"
+      location: Porto Alegre, RS - Brazil
+      blurb: Worked as a contractor for various local companies.
+      subItems:
+        - Developed financial reports, interactive charts, CRUD pages by utilizing PHP, JavaScript, C, and Oracle.
+        - Developed J2EE applications with JSP, JSF, Spring MVC, and Struts 2.
+        - Improved database performance by correctly utilizing indices and store procedures.
+- type: company
+  name: Constat
+  slug: constat
+  link: https://www.constat.com/
+  items:
+    - type: role
+      title: Web Developer
+      start: "2005-06-01T00:00:00.000-08:00"
+      end: "2006-09-30T00:00:00.000-08:00"
+      location: Caxias Do Sul, RS - Brazil
+      blurb: Worked for a local company as a web developer.
+      subItems:
+        - Developed a customer service management software. Worked on both server and client-side. The application was implemented using PHP and a SQL Server database.
+        - Worked on adding cross-browser support for Firefox, IE, and Opera.
+        - Introduced new technologies (like Ajax) to improve UX.
+- type: company
+  name: X-NEO
+  slug: xneo
+  link: https://www.xneo.com.br
+  items:
+    - type: role
+      title: Web Developer
+      start: "2004-12-01T00:00:00.000-08:00"
+      end: "2005-05-30T00:00:00.000-08:00"
+      location: Caxias Do Sul, RS - Brazil
+      blurb: Started as a web developer intern and returned as a full time employee.
+      subItems:
+        - Designed and developed web sites by utilizing PHP, JavaScript, Flash, and MySQL.
+        - Integrated Ajax technology on existing applications.
+        - Added cross-browser support to existing applications.
+- type: school
+  name: Universidade Federal do Rio Grande do Sul (UFRGS)
+  slug: ufrgs
+  link: https://www.ufrgs.br/
+  degree: Master
+  field: Computer Science, Artificial Intelligence
+  start: "2011-03-01T00:00:00.000-08:00"
+  end: "2013-11-30T00:00:00.000-08:00"
+  location: Porto Alegre, RS - Brazil
+  publications:
+    - name: An asynchronous algorithm to improve scheduling quality in the multiagent simple temporal problem
+      url: https://dl.acm.org/doi/10.5555/2615731.2617483
+      date: "2014-05-01T00:00:00.000-08:00"
+- type: school
+  name: Pontificia Universidade Catolica do Rio Grande Do Sul (PUCRS)
+  slug: pucrs
+  link: https://www.pucrs.br/
+  degree: Bachelor
+  field: Computer Science
+  start: "2006-06-01T00:00:00.000-08:00"
+  end: "2010-12-30T00:00:00.000-08:00"
+  location: Porto Alegre, RS - Brazil
+- type: school
+  name: Centro Tecnologico de Caxias Do Sul (CETEC)
+  slug: cetec
+  link: https://www.ucs.br/site/cetec/
+  degree: Technical
+  field: Information Technology
+  start: "2002-03-01T00:00:00.000-08:00"
+  end: "2005-06-30T00:00:00.000-08:00"
+  location: Caxias Do Sul, RS - Brazil
+- type: certification
+  entity: Oracle
+  technology: Java
+  name: "Java Standard Edition 5 Programmer Certified Professional"
+  slug: java
+  link: https://education.oracle.com/java-and-dev-tech/java-se/product_267?certPage=true
+  date: "2011-02-04T00:00:00.000-08:00"
+- type: certification
+  entity: Microsoft
+  technology: .NET
+  name: "TS: Microsoft .NET Framework – Application Development Foundation"
+  slug: dot-net
+  link: https://social.technet.microsoft.com/wiki/contents/articles/7720.exam-70-536-ts-microsoft-net-framework-application-development-foundation.aspx
+  date: "2010-01-29T00:00:00.000-08:00"
