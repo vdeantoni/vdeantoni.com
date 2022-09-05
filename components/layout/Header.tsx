@@ -45,7 +45,7 @@ const Branding: FC = () => {
             src={"/logo.svg"}
             width={"100%"}
             height={"100%"}
-            alt={"Picture of the author playing guitar"}
+            alt={"Stylized picture of the author"}
           />
         </div>
         <span className={cn("hidden", "md:block", "ml-3")}>vdeantoni.com</span>

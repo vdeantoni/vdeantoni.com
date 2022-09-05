@@ -40,9 +40,10 @@ const IndexPage: FC<{ POSTS: any[] }> = ({ POSTS }) => {
         >
           <Image
             src={"/me.jpg"}
-            alt={"Stylized picture of the author"}
+            alt={"Picture of the author playing guitar"}
             layout="fill"
             objectFit={"cover"}
+            priority={true}
           />
         </div>
         <div
