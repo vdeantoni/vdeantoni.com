@@ -1,11 +1,9 @@
-import {
-  faGithub,
-  faLinkedin,
-  faMedium,
-  faStackOverflow,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
+import { faMedium } from "@fortawesome/free-brands-svg-icons/faMedium";
+import { faStackOverflow } from "@fortawesome/free-brands-svg-icons/faStackOverflow";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import React, { FC } from "react";
@@ -15,33 +13,33 @@ const SocialLinks: FC<{ className?: string }> = ({ className = "" }) => {
     {
       name: "Email",
       link: "mailto:admin@vdeantoni.com",
-      icon: faEnvelope,
+      icon: faEnvelope
     },
     {
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/vdeantoni",
-      icon: faLinkedin,
+      icon: faLinkedin
     },
     {
       name: "Medium",
       link: "https://medium.com/@vdeantoni",
-      icon: faMedium,
+      icon: faMedium
     },
     {
       name: "Stack Overflow",
       link: "https://stackoverflow.com/users/621767/deantoni?tab=profile",
-      icon: faStackOverflow,
+      icon: faStackOverflow
     },
     {
       name: "Github",
       link: "https://github.com/vdeantoni",
-      icon: faGithub,
+      icon: faGithub
     },
     {
       name: "Twitter",
       link: "https://twitter.com/vinideantoni",
-      icon: faTwitter,
-    },
+      icon: faTwitter
+    }
   ];
 
   return (

@@ -1,13 +1,14 @@
-import {
-  faAward,
-  faBriefcase,
-  faStream,
-  faUniversity,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAward } from "@fortawesome/free-solid-svg-icons/faAward";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons/faBriefcase";
+import { faStream } from "@fortawesome/free-solid-svg-icons/faStream";
+import { faUniversity } from "@fortawesome/free-solid-svg-icons/faUniversity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
-import { addYears, formatISO } from "date-fns";
-import { first, groupBy, last } from "lodash";
+import addYears from "date-fns/addYears";
+import formatISO from "date-fns/formatISO";
+import first from "lodash/first";
+import groupBy from "lodash/groupBy";
+import last from "lodash/last";
 import Head from "next/head";
 import React, { FC } from "react";
 import Timeline from "../components/Timeline";
@@ -17,8 +18,8 @@ import { formatDate, formatTimeDifference } from "../utils/date";
 export const getStaticProps = () => {
   return {
     props: {
-      RESUME: resume,
-    },
+      RESUME: resume
+    }
   };
 };
 
@@ -57,15 +58,15 @@ const EntryTitle: FC<any> = ({ title, subTitle, slug }) => {
 };
 
 const EntryItem = ({
-  title,
-  start,
-  end,
-  location,
-  blurb,
-  subItems,
-  links,
-  itemColor,
-}: any) => {
+                     title,
+                     start,
+                     end,
+                     location,
+                     blurb,
+                     subItems,
+                     links,
+                     itemColor
+                   }: any) => {
   return (
     <div
       className={cn(
@@ -97,8 +98,8 @@ const EntryItem = ({
           itemColor === "secondary"
             ? "before:bg-secondary"
             : itemColor === "tertiary"
-            ? "before:bg-tertiary"
-            : "before:bg-primary"
+              ? "before:bg-tertiary"
+              : "before:bg-primary"
         )}
       >
         {title}
@@ -129,7 +130,7 @@ const ResumePage: FC<{ RESUME: any }> = ({ RESUME }) => {
   const {
     company: companies,
     school: schools,
-    certification: certifications,
+    certification: certifications
   } = groupBy(RESUME, "type");
 
   return (

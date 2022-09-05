@@ -1,9 +1,7 @@
-import {
-  faBars,
-  faMoon,
-  faSun,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
+import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import { motion, useAnimation } from "framer-motion";
@@ -68,13 +66,13 @@ const ColorSchemeToggle: FC<Partial<HTMLButtonElement>> = ({ className }) => {
           y: -20,
           opacity: 0,
           transition: { duration: 0.3 },
-          transitionEnd: { y: 10 },
+          transitionEnd: { y: 10 }
         });
         setColorScheme(colorScheme === "default" ? "dark" : "default");
         await controls.start({
           y: 0,
           opacity: 1,
-          transition: { duration: 0.5 },
+          transition: { duration: 0.5 }
         });
       }}
       className={cn("a", "text-text", "overflow:hidden", className)}

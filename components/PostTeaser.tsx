@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { format } from "date-fns";
+import format from "date-fns/format";
 import Image from "next/image";
 import React, { FC } from "react";
 

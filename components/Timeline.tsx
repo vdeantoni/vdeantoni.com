@@ -1,6 +1,9 @@
 import cn from "classnames";
-import { addYears } from "date-fns";
-import { first, groupBy, last, range } from "lodash";
+import addYears from "date-fns/addYears";
+import first from "lodash/first";
+import groupBy from "lodash/groupBy";
+import last from "lodash/last";
+import range from "lodash/range";
 import React, { FC } from "react";
 
 const getStartIndex = (items: any[], years: number[]): number =>
@@ -24,14 +27,14 @@ const TimelineItem = ({ name, slug, items, years, itemColor }: any) => {
     itemColor === "secondary"
       ? "border-secondary"
       : itemColor === "tertiary"
-      ? "border-tertiary"
-      : "border-primary";
+        ? "border-tertiary"
+        : "border-primary";
   const borderColorHover =
     itemColor === "secondary"
       ? "group-hover:border-secondaryHover"
       : itemColor === "tertiary"
-      ? "group-hover:border-tertiaryHover"
-      : "group-hover:border-primaryHover";
+        ? "group-hover:border-tertiaryHover"
+        : "group-hover:border-primaryHover";
   return (
     <a
       href={`#${slug}`}
@@ -45,7 +48,7 @@ const TimelineItem = ({ name, slug, items, years, itemColor }: any) => {
       style={{
         gridColumn: `${getStartIndex(items, years)} / span ${getSpanSize(
           items
-        )}`,
+        )}`
       }}
     >
       <span
@@ -73,7 +76,7 @@ const Timeline: FC<any> = ({ data = [] }) => {
   const {
     company: companies,
     school: schools,
-    certification: certifications,
+    certification: certifications
   } = groupBy(data, "type");
 
   const years = range(2002, new Date().getFullYear());
@@ -82,7 +85,7 @@ const Timeline: FC<any> = ({ data = [] }) => {
     <div
       className={cn("grid")}
       style={{
-        gridTemplateColumns: `repeat(${years.length * 12}, minmax(0, 1fr))`,
+        gridTemplateColumns: `repeat(${years.length * 12}, minmax(0, 1fr))`
       }}
     >
       {companies.reverse().map((company) => (
@@ -119,8 +122,8 @@ const Timeline: FC<any> = ({ data = [] }) => {
           items={[
             {
               start: certification.date,
-              end: addYears(new Date(certification.date), 1),
-            },
+              end: addYears(new Date(certification.date), 1)
+            }
           ]}
           years={years}
           itemColor="tertiary"
@@ -140,15 +143,15 @@ const Timeline: FC<any> = ({ data = [] }) => {
             "border-border"
           )}
           style={{
-            gridColumn: `span 12 / span 12`,
+            gridColumn: `span 12 / span 12`
           }}
         >
           <span className={cn("opacity-75")}>
             {index === years.length - 1
               ? "Present"
               : index % 5 === 0
-              ? year
-              : ""}
+                ? year
+                : ""}
           </span>
         </div>
       ))}

@@ -1,4 +1,4 @@
-import { differenceInMonths } from "date-fns";
+import differenceInMonths  from "date-fns/differenceInMonths";
 import { plural } from "./string";
 
 export const formatTimeDifference = (start: string, end: string): string => {
