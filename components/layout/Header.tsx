@@ -5,7 +5,8 @@ import cn from "classnames";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import React, { FC, useState } from "react";
+import { useRouter } from "next/router";
+import React, { FC, useEffect, useState } from "react";
 import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
 
@@ -47,18 +48,31 @@ const Branding: FC = () => {
             alt={"Stylized picture of the author"}
           />
         </div>
-        <span className={cn("hidden", "md:block", "ml-3")}>vdeantoni.com</span>
+        <span className={cn("ml-3")}>vdeantoni.com</span>
       </a>
     </Link>
   );
 };
 
 const Header = () => {
+  const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setShowMenu(false);
+    };
+
+    router.events.on("routeChangeStart", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, [setShowMenu, router]);
 
   return (
     <header
-      className={cn("sticky", "md:relative", "top-0", "bg-transparent", "z-10")}
+      className={cn("relative", "py-2", "bg-transparent", "z-10")}
     >
       <nav
         className={cn(
@@ -66,8 +80,7 @@ const Header = () => {
           "hidden",
           "md:flex",
           "justify-between",
-          "items-center",
-          "py-1"
+          "items-center"
         )}
       >
         <Branding />
@@ -120,7 +133,7 @@ const Header = () => {
               "py-3"
             )}
           >
-            <FontAwesomeIcon icon={faBars} size="2x" />
+            <FontAwesomeIcon icon={faBars} size="2x" className={"w-5 h-5"} />
           </button>
         </div>
         <div
@@ -166,7 +179,7 @@ const Header = () => {
               onClick={() => setShowMenu(false)}
               className={cn("outline-none", "text-text", "hover:text-text")}
             >
-              <FontAwesomeIcon icon={faTimes} size="2x" />
+              <FontAwesomeIcon icon={faTimes} size="2x" className={"w-5 h-5"} />
             </button>
           </div>
           <NavLinks className={cn("border-t")} />

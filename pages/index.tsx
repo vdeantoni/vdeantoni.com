@@ -10,8 +10,8 @@ import posts from "../data/posts.yml";
 export const getStaticProps = () => {
   return {
     props: {
-      POSTS: posts,
-    },
+      POSTS: posts
+    }
   };
 };
 
@@ -35,7 +35,8 @@ const IndexPage: FC<{ POSTS: any[] }> = ({ POSTS }) => {
             "min-h-[480px]",
             "md:h-auto",
             "rounded-lg",
-            "overflow-hidden"
+            "overflow-hidden",
+            "md:order-1"
           )}
         >
           <Image

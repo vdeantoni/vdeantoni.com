@@ -18,7 +18,7 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       )}
     >
       <Header />
-      <main className={cn("flex-1", "py-8", "md:py-12")}>{children}</main>
+      <main className={cn("flex-1", "py-4", "md:py-8")}>{children}</main>
       <Footer />
     </div>
   );
