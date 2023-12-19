@@ -8,15 +8,14 @@
       start: "2020-08-24T00:00:00.000-08:00"
       end:
       location: Culver City, CA - USA
-      blurb: Working as a Software Engineer on the Apple Media Products team.
+      blurb: Working as a Software Engineer on Apple Services Engineering.
       subItems:
-        - Full-stack development with React, Typescript and Webpack on the frontend and Java, Dropwizard and Guice on the backend.
-        - Micro-service architecture with Protobuf and REST APIs.
-        - PostgreSQL
-        - Kafka
-        - Test automation with Cypress.
-        - Electron and Node.js.
+        - Full-stack development with React, Typescript and Java.
+        - Micro-service architecture with Protobuf, REST APIs, PostgreSQL and Kafka.
         - Build and Test with Bazel.
+        - Kubernetes.
+        - Test automation.
+        - Electron and Node.js.
 - type: company
   name: Career Foundry
   slug: career-foundry
