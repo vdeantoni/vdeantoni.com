@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.1)(react@18.2.0)
   '@next/third-parties':
-    specifier: ^14.0.4
-    version: 14.0.4(next@14.0.4)(react@18.2.0)
+    specifier: ^14.0.5-canary.31
+    version: 14.0.5-canary.31(next@14.0.4)(react@18.2.0)
   '@sentry/nextjs':
     specifier: ^7.91.0
     version: 7.91.0(next@14.0.4)(react@18.2.0)
@@ -357,8 +357,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/third-parties@14.0.4(next@14.0.4)(react@18.2.0):
-    resolution: {integrity: sha512-K17BnacV2QOnI2o5DpeuwW/hnRjIgb8TSSMJC+y36330zh4skERb10FRhdc/0QTVuUc6k8jVJhURxdJu097GOQ==}
+  /@next/third-parties@14.0.5-canary.31(next@14.0.4)(react@18.2.0):
+    resolution: {integrity: sha512-45QgFV6eOsLN/eYBE8LF3Pp4MkOoHMQMpoXg8rjKqakwpet70MwnA+q4VVvnUXEqVwHO7ay04T2dxFCxENV9uQ==}
     peerDependencies:
       next: ^13.0.0 || ^14.0.0
       react: ^18.2.0
