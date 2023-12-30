@@ -3,7 +3,7 @@
   "setupTasks": [
     {
       "name": "Install Dependencies",
-      "command": "npm install"
+      "command": "pnpm install"
     }
   ],
 
@@ -11,7 +11,7 @@
   "tasks": {
     "dev": {
       "name": "dev",
-      "command": "npm run dev",
+      "command": "pnpm dev",
       "runAtStart": true,
       "preview": {
         "port": 3000
@@ -19,15 +19,18 @@
     },
     "build": {
       "name": "build",
-      "command": "npm run build"
+      "command": "pnpm build",
+      "runAtStart": false
     },
     "start": {
       "name": "start",
-      "command": "npm run start"
+      "command": "pnpm start",
+      "runAtStart": false
     },
     "lint": {
       "name": "lint",
-      "command": "npm run lint"
+      "command": "pnpm lint",
+      "runAtStart": false
     }
   }
 }

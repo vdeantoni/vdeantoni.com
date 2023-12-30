@@ -14,10 +14,10 @@ Deployed to production via [Vercel](https://vercel.com/).
 
 ## Install
 ```
-npm install
+pnpm install
 ```
 
 ## Run
 ```
-npm run dev
+pnpm run dev
 ```
