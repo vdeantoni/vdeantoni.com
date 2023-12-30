@@ -6,7 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 import React, { FC } from "react";
 import useColorScheme from "../hooks/useColorScheme";
 
-const ColorSchemeToggle: FC<Partial<HTMLButtonElement>> = ({ className }) => {
+const ColorSchemeToggle = ({ className }: { className: string }) => {
   const controls = useAnimation();
   const [colorScheme, setColorScheme] = useColorScheme();
 

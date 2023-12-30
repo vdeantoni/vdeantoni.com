@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import React, { FC } from "react";
 
-const SocialLinks: FC<{ className?: string }> = ({ className = "" }) => {
+const SocialLinks = ({ className = "" }: { className?: string }) => {
   const socialLinks = [
     {
       name: "Email",

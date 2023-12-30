@@ -1,5 +1,5 @@
 import cn from "classnames";
-import format from "date-fns/format";
+import { format } from "date-fns";
 import Image from "next/image";
 import React, { FC } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -25,7 +25,7 @@ export const PostTeaserSkeleton = () => {
   );
 };
 
-const PostTeaser: FC<{ post: any }> = ({ post }) => (
+const PostTeaser = ({ post }: { post: any }) => (
   <a href={post.link} className={cn("group", "block")} title={post.title}>
     <article>
       <div className={"section-grid"}>

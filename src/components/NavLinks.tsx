@@ -5,9 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FC } from "react";
 
-const NavLinks: FC<{ footer?: boolean; className?: string }> = ({
+const NavLinks = ({
   footer = false,
   className,
+}: {
+  footer?: boolean;
+  className?: string;
 }) => {
   const navLinks = [
     {

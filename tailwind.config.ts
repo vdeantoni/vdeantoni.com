@@ -29,14 +29,11 @@ const config: Config = {
       mutedHover: "var(--color-muted-hover)",
     },
     extend: {
-      borderColor: (theme) => ({
+      borderColor: ({ theme }) => ({
         DEFAULT: "var(--color-border)",
         hover: "var(--color-border-hover)",
         ...theme("colors"),
       }),
-      opacity: {
-        10: 0.1,
-      },
       gridTemplateColumns: {
         "2-left-fixed-200": "200px 1fr",
         "2-left-fixed-350": "350px 1fr",

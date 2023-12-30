@@ -6,8 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getResume } from "@/data";
 import cn from "classnames";
 import PostTeaser from "@/components/PostTeaser";
-import addYears from "date-fns/addYears";
-import formatISO from "date-fns/formatISO";
+import { formatISO, addYears } from "date-fns";
 import first from "lodash/first";
 import groupBy from "lodash/groupBy";
 import last from "lodash/last";
@@ -21,9 +20,9 @@ export const metadata: Metadata = {
     "A page with information about my employment and education history.",
 };
 
-const timeDifference = (periods: any[]): string | null => {
+const timeDifference = (periods: any[]): string => {
   if (!periods || periods.length < 1) {
-    return null;
+    return "";
   }
 
   return formatTimeDifference(last(periods).start, first(periods).end);
@@ -33,7 +32,7 @@ const timePeriod = (start: string, end: string): string => {
   return `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
 };
 
-const SectionTitle: FC<any> = ({ title, icon }) => {
+const SectionTitle = ({ title, icon }: { title: string; icon: any }) => {
   return (
     <h2 className={cn("h4", "mt-10", "flex", "items-center")}>
       <FontAwesomeIcon icon={icon} size="1x" className={cn("w-6", "mr-3")} />
@@ -42,7 +41,15 @@ const SectionTitle: FC<any> = ({ title, icon }) => {
   );
 };
 
-const EntryTitle: FC<any> = ({ title, subTitle, slug }) => {
+const EntryTitle = ({
+  title,
+  subTitle,
+  slug,
+}: {
+  title: string;
+  subTitle?: string;
+  slug: string;
+}) => {
   return (
     <div
       className={cn("flex", "flex-col", "md:items-end", "md:sticky", "top-2")}
