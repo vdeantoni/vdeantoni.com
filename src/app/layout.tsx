@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import cn from "classnames";
 import Footer from "@/components/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import RecoilContextProvider from "./RecoilContextProvider";
 import "@/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -39,6 +40,7 @@ export default function RootLayout({
           </div>
         </RecoilContextProvider>
       </body>
+      <GoogleAnalytics gaId="G-KRMQTNKF3C" />
     </html>
   );
 }
