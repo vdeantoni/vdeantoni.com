@@ -13,6 +13,7 @@ import groupBy from "lodash/groupBy";
 import last from "lodash/last";
 import Timeline from "@/components/Timeline";
 import { formatDate, formatTimeDifference } from "@/utils/date";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "vdeantoni.com | Resume",

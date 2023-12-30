@@ -1,6 +1,7 @@
 import { getProjects } from "@/data";
 import cn from "classnames";
 import PostTeaser from "@/components/PostTeaser";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "vdeantoni.com | Projects",
