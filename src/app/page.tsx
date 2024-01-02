@@ -4,7 +4,7 @@ import cn from "classnames";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getPosts } from "@/data";
-import PostTeaser, { PostTeaserSkeleton } from "@/components/PostTeaser";
+import PostCard, { PostCardSkeleton } from "@/components/PostCard";
 import { Suspense } from "react";
 
 const LatestPost = async () => {
@@ -22,7 +22,7 @@ const LatestPost = async () => {
         "mt-10"
       )}
     >
-      <PostTeaser post={posts[0]} />
+      <PostCard post={posts[0]} />
     </div>
   );
 };
@@ -89,7 +89,7 @@ export default async function Home() {
 
       <h2 className={cn("h3", "mt-10")}>Latest post</h2>
 
-      <Suspense fallback={<PostTeaserSkeleton />}>
+      <Suspense fallback={<PostCardSkeleton />}>
         <LatestPost />
       </Suspense>
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { FC } from "react";
 import Skeleton from "react-loading-skeleton";
 
-export const PostTeaserSkeleton = () => {
+export const PostCardSkeleton = () => {
   return (
     <div className={"section-grid"}>
       <Skeleton className={cn("w-full", "h-40", "lg:h-60")} />
@@ -25,7 +25,7 @@ export const PostTeaserSkeleton = () => {
   );
 };
 
-const PostTeaser = ({ post }: { post: any }) => (
+const PostCard = ({ post }: { post: any }) => (
   <a href={post.link} className={cn("group", "block")} title={post.title}>
     <article>
       <div className={"section-grid"}>
@@ -96,4 +96,4 @@ const PostTeaser = ({ post }: { post: any }) => (
   </a>
 );
 
-export default PostTeaser;
+export default PostCard;
