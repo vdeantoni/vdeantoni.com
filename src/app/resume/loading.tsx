@@ -1,5 +1,4 @@
 import Skeleton from "react-loading-skeleton";
-import { PostTeaserSkeleton } from "@/components/PostTeaser";
 import cn from "classnames";
 
 export default function Loading() {

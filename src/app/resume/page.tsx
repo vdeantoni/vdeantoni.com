@@ -5,7 +5,6 @@ import { faUniversity } from "@fortawesome/free-solid-svg-icons/faUniversity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getResume } from "@/data";
 import cn from "classnames";
-import PostTeaser from "@/components/PostTeaser";
 import { formatISO, addYears } from "date-fns";
 import first from "lodash/first";
 import groupBy from "lodash/groupBy";

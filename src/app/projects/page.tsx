@@ -1,6 +1,6 @@
 import { getProjects } from "@/data";
 import cn from "classnames";
-import PostTeaser from "@/components/PostTeaser";
+import PostCard from "@/components/PostCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default async function Projects() {
         className={cn("grid", "grid-cols-1", "gap-10", "md:gap-20", "mt-10")}
       >
         {projects.map((project, index) => (
-          <PostTeaser key={index} post={project} />
+          <PostCard key={index} post={project} />
         ))}
       </div>
     </>

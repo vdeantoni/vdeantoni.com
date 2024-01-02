@@ -1,5 +1,5 @@
 import Skeleton from "react-loading-skeleton";
-import { PostTeaserSkeleton } from "@/components/PostTeaser";
+import { PostCardSkeleton } from "@/components/PostCard";
 import cn from "classnames";
 
 export default function Loading() {
@@ -12,9 +12,9 @@ export default function Loading() {
       <div
         className={cn("grid", "grid-cols-1", "gap-10", "md:gap-20", "mt-10")}
       >
-        <PostTeaserSkeleton />
-        <PostTeaserSkeleton />
-        <PostTeaserSkeleton />
+        <PostCardSkeleton />
+        <PostCardSkeleton />
+        <PostCardSkeleton />
       </div>
     </>
   );
