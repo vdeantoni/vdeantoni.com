@@ -1,3 +1,5 @@
+"use client";
+
 import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
 import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

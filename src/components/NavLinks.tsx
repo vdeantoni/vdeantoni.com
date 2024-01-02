@@ -3,7 +3,7 @@
 import cn from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { FC } from "react";
+import React from "react";
 
 const NavLinks = ({
   footer = false,
