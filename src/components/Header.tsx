@@ -49,7 +49,7 @@ export const Branding = () => {
 
 const Header = () => {
   return (
-    <header className={cn("relative", "py-2", "bg-transparent", "z-10")}>
+    <header className={cn("sticky", "top-0", "bg-background", "py-2", "z-10")}>
       <nav
         className={cn(
           "desktop",
