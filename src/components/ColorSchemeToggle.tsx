@@ -8,7 +8,7 @@ import { motion, useAnimation } from "framer-motion";
 import React, { FC } from "react";
 import useColorScheme from "../hooks/useColorScheme";
 
-const ColorSchemeToggle = ({ className }: { className: string }) => {
+const ColorSchemeToggle = ({ className }: { className?: string }) => {
   const controls = useAnimation();
   const [colorScheme, setColorScheme] = useColorScheme();
 
