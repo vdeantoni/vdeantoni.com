@@ -71,7 +71,7 @@ const Header = () => {
             "lg:block"
           )}
         />
-        <ColorSchemeToggle className={cn("mt-[-0.25rem]")} />
+        <ColorSchemeToggle />
       </nav>
       <MobileNav />
     </header>
