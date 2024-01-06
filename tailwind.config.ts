@@ -45,6 +45,15 @@ const config: Config = {
       boxShadow: {
         "outline-angled": "8px 8px 0px 0px var(--color-primary-hover)",
       },
+      keyframes: {
+        brighten: {
+          "0%, 100%": { filter: "brightness(1)" },
+          "50%": { filter: "brightness(1.2)" },
+        },
+      },
+      animation: {
+        brighten: "brighten 10s ease-in-out infinite",
+      },
     },
   },
   variants: {
