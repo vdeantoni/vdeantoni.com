@@ -5,11 +5,15 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import React, { useEffect, useState } from "react";
-import ColorSchemeToggle from "./ColorSchemeToggle";
 import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
 import { Branding } from "./Header";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {
+  ssr: false,
+});
 
 export default function MobileNav() {
   const [showMenu, setShowMenu] = useState(false);

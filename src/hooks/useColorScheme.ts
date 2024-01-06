@@ -1,12 +1,11 @@
+"use client";
+
 import { useEffect } from "react";
 import { atom, useRecoilState } from "recoil";
 
 const colorSchemeState = atom({
   key: "colorSchemeState",
-  default:
-    typeof window !== "undefined"
-      ? sessionStorage.getItem("color-scheme") ?? "default"
-      : "default",
+  default: sessionStorage.getItem("color-scheme") ?? "dark",
 });
 
 const useColorScheme = (): ReturnType<typeof useRecoilState<string>> => {
