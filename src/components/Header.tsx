@@ -2,10 +2,14 @@ import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import ColorSchemeToggle from "./ColorSchemeToggle";
 import MobileNav from "./MobileNav";
 import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
+import dynamic from "next/dynamic";
+
+const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {
+  ssr: false,
+});
 
 export const Branding = () => {
   return (
