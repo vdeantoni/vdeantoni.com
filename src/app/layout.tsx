@@ -6,6 +6,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import RecoilContextProvider from "./RecoilContextProvider";
 import "@/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "vdeantoni.com",
@@ -31,7 +32,7 @@ export default function RootLayout({
               "px-4",
               "mx-auto",
               "sm:px-6",
-              "lg:px-8"
+              "lg:px-8",
             )}
           >
             <Header />
@@ -39,6 +40,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </RecoilContextProvider>
+        <Analytics />
       </body>
       <GoogleAnalytics gaId="G-KRMQTNKF3C" />
     </html>
