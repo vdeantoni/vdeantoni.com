@@ -21,6 +21,6 @@
     "title": "Proximity Graph Simulator",
     "subtitle": "A simple particle simulator.",
     "image": "https://miro.medium.com/fit/c/1024/250/1*a4tiXdRcOxYEQn-SyV6Jcw.png",
-    "link": "https://proximity-graph-animation.netlify.app/"
+    "link": "https://proximity-graph-animation.vercel.app"
   }
 ]
