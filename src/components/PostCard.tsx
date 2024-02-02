@@ -2,28 +2,6 @@ import cn from "classnames";
 import { format } from "date-fns";
 import Image from "next/image";
 import React, { FC } from "react";
-import Skeleton from "react-loading-skeleton";
-
-export const PostCardSkeleton = () => {
-  return (
-    <div className={"section-grid"}>
-      <Skeleton className={cn("w-full", "h-40", "lg:h-60")} />
-      <div className={cn("flex", "flex-col", "h-full")}>
-        <div className={cn("h3", "mb-4")}>
-          <Skeleton />
-        </div>
-        <div className={cn("mt-1")}>
-          <Skeleton />
-        </div>
-        <div className={cn("flex", "flex-1", "items-end", "mt-2")}>
-          <div className={cn("w-60")}>
-            <Skeleton />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const PostCard = ({ post }: { post: any }) => (
   <a href={post.link} className={cn("group", "block")} title={post.title}>
@@ -38,7 +16,7 @@ const PostCard = ({ post }: { post: any }) => (
               "h-40",
               "lg:h-60",
               "group-hover:shadow-outline-angled",
-              "actionable"
+              "actionable",
             )}
           >
             <Image
@@ -62,7 +40,7 @@ const PostCard = ({ post }: { post: any }) => (
                 "mb-4",
                 "text-primary",
                 "group-hover:text-primaryHover",
-                "actionable"
+                "actionable",
               )}
             >
               {post.title}
@@ -78,7 +56,7 @@ const PostCard = ({ post }: { post: any }) => (
               "items-end",
               "text-text",
               "opacity-75",
-              "mt-2"
+              "mt-2",
             )}
           >
             {post.date && (
