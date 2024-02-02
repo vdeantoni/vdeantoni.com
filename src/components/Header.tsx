@@ -37,6 +37,7 @@ export const Branding = () => {
           "group-hover:text-primaryHover",
           "group-hover:border-primaryHover",
           "relative",
+          "group",
         )}
       >
         <Image
@@ -44,6 +45,7 @@ export const Branding = () => {
           loading="lazy"
           fill={true}
           alt={"Stylized picture of the author"}
+          className="group-hover:animate-spin"
         />
       </div>
       <span className={cn("ml-3")}>vdeantoni.com</span>
@@ -53,7 +55,16 @@ export const Branding = () => {
 
 const Header = () => {
   return (
-    <header className={cn("py-2", "z-10")}>
+    <header
+      className={cn(
+        "py-2",
+        "z-10",
+        "sticky",
+        "top-0",
+        "md:relative",
+        "bg-background",
+      )}
+    >
       <nav
         className={cn(
           "desktop",
