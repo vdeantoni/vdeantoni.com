@@ -32,7 +32,7 @@ export default function MobileNav() {
         "md:hidden",
         "flex-col",
         "justify-center",
-        "items-center"
+        "items-center",
       )}
     >
       <div
@@ -47,7 +47,7 @@ export default function MobileNav() {
           { invisible: showMenu },
           { "opacity-0": showMenu },
           { visible: !showMenu },
-          { "opacity-100": !showMenu }
+          { "opacity-100": !showMenu },
         )}
       >
         <Branding />
@@ -83,7 +83,7 @@ export default function MobileNav() {
           { "scale-100": showMenu },
           { invisible: !showMenu },
           { "opacity-0": !showMenu },
-          { "scale-90": !showMenu }
+          { "scale-90": !showMenu },
         )}
       >
         <div
@@ -93,7 +93,7 @@ export default function MobileNav() {
             "items-center",
             "w-full",
             "py-2",
-            "px-0"
+            "px-0",
           )}
         >
           <Branding />

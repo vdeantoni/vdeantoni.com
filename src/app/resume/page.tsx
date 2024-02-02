@@ -83,7 +83,7 @@ const EntryItem = ({
         "before:top-[1.25rem]",
         "before:left-[-1.2rem]",
         "before:border-dashed",
-        "before:border-l"
+        "before:border-l",
       )}
     >
       <div
@@ -102,8 +102,8 @@ const EntryItem = ({
           itemColor === "secondary"
             ? "before:bg-secondary"
             : itemColor === "tertiary"
-            ? "before:bg-tertiary"
-            : "before:bg-primary"
+              ? "before:bg-tertiary"
+              : "before:bg-primary",
         )}
       >
         {title}
@@ -149,7 +149,7 @@ export default async function Resume() {
           className={cn(
             "mt-10",
             "xl:w-[calc(100vw-4rem)]",
-            "xl:ml-[calc(36rem-50vw)]"
+            "xl:ml-[calc(36rem-50vw)]",
           )}
         >
           <Timeline data={resume} />

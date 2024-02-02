@@ -4,8 +4,7 @@ import cn from "classnames";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getPosts } from "@/data";
-import PostCard, { PostCardSkeleton } from "@/components/PostCard";
-import { Suspense } from "react";
+import PostCard from "@/components/PostCard";
 
 const LatestPost = async () => {
   const posts = await getPosts();
@@ -19,7 +18,7 @@ const LatestPost = async () => {
         "md:gap-12",
         "lg:gap-16",
         "items-center",
-        "mt-10"
+        "mt-10",
       )}
     >
       <PostCard post={posts[0]} />
@@ -37,7 +36,7 @@ export default async function Home() {
           "md:grid-cols-2",
           "gap-8",
           "md:gap-12",
-          "md:gap-16"
+          "md:gap-16",
         )}
       >
         <div
@@ -48,14 +47,14 @@ export default async function Home() {
             "md:h-auto",
             "rounded-lg",
             "overflow-hidden",
-            "md:order-1"
+            "md:order-1",
           )}
         >
           <Image
             src={"/me.jpg"}
             alt={"Picture of the author playing guitar"}
             fill={true}
-            priority={true}
+            priority={false}
             style={{
               objectFit: "cover",
             }}
@@ -90,9 +89,7 @@ export default async function Home() {
 
       <h2 className={cn("h3", "mt-10")}>Latest post</h2>
 
-      <Suspense fallback={<PostCardSkeleton />}>
-        <LatestPost />
-      </Suspense>
+      <LatestPost />
 
       <div className={cn("flex", "justify-end")}>
         <Link href={"/posts"}>
@@ -104,7 +101,7 @@ export default async function Home() {
                 "ml-2",
                 "w-4",
                 "group-hover:translate-x-1.5",
-                "transition"
+                "transition",
               )}
             />
           </button>

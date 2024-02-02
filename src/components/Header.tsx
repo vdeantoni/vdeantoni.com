@@ -20,7 +20,7 @@ export const Branding = () => {
         "text-2xl",
         "font-semibold",
         "text-text",
-        "group"
+        "group",
       )}
     >
       <div
@@ -36,7 +36,8 @@ export const Branding = () => {
           "actionable",
           "group-hover:text-primaryHover",
           "group-hover:border-primaryHover",
-          "relative"
+          "relative",
+          "group",
         )}
       >
         <Image
@@ -44,6 +45,7 @@ export const Branding = () => {
           loading="lazy"
           fill={true}
           alt={"Stylized picture of the author"}
+          className="group-hover:animate-spin"
         />
       </div>
       <span className={cn("ml-3")}>vdeantoni.com</span>
@@ -53,14 +55,23 @@ export const Branding = () => {
 
 const Header = () => {
   return (
-    <header className={cn("sticky", "top-0", "bg-background", "py-2", "z-10")}>
+    <header
+      className={cn(
+        "py-2",
+        "z-10",
+        "sticky",
+        "top-0",
+        "md:relative",
+        "bg-background",
+      )}
+    >
       <nav
         className={cn(
           "desktop",
           "hidden",
           "md:flex",
           "justify-between",
-          "items-center"
+          "items-center",
         )}
       >
         <Branding />
@@ -72,7 +83,7 @@ const Header = () => {
             "border-r",
             "pr-2",
             "none",
-            "lg:block"
+            "lg:block",
           )}
         />
         <ColorSchemeToggle />
