@@ -33,9 +33,9 @@
         "type": "role",
         "title": "Mentor",
         "start": "2021-10-01T00:00:00.000-08:00",
-        "end": null,
+        "end": "2024-05-01T00:00:00.000-08:00",
         "location": "USA",
-        "blurb": "I mentor web development students. I review their projects and provide feedback. I also provide insights into what being a Web Developer is like, and how to be successful in the field."
+        "blurb": "I mentored web development students. I reviewed their projects and provided feedback. I also provided insights into what being a Web Developer is like, and how to be successful in the field."
       }
     ]
   },

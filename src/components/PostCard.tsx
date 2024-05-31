@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { format } from "date-fns";
 import Image from "next/image";
-import React, { FC } from "react";
+import React from "react";
 
 const PostCard = ({ post }: { post: any }) => (
   <a href={post.link} className={cn("group", "block")} title={post.title}>
@@ -29,6 +29,9 @@ const PostCard = ({ post }: { post: any }) => (
                 objectFit: "cover",
               }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+              className={cn(
+                "transform group-hover:scale-105 duration-300",
+              )}
             />
           </div>
         )}
