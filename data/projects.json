@@ -1,5 +1,11 @@
 [
   {
+    "title": "yava",
+    "subtitle": "Trim, cut, crop, resize and export video files. You can select a file from your device, record your camera, and even capture your screen. Everything is processed locally, nothing leaves your device!",
+    "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_250/v1725927241/yava_hdz9r2.png",
+    "link": "https://yetanothervideo.app"
+  },
+  {
     "title": "CSSColors.dev",
     "subtitle": "Simple tool to browse CSS named colors.",
     "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_250,w_1024/v1661143311/csscolors_kbgpcy.png",
