@@ -3,8 +3,28 @@ import Link from "next/link";
 import cn from "classnames";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getPosts } from "@/data";
+import {getPosts, getProjects} from "@/data";
 import PostCard from "@/components/PostCard";
+
+const LatestProject = async () => {
+    const project = await getProjects();
+
+    return (
+        <div
+            className={cn(
+                "grid",
+                "grid-cols-1",
+                "gap-8",
+                "md:gap-12",
+                "lg:gap-16",
+                "items-center",
+                "mt-10",
+            )}
+        >
+            <PostCard post={project[0]} />
+        </div>
+    );
+};
 
 const LatestPost = async () => {
   const posts = await getPosts();
@@ -39,7 +59,7 @@ export default async function Home() {
           "md:gap-16",
         )}
       >
-        <Me/>
+        <Me />
         <div
           className={cn("flex", "flex-col", "items-center", "md:items-start")}
         >
@@ -65,6 +85,27 @@ export default async function Home() {
         </div>
       </div>
 
+      <h2 className={cn("h3", "mt-10")}>Most recent project</h2>
+
+      <LatestProject />
+
+      <div className={cn("flex", "justify-end")}>
+        <Link href={"/projects"}>
+          <button className={cn("button", "mt-6", "group")}>
+            View all projects
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className={cn(
+                "ml-2",
+                "w-4",
+                "group-hover:translate-x-1.5",
+                "transition",
+              )}
+            />
+          </button>
+        </Link>
+      </div>
+
       <h2 className={cn("h3", "mt-10")}>Latest post</h2>
 
       <LatestPost />
@@ -72,7 +113,7 @@ export default async function Home() {
       <div className={cn("flex", "justify-end")}>
         <Link href={"/posts"}>
           <button className={cn("button", "mt-6", "group")}>
-            View all
+            View all posts
             <FontAwesomeIcon
               icon={faArrowRight}
               className={cn(
