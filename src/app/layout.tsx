@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import RecoilContextProvider from "./RecoilContextProvider";
 import "@/styles/globals.css";
-import "atropos/css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
