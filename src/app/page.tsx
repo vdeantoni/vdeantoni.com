@@ -3,27 +3,27 @@ import Link from "next/link";
 import cn from "classnames";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {getPosts, getProjects} from "@/data";
+import { getPosts, getProjects } from "@/data";
 import PostCard from "@/components/PostCard";
 
 const LatestProject = async () => {
-    const project = await getProjects();
+  const project = await getProjects();
 
-    return (
-        <div
-            className={cn(
-                "grid",
-                "grid-cols-1",
-                "gap-8",
-                "md:gap-12",
-                "lg:gap-16",
-                "items-center",
-                "mt-10",
-            )}
-        >
-            <PostCard post={project[0]} />
-        </div>
-    );
+  return (
+    <div
+      className={cn(
+        "grid",
+        "grid-cols-1",
+        "gap-8",
+        "md:gap-12",
+        "lg:gap-16",
+        "items-center",
+        "mt-10",
+      )}
+    >
+      <PostCard post={project[0]} />
+    </div>
+  );
 };
 
 const LatestPost = async () => {
@@ -85,7 +85,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <h2 className={cn("h3", "mt-10")}>Most recent project</h2>
+      <h2 className={cn("h3", "mt-20")}>Most recent project</h2>
 
       <LatestProject />
 
