@@ -5,6 +5,59 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
+interface NavLink {
+  name: string;
+  link: string;
+}
+
+const navLinks: NavLink[] = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Posts",
+    link: "/posts",
+  },
+  {
+    name: "Projects",
+    link: "/projects",
+  },
+  {
+    name: "Resume",
+    link: "/resume",
+  },
+];
+
+const ActiveNavLink = ({
+  link,
+  currentPathname,
+  footer = false,
+}: {
+  link: NavLink;
+  currentPathname: string;
+  footer?: boolean;
+}) => {
+  const isActive = currentPathname === link.link;
+
+  return (
+    <Link
+      href={link.link}
+      title={link.name}
+      className={cn(
+        "text-text",
+        "text-base",
+        "md:border-b-0",
+        { "font-bold": isActive },
+        { "py-3": !footer },
+        { "border-b": !footer },
+      )}
+    >
+      {link.name}
+    </Link>
+  );
+};
+
 const NavLinks = ({
   footer = false,
   className,
@@ -12,25 +65,6 @@ const NavLinks = ({
   footer?: boolean;
   className?: string;
 }) => {
-  const navLinks = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Posts",
-      link: "/posts",
-    },
-    {
-      name: "Projects",
-      link: "/projects",
-    },
-    {
-      name: "Resume",
-      link: "/resume",
-    },
-  ];
-
   const pathname = usePathname();
 
   return (
@@ -42,25 +76,16 @@ const NavLinks = ({
         "gap-0",
         "md:gap-2",
         "lg:gap-8",
-        className
+        className,
       )}
     >
-      {navLinks?.map((link) => (
-        <Link
+      {navLinks.map((link) => (
+        <ActiveNavLink
           key={link.name}
-          href={link.link}
-          title={link.name}
-          className={cn(
-            "text-text",
-            "text-base",
-            "md:border-b-0",
-            { "font-bold": pathname === link.link },
-            { "py-3": !footer },
-            { "border-b": !footer }
-          )}
-        >
-          {link.name}
-        </Link>
+          link={link}
+          currentPathname={pathname}
+          footer={footer}
+        />
       ))}
     </div>
   );

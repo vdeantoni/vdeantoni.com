@@ -58,7 +58,7 @@ const SocialLinks = ({ className = "" }: { className?: string }) => {
               "h-5",
               "transform",
               "transition-all",
-              "hover:scale-125"
+              "hover:scale-125",
             )}
           />
         </a>

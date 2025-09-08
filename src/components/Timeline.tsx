@@ -27,14 +27,14 @@ const TimelineItem = ({ name, slug, items, years, itemColor }: any) => {
     itemColor === "secondary"
       ? "border-secondary"
       : itemColor === "tertiary"
-      ? "border-tertiary"
-      : "border-primary";
+        ? "border-tertiary"
+        : "border-primary";
   const borderColorHover =
     itemColor === "secondary"
-      ? "group-hover:border-secondaryHover"
+      ? "group-hover:border-secondary-hover"
       : itemColor === "tertiary"
-      ? "group-hover:border-tertiaryHover"
-      : "group-hover:border-primaryHover";
+        ? "group-hover:border-tertiary-hover"
+        : "group-hover:border-primary-hover";
   return (
     <a
       href={`#${slug}`}
@@ -43,11 +43,11 @@ const TimelineItem = ({ name, slug, items, years, itemColor }: any) => {
         "flex",
         "justify-center",
         "overflow-hidden",
-        "hover:overflow-visible"
+        "hover:overflow-visible",
       )}
       style={{
         gridColumn: `${getStartIndex(items, years)} / span ${getSpanSize(
-          items
+          items,
         )}`,
       }}
     >
@@ -62,7 +62,7 @@ const TimelineItem = ({ name, slug, items, years, itemColor }: any) => {
           borderColorHover,
           "border-b-8",
           "whitespace-nowrap",
-          "actionable"
+          "actionable",
         )}
         style={{ width: "calc(100% - 10px)" }}
       >
@@ -140,7 +140,7 @@ const Timeline = ({ data = [] }: { data: any[] }) => {
             "text-center",
             "pt-2",
             "border-t",
-            "border-border"
+            "border-border",
           )}
           style={{
             gridColumn: `span 12 / span 12`,
@@ -150,8 +150,8 @@ const Timeline = ({ data = [] }: { data: any[] }) => {
             {index === years.length - 1
               ? "Present"
               : index % 5 === 0
-              ? year
-              : ""}
+                ? year
+                : ""}
           </span>
         </div>
       ))}

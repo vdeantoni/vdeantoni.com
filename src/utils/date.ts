@@ -25,7 +25,7 @@ export const formatTimeDifference = (start: string, end: string): string => {
 
 export const formatDate = (
   date: string,
-  options?: Intl.DateTimeFormatOptions
+  options?: Intl.DateTimeFormatOptions,
 ) => {
   options = options || {
     year: "numeric",
@@ -33,6 +33,6 @@ export const formatDate = (
   };
 
   return new Intl.DateTimeFormat("en-US", options).format(
-    date ? new Date(date) : new Date()
+    date ? new Date(date) : new Date(),
   );
 };

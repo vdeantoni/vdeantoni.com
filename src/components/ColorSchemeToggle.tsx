@@ -5,12 +5,12 @@ import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
 import { motion, useAnimation } from "framer-motion";
-import React, { FC } from "react";
-import useColorScheme from "../hooks/useColorScheme";
+import React from "react";
+import { useColorScheme } from "../hooks/useColorScheme";
 
 const ColorSchemeToggle = ({ className }: { className?: string }) => {
   const controls = useAnimation();
-  const [colorScheme, setColorScheme] = useColorScheme();
+  const { scheme, setScheme } = useColorScheme();
 
   return (
     <button
@@ -24,7 +24,7 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
           transition: { duration: 0.3 },
           transitionEnd: { y: 10 },
         });
-        setColorScheme(colorScheme === "default" ? "dark" : "default");
+        setScheme(scheme === "default" ? "dark" : "default");
         await controls.start({
           y: 0,
           opacity: 1,
@@ -35,7 +35,7 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
     >
       <motion.div animate={controls}>
         <FontAwesomeIcon
-          icon={colorScheme === "default" ? faSun : faMoon}
+          icon={scheme === "default" ? faSun : faMoon}
           className={cn("w-5", "h-5")}
         />
       </motion.div>

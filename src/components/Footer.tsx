@@ -13,7 +13,7 @@ const Footer: FC = () => {
           "md:flex-row",
           "items-start",
           "md:items-center",
-          "justify-center"
+          "justify-center",
         )}
       >
         <NavLinks
@@ -33,7 +33,7 @@ const Footer: FC = () => {
           "md:py-6",
           "mt-4",
           "md:mt-5",
-          "md:mt-6"
+          "md:mt-6",
         )}
       >
         <div className={cn("text-sm")}>

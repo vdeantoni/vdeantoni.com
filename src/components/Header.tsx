@@ -3,13 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import MobileNav from "./MobileNav";
-import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
 import dynamic from "next/dynamic";
 
-const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {
-  ssr: false,
-});
+const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {});
+const NavLinks = dynamic(() => import("./NavLinks"), {});
 
 export const Branding = () => {
   return (
@@ -34,17 +32,18 @@ export const Branding = () => {
           "border-black",
           "border",
           "actionable",
-          "group-hover:text-primaryHover",
-          "group-hover:border-primaryHover",
+          "group-hover:text-primary-hover",
+          "group-hover:border-primary-hover",
           "relative",
           "group",
         )}
       >
         <Image
           src={"/logo.svg"}
-          loading="lazy"
+          loading="eager"
           fill={true}
           alt={"Stylized picture of the author"}
+          priority={true}
         />
       </div>
       <span className={cn("ml-3")}>vdeantoni.com</span>
@@ -56,12 +55,15 @@ const Header = () => {
   return (
     <header
       className={cn(
+        "mt-6",
         "py-2",
+        "px-4",
         "z-10",
         "sticky",
         "top-0",
         "md:relative",
         "bg-background",
+        "rounded",
       )}
     >
       <nav
