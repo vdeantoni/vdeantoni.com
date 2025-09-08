@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -6,9 +7,10 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ['class', '[data-color-scheme="dark"]'],
+  darkMode: ["class", '[data-color-scheme="dark"]'],
   theme: {
     colors: {
+      ...colors,
       transparent: "transparent",
       current: "currentColor",
 
@@ -56,12 +58,6 @@ const config: Config = {
         brighten: "brighten 10s ease-in-out infinite",
       },
     },
-  },
-  variants: {
-    textColor: ["responsive", "hover", "focus", "group-hover"],
-    backgroundColor: ["responsive", "hover", "focus", "group-hover"],
-    borderColor: ["responsive", "hover", "focus", "group-hover"],
-    boxShadow: ["responsive", "hover", "focus", "group-hover"],
   },
   plugins: [],
 };

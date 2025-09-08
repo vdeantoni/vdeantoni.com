@@ -3,6 +3,7 @@
 # vdeantoni.com
 
 ## Overview
+
 This is the code repository for [vdeantoni.com](https://vdeantoni.com).
 
 The current version is built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
@@ -10,14 +11,17 @@ The current version is built with [Next.js](https://nextjs.org/) and [Tailwind C
 Deployed to production via [Vercel](https://vercel.com/).
 
 ## Requirements
-* [Node.js](https://nodejs.org/)
+
+- [Node.js](https://nodejs.org/)
 
 ## Install
+
 ```
 pnpm install
 ```
 
 ## Run
+
 ```
 pnpm run dev
 ```

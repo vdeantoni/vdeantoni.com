@@ -63,24 +63,91 @@ export default async function Home() {
         <div
           className={cn("flex", "flex-col", "items-center", "md:items-start")}
         >
-          <h1 className={cn("font-extrabold")}>Hello,</h1>
+          <h1 className={cn("font-extrabold")}>Hello</h1>
 
-          <p className={cn("text-lg", "leading-loose", "mt-10")}>
-            My name is Vinicius De Antoni, and I am a generalist software
-            engineer experienced in developing back-end services for web,
-            desktop and mobile applications as well as building user experiences
-            with web technologies.
+          <p className={cn("text-xl", "leading-loose", "mt-10")}>
+            I&apos;m{" "}
+            <span
+              className={cn(
+                "font-bold",
+                "text-xl",
+                "bg-gradient-to-br from-primary to-tertiary bg-clip-text text-transparent",
+              )}
+            >
+              Vinicius De Antoni
+            </span>
+            , a versatile software engineer. I build everything from robust{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              back-end services
+            </span>{" "}
+            to engaging{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              user experiences
+            </span>{" "}
+            for web, desktop, and mobile.
           </p>
-          <p className={cn("text-lg", "leading-loose", "mt-4")}>
-            Throughout my career, I&apos;ve worked with several different
-            technologies in a variety of problem spaces. From embedded software
-            for printers to a costumer support system, from e-commerce platforms
-            to desktop applications.
+
+          <p className={cn("text-xl", "leading-loose", "mt-4")}>
+            My journey has taken me through diverse problem spaces, from{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              embedded software
+            </span>{" "}
+            to large-scale{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              e-commerce platforms
+            </span>
+            .
           </p>
-          <p className={cn("text-lg", "leading-loose", "mt-4")}>
-            Motivated and eager for knowledge, I am very interested in customer
-            facing applications and distributed systems, and I also have passion
-            for game development, artificial intelligence and music.
+
+          <p className={cn("text-xl", "leading-loose", "mt-4")}>
+            I&apos;m passionate about tackling challenges in{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              distributed systems
+            </span>{" "}
+            and have a deep interest in{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              AI
+            </span>
+            , and{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              music
+            </span>
+            .
           </p>
         </div>
       </div>

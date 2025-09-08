@@ -80,7 +80,7 @@ const EntryItem = ({
         "before:absolute",
         "before:opacity-50",
         "before:h-full",
-        "before:top-[1.25rem]",
+        "before:top-5",
         "before:left-[-1.2rem]",
         "before:border-dashed",
         "before:border-l",
@@ -97,8 +97,8 @@ const EntryItem = ({
           "before:opacity-50",
           "before:top-[5px]",
           "before:left-[-1.65rem]",
-          "before:w-[1rem]",
-          "before:h-[1rem]",
+          "before:w-4",
+          "before:h-4",
           itemColor === "secondary"
             ? "before:bg-secondary"
             : itemColor === "tertiary"
@@ -150,6 +150,9 @@ export default async function Resume() {
             "mt-10",
             "xl:w-[calc(100vw-4rem)]",
             "xl:ml-[calc(36rem-50vw)]",
+            "py-4",
+            "rounded",
+            "bg-muted",
           )}
         >
           <Timeline data={resume} />

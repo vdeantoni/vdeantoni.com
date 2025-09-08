@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import cn from "classnames";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import RecoilContextProvider from "./RecoilContextProvider";
+import { ColorSchemeProvider } from "@/contexts/ColorSchemeContext";
 import "@/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <RecoilContextProvider>
+        <ColorSchemeProvider>
           <div
             className={cn(
               "flex",
@@ -34,13 +34,14 @@ export default function RootLayout({
               "mx-auto",
               "sm:px-6",
               "lg:px-8",
+              "bg-muted",
             )}
           >
             <Header />
             <main className={cn("flex-1", "py-4", "md:py-8")}>{children}</main>
             <Footer />
           </div>
-        </RecoilContextProvider>
+        </ColorSchemeProvider>
         <SpeedInsights />
         <Analytics />
         <GoogleAnalytics gaId="G-KRMQTNKF3C" />

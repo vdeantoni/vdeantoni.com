@@ -54,7 +54,7 @@ export default function MobileNav() {
         <button
           aria-label="Open menu"
           onClick={() => setShowMenu(true)}
-          className={cn("outline-none", "text-text", "hover:text-text", "py-3")}
+          className={cn("outline-hidden", "text-text", "hover:text-text", "py-3")}
         >
           <FontAwesomeIcon icon={faBars} size="2x" className={"w-5 h-5"} />
         </button>
@@ -100,7 +100,7 @@ export default function MobileNav() {
           <button
             aria-label="Close menu"
             onClick={() => setShowMenu(false)}
-            className={cn("outline-none", "text-text", "hover:text-text")}
+            className={cn("outline-hidden", "text-text", "hover:text-text")}
           >
             <FontAwesomeIcon icon={faTimes} size="2x" className={"w-5 h-5"} />
           </button>

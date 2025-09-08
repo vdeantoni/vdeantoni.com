@@ -29,9 +29,7 @@ const PostCard = ({ post }: { post: any }) => (
                 objectFit: "cover",
               }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-              className={cn(
-                "transform group-hover:scale-105 duration-300",
-              )}
+              className={cn("transform group-hover:scale-105 duration-300")}
             />
           </div>
         )}
@@ -42,7 +40,7 @@ const PostCard = ({ post }: { post: any }) => (
                 "h3",
                 "mb-4",
                 "text-primary",
-                "group-hover:text-primaryHover",
+                "group-hover:text-primary-hover",
                 "actionable",
               )}
             >
