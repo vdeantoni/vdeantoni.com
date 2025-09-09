@@ -47,9 +47,14 @@ export async function generateMetadata({
 export default async function PostPage({ params }: PostPageProps) {
   const { id } = await params;
   const post = await getPostById(id);
+
+  if (!post) {
+    notFound();
+  }
+
   const markdownContent = await getPostContent(id);
 
-  if (!post || !markdownContent) {
+  if (!markdownContent) {
     notFound();
   }
 

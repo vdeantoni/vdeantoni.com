@@ -18,7 +18,7 @@ And I found it! It’s [dataloader](https://github.com/graphql/dataloader):
 
 Basically, you define your `Dataloader`:
 
-```
+```javascript
 const fetcher = async (requests) => {
  // this function takes an array of collapsed requests makes a batch call and return an array of responses
 };
@@ -28,13 +28,13 @@ const loader = new Dataloader(fetcher);
 
 And then use its promise-based API to load one (or more items):
 
-```
+```javascript
 const data = await loader.load(request);
 ```
 
 By default, individual requests that occur within a single frame of execution will be collapsed. However, that is configurable, and can easily be changed to instead collapse all requests that happen within a time window.
 
-```
+```javascript
 const loader = new DataLoader(fetcher, {
   batchScheduleFn: callback => setTimeout(callback, 100)
 })
@@ -48,7 +48,7 @@ The application also used [react-query](https://react-query.tanstack.com/), to m
 
 All that needed to be done was to use the loader as the react-query fetcher function:
 
-```
+```javascript
 const { data } = useQuery(
     getKey(request),
     () => loader.load(request)

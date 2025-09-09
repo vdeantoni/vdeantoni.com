@@ -33,7 +33,7 @@ Based on that, we’ll break down our work into the following tasks:
 
 We’ll start by creating a basic HTML layout with a `<canvas>` element.
 
-```
+```html
 <html>
   <body>
     <canvas id="myCanvas" width="400" height="400"></canvas>
@@ -50,7 +50,7 @@ We’ve given an ID to the `<canvas>` element, which we’ll use to access the e
 
 With the`<canvas>` element in place, we can start drawing things on it by using JavaScript and the 2D-rendering context [API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
 
-```
+```javascript
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext('2d');
 
@@ -63,7 +63,7 @@ The code above draws a black circle with a radius of 1 pixel in the middle of th
 
 We will now generate a fixed amount of 20 points that will be randomly positioned on the canvas. For each point, we will create an object that initially will contain the point’s x and y positions. Once created, the objects will be added to a list we will later use to iterate on and draw each one of the points.
 
-```
+```javascript
 const getRandomInRange = (min, max) => {
   return Math.random() * (max - min) + min;
 };
@@ -83,7 +83,7 @@ We also created a helper function that relies on `Math.random()` to generate a r
 
 It’s time to draw the points. We will make a few changes to the code we had for drawing a point and use it when iterating the list of points.
 
-```
+```javascript
 const drawPoint = (point) => {
   ctx.beginPath();
   ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
@@ -121,7 +121,7 @@ Once we’re done processing, the browser will then render a new frame with the 
 
 We’ll now create the animation loop.
 
-```
+```javascript
 const loop = () => {
   window.requestAnimationFrame(loop);
 };
@@ -151,16 +151,16 @@ The actual values can be any number we’d like. We can experiment with differ
 
 Now, back to moving the points. With the help of basic trigonometry, we can calculate the point’s displacement given its direction and speed with two equations:
 
-```
-x = speed \* cos(direction)
-y = speed \* sin(direction)
+```javascript
+x = speed * cos(direction)
+y = speed * sin(direction)
 ```
 
 If we add the displacement to the current position, we will have the point’s next position.
 
 Enough math, let’s code.
 
-```
+```javascript
 const movePoint = point => {
   point.x += point.s * Math.cos(point.d);
   point.y += point.s * Math.sin(point.d);
@@ -171,7 +171,7 @@ We created a function called `movePoint` that given a point object, now with two
 
 We also need to change the point creation to set the two new properties.
 
-```
+```javascript
 for (let i = 0; i < TOTAL_POINTS; i++) {
   points.push({
     x: getRandomInRange(0, canvas.width),
@@ -206,7 +206,7 @@ How do we find all the pairs of points where the distance between them is 100px 
 
 For each point, we will look at all the other points, calculate the distance, and decide whether or not a line needs to be drawn.
 
-```
+```javascript
 const CONNECT_DISTANCE = 100;
 
 const distance = (point, other) => {
@@ -265,7 +265,7 @@ For this article, we will implement the first approach as we already have most o
 
 We will remove points that are out of bounds right after we process their next position in the animation loop.
 
-```
+```javascript
 points = points.filter(point => {
   return point.x >= 0 && point.x < canvas.width && point.y >= 0 && point.y < canvas.height;
 });
@@ -275,7 +275,7 @@ As well as moving the point creation loop into the animation loop with a couple 
 
 Regarding the line-stretch effect, if you pay close attention to the [How To GraphQL](https://www.howtographql.com/) background animation, the lines actually stretch thin as points move away from each other. We will try to replicate that by changing the opacity of the line based on the distance.
 
-```
+```javascript
 const drawLine = (point, other, d) => {
   ctx.beginPath();
   ctx.moveTo(point.x, point.y);
@@ -287,7 +287,7 @@ const drawLine = (point, other, d) => {
 
 The complete JavaScript code:
 
-```
+```javascript
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 

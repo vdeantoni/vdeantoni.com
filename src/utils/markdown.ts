@@ -3,6 +3,7 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
+import rehypeHighlight from "rehype-highlight";
 import rehypeAddClasses from "rehype-add-classes";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
@@ -13,15 +14,12 @@ function rehypeCodeBlocks() {
   return (tree: any) => {
     visit(tree, 'element', (node) => {
       if (node.tagName === 'pre' && node.children[0]?.tagName === 'code') {
-        // This is a code block, add classes to both pre and nested code
+        // This is a code block, add classes to pre but let rehype-highlight handle code
         node.properties = {
           ...node.properties,
-          className: 'bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4'
+          className: `${node.properties?.className || ''} bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4`.trim()
         };
-        node.children[0].properties = {
-          ...node.children[0].properties,
-          className: 'text-sm'
-        };
+        // Let rehype-highlight handle the code element classes
       } else if (node.tagName === 'code' && node.parent?.tagName !== 'pre') {
         // This is inline code, add inline styling
         node.properties = {
@@ -43,6 +41,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(remarkToc, { heading: "contents", tight: true })
     .use(remarkRehype, { allowDangerousHtml: true }) // Convert to rehype
     .use(rehypeSlug) // Add IDs to headings
+    .use(rehypeHighlight) // Add syntax highlighting
     .use(rehypeAddClasses, {
       // Headers
       h1: "text-3xl font-bold mt-8 mb-6 text-primary",
