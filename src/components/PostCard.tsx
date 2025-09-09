@@ -1,10 +1,15 @@
 import cn from "classnames";
 import { format } from "date-fns";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const PostCard = ({ post }: { post: any }) => (
-  <a href={post.link} className={cn("group", "block")} title={post.title}>
+  <Link
+    href={`${post.link}`}
+    className={cn("group", "block")}
+    title={post.title}
+  >
     <article>
       <div className={"section-grid"}>
         {post.image && (
@@ -72,7 +77,7 @@ const PostCard = ({ post }: { post: any }) => (
         </div>
       </div>
     </article>
-  </a>
+  </Link>
 );
 
 export default PostCard;

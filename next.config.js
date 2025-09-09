@@ -1,18 +1,20 @@
+const { withSentryConfig } = require("@sentry/nextjs");
+const createMDX = require("@next/mdx");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
     domains: ["res.cloudinary.com", "miro.medium.com"],
   },
 };
 
-module.exports = nextConfig;
-
-// Injected content via Sentry wizard below
-
-const { withSentryConfig } = require("@sentry/nextjs");
+const mdxConfig = createMDX({
+  extension: /\.(md|mdx)$/,
+})(nextConfig);
 
 module.exports = withSentryConfig(
-  module.exports,
+  mdxConfig,
   {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
