@@ -12,7 +12,7 @@ In this article, I’ll show you how you can make your web application responsiv
 
 Just as we use [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features) to make our web applications responsive to [screen resolutions](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width), so we can also use media queries to add responsiveness to the [user’s preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
-```
+```css
 body {
   background: white; color: black;
 }
@@ -58,7 +58,7 @@ You can also find these options by clicking on the three vertical dots on the ri
 In order allow the users to toggle dark mode on and off regardless of their [operating system preferences](https://web.dev/prefers-color-scheme/#activating-dark-mode-in-the-operating-system), we will need to use some Javascript.
 We’ll start by adding `data-color-scheme` [data attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) to the [root element](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement). When the page first loads the value will be set according to the system preferences.
 
-```
+```javascript
 const getPreferredColorScheme = () => {
   const darkQuery = "(prefers-color-scheme: dark)";
   const darkMQL = window.matchMedia ? window.matchMedia(darkQuery) : {};
@@ -74,7 +74,7 @@ document.documentElement.setAttribute("data-color-scheme", getPreferredColorSche
 
 Next, we’ll add a set of variables that will change based on this data-attribute.
 
-```
+```css
 :root {
   --color-text: #191924;
   --color-background: #fff;
@@ -93,13 +93,13 @@ body {
 
 Finally, for the switch, add a button to your HTML:
 
-```
+```html
 <button id="button">Toggle Dark Mode</button>
 ```
 
 and a click event handler to your Javascript:
 
-```
+```javascript
 document.getElementById("button").onclick = () => {
   const colorScheme = document.documentElement.getAttribute("data-color-scheme");
 
@@ -124,7 +124,7 @@ You’ll notice that if the page is reloaded the value of the data-attribute is 
 
 When the page loads, we need to check if there’s a value we can use:
 
-```
+```javascript
 const colorScheme = localStorage.getItem("color-scheme") || getPreferredColorScheme();
 
 document.documentElement.setAttribute("data-color-scheme", colorScheme);
@@ -132,7 +132,7 @@ document.documentElement.setAttribute("data-color-scheme", colorScheme);
 
 And, we need to save the new value when the switch is used:
 
-```
+```javascript
 document.getElementById("button").onclick = () => {
   const colorScheme = document.documentElement.getAttribute("data-color-scheme");
 

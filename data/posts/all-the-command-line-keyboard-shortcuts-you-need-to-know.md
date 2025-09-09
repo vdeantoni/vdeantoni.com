@@ -26,7 +26,7 @@ Although Emacs mode is the default, if you have your `$EDITOR` set to vi (or any
 
 To switch to Emacs mode, run (or add to your `.rc` file):
 
-```
+```sh
 # zsh
 bindkey -e
 
@@ -36,7 +36,7 @@ set -o emacs
 
 To switch to vi mode, run (or add to your `.rc` file):
 
-```
+```sh
 # zsh
 bindkey -v
 
@@ -46,7 +46,7 @@ set -o vi
 
 To list all the current key bindings, run:
 
-```
+```sh
 # zsh
 bindkey
 
@@ -88,7 +88,7 @@ Both Zsh and Bash support keymaps, so you can have a different set of key bindin
 
 *   `TAB`: Attempt shell expansion on the current word. If that fails, attempt completion.
 
-```
+```sh
 gi<TAB>     # git
 ls *<TAB>   # ls folder1 folder2 file3
 ```
@@ -145,7 +145,7 @@ For a list of Zsh-bindable commands, visit [this site](http://zsh.sourceforge.ne
 
 For example, to bind `undo` to `ALT-Z`:
 
-```
+```sh
 # zsh
 bindkey '^\[z' undo
 
@@ -157,7 +157,7 @@ bind '"^\[z":undo'
 
 You can also bind strings:
 
-```
+```sh
 # zsh
 bindkey -s '^\[\[24~' 'You\`ve just pressed F12'
 
@@ -171,7 +171,7 @@ You can also define key bindings to execute shell commands without affecting the
 
 To bind printing the current directory to `CTRL-P`:
 
-```
+```sh
 # bash
 bind -x '"\\C-p":"pwd"'
 ```

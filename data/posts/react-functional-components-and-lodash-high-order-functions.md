@@ -18,8 +18,7 @@ The most important thing is to avoid defining the function more than once.
 
 If the function doesn’t need access to the component’s scope, you can simply define it outside of the component:
 
-```
-
+```javascript
 import { debounce } from "lodash";
 import React, { useState } from "react";
 
@@ -49,7 +48,7 @@ export default MyComponent;
 
 We can use `useCallback` to ensure that the debounced function is created only once and is reused throughout the component’s lifecycle if it needs access to the component’s scope:
 
-```
+```javascript
 import { throttle } from "lodash";
 import React, { useEffect, useState, useCallback } from "react";
 

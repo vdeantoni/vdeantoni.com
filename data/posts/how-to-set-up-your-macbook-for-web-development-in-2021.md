@@ -131,7 +131,7 @@ This is _the_ package manager. It allows you to install, uninstall, and update c
 
 To install it, open the terminal, and run this command:
 
-```
+```sh
 /bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
@@ -151,7 +151,7 @@ This is an optional replacement for the terminal app. It offers a [lot of really
 
 To install it, open the terminal (this is the last time you’ll need it), and run the following:
 
-```
+```sh
 brew install --cask iterm2
 ```
 
@@ -213,7 +213,7 @@ Feel free to explore these settings and configure your profile to your liking. I
 
 The most popular version-control system. You can install it with Homebrew:
 
-```
+```sh
 brew install git
 ```
 
@@ -231,7 +231,7 @@ This tool will make you 100% more productive when using Git via CLI. It makes re
 
 To install it, run:
 
-```
+```sh
 brew install lazygit
 ```
 
@@ -243,7 +243,7 @@ A viewer for git and diff output.
 
 To install it, run:
 
-```
+```sh
 brew install git-delta
 ```
 
@@ -253,7 +253,7 @@ As macOS’s default shell since Catalina, Zsh is built on top of Bash and provi
 
 The first thing I recommend is having Homebrew manage its installation — open iTerm2, and run:
 
-```
+```sh
 brew install zsh
 ```
 
@@ -306,7 +306,7 @@ Oh My Zsh is a community-driven framework for managing your Zsh configuration. I
 
 To install Oh My Zsh, run:
 
-```
+```sh
 sh -c “$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -328,7 +328,7 @@ I highly recommend enabling [Transient Prompt](https://github.com/romkatv/powerl
 
 To install it with Homebrew, run:
 
-```
+```sh
 brew install romkatv/powerlevel10k/powerlevel10k
 ```
 
@@ -347,7 +347,7 @@ Restart iTerm2, and you should see the configuration wizard. In the future, you 
 
 To install it, run:
 
-```
+```sh
 brew install zsh-syntax-highlighting
 ```
 
@@ -360,7 +360,7 @@ And add the following line to your `.zshrc`:
 
 To install it, run:
 
-```
+```sh
 brew install zsh-autosuggestions
 ```
 
@@ -373,7 +373,7 @@ And add the following line to your `.zshrc`:
 
 To install it, run:
 
-```
+```sh
 brew install zsh-history-substring-search
 ```
 
@@ -384,7 +384,7 @@ If you want to use [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-sy
 
 Also, you need to map your arrow keys. Add the following _after_ the source command.
 
-```
+```sh
 bindkey '^\[OA' history-substring-search-up
 bindkey '^\[OB' history-substring-search-down
 ```
@@ -395,7 +395,7 @@ The following plugins are made available by Oh My Zsh, like any other plugin fou
 
 For example, to install all the recommended plugins:
 
-```
+```sh
 plugins=(alias-finder brew common-aliases copydir copyfile docker docker-compose dotenv encode64 extract git jira jsontools node npm npx osx urltools vscode web-search z)
 ```
 
@@ -444,7 +444,7 @@ There are three types of aliases:
 
 Command aliases can also access the original command’s arguments by using the array `$`:
 
-```
+```sh
 loop() {
   for x in {1..$1}; do $@\[2,-1\]; done
 }
@@ -458,7 +458,7 @@ The JavaScript runtime built on Chrome’s V8 JavaScript engine. This is the mos
 
 To install it, run:
 
-```
+```sh
 brew install node
 ```
 
@@ -470,7 +470,7 @@ Docker allows you to develop and deliver software in packages called containers.
 
 To install it, run:
 
-```
+```sh
 brew install --cask `docker`
 ```
 
@@ -484,7 +484,7 @@ A collection of simplified and community-driven man pages.
 
 To install it, run:
 
-```
+```sh
 brew install tldr
 ```
 
@@ -494,7 +494,7 @@ It’s similar to top but allows you to scroll vertically and horizontally so yo
 
 To install it, run:
 
-```
+```sh
 brew install htop
 ```
 
@@ -508,7 +508,7 @@ I wrote a dedicated article for fzf, check it out:
 
 To install it, run these two lines:
 
-```
+```sh
 brew install fzf
 ```
 
@@ -520,7 +520,7 @@ A line-oriented search tool that recursively searches your current directory for
 
 To install it, run:
 
-```
+```sh
 brew install ripgrep
 ```
 
@@ -528,7 +528,7 @@ brew install ripgrep
 
 Watch and analyze your log files from a terminal.
 
-```
+```sh
 brew install lnav
 ```
 
@@ -550,7 +550,7 @@ Clipboard manager for macOS
 
 To install it, run:
 
-```
+```sh
 brew install maccy
 ```
 
@@ -560,7 +560,7 @@ The best IDE/editor for web development at the moment (in my opinion, of course)
 
 To install it, run:
 
-```
+```sh
 brew install --cask visual-studio-code
 ```
 
@@ -592,7 +592,7 @@ Previous display: **⌃⌥⌘ Arrow-Left**
 
 To install it, run:
 
-```
+```sh
 brew install --cask rectangle
 ```
 
@@ -604,7 +604,7 @@ A feature rich image editor, and it’s free.
 
 To install it, run:
 
-```
+```sh
 brew install --cask gimp
 ```
 
@@ -616,7 +616,7 @@ This is more like a honorable mention because I don’t really use it anymore, a
 
 To install it, run:
 
-```
+```sh
 brew install --cask alfred
 ```
 
@@ -626,7 +626,7 @@ A beautiful calculator app for Mac.
 
 To install it, run:
 
-```
+```sh
 brew install --cask numi
 ```
 

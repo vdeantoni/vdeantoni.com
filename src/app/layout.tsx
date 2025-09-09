@@ -8,6 +8,7 @@ import "@/styles/globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import HighlightThemeLoader from "@/components/HighlightThemeLoader";
 
 export const metadata: Metadata = {
   title: "vdeantoni.com",
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ColorSchemeProvider>
+          <HighlightThemeLoader />
           <div
             className={cn(
               "flex",

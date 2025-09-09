@@ -13,13 +13,13 @@ The key to succeeding at interviews is, without a doubt, to be prepared. So, whe
 
 This challenge came up during a phone interview. I was asked to head over to the [Vue.js docs](https://vuejs.org/v2/guide/#Declarative-Rendering), and copy the following snippets to my editor of choice:
 
-```
+```javascript
 <div id="app">
   {{ message }}
 </div>
 ```
 
-```
+```javascript
 var app = new Vue({
   el: '#app',
   data: {
@@ -34,7 +34,7 @@ _Before you jump into the code, always clarify with the interviewer any question
 
 To get started, let’s create our `Vue` class, and add it above the Javascript snippet.
 
-```
+```javascript
 class Vue {
     constructor(options) {
     }
@@ -45,7 +45,7 @@ With that, our little project should at least run without errors.
 
 Now, in order to replace the template string with the provided text, probably the easiest way is to, once we have access to the `#app` element, use `[String.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)` on its `innerHTML` property:
 
-```
+```javascript
 class Vue {
   constructor(options) {
     const el = document.querySelector(options.el);
@@ -62,7 +62,7 @@ class Vue {
 
 This gets the job done, but we can definitely do better. For example, this implementation does not work as expected if we have two template strings with the same name. Only the first occurrence will be replaced.
 
-```
+```javascript
 <div id="app">
   {{ message }} and {{ message }}, what's the {{ message }}
 </div>
@@ -74,7 +74,7 @@ Also, `innerHTML` is expensive, as the value is parsed as HTML. We should use `t
 
 Simply replacing `innerHTML` with either `innerText` or `textContent` works for our simple markup, but it quickly falls short as soon as our markup becomes more complex:
 
-```
+```javascript
 <div id="app">
   {{ message }}
   <p> another {{ message }} inside a paragraph </p>
@@ -85,7 +85,7 @@ You will notice that the `<p>` tags will be removed from the DOM. That’s becau
 
 One way to deal with this is to [traverse](https://en.wikipedia.org/wiki/Tree_traversal) the DOM, find all the text nodes, and then replace the text.
 
-```
+```javascript
 class Vue {
   constructor(options) {
     this.el = document.querySelector(options.el);
@@ -117,7 +117,7 @@ class Vue {
 
 There’s still one more thing that we should improve. Whenever we find a text node, we look for template strings _n_ times (_n, in this case,_ is the number of data entries). So, if we have 200 entries, even if our DOM node looks like this:
 
-```
+```javascript
 <p>Nothing to see here</p>
 ```
 
@@ -125,7 +125,7 @@ We will still iterate 200 times trying to find template strings.
 
 One way to fix this is to implement a simple state machine that looks at the text once and replace template strings (if any) as it goes:
 
-```
+```javascript
 class Vue {
   constructor(options) {
     this.el = document.querySelector(options.el);
@@ -206,7 +206,7 @@ The following two-part challenge happened during an on-site interview. I had bee
 [**async.series**](http://caolan.github.io/async/v3/docs.html#series)
 _Run the functions in the_ `_tasks_` _collection in series, each one running once the previous function has completed. If any functions in the series pass an error to its callback, no more functions are run and_ `_callback_` _is immediately called with the value of the error. Otherwise,_ `_callback_` _receives an array of results when_ `_tasks_` _have completed._
 
-```
+```javascript
 async.series([
     function(callback) {
         // do some stuff ...
@@ -225,7 +225,7 @@ function(err, results) {
 
 Let’s start by creating our async object:
 
-```
+```javascript
 const async = {
     series: (tasks, callback) => {}
 };
@@ -233,7 +233,7 @@ const async = {
 
 The main thing about this challenge is that we need to ensure we execute one function after the other. In other words, we only execute a function after the previous one is done:
 
-```
+```javascript
 const async = {
   series: (tasks, callback) => {
     let i = 0;
@@ -261,7 +261,7 @@ For the sake of simplicity, we are not validating the input or using try/catch f
 [**async.parallel**](http://caolan.github.io/async/v3/docs.html#parallel)
 _Run the_ `_tasks_` _collection of functions in parallel, without waiting until the previous function has completed. If any of the functions pass an error to its callback, the main_ `_callback_` _is immediately called with the value of the error. Once the_ `_tasks_` _have completed, the results are passed to the final_ `_callback_` _as an array._
 
-```
+```javascript
 async.parallel([
     function(callback) {
         setTimeout(function() {
@@ -283,7 +283,7 @@ function(err, results) {
 
 Let’s start by adding a new parallel function to our async object:
 
-```
+```javascript
 const async = {
     series: (tasks, callback) => {}
     parallel: (tasks, callback) => {}
@@ -292,8 +292,7 @@ const async = {
 
 The parallel differs from the series one, in the sense that we can fire all the functions at the same time. We just need to be careful when collecting the results, so they are put in the correct position of the array.
 
-```
-
+```javascript
 parallel: (tasks, callback) => {
     let done = false;
     let count = 0;
@@ -337,7 +336,7 @@ Before we talk about a possible solution, see the result and code [here](https:/
 
 Let’s start by creating our markup:
 
-```
+```html
 <html>
   <body>
     <div id="overlay"></div>
@@ -350,7 +349,7 @@ The `#overlay` will be covering the whole screen, and it’s the element we will
 
 This is the CSS, to style the button and overlay:
 
-```
+```css
 #button {
     cursor: pointer;
     background-color: black;
@@ -379,7 +378,7 @@ During this challenge, I was allowed to use any libraries I wanted. I knew the c
 
 We will tackle the former by using `[fromEvent](https://rxjs-dev.firebaseapp.com/api/index/function/fromEvent)` and `[subscribe](https://rxjs-dev.firebaseapp.com/api/index/class/Observable#subscribe)`. This can totally be done with vanilla Javascript (see `[addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)`).
 
-```
+```javascript
 import { fromEvent } from "rxjs";
 import { distinctUntilChanged, filter } from "rxjs/operators";
 
@@ -401,7 +400,7 @@ We `filter` out all the drag events whose target is not `#button` and also suppr
 
 We will need to do some math in order to tackle the latter.
 
-```
+```javascript
 const maxY = window.innerHeight / 2;
 const y = Math.abs(event.clientY - maxY);
 const pY = y / maxY;
@@ -425,7 +424,7 @@ In my experience, questions about how elements can be animated are very common. 
 
 Let’s start with the HTML:
 
-```
+```html
 <html>
   <body>
     <div id="box"></div>
@@ -435,7 +434,7 @@ Let’s start with the HTML:
 
 And CSS:
 
-```
+```css
 #box {
     width: 50px;
     height: 50px;
@@ -445,7 +444,7 @@ And CSS:
 
 There is more than one way to implement animations with Javascript. I recommend using [window.requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame):
 
-```
+```javascript
 const slideOut = (element, duration) => {
   const initial = 0;
   const target = window.innerWidth;
@@ -484,13 +483,13 @@ A usual follow up question is: how would you implement an [easing function](http
 
 Luckily, we already have [all the parameters](http://blog.moagrius.com/actionscript/jsas-understanding-easing/) we need to swap our linear equation with one of [Penner’s equations](http://robertpenner.com/easing/penner_chapter7_tweening.pdf). Let’s take easeInQuad:
 
-```
+```javascript
 easeInQuad = function (t, b, c, d) { return c*(t/=d)*t + b; };
 ```
 
 We change line 9 to:
 
-```
+```javascript
 const value = target * (time / duration) * (time / duration) + initial;
 ```
 
@@ -519,7 +518,7 @@ I was given total freedom to pick whatever framework and libraries I felt most c
 
 Let’s start by creating a simple React component with a form that will handle user input:
 
-```
+```javascript
 import React, { useState } from "react";
 
 export default function App() {
@@ -543,7 +542,7 @@ If time allows, you should consider creating sub-components to keep your code or
 
 Now, in order to consume the Giphy API, we need to generate an [API key](http://y1ZFwiomdYKWy80gtSxU4iEdv165yeOD). Once we have it, we can add a function to our component to fetch the data from the [search endpoint](https://developers.giphy.com/docs/api/endpoint#search).
 
-```
+```javascript
 const search = () => {
   if (!query) {
     setData(undefined);
@@ -564,7 +563,7 @@ For the sake of simplicity, there’s no error handling for any API exceptions.
 
 Now we need to make the `<form>` call the `search` method when the user clicks **Search** or hits **ENTER**.
 
-```
+```javascript
 <form
   onSubmit={e => {
     e.preventDefault(); // prevents the page from reloading
@@ -575,7 +574,7 @@ Now we need to make the `<form>` call the `search` method when the user clicks *
 
 And finally, we augment our component to render gifs from the search results:
 
-```
+```javascript
 {data && (
   <div>
     <h2>Results</h2>

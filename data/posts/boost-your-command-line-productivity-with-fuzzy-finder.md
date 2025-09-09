@@ -22,7 +22,7 @@ In this article, I will show you how to configure and customize `fzf`, along wit
 
 You can install `fzf` on Linux, macOS, and Windows. If you are on macOS or Linux, it’s available via [Homebrew](http://brew.sh/) and [Linuxbrew](http://linuxbrew.sh/), to install it, run:
 
-```
+```sh
 brew install fzf
 ```
 
@@ -30,7 +30,7 @@ For Windows and other options, visit the official [installation page](https://gi
 
 It’s also recommended to install the key bindings and fuzzy completion:
 
-```
+```sh
 $(brew --prefix)/opt/fzf/install
 ```
 
@@ -42,7 +42,7 @@ This will generate a file for `bash` and `zsh` (and source it in your `.bashrc` 
 
 To launch the interactive UI, run:
 
-```
+```sh
 fzf
 ```
 
@@ -58,32 +58,32 @@ For single selection, `TAB` is not necessary. Just press `ENTER` when the desire
 
 We can also use the output of `fzf` as an argument for another command:
 
-```
+```sh
 vim $(fzf)
 ```
 
 Because `fzf` can read a list from STDIN, process it, and write the selected items to STDOUT, things become more interesting when `fzf` is run in conjunction with other commands.
 
-```
+```sh
 # npm search
 npm search react | fzf
 
 # grep
-grep -irl react \* | fzf
+grep -irl react * | fzf
 
 # PATH folders
-echo $PATH | tr ':' '\\n' | fzf
+echo $PATH | tr ':' '\n' | fzf
 ```
 
 If you use `zsh`, you can add a _global_ alias for `| fzf`:
 
-```
+```sh
 alias -g Z='| fzf' # change Z to whatever you like
 ```
 
 The same examples can then be written as:
 
-```
+```sh
 npm search react Z
 grep -irl react * Z
 echo $PATH | tr ':' '\n' Z
@@ -121,7 +121,7 @@ In the example below, I can quickly `cd` (without typing `cd`) to the `src` fold
 
 If your terminal processes `ALT-C` as _ç,_ you can add the following line to your `.(ba|z)shrc` file after the source commands:
 
-```
+```sh
 bindkey "ç" fzf-cd-widget
 ```
 
@@ -131,13 +131,13 @@ By default, the install script defines the fuzzy completion trigger as `**`.
 
 If you, like me, use `zsh`, you probably use `**` a lot as part of its [filename generation](http://zsh.sourceforge.net/Intro/intro_2.html) (a.k.a. [Glob](https://en.wikipedia.org/wiki/Glob_%28programming%29)) and that can be confusing, but worry not, we can easily customize it by setting `FZF_COMPLETION_TRIGGER` in your `.zshrc` file:
 
-```
+```sh
 export FZF_COMPLETION_TRIGGER='**' # change ** to whatever you like
 ```
 
 The fuzzy completion is aware of the command that precedes it, meaning the suggestions can change based on what you are trying to do:
 
-```
+```sh
 # Directories under current directory (single-selection)
 cd **<TAB>
 
@@ -157,7 +157,7 @@ unalias **<TAB>
 
 Also, fuzzy completion for PIDs is provided for kill command. In this case, there is no trigger sequence, just press the `tab` key after the `kill` command.
 
-```
+```sh
 # Can select multiple processes with <TAB> or <Shift-TAB> keys
 kill -9 <TAB>
 ```
@@ -177,7 +177,7 @@ Besides the already discussed fuzzy search, `fzf` supports special tokens that c
 
 Note that `SPACE` acts as an `AND` operator and `|` as an `OR`. For example, a query that matches entries that start with `music` and end with either `mp3`, `wav`, or `flac` would look like this:
 
-```
+```sh
 ^music mp3$ | wav$ | flac$
 ```
 
@@ -193,7 +193,7 @@ The `default` layout displays from the bottom of the screen. I personally prefer
 
 You can see if for yourself by running:
 
-```
+```sh
 fzf --layout=reverse --height=80%
 ```
 
@@ -207,7 +207,7 @@ One of my favorite features of `fzf`. It allows you to preview the content of an
 
 You can achieve that behavior with the following options:
 
-```
+```sh
 fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 ```
 
@@ -219,7 +219,7 @@ There are more placeholders you can use like `{+}` , `{q}`, and `{n}`. Please re
 
 A simpler command that uses `cat` would look like this:
 
-```
+```sh
 fzf --preview 'cat {}'
 ```
 
@@ -227,25 +227,25 @@ So, going back to our more complex command, let’s break it up:
 
 First, we check if the string is a file, and if so, we try to open it with `[bat](https://github.com/sharkdp/bat)` (like `cat` but with syntax highlighting), if that fails, we fall back to `cat`:
 
-```
+```sh
 ([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {}))
 ```
 
 If the string is not a file, we check if it is a directory. If so, we try to open it with `[tree](https://linux.die.net/man/1/tree)`, if that fails, we fall back to `less`:
 
-```
+```sh
 ([[ -d {} ]] && (tree -C {} | less))
 ```
 
 If it’s not a file or directory, our last resource is to `echo` it:
 
-```
+```sh
 echo {}
 ```
 
 Finally, we redirect any errors to `/dev/null` and return the first 200 lines:
 
-```
+```sh
 2> /dev/null | head -200
 ```
 
@@ -255,19 +255,19 @@ There are four base schemes to choose from: `dark`, `light`, `16`, and `bw`, and
 
 For example, the colors that I’ve been using:
 
-```
+```sh
 fzf --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
 ```
 
 If you want to see what the ANSI colors are that you can use, run:
 
-```
+```sh
 for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 ```
 
 The prompt, pointer, and markers are also customizable:
 
-```
+```sh
 fzf --prompt='~ ' --pointer='▶' --marker='✗'
 ```
 
@@ -277,7 +277,7 @@ You can create key bindings for more than 40 different actions, including `execu
 
 Some of the key bindings that I use are:
 
-```
+```sh
 # Toggle preview window visibility with '?'
 fzf --bind '?:toggle-preview'
 
@@ -300,7 +300,7 @@ Options can also be added to `$FZF_DEFAULT_OPTS` so that they are always applied
 
 Combining all the options above we would have:
 
-```
+```sh
 export FZF_DEFAULT_OPTS="
 --layout=reverse
 --info=inline
@@ -334,7 +334,7 @@ By default, `fzf` uses `find` to generate the file system entries. If you want t
 
 Set the following environment variables:
 
-```
+```sh
 # fzf's command
 export FZF_DEFAULT_COMMAND="fd"
 
@@ -347,7 +347,7 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 Override the following functions used by fuzzy completion:
 
-```
+```sh
 # for more info see fzf/shell/completion.zsh
 _fzf_compgen_path() {
     fd . "$1"
@@ -362,7 +362,7 @@ With that, `fd` will power `fzf`, `CTRL-T`, `ALT-C`, and `**`.
 
 I personally like to show `hidden` files, `follow` links, and `exclude` any `.git` and `node_modules` folders.
 
-```
+```sh
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 ```
 
@@ -396,7 +396,7 @@ There are a few command-line tools that help with that, `grep` being probably th
 
 Here’s a function `fif` by [gbstan](https://github.com/gbstan) that combines `ripgrep` and `fzf`:
 
-```
+```sh
 # find-in-file - usage: fif <SEARCH_TERM>
 fif() {
   if [ ! "$#" -gt 0 ]; then
@@ -409,7 +409,7 @@ fif() {
 
 To use it, add its declaration to your `.(ba|z)shrc` file and run:
 
-```
+```sh
 fif <SEARCH_TERM>
 ```
 
@@ -419,7 +419,7 @@ It will use `rg` to search files that match the pattern, then `fzf` to present t
 
 If you use Docker, here are three functions you might find useful: `da`, `ds`, `drm`.
 
-```
+```sh
 # Select a docker container to start and attach to
 function da() {
   local cid
@@ -449,7 +449,7 @@ function drm() {
 
 Check out these functions to help you manage [Homebrew](https://brew.sh/):
 
-```
+```sh
 # Install (one or multiple) selected application(s)
 # using "brew search" as source input
 # mnemonic [B]rew [I]nstall [P]lugin
@@ -487,7 +487,7 @@ bcp() {
 
 And [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):
 
-```
+```sh
 # Install or open the webpage for the selected application
 # using brew cask search as input source
 # and display a info quickview window for the currently marked application
@@ -537,7 +537,7 @@ uninstall() {
 
 To install it, run:
 
-```
+```sh
 npm install -g npm-fzf
 ```
 
@@ -545,7 +545,7 @@ npm install -g npm-fzf
 
 The `[z](https://github.com/rupa/z)` command tracks your most visited directories and allows you to access them with very few keystrokes. If you use `zsh` and [Oh My Zsh](https://ohmyz.sh/), to enable it, simply add `z` to your plugins list in your `.zshrc`:
 
-```
+```sh
 plugins=(... z)
 ```
 
@@ -553,7 +553,7 @@ plugins=(... z)
 
 For example, if at some point in time you visited the folder `~/workspace/my-project-1/cool-assets`, `z` will keep track of it and will allow you to quickly come back to it from anywhere using a `regex` that matches the path:
 
-```
+```sh
 z my-project-1
 z project
 z cool-assets
@@ -561,7 +561,7 @@ z cool-assets
 
 To make `z` even better, you can integrate it with `fzf`:
 
-```
+```sh
 # like normal z when used with arguments but displays an fzf prompt when used without.
 unalias z 2> /dev/null
 z() {
@@ -580,7 +580,7 @@ Access your chrome bookmarks directly from your shell. Requires `[jq](https://st
 
 ![](https://cdn-images-1.medium.com/max/800/1*yvp7eSiFUXVK33N_EAb_nA.gif)
 
-```
+```sh
 b() {
   local bookmarks_path=~/Library/Application\ Support/Google/Chrome/Default/Bookmarks
   local jq_script='def ancestors: while(. | length >= 2; del(.[-1,-2])); . as $in | paths(.url?) as $key | $in | getpath($key) | {name,url, path: [$key[0:-2] | ancestors as $a | $in | getpath($a) | .name?] | reverse | join("/") } | .path + "/" + .name + "\t" + .url'
@@ -604,7 +604,7 @@ b() {
 
 To install it, run:
 
-```
+```sh
 brew install broot
 ```
 
