@@ -6,7 +6,7 @@
     "title": "Request batching in React",
     "subtitle": "Improve your react application performance by reducing the number of API calls",
     "image": "https://miro.medium.com/fit/c/1024/250/0*B7X43kTWeCcNztU6",
-    "link": "https://vdeantoni.medium.com/request-batching-in-react-b8fd0656b28b?sk=ac3bb7523fd69b532b353b5d8160b32a",
+    "link": "/posts/b8fd0656b28b",
     "timeToRead": 2,
     "tags": [
       {
@@ -27,7 +27,7 @@
     "title": "Implementing a Dark Mode switch",
     "subtitle": "Add color scheme responsiveness to your web app",
     "image": "https://miro.medium.com/fit/c/1024/250/0*veWClFZeGjcnWvdT",
-    "link": "https://vdeantoni.medium.com/implementing-a-dark-mode-switch-62d1a2883416?sk=37c2b0de2ec6018ae453545360574efb",
+    "link": "/posts/62d1a2883416",
     "timeToRead": 3,
     "tags": [
       {
@@ -54,7 +54,7 @@
     "title": "How to Set Up Your MacBook for Web Development in 2021",
     "subtitle": "A guide to getting your Mac ready for web development — tools, shortcuts, accessories, tips and tricks, and more",
     "image": "https://miro.medium.com/fit/c/1024/250/0*TP_hMZM7PJgJheJr",
-    "link": "https://vdeantoni.medium.com/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462?sk=6a72175bb88d02dccf85b049146f47c3",
+    "link": "/posts/a7a1f53f6462",
     "timeToRead": 15,
     "tags": [
       {
@@ -78,7 +78,7 @@
     "title": "How to add a Table of Contents to your Medium Story",
     "subtitle": "A Chrome extension that generates a table of contents for your Medium stories.",
     "image": "https://miro.medium.com/fit/c/1024/250/0*2cXnco8E1qT6EUM3",
-    "link": "https://vdeantoni.medium.com/how-to-add-a-table-of-contents-to-your-medium-story-62c6209d9161?source=friends_link&sk=e7ee352d6f2395a8a903eebbf32db3ba",
+    "link": "/posts/62c6209d9161",
     "timeToRead": 2,
     "tags": [
       {
@@ -102,7 +102,7 @@
     "title": "React Functional Components and Lodash High-Order Functions",
     "subtitle": "How to seamlessly use lodash high-order functions like debounce and throttle in your react functional components.",
     "image": "https://miro.medium.com/fit/c/1024/250/0*_5NBtpiYu5oouBLw",
-    "link": "https://vdeantoni.medium.com/react-functional-components-and-lodash-high-order-functions-a0bc9e2df171?source=friends_link&sk=403c607784238c9f812917be3e2bee57",
+    "link": "/posts/a0bc9e2df171",
     "timeToRead": 2,
     "tags": [
       {
@@ -126,7 +126,7 @@
     "title": "5 Front-End Interview Coding Challenges",
     "subtitle": "Questions you might face during a job interview, and their solutions",
     "image": "https://miro.medium.com/fit/c/1024/250/0*GUXw_sZxaEPGbpiN",
-    "link": "https://vdeantoni.medium.com/5-front-end-interview-coding-challenges-6cd9f31d1169?source=friends_link&sk=5a02ae1cd3b19b69db70a1e9c6d2947f",
+    "link": "/posts/6cd9f31d1169",
     "timeToRead": 8,
     "tags": [
       {
@@ -153,7 +153,7 @@
     "title": "All the Command-Line Keyboard Shortcuts You Need to Know",
     "subtitle": "Level up your CLI skills with these keyboard shortcuts",
     "image": "https://miro.medium.com/fit/c/1024/250/0*19x65BNHhTsfdp22",
-    "link": "https://medium.com/better-programming/boost-your-command-line-productivity-with-keyboard-shortcuts-4de2f6cbd069?source=friends_link&sk=41d5a75f3e9b0d997b38c7f22b8563d2",
+    "link": "/posts/4de2f6cbd069",
     "timeToRead": 5,
     "tags": [
       {
@@ -177,7 +177,7 @@
     "title": "Boost Your Command-Line Productivity With Fuzzy Finder",
     "subtitle": "Level up your CLI skills with fzf",
     "image": "https://miro.medium.com/fit/c/1024/250/0*2gM4xgptP1BVLOFe",
-    "link": "https://vdeantoni.medium.com/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d?source=friends_link&sk=f1fc4d89f07f33331e13dcdbd34f06f6",
+    "link": "/posts/985aa162ba5d",
     "timeToRead": 14,
     "tags": [
       {
@@ -196,36 +196,12 @@
   },
   {
     "type": "medium",
-    "id": "659f5588b883",
-    "date": "2020-03-26T00:00:00.000Z",
-    "title": "How to Set Up Your Mac for Web Development in 2020",
-    "subtitle": "A guide to getting your Mac ready for web development — recommending tools, shortcuts, tips and tricks, and more",
-    "image": "https://miro.medium.com/fit/c/1024/250/0*zD6qM5Tg2aQcA-BY",
-    "link": "https://vdeantoni.medium.com/setting-up-your-mac-for-web-development-in-2020-659f5588b883?source=friends_link&sk=c4bde4559d8871a88f5d127ce14f7931",
-    "timeToRead": 15,
-    "tags": [
-      {
-        "name": "Web Development"
-      },
-      {
-        "name": "Command-Line"
-      },
-      {
-        "name": "Programming"
-      },
-      {
-        "name": "Apple"
-      }
-    ]
-  },
-  {
-    "type": "medium",
     "id": "45719d82d1a3",
     "date": "2020-03-22T00:00:00.000Z",
     "title": "Create a Proximity Graph Animation",
     "subtitle": "An introduction to 2D HTML5 Canvas and the animation loop",
     "image": "https://miro.medium.com/fit/c/1024/250/1*a4tiXdRcOxYEQn-SyV6Jcw.png",
-    "link": "https://vdeantoni.medium.com/creating-a-proximity-graph-animation-an-introduction-to-html5-canvas-and-the-animation-loop-45719d82d1a3?source=friends_link&sk=dc7df0f0bca9b3c2dad86c2f8e49d996",
+    "link": "/posts/45719d82d1a3",
     "timeToRead": 7,
     "tags": [
       {
