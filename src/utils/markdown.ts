@@ -1,85 +1,75 @@
 import { remark } from "remark";
-import remarkHtml from "remark-html";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeAddClasses from "rehype-add-classes";
+import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
+import { visit } from "unist-util-visit";
+
+// Custom rehype plugin to handle code blocks properly
+function rehypeCodeBlocks() {
+  return (tree: any) => {
+    visit(tree, 'element', (node) => {
+      if (node.tagName === 'pre' && node.children[0]?.tagName === 'code') {
+        // This is a code block, add classes to both pre and nested code
+        node.properties = {
+          ...node.properties,
+          className: 'bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4'
+        };
+        node.children[0].properties = {
+          ...node.children[0].properties,
+          className: 'text-sm'
+        };
+      } else if (node.tagName === 'code' && node.parent?.tagName !== 'pre') {
+        // This is inline code, add inline styling
+        node.properties = {
+          ...node.properties,
+          className: 'bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm'
+        };
+      }
+    });
+  };
+}
 
 export async function markdownToHtml(markdown: string): Promise<string> {
   // Parse frontmatter if it exists
   const { content } = matter(markdown);
 
-  // Process markdown with remark
+  // Process markdown with remark → rehype → html pipeline
   const result = await remark()
     .use(remarkGfm) // GitHub Flavored Markdown support
     .use(remarkToc, { heading: "contents", tight: true })
-    .use(remarkHtml, {
-      sanitize: false, // Allow HTML in markdown
+    .use(remarkRehype, { allowDangerousHtml: true }) // Convert to rehype
+    .use(rehypeSlug) // Add IDs to headings
+    .use(rehypeAddClasses, {
+      // Headers
+      h1: "text-3xl font-bold mt-8 mb-6 text-primary",
+      h2: "text-2xl font-bold mt-8 mb-6 text-primary", 
+      h3: "text-xl font-semibold mt-6 mb-4 text-primary",
+      // Paragraphs
+      p: "mb-4 leading-relaxed",
+      // Links
+      a: "text-primary hover:text-primary-hover underline transition-colors duration-200",
+      // Lists
+      ul: "list-disc list-outside my-4 space-y-2 ml-6",
+      ol: "list-decimal list-outside my-4 space-y-2 ml-6",
+      li: "mb-2",
+      // Horizontal rules
+      hr: "border-border my-8",
+      // Blockquotes
+      blockquote: "border-l-4 border-primary pl-4 italic my-4 text-text opacity-80",
+      // Images
+      img: "max-w-full h-auto rounded-lg my-4",
+      // Tables
+      table: "min-w-full border-collapse border border-border my-4",
+      th: "border border-border px-4 py-2 bg-background-accent font-semibold",
+      td: "border border-border px-4 py-2"
     })
+    .use(rehypeCodeBlocks) // Handle code blocks properly
+    .use(rehypeStringify, { allowDangerousHtml: true }) // Convert to HTML
     .process(content);
 
-  let html = result.toString();
-
-  // Add Tailwind classes to the generated HTML
-  html = html
-    // Headers
-    .replace(/<h1>/g, '<h1 class="text-3xl font-bold mt-8 mb-6 text-primary">')
-    .replace(/<h2>/g, '<h2 class="text-2xl font-bold mt-8 mb-6 text-primary">')
-    .replace(
-      /<h3>/g,
-      '<h3 class="text-xl font-semibold mt-6 mb-4 text-primary">',
-    )
-
-    // Paragraphs
-    .replace(/<p>/g, '<p class="mb-4 leading-relaxed">')
-
-    // Links
-    .replace(
-      /<a href/g,
-      '<a class="text-primary hover:text-primary-hover underline transition-colors duration-200" href',
-    )
-
-    // Code blocks
-    .replace(
-      /<pre><code>/g,
-      '<pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4"><code class="text-sm">',
-    )
-
-    // Inline code
-    .replace(
-      /<code>/g,
-      '<code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm">',
-    )
-
-    // Lists
-    .replace(/<ul>/g, '<ul class="list-disc list-outside my-4 space-y-2 ml-6">')
-    .replace(
-      /<ol>/g,
-      '<ol class="list-decimal list-outside my-4 space-y-2 ml-6">',
-    )
-    .replace(/<li>/g, '<li class="mb-2">')
-
-    // Horizontal rules
-    .replace(/<hr>/g, '<hr class="border-border my-8">')
-
-    // Blockquotes
-    .replace(
-      /<blockquote>/g,
-      '<blockquote class="border-l-4 border-primary pl-4 italic my-4 text-text opacity-80">',
-    )
-
-    // Images
-    .replace(/<img/g, '<img class="max-w-full h-auto rounded-lg my-4"')
-
-    // Tables
-    .replace(
-      /<table>/g,
-      '<table class="min-w-full border-collapse border border-border my-4">',
-    )
-    .replace(
-      /<th>/g,
-      '<th class="border border-border px-4 py-2 bg-background-accent font-semibold">',
-    )
-    .replace(/<td>/g, '<td class="border border-border px-4 py-2">');
-
-  return html;
+  return result.toString();
 }
