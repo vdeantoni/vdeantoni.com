@@ -61,7 +61,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const htmlContent = await markdownToHtml(markdownContent);
 
   return (
-    <article className={cn("max-w-4xl", "mx-auto")}>
+    <article className={cn("max-w-5xl", "mx-auto")}>
       {/* Header */}
       <header className={cn("mb-8")}>
         <div className={cn("mb-4")}>
@@ -79,29 +79,33 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
 
         {post.image && (
-          <div
-            className={cn(
-              "relative",
-              "w-full",
-              "h-64",
-              "md:h-80",
-              "mb-6",
-              "overflow-hidden",
-              "rounded-lg",
-            )}
-          >
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className={cn("object-cover")}
-              priority
-            />
-          </div>
+          <>
+            <div
+              className={cn(
+                "absolute",
+                "left-0",
+                "w-screen",
+                "h-64",
+                "md:h-80",
+                "overflow-hidden",
+                "shadow-lg",
+              )}
+            >
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className={cn("object-cover")}
+                priority
+              />
+            </div>
+            <div className={cn("h-64", "md:h-80", "mb-6")} />
+          </>
         )}
 
         <h1
           className={cn(
+            "relative",
             "text-4xl",
             "md:text-5xl",
             "font-bold",

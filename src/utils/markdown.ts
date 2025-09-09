@@ -12,19 +12,20 @@ import { visit } from "unist-util-visit";
 // Custom rehype plugin to handle code blocks properly
 function rehypeCodeBlocks() {
   return (tree: any) => {
-    visit(tree, 'element', (node) => {
-      if (node.tagName === 'pre' && node.children[0]?.tagName === 'code') {
+    visit(tree, "element", (node) => {
+      if (node.tagName === "pre" && node.children[0]?.tagName === "code") {
         // This is a code block, add classes to pre but let rehype-highlight handle code
         node.properties = {
           ...node.properties,
-          className: `${node.properties?.className || ''} bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4`.trim()
+          className:
+            `${node.properties?.className || ""} bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4`.trim(),
         };
         // Let rehype-highlight handle the code element classes
-      } else if (node.tagName === 'code' && node.parent?.tagName !== 'pre') {
+      } else if (node.tagName === "code" && node.parent?.tagName !== "pre") {
         // This is inline code, add inline styling
         node.properties = {
           ...node.properties,
-          className: 'bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm'
+          className: "bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm",
         };
       }
     });
@@ -45,7 +46,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(rehypeAddClasses, {
       // Headers
       h1: "text-3xl font-bold mt-8 mb-6 text-primary",
-      h2: "text-2xl font-bold mt-8 mb-6 text-primary", 
+      h2: "text-2xl font-bold mt-8 mb-6 text-primary",
       h3: "text-xl font-semibold mt-6 mb-4 text-primary",
       // Paragraphs
       p: "mb-4 leading-relaxed",
@@ -58,13 +59,14 @@ export async function markdownToHtml(markdown: string): Promise<string> {
       // Horizontal rules
       hr: "border-border my-8",
       // Blockquotes
-      blockquote: "border-l-4 border-primary pl-4 italic my-4 text-text opacity-80",
+      blockquote:
+        "border-l-4 border-primary pl-4 italic my-4 text-text opacity-80",
       // Images
       img: "max-w-full h-auto rounded-lg my-4",
       // Tables
       table: "min-w-full border-collapse border border-border my-4",
       th: "border border-border px-4 py-2 bg-background-accent font-semibold",
-      td: "border border-border px-4 py-2"
+      td: "border border-border px-4 py-2",
     })
     .use(rehypeCodeBlocks) // Handle code blocks properly
     .use(rehypeStringify, { allowDangerousHtml: true }) // Convert to HTML
