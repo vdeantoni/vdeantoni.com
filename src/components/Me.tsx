@@ -12,18 +12,18 @@ const Me = () => {
         "rounded-lg",
         "overflow-hidden",
         "md:order-1",
+        "shadow-lg",
       )}
     >
       <Image
         src={"/me.jpg"}
-        alt={"Picture of the author playing guitar"}
+        alt={"Picture of the author"}
         fill={true}
         priority={true}
         style={{
           objectFit: "cover",
         }}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-        className="animate-brighten"
       />
     </div>
   );
