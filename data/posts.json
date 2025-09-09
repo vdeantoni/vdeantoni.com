@@ -1,12 +1,12 @@
 [
   {
     "type": "medium",
-    "id": "b8fd0656b28b",
+    "id": "request-batching-in-react",
     "date": "2022-03-28T00:00:00.000Z",
     "title": "Request batching in React",
     "subtitle": "Improve your react application performance by reducing the number of API calls",
     "image": "https://miro.medium.com/fit/c/1024/250/0*B7X43kTWeCcNztU6",
-    "link": "/posts/b8fd0656b28b",
+    "link": "/posts/request-batching-in-react",
     "timeToRead": 2,
     "tags": [
       {
@@ -22,12 +22,12 @@
   },
   {
     "type": "medium",
-    "id": "62d1a2883416",
+    "id": "implementing-a-dark-mode-switch",
     "date": "2022-03-27T00:00:00.000Z",
     "title": "Implementing a Dark Mode switch",
     "subtitle": "Add color scheme responsiveness to your web app",
     "image": "https://miro.medium.com/fit/c/1024/250/0*veWClFZeGjcnWvdT",
-    "link": "/posts/62d1a2883416",
+    "link": "/posts/implementing-a-dark-mode-switch",
     "timeToRead": 3,
     "tags": [
       {
@@ -49,12 +49,12 @@
   },
   {
     "type": "medium",
-    "id": "a7a1f53f6462",
+    "id": "how-to-set-up-your-macbook-for-web-development-in-2021",
     "date": "2021-04-23T00:00:00.000Z",
     "title": "How to Set Up Your MacBook for Web Development in 2021",
     "subtitle": "A guide to getting your Mac ready for web development — tools, shortcuts, accessories, tips and tricks, and more",
     "image": "https://miro.medium.com/fit/c/1024/250/0*TP_hMZM7PJgJheJr",
-    "link": "/posts/a7a1f53f6462",
+    "link": "/posts/how-to-set-up-your-macbook-for-web-development-in-2021",
     "timeToRead": 15,
     "tags": [
       {
@@ -73,12 +73,12 @@
   },
   {
     "type": "medium",
-    "id": "62c6209d9161",
+    "id": "how-to-add-a-table-of-contents-to-your-medium-story",
     "date": "2020-07-25T00:00:00.000Z",
     "title": "How to add a Table of Contents to your Medium Story",
     "subtitle": "A Chrome extension that generates a table of contents for your Medium stories.",
     "image": "https://miro.medium.com/fit/c/1024/250/0*2cXnco8E1qT6EUM3",
-    "link": "/posts/62c6209d9161",
+    "link": "/posts/how-to-add-a-table-of-contents-to-your-medium-story",
     "timeToRead": 2,
     "tags": [
       {
@@ -97,12 +97,12 @@
   },
   {
     "type": "medium",
-    "id": "a0bc9e2df171",
+    "id": "react-functional-components-and-lodash-high-order-functions",
     "date": "2020-06-16T00:00:00.000Z",
     "title": "React Functional Components and Lodash High-Order Functions",
     "subtitle": "How to seamlessly use lodash high-order functions like debounce and throttle in your react functional components.",
     "image": "https://miro.medium.com/fit/c/1024/250/0*_5NBtpiYu5oouBLw",
-    "link": "/posts/a0bc9e2df171",
+    "link": "/posts/react-functional-components-and-lodash-high-order-functions",
     "timeToRead": 2,
     "tags": [
       {
@@ -121,12 +121,12 @@
   },
   {
     "type": "medium",
-    "id": "6cd9f31d1169",
+    "id": "5-front-end-interview-coding-challenges",
     "date": "2020-04-11T00:00:00.000Z",
     "title": "5 Front-End Interview Coding Challenges",
     "subtitle": "Questions you might face during a job interview, and their solutions",
     "image": "https://miro.medium.com/fit/c/1024/250/0*GUXw_sZxaEPGbpiN",
-    "link": "/posts/6cd9f31d1169",
+    "link": "/posts/5-front-end-interview-coding-challenges",
     "timeToRead": 8,
     "tags": [
       {
@@ -148,12 +148,12 @@
   },
   {
     "type": "medium",
-    "id": "4de2f6cbd069",
+    "id": "all-the-command-line-keyboard-shortcuts-you-need-to-know",
     "date": "2020-04-06T00:00:00.000Z",
     "title": "All the Command-Line Keyboard Shortcuts You Need to Know",
     "subtitle": "Level up your CLI skills with these keyboard shortcuts",
     "image": "https://miro.medium.com/fit/c/1024/250/0*19x65BNHhTsfdp22",
-    "link": "/posts/4de2f6cbd069",
+    "link": "/posts/all-the-command-line-keyboard-shortcuts-you-need-to-know",
     "timeToRead": 5,
     "tags": [
       {
@@ -172,12 +172,12 @@
   },
   {
     "type": "medium",
-    "id": "985aa162ba5d",
+    "id": "boost-your-command-line-productivity-with-fuzzy-finder",
     "date": "2020-04-01T00:00:00.000Z",
     "title": "Boost Your Command-Line Productivity With Fuzzy Finder",
     "subtitle": "Level up your CLI skills with fzf",
     "image": "https://miro.medium.com/fit/c/1024/250/0*2gM4xgptP1BVLOFe",
-    "link": "/posts/985aa162ba5d",
+    "link": "/posts/boost-your-command-line-productivity-with-fuzzy-finder",
     "timeToRead": 14,
     "tags": [
       {
@@ -196,12 +196,12 @@
   },
   {
     "type": "medium",
-    "id": "45719d82d1a3",
+    "id": "create-a-proximity-graph-animation",
     "date": "2020-03-22T00:00:00.000Z",
     "title": "Create a Proximity Graph Animation",
     "subtitle": "An introduction to 2D HTML5 Canvas and the animation loop",
     "image": "https://miro.medium.com/fit/c/1024/250/1*a4tiXdRcOxYEQn-SyV6Jcw.png",
-    "link": "/posts/45719d82d1a3",
+    "link": "/posts/create-a-proximity-graph-animation",
     "timeToRead": 7,
     "tags": [
       {
