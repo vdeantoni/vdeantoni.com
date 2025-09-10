@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import cn from "classnames";
 import type { Metadata } from "next";
+import ParallaxImage from "@/components/ParallaxImage";
 
 interface PostPageProps {
   params: Promise<{
@@ -80,25 +81,18 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {post.image && (
           <>
-            <div
+            <ParallaxImage
+              src={post.image}
+              alt={post.title}
               className={cn(
                 "absolute",
                 "left-0",
                 "w-screen",
                 "h-64",
                 "md:h-80",
-                "overflow-hidden",
                 "shadow-lg",
               )}
-            >
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                className={cn("object-cover")}
-                priority
-              />
-            </div>
+            />
             <div className={cn("h-64", "md:h-80", "mb-6")} />
           </>
         )}

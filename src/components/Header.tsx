@@ -60,7 +60,7 @@ const Header = () => {
         "px-4",
         "z-10",
         "sticky",
-        "top-0",
+        "top-2",
         "md:relative",
         "bg-background",
         "rounded",
