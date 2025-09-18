@@ -190,12 +190,12 @@ export default async function Resume() {
           <EntryTitle title={entry.name} slug={entry.slug} />
           <div>
             <EntryItem
-              title={entry.degree}
+              title={`${entry.degree} in ${entry.field}`}
               itemColor="secondary"
               start={entry.start}
               end={entry.end}
               location={entry.location}
-              blurb={entry.field}
+              blurb={entry.blurb}
               links={entry.publications}
             />
           </div>
