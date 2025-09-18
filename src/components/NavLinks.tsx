@@ -38,7 +38,10 @@ const ActiveNavLink = ({
   currentPathname: string;
   footer?: boolean;
 }) => {
-  const isActive = currentPathname === link.link;
+  const isActive =
+    link.link === "/"
+      ? currentPathname === link.link
+      : currentPathname.startsWith(link.link);
 
   return (
     <Link
