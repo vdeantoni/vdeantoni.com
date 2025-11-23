@@ -4,7 +4,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from "classnames";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
 import { Branding } from "./Header";
@@ -17,12 +17,13 @@ const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {
 
 export default function MobileNav() {
   const [showMenu, setShowMenu] = useState(false);
-
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  useEffect(() => {
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setShowMenu(false);
-  }, [pathname]);
+  }
 
   return (
     <nav

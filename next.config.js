@@ -1,11 +1,20 @@
-const { withSentryConfig } = require("@sentry/nextjs");
-const createMDX = require("@next/mdx");
+import { withSentryConfig } from "@sentry/nextjs";
+import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
-    domains: ["res.cloudinary.com", "miro.medium.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "miro.medium.com",
+      },
+    ],
   },
 };
 
@@ -13,7 +22,7 @@ const mdxConfig = createMDX({
   extension: /\.(md|mdx)$/,
 })(nextConfig);
 
-module.exports = withSentryConfig(
+export default withSentryConfig(
   mdxConfig,
   {
     // For all available options, see:
