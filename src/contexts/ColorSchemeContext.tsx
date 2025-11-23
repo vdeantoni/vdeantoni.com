@@ -24,6 +24,7 @@ export const ColorSchemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const stored = sessionStorage.getItem("color-scheme") ?? "dark";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSchemeState(stored);
     document.documentElement.setAttribute("data-color-scheme", stored);
     setIsInitialized(true);
