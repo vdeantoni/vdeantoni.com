@@ -3,14 +3,54 @@ import { CustomProjectConfig } from 'lost-pixel';
 export const config: CustomProjectConfig = {
   pageShots: {
     pages: [
-      { path: '/', name: 'landing-desktop', viewport: { width: 1280, height: 720 }, waitBeforeScreenshot: 2000 },
-      { path: '/', name: 'landing-mobile', viewport: { width: 375, height: 812 }, waitBeforeScreenshot: 2000 },
-      { path: '/posts', name: 'posts-desktop', viewport: { width: 1280, height: 720 }, waitBeforeScreenshot: 2000 },
-      { path: '/posts', name: 'posts-mobile', viewport: { width: 375, height: 812 }, waitBeforeScreenshot: 2000 },
-      { path: '/projects', name: 'projects-desktop', viewport: { width: 1280, height: 720 }, waitBeforeScreenshot: 2000 },
-      { path: '/projects', name: 'projects-mobile', viewport: { width: 375, height: 812 }, waitBeforeScreenshot: 2000 },
-      { path: '/resume', name: 'resume-desktop', viewport: { width: 1280, height: 720 }, waitBeforeScreenshot: 2000 },
-      { path: '/resume', name: 'resume-mobile', viewport: { width: 375, height: 812 }, waitBeforeScreenshot: 2000 },
+      {
+        path: '/',
+        name: 'landing-desktop',
+        viewport: { width: 1280, height: 720 },
+        waitBeforeScreenshot: 2000
+      },
+      {
+        path: '/',
+        name: 'landing-mobile',
+        viewport: { width: 375, height: 812 },
+        waitBeforeScreenshot: 3000
+      },
+      {
+        path: '/posts',
+        name: 'posts-desktop',
+        viewport: { width: 1280, height: 720 },
+        waitBeforeScreenshot: 2000
+      },
+      {
+        path: '/posts',
+        name: 'posts-mobile',
+        viewport: { width: 375, height: 812 },
+        waitBeforeScreenshot: 3000
+      },
+      {
+        path: '/projects',
+        name: 'projects-desktop',
+        viewport: { width: 1280, height: 720 },
+        waitBeforeScreenshot: 2000
+      },
+      {
+        path: '/projects',
+        name: 'projects-mobile',
+        viewport: { width: 375, height: 812 },
+        waitBeforeScreenshot: 3000
+      },
+      {
+        path: '/resume',
+        name: 'resume-desktop',
+        viewport: { width: 1280, height: 720 },
+        waitBeforeScreenshot: 2000
+      },
+      {
+        path: '/resume',
+        name: 'resume-mobile',
+        viewport: { width: 375, height: 812 },
+        waitBeforeScreenshot: 3000
+      },
     ],
     baseUrl: 'http://172.17.0.1:3000',
   },
@@ -18,4 +58,11 @@ export const config: CustomProjectConfig = {
   apiKey: process.env.LOST_PIXEL_API_KEY,
   browser: 'chromium',
   threshold: 0,
+  beforeScreenshot: async (page) => {
+    // Force a repaint by scrolling slightly
+    await page.evaluate(() => window.scrollBy(0, 1));
+    await page.evaluate(() => window.scrollBy(0, -1));
+    // Wait a bit more for styles to settle
+    await page.waitForTimeout(500);
+  },
 };
