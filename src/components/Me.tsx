@@ -1,5 +1,8 @@
+'use client';
+
 import Image from "next/image";
 import cn from "classnames";
+import FaceTracker from "./FaceTracker";
 
 const Me = () => {
   return (
@@ -15,6 +18,7 @@ const Me = () => {
         "shadow-lg",
       )}
     >
+      {/* Background image */}
       <Image
         src={"/me.jpg"}
         alt={"Picture of the author"}
@@ -24,6 +28,13 @@ const Me = () => {
           objectFit: "cover",
         }}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+      />
+
+      {/* Face tracking overlay */}
+      <FaceTracker
+        basePath="/faces/"
+        faceSize={512}
+        showDebug={false}
       />
     </div>
   );
