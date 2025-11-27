@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import cn from "classnames";
 import Footer from "@/components/Footer";
@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: "vdeantoni.com",
   description: "Web site about the software engineer Vinicius De Antoni",
   icons: ["favicon.png"],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
