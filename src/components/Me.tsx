@@ -23,13 +23,14 @@ const Me = () => {
           alt={"Picture of the author"}
           fill={true}
           priority={true}
+          sizes="512px"
           style={{
             objectFit: "cover",
           }}
         />
 
         {/* Face tracking overlay */}
-        <FaceTracker basePath="/faces/" faceSize={512} />
+        <FaceTracker faceSize={512} />
       </div>
     </div>
   );

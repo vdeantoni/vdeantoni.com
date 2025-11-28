@@ -16,8 +16,8 @@ Sentry.init({
   // Use lower sample rates in production
   tracesSampleRate: isProduction ? 0.1 : 1.0,
 
-  // Enable debug in development only
-  debug: !isProduction,
+  // Disable debug to reduce console noise
+  debug: false,
 
   // Session Replay configuration
   replaysOnErrorSampleRate: 1.0, // Always capture replays on errors
