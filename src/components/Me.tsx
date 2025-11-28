@@ -29,7 +29,7 @@ const Me = () => {
         />
 
         {/* Face tracking overlay */}
-        <FaceTracker basePath="/faces/" faceSize={512} />
+        <FaceTracker />
       </div>
     </div>
   );
