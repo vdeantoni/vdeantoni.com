@@ -23,6 +23,7 @@ export type AnimationState =
 
 export interface UseGazeTrackingOptions {
   inactivityDelay?: number; // Delay before transitioning to inactive (ms)
+  spriteGridSize?: number; // Size of the sprite grid (e.g., 11 for 11x11, 13 for 13x13)
 }
 
 export interface UseGazeTrackingReturn {

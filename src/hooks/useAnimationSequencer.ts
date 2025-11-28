@@ -1,12 +1,6 @@
 import { useCallback, useRef } from "react";
-import type {
-  FacePosition,
-  AnimationState,
-} from "@/types/face-tracking";
-import {
-  interpolatePosition,
-  easeOutCubic,
-} from "@/utils/faceAnimations";
+import type { FacePosition, AnimationState } from "@/types/face-tracking";
+import { interpolatePosition, easeOutCubic } from "@/utils/faceAnimations";
 
 /**
  * Animation Sequencer Hook
@@ -17,12 +11,14 @@ import {
  * @param onPositionUpdate - Callback to update sprite position
  * @param onStateChange - Callback to update animation state
  * @param currentPositionRef - Ref to current face position (avoids stale closures)
+ * @param spriteGridSize - Size of the sprite grid (e.g., 11 for 11x11, 13 for 13x13)
  * @returns Animation control functions
  */
 export function useAnimationSequencer(
   onPositionUpdate: (position: FacePosition) => void,
   onStateChange: (state: AnimationState) => void,
-  currentPositionRef: React.RefObject<FacePosition>
+  currentPositionRef: React.RefObject<FacePosition>,
+  spriteGridSize: number,
 ) {
   const transitionFrameRef = useRef<number | null>(null);
 
@@ -34,7 +30,7 @@ export function useAnimationSequencer(
       from: FacePosition,
       to: FacePosition,
       duration: number,
-      onComplete?: () => void
+      onComplete?: () => void,
     ) => {
       const startTime = performance.now();
 
@@ -46,7 +42,8 @@ export function useAnimationSequencer(
           from,
           to,
           progress,
-          easeOutCubic
+          spriteGridSize,
+          easeOutCubic,
         );
         onPositionUpdate(interpolated);
 
@@ -64,7 +61,7 @@ export function useAnimationSequencer(
       }
       transitionFrameRef.current = requestAnimationFrame(animate);
     },
-    [onPositionUpdate]
+    [onPositionUpdate, spriteGridSize],
   );
 
   /**
@@ -76,17 +73,14 @@ export function useAnimationSequencer(
       animateToPosition(
         currentPositionRef.current || { px: 0, py: 0 },
         { px: 0, py: 0 },
-        500,
+        300,
         () => {
-          // Wait 200ms at center, then go to idle (stay visible)
-          setTimeout(() => {
-            onStateChange("idle");
-            onComplete?.();
-          }, 200);
-        }
+          onStateChange("idle");
+          onComplete?.();
+        },
       );
     },
-    [animateToPosition, currentPositionRef, onStateChange]
+    [animateToPosition, currentPositionRef, onStateChange],
   );
 
   /**
@@ -107,6 +101,7 @@ export function useAnimationSequencer(
   }, [cancelAnimations]);
 
   return {
+    animateToPosition,
     returnToCenter,
     cancelAnimations,
     cleanup,

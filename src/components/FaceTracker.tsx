@@ -3,11 +3,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import useGazeTracking from "@/hooks/useGazeTracking";
-import { SPRITE_TILE_SIZE, SPRITE_GRID_SIZE } from "@/utils/faceAnimations";
+import { SPRITE_TILE_SIZE } from "@/utils/faceAnimations";
 
 interface FaceTrackerProps {
   className?: string;
   spritePath?: string;
+  spriteGridSize?: number;
   showDebug?: boolean;
   facePosition?: {
     top?: string;
@@ -25,6 +26,7 @@ interface FaceTrackerProps {
 export default function FaceTracker({
   className = "",
   spritePath = "/faces/gaze_grid.webp",
+  spriteGridSize = 11,
   showDebug = false,
   facePosition = {
     top: "180px",
@@ -32,13 +34,14 @@ export default function FaceTracker({
     transform: "translate(-50%, -50%) scale(0.725)",
   },
   faceSize = 512,
-  inactivityDelay = 2000,
+  inactivityDelay = 1000,
 }: FaceTrackerProps) {
   const containerRef = useRef<HTMLDivElement>(null!);
   const [spriteLoaded, setSpriteLoaded] = useState(false);
 
   const { spritePosition, animationState } = useGazeTracking(containerRef, {
     inactivityDelay,
+    spriteGridSize,
   });
 
   // Preload sprite image
@@ -49,9 +52,13 @@ export default function FaceTracker({
   }, [spritePath]);
 
   // Always show face once loaded, default to center position (0, 0)
-  const centerPosition = { x: 2560, y: 2560 }; // Center of 11x11 grid (5 * 512)
+  const centerIndex = Math.floor(spriteGridSize / 2);
+  const centerPosition = {
+    x: centerIndex * SPRITE_TILE_SIZE,
+    y: centerIndex * SPRITE_TILE_SIZE,
+  };
   const displayPosition = spritePosition || centerPosition;
-  const spriteSizeInPx = SPRITE_GRID_SIZE * SPRITE_TILE_SIZE;
+  const spriteSizeInPx = spriteGridSize * SPRITE_TILE_SIZE;
 
   return (
     <div
@@ -88,7 +95,6 @@ export default function FaceTracker({
               ? `${spritePosition.x}, ${spritePosition.y}`
               : "center (default)"}
           </div>
-          <div>Visible: yes (always)</div>
         </div>
       )}
     </div>

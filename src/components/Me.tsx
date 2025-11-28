@@ -23,6 +23,7 @@ const Me = () => {
           alt={"Picture of the author"}
           fill={true}
           priority={true}
+          sizes="512px"
           style={{
             objectFit: "cover",
           }}
