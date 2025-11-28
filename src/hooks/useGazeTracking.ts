@@ -1,58 +1,135 @@
-import { useState, useEffect, useCallback, RefObject } from "react";
-
-// Grid configuration (must match your generation parameters)
-const P_MIN = -15;
-const P_MAX = 15;
-const STEP = 3;
-const SIZE = 512;
+import { useState, useEffect, useCallback, useRef, RefObject } from "react";
+import type {
+  FacePosition,
+  SpritePosition,
+  AnimationState,
+  UseGazeTrackingOptions,
+  UseGazeTrackingReturn,
+} from "@/types/face-tracking";
+import {
+  getGridBounds,
+  quantizeToGrid,
+  facePositionToSprite,
+} from "@/utils/faceAnimations";
+import { useAnimationSequencer } from "./useAnimationSequencer";
+import { useInactivityTimers } from "./useInactivityTimers";
 
 /**
  * Converts normalized coordinates [-1, 1] to grid coordinates
  */
-function quantizeToGrid(val: number): number {
-  const raw = P_MIN + ((val + 1) * (P_MAX - P_MIN)) / 2; // [-1,1] -> [-15,15]
-  const snapped = Math.round(raw / STEP) * STEP;
-  return Math.max(P_MIN, Math.min(P_MAX, snapped));
-}
+function normalizedToGrid(
+  nx: number,
+  ny: number,
+  gridSize: number,
+): FacePosition {
+  const { P_MIN, P_MAX } = getGridBounds(gridSize);
+  const rawX = P_MIN + ((nx + 1) * (P_MAX - P_MIN)) / 2;
+  const rawY = P_MIN + ((ny + 1) * (P_MAX - P_MIN)) / 2;
 
-/**
- * Converts grid coordinates to filename format
- */
-function gridToFilename(px: number, py: number): string {
-  const sanitize = (val: number) => {
-    // Ensure we have a decimal point (e.g., 9 becomes 9.0)
-    const numStr = Number.isInteger(val) ? `${val}.0` : val.toString();
-    return numStr.replace("-", "m").replace(".", "p");
+  return {
+    px: quantizeToGrid(rawX, gridSize),
+    py: quantizeToGrid(rawY, gridSize),
   };
-  return `gaze_px${sanitize(px)}_py${sanitize(py)}_${SIZE}.webp`;
-}
-
-interface UseGazeTrackingReturn {
-  currentImage: string | null;
 }
 
 /**
- * Custom hook for gaze tracking
- * @param containerRef - Reference to the container element
- * @param basePath - Base path to face images (default: '/faces/')
- * @returns Object containing currentImage, isLoading, and error
+ * Gaze Tracking Hook (Main Orchestrator)
+ *
+ * Coordinates face tracking functionality by combining:
+ * - Mouse/touch position tracking with throttling
+ * - Animation sequencing (via useAnimationSequencer)
+ * - Inactivity timer (via useInactivityTimers)
+ *
+ * Architecture:
+ * 1. User moves mouse (while idle) → Smoothly animate to first position
+ * 2. User continues moving → Update face position immediately
+ * 3. User stops moving (configurable delay) → Smoothly return to center
+ * 4. Face stays visible at center when idle
+ *
+ * Performance:
+ * - Mouse events throttled to 60fps (16ms)
+ * - CSS sprite for single image load
+ * - RAF-based smooth animations
+ *
+ * @param containerRef - React ref to the container element
+ * @param options - Configuration options
+ * @returns Current sprite position and animation state
  */
 export function useGazeTracking(
   containerRef: RefObject<HTMLElement>,
-  basePath: string,
+  options: UseGazeTrackingOptions = {}
 ): UseGazeTrackingReturn {
-  const [currentImage, setCurrentImage] = useState<string | null>(null);
-  const [isActive, setIsActive] = useState(false);
+  const { inactivityDelay = 3000, spriteGridSize = 11 } = options;
+
+  // Core state - initialize at center position (always visible)
+  const [currentPosition, setCurrentPosition] = useState<FacePosition>({
+    px: 0,
+    py: 0,
+  });
+  const [spritePosition, setSpritePosition] = useState<SpritePosition | null>(
+    facePositionToSprite({ px: 0, py: 0 }, spriteGridSize)
+  );
+  const [animationState, setAnimationState] =
+    useState<AnimationState>("idle");
+
+  // Refs for accessing latest state (avoids closure issues)
+  const animationStateRef = useRef<AnimationState>(animationState);
+  const currentPositionRef = useRef<FacePosition>(currentPosition);
+  const lastMouseMoveRef = useRef<number>(0);
+  const isActivatingRef = useRef<boolean>(false); // Track if animating from idle to active
+
+  // Sync refs with state
+  useEffect(() => {
+    animationStateRef.current = animationState;
+  }, [animationState]);
 
   useEffect(() => {
-    if (isActive) {
-      const timeout = setTimeout(() => setIsActive(false), 3000);
-      return () => clearTimeout(timeout);
-    } else {
-      // TODO: animate faces back to neutral position
-    }
-  }, [isActive]);
+    currentPositionRef.current = currentPosition;
+  }, [currentPosition]);
 
+  /**
+   * Update face position and sprite
+   */
+  const updatePosition = useCallback(
+    (position: FacePosition) => {
+      const sprite = facePositionToSprite(position, spriteGridSize);
+      setSpritePosition(sprite);
+      setCurrentPosition(position);
+    },
+    [spriteGridSize]
+  );
+
+  // Animation sequencer hook
+  const {
+    animateToPosition,
+    returnToCenter,
+    cancelAnimations,
+    cleanup: cleanupAnimations,
+  } = useAnimationSequencer(
+    updatePosition,
+    setAnimationState,
+    currentPositionRef,
+    spriteGridSize
+  );
+
+  /**
+   * Handle transition to inactive state
+   */
+  const handleInactive = useCallback(() => {
+    isActivatingRef.current = false; // Reset activation flag
+    returnToCenter();
+  }, [returnToCenter]);
+
+  // Inactivity timer hook
+  const { resetInactivityTimer, clearAllTimers, cleanup: cleanupTimers } =
+    useInactivityTimers({
+      inactivityDelay,
+      onInactive: handleInactive,
+    });
+
+  /**
+   * Update gaze based on mouse/touch coordinates
+   */
   const updateGaze = useCallback(
     (clientX: number, clientY: number) => {
       if (!containerRef.current) return;
@@ -61,70 +138,132 @@ export function useGazeTracking(
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
-      // Convert to normalized coordinates [-1, 1]
+      // Normalize to [-1, 1] range
       const nx = (clientX - centerX) / (rect.width / 2);
-      const ny = -((clientY - centerY) / (rect.height / 2)); // Inverted Y axis
+      const ny = -((clientY - centerY) / (rect.height / 2)); // Inverted Y
 
-      // Clamp to [-1, 1] range
+      // Clamp and convert to grid coordinates
       const clampedX = Math.max(-1, Math.min(1, nx));
       const clampedY = Math.max(-1, Math.min(1, ny));
+      const position = normalizedToGrid(clampedX, clampedY, spriteGridSize);
 
-      // Convert to grid coordinates
-      const px = quantizeToGrid(clampedX);
-      const py = quantizeToGrid(clampedY);
-
-      // Generate filename
-      const filename = gridToFilename(px, py);
-      const imagePath = `${basePath}${filename}`;
-
-      if (clientX > 0 && clientY > 0) {
-        setIsActive(true);
+      // If we're animating from idle to active, cancel it and update immediately
+      if (isActivatingRef.current) {
+        cancelAnimations();
+        isActivatingRef.current = false;
+        setAnimationState("active");
+        updatePosition(position);
+        return;
       }
-      setCurrentImage(imagePath);
+
+      // Don't interrupt return-to-center animations
+      if (animationStateRef.current === "transitioning") {
+        return;
+      }
+
+      // If transitioning from idle to active, animate to first position
+      if (animationStateRef.current === "idle") {
+        isActivatingRef.current = true;
+        setAnimationState("transitioning");
+        animateToPosition(
+          currentPositionRef.current || { px: 0, py: 0 },
+          position,
+          200, // Quick animation (200ms)
+          () => {
+            isActivatingRef.current = false;
+            setAnimationState("active");
+          }
+        );
+      } else {
+        // Already active, update immediately
+        setAnimationState("active");
+        updatePosition(position);
+      }
     },
-    [containerRef, basePath],
+    [containerRef, updatePosition, spriteGridSize, animateToPosition, cancelAnimations]
   );
 
+  /**
+   * Throttled pointer move handler (manual throttle for 60fps)
+   */
+  const handlePointerMove = useCallback(
+    (clientX: number, clientY: number) => {
+      const now = performance.now();
+      const timeSinceLastMove = now - lastMouseMoveRef.current;
+
+      // Throttle to ~60fps (16ms)
+      if (timeSinceLastMove < 16) {
+        return;
+      }
+
+      lastMouseMoveRef.current = now;
+      updateGaze(clientX, clientY);
+      resetInactivityTimer();
+    },
+    [updateGaze, resetInactivityTimer]
+  );
+
+  /**
+   * Mouse move event handler
+   */
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      updateGaze(e.clientX, e.clientY);
+      handlePointerMove(e.clientX, e.clientY);
     },
-    [updateGaze],
+    [handlePointerMove]
   );
 
+  /**
+   * Touch move event handler
+   */
   const handleTouchMove = useCallback(
     (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0];
-        updateGaze(touch.clientX, touch.clientY);
+        handlePointerMove(touch.clientX, touch.clientY);
       }
     },
-    [updateGaze],
+    [handlePointerMove]
   );
 
+  /**
+   * Setup event listeners and cleanup on unmount
+   */
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Add event listeners to window for global tracking
+    // Add global event listeners
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("touchmove", handleTouchMove, {
       passive: true,
-    } as AddEventListenerOptions);
+    });
 
-    // Set initial center gaze
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    updateGaze(centerX, centerY);
-
+    // Cleanup on unmount
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("touchmove", handleTouchMove);
-    };
-  }, [containerRef, handleMouseMove, handleTouchMove, updateGaze]);
 
-  return { currentImage: !isActive ? null : currentImage };
+      // Clean up all timers and animations
+      cancelAnimations();
+      clearAllTimers();
+      cleanupAnimations();
+      cleanupTimers();
+    };
+  }, [
+    containerRef,
+    handleMouseMove,
+    handleTouchMove,
+    cancelAnimations,
+    clearAllTimers,
+    cleanupAnimations,
+    cleanupTimers,
+  ]);
+
+  return {
+    spritePosition,
+    animationState,
+  };
 }
 
 export default useGazeTracking;
