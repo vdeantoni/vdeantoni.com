@@ -12,6 +12,7 @@ import last from "lodash/last";
 import Timeline from "@/components/Timeline";
 import { formatDate, formatTimeDifference } from "@/utils/date";
 import type { Metadata } from "next";
+import DownloadButton from "@/components/DownloadButton";
 
 export const metadata: Metadata = {
   title: "vdeantoni.com | Resume",
@@ -141,7 +142,10 @@ export default async function Resume() {
 
   return (
     <>
-      <h1 className={cn("font-extrabold")}>Resume</h1>
+      <div className={cn("flex", "items-center", "justify-between", "mb-10")}>
+        <h1 className={cn("font-extrabold")}>Resume</h1>
+        <DownloadButton />
+      </div>
 
       <div className={"hidden md:block"}>
         <SectionTitle title="Timeline" icon={faStream} />
