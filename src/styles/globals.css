@@ -1,8 +1,68 @@
-@import "./vars.css" layer(base);
-
 @import "tailwindcss";
 
-@config '../../tailwind.config.ts';
+/* Dark mode configuration - triggers when [data-color-scheme="dark"] is present */
+@custom-variant dark (&:is([data-color-scheme="dark"] *));
+
+/* Source directories for class extraction (replaces content array from old config) */
+@source "../../src/**/*.{js,ts,jsx,tsx,mdx}";
+
+@theme static {
+  /* Custom colors */
+  --color-text: #191924;
+  --color-background: #fff;
+  --color-heading: #07070a;
+  --color-primary: #ff4b56;
+  --color-primary-hover: #f83d49;
+  --color-secondary: #dc0714;
+  --color-secondary-hover: #b3000c;
+  --color-tertiary: #6f2828;
+  --color-tertiary-hover: #6f2828;
+  --color-fourtiary: #3d0c0c;
+  --color-fourtiary-hover: #290808;
+  --color-accent: #dc0714;
+  --color-accent-hover: #ff4b56;
+  --color-muted: #e6e6e6;
+  --color-muted-hover: #ebebeb;
+  --color-border: #ebece9;
+  --color-border-hover: #b9bdb3;
+
+  /* Grid templates */
+  --grid-template-columns-2-left-fixed-200: 200px 1fr;
+  --grid-template-columns-2-left-fixed-350: 350px 1fr;
+  --grid-template-columns-2-left-fixed-400: 400px 1fr;
+
+  /* Z-Index */
+  --z--1: -1;
+
+  /* Box shadows */
+  --shadow-outline-angled: 8px 8px 0px 0px var(--color-primary-hover);
+
+  /* Animation */
+  --animate-brighten: brighten 10s ease-in-out infinite;
+
+  @keyframes brighten {
+
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+
+    50% {
+      filter: brightness(1.2);
+    }
+  }
+}
+
+/* Dark mode color overrides */
+:root[data-color-scheme="dark"] {
+  --color-text: #dcdcdc;
+  --color-background: #221e1e;
+  --color-heading: #ffffff;
+  --color-muted: #131313;
+  --color-muted-hover: #212121;
+  --color-border: #666666;
+  --color-border-hover: #989898;
+}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
