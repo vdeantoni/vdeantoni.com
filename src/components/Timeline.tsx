@@ -28,13 +28,17 @@ const TimelineItem = ({ name, slug, items, years, itemColor }: any) => {
       ? "border-secondary"
       : itemColor === "tertiary"
         ? "border-tertiary"
-        : "border-primary";
+        : itemColor === "fourtiary"
+          ? "border-fourtiary"
+          : "border-primary";
   const borderColorHover =
     itemColor === "secondary"
       ? "group-hover:border-secondary-hover"
       : itemColor === "tertiary"
         ? "group-hover:border-tertiary-hover"
-        : "group-hover:border-primary-hover";
+        : itemColor === "fourtiary"
+          ? "group-hover:border-fourtiary-hover"
+          : "group-hover:border-primary-hover";
   return (
     <a
       href={`#${slug}`}
@@ -95,7 +99,7 @@ const Timeline = ({ data = [] }: { data: any[] }) => {
           slug={company.slug}
           items={company.items}
           years={years}
-          itemColor="primary"
+          itemColor="secondary"
         />
       ))}
 
@@ -108,7 +112,7 @@ const Timeline = ({ data = [] }: { data: any[] }) => {
           slug={school.slug}
           items={[school]}
           years={years}
-          itemColor="secondary"
+          itemColor="tertiary"
         />
       ))}
 
@@ -126,7 +130,7 @@ const Timeline = ({ data = [] }: { data: any[] }) => {
             },
           ]}
           years={years}
-          itemColor="tertiary"
+          itemColor="fourtiary"
         />
       ))}
 

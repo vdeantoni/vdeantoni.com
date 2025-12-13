@@ -26,6 +26,8 @@ const config: Config = {
       secondaryHover: "var(--color-secondary-hover)",
       tertiary: "var(--color-tertiary)",
       tertiaryHover: "var(--color-tertiary-hover)",
+      fourtiary: "var(--color-fourtiary)",
+      fourtiaryHover: "var(--color-fourtiary-hover)",
       accent: "var(--color-accent)",
       accentHover: "var(--color-accent-hover)",
       muted: "var(--color-muted)",
