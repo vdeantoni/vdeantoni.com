@@ -1,32 +1,76 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-/* Dark mode configuration - triggers when [data-color-scheme="dark"] is present */
+/* Dark mode: triggers when [data-color-scheme="dark"] is present */
 @custom-variant dark (&:is([data-color-scheme="dark"] *));
 
-/* Source directories for class extraction (replaces content array from old config) */
+/* Source directories for Tailwind class extraction */
 @source "../../src/**/*.{js,ts,jsx,tsx,mdx}";
 
-@theme static {
-  /* Custom colors */
-  --color-text: #191924;
-  --color-background: #fff;
-  --color-heading: #07070a;
-  --color-primary: #ff4b56;
-  --color-primary-hover: #f83d49;
-  --color-secondary: #dc0714;
-  --color-secondary-hover: #b3000c;
-  --color-tertiary: #6f2828;
-  --color-tertiary-hover: #6f2828;
-  --color-fourtiary: #3d0c0c;
-  --color-fourtiary-hover: #290808;
-  --color-accent: #dc0714;
-  --color-accent-hover: #ff4b56;
-  --color-muted: #e6e6e6;
-  --color-muted-hover: #ebebeb;
-  --color-border: #ebece9;
-  --color-border-hover: #b9bdb3;
+/*
+ * =============================================================================
+ * THEME CONFIGURATION
+ * Uses @theme inline so CSS variables can be overridden in :root
+ * =============================================================================
+ */
+@theme inline {
+  /* Border Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 
-  /* Grid templates */
+  /* Brand Colors - mapped to CSS variables for dark mode support */
+  --color-text: var(--text);
+  --color-background: var(--background);
+  --color-heading: var(--heading);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-hover: var(--tertiary-hover);
+  --color-fourtiary: var(--fourtiary);
+  --color-fourtiary-hover: var(--fourtiary-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-hover: var(--muted-hover);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  /* shadcn/ui Colors */
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Grid Templates */
   --grid-template-columns-2-left-fixed-200: 200px 1fr;
   --grid-template-columns-2-left-fixed-350: 350px 1fr;
   --grid-template-columns-2-left-fixed-400: 400px 1fr;
@@ -34,56 +78,180 @@
   /* Z-Index */
   --z--1: -1;
 
-  /* Box shadows */
-  --shadow-outline-angled: 8px 8px 0px 0px var(--color-primary-hover);
+  /* Box Shadows */
+  --shadow-outline-angled: 8px 8px 0px 0px var(--primary-hover);
 
-  /* Animation */
+  /* Animations */
   --animate-brighten: brighten 10s ease-in-out infinite;
 
   @keyframes brighten {
-
-    0%,
-    100% {
-      filter: brightness(1);
-    }
-
-    50% {
-      filter: brightness(1.2);
-    }
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
   }
-}
 
-/* Dark mode color overrides */
-:root[data-color-scheme="dark"] {
-  --color-text: #dcdcdc;
-  --color-background: #221e1e;
-  --color-heading: #ffffff;
-  --color-muted: #131313;
-  --color-muted-hover: #212121;
-  --color-border: #666666;
-  --color-border-hover: #989898;
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height, var(--accordion-panel-height, auto)); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height, var(--accordion-panel-height, auto)); }
+    to { height: 0; }
+  }
 }
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+ * =============================================================================
+ * CSS VARIABLES - Light Mode (default)
+ * =============================================================================
+ */
+:root {
+  --radius: 0.625rem;
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
+  /* Brand Colors */
+  --text: oklch(0.145 0.005 285);
+  --background: oklch(1 0 0);
+  --heading: oklch(0.08 0.005 285);
+  --primary: oklch(0.62 0.24 25);
+  --primary-hover: oklch(0.58 0.22 25);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.5 0.22 25);
+  --secondary-hover: oklch(0.42 0.18 25);
+  --secondary-foreground: oklch(0.985 0 0);
+  --tertiary: oklch(0.38 0.08 25);
+  --tertiary-hover: oklch(0.38 0.08 25);
+  --fourtiary: oklch(0.25 0.05 25);
+  --fourtiary-hover: oklch(0.2 0.04 25);
+  --accent: oklch(0.5 0.22 25);
+  --accent-hover: oklch(0.62 0.24 25);
+  --accent-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.93 0 0);
+  --muted-hover: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.93 0.005 100);
+  --border-hover: oklch(0.78 0.01 100);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.97 0.01 17);
 
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-border);
-  }
+  /* shadcn/ui Variables */
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Custom utilities */
+/*
+ * =============================================================================
+ * CSS VARIABLES - Dark Mode
+ * =============================================================================
+ */
+:root[data-color-scheme="dark"] {
+  /* Brand Colors */
+  --text: oklch(0.9 0 0);
+  --background: oklch(0.18 0.01 25);
+  --heading: oklch(1 0 0);
+  --muted: oklch(0.12 0 0);
+  --muted-hover: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --border: oklch(0.45 0 0);
+  --border-hover: oklch(0.65 0 0);
+
+  /* shadcn/ui Variables */
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.58 0.22 27);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/*
+ * =============================================================================
+ * CUSTOM VARIANTS (for shadcn/ui components)
+ * =============================================================================
+ */
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) { @slot; }
+}
+
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) { @slot; }
+}
+
+@custom-variant data-checked {
+  &:where([data-state="checked"]),
+  &:where([data-checked]:not([data-checked="false"])) { @slot; }
+}
+
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]:not([data-unchecked="false"])) { @slot; }
+}
+
+@custom-variant data-selected {
+  &:where([data-selected="true"]) { @slot; }
+}
+
+@custom-variant data-disabled {
+  &:where([data-disabled="true"]),
+  &:where([data-disabled]:not([data-disabled="false"])) { @slot; }
+}
+
+@custom-variant data-active {
+  &:where([data-state="active"]),
+  &:where([data-active]:not([data-active="false"])) { @slot; }
+}
+
+@custom-variant data-horizontal {
+  &:where([data-orientation="horizontal"]) { @slot; }
+}
+
+@custom-variant data-vertical {
+  &:where([data-orientation="vertical"]) { @slot; }
+}
+
+/*
+ * =============================================================================
+ * CUSTOM UTILITIES
+ * =============================================================================
+ */
 @utility actionable {
   @apply transition-all duration-150 ease-in cursor-pointer;
 }
@@ -93,155 +261,65 @@
 }
 
 @utility absolute-center {
-  @apply absolute;
-
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
-@layer base {
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
 
-  /* Base styles - START */
+/*
+ * =============================================================================
+ * BASE STYLES
+ * =============================================================================
+ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply overscroll-y-none scroll-smooth;
+  }
+
   body {
     @apply text-base text-text bg-background;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
 
-  a,
-  .a {
-    @apply inline-flex items-center no-underline text-text;
-    @apply actionable;
+  a, .a {
+    @apply inline-flex items-center no-underline text-text actionable;
   }
 
-  a:hover,
-  .a:hover,
-  a:focus,
-  .a:focus,
-  a:active,
-  .a:active {
+  a:hover, .a:hover,
+  a:focus, .a:focus,
+  a:active, .a:active {
     @apply text-primary-hover;
   }
 
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     @apply text-secondary;
   }
 
-  h1,
-  .h1 {
-    @apply text-4xl heading;
-  }
-
-  h2,
-  .h2 {
-    @apply text-3xl heading;
-  }
-
-  h3,
-  .h3 {
-    @apply text-2xl heading;
-  }
-
-  h4,
-  .h4 {
-    @apply text-xl heading;
-  }
-
-  h5,
-  .h5 {
-    @apply text-lg heading;
-  }
-
-  h6,
-  .h6 {
-    @apply text-base heading;
-  }
-
-  @media (width >=theme(--breakpoint-md)) {
-
-    h1,
-    .h1 {
-      @apply text-5xl;
-    }
-
-    h2,
-    .h2 {
-      @apply text-4xl;
-    }
-
-    h3,
-    .h3 {
-      @apply text-3xl;
-    }
-
-    h4,
-    .h4 {
-      @apply text-2xl;
-    }
-
-    h5,
-    .h5 {
-      @apply text-xl;
-    }
-
-    h6,
-    .h6 {
-      @apply text-lg;
-    }
-  }
-
-  @media (width >=theme(--breakpoint-lg)) {
-
-    h1,
-    .h1 {
-      @apply text-6xl;
-    }
-
-    h2,
-    .h2 {
-      @apply text-5xl;
-    }
-
-    h3,
-    .h3 {
-      @apply text-4xl;
-    }
-
-    h4,
-    .h4 {
-      @apply text-3xl;
-    }
-
-    h5,
-    .h5 {
-      @apply text-2xl;
-    }
-
-    h6,
-    .h6 {
-      @apply text-xl;
-    }
-  }
-
-  /* Base styles - END */
+  h1, .h1 { @apply text-4xl md:text-5xl lg:text-6xl heading; }
+  h2, .h2 { @apply text-3xl md:text-4xl lg:text-5xl heading; }
+  h3, .h3 { @apply text-2xl md:text-3xl lg:text-4xl heading; }
+  h4, .h4 { @apply text-xl md:text-2xl lg:text-3xl heading; }
+  h5, .h5 { @apply text-lg md:text-xl lg:text-2xl heading; }
+  h6, .h6 { @apply text-base md:text-lg lg:text-xl heading; }
 }
 
+/*
+ * =============================================================================
+ * COMPONENTS
+ * =============================================================================
+ */
 @layer components {
-
-  /* Components - START */
   .button {
-    @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline border-0 rounded-md shadow-xs bg-primary;
-    @apply actionable;
+    @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline border-0 rounded-md shadow-xs bg-primary actionable;
   }
 
   .button:hover,
@@ -253,6 +331,4 @@
   .section-grid {
     @apply grid grid-cols-1 md:grid-cols-2-left-fixed-350 lg:grid-cols-2-left-fixed-400 gap-5 md:gap-10 items-start;
   }
-
-  /* Components - END */
 }
