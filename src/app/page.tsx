@@ -98,7 +98,7 @@ export default async function Home() {
           </p>
 
           <p className={cn("text-xl", "leading-loose", "mt-4")}>
-            My journey has taken me through diverse problem spaces, from{" "}
+            My journey has taken me through diverse problem spaces, ranging from{" "}
             <span
               className={cn(
                 "font-semibold",
@@ -116,11 +116,7 @@ export default async function Home() {
             >
               e-commerce platforms
             </span>
-            .
-          </p>
-
-          <p className={cn("text-xl", "leading-loose", "mt-4")}>
-            I&apos;m passionate about tackling challenges in{" "}
+            . While my professional focus is on{" "}
             <span
               className={cn(
                 "font-semibold",
@@ -129,16 +125,16 @@ export default async function Home() {
             >
               distributed systems
             </span>{" "}
-            and have a deep interest in{" "}
+            and{" "}
             <span
               className={cn(
                 "font-semibold",
                 "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
               )}
             >
-              AI
+              AI-driven development
             </span>
-            , and{" "}
+            , I channel that same appreciation for flow and strategy into creating{" "}
             <span
               className={cn(
                 "font-semibold",
@@ -146,6 +142,15 @@ export default async function Home() {
               )}
             >
               music
+            </span>{" "}
+            and watching{" "}
+            <span
+              className={cn(
+                "font-semibold",
+                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
+              )}
+            >
+              soccer
             </span>
             .
           </p>
