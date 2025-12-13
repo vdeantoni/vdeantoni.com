@@ -31,9 +31,15 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
           transition: { duration: 0.5 },
         });
       }}
-      className={cn("a", "text-text", "overflow:hidden", className)}
+      className={cn("a", "text-text", "hover:text-primary", "overflow-hidden", className)}
     >
-      <motion.div animate={controls}>
+      <motion.div
+        animate={controls}
+        whileHover={{
+          rotate: [0, -10, 10, -10, 10, 0],
+          transition: { duration: 0.5 }
+        }}
+      >
         <FontAwesomeIcon
           icon={scheme === "default" ? faSun : faMoon}
           className={cn("w-5", "h-5")}

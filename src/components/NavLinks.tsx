@@ -51,12 +51,33 @@ const ActiveNavLink = ({
         "text-text",
         "text-base",
         "md:border-b-0",
+        { "cursor-default": isActive },
         { "font-bold": isActive },
         { "py-3": !footer },
         { "border-b": !footer },
+        {
+          "relative group overflow-hidden": !footer && !isActive,
+        },
       )}
     >
       {link.name}
+      {!footer && (
+        <span
+          className={cn(
+            "absolute",
+            "left-1/2",
+            "w-0",
+            "h-[2px]",
+            "bg-current",
+            "transition-all",
+            "duration-300",
+            "ease-in-out",
+            "group-hover:w-full",
+            "-translate-x-1/2",
+            "translate-y-4",
+          )}
+        />
+      )}
     </Link>
   );
 };

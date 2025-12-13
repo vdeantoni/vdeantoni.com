@@ -71,7 +71,7 @@ export default async function Home() {
               className={cn(
                 "font-bold",
                 "text-xl",
-                "bg-gradient-to-br from-primary to-tertiary bg-clip-text text-transparent",
+                "bg-gradient-to-br from-text to-secondary bg-clip-text text-transparent",
               )}
             >
               Vinicius De Antoni

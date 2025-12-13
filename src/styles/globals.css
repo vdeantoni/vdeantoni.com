@@ -13,6 +13,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -26,9 +27,11 @@
 @utility actionable {
   @apply transition-all duration-150 ease-in cursor-pointer;
 }
+
 @utility heading {
   @apply font-sans font-semibold leading-tight tracking-tight text-heading;
 }
+
 @utility absolute-center {
   @apply absolute;
 
@@ -38,6 +41,7 @@
 }
 
 @layer base {
+
   /* Base styles - START */
   body {
     @apply text-base text-text bg-background;
@@ -45,7 +49,7 @@
 
   a,
   .a {
-    @apply inline-flex items-center no-underline text-primary;
+    @apply inline-flex items-center no-underline text-text;
     @apply actionable;
   }
 
@@ -56,6 +60,21 @@
   a:active,
   .a:active {
     @apply text-primary-hover;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    @apply text-secondary;
   }
 
   h1,
@@ -88,7 +107,8 @@
     @apply text-base heading;
   }
 
-  @media (width >= theme(--breakpoint-md)) {
+  @media (width >=theme(--breakpoint-md)) {
+
     h1,
     .h1 {
       @apply text-5xl;
@@ -120,7 +140,8 @@
     }
   }
 
-  @media (width >= theme(--breakpoint-lg)) {
+  @media (width >=theme(--breakpoint-lg)) {
+
     h1,
     .h1 {
       @apply text-6xl;
@@ -156,6 +177,7 @@
 }
 
 @layer components {
+
   /* Components - START */
   .button {
     @apply inline-flex items-center content-center px-5 py-3 leading-none text-white no-underline border-0 rounded-md shadow-xs bg-primary;

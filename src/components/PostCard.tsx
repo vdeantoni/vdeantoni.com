@@ -44,9 +44,13 @@ const PostCard = ({ post }: { post: any }) => (
               className={cn(
                 "h3",
                 "mb-4",
-                "text-primary",
-                "group-hover:text-primary-hover",
+                "text-text",
                 "actionable",
+                "transition-all",
+                "duration-300",
+                "ease-in-out",
+                "group-hover:text-primary",
+                "group-hover:translate-x-1",
               )}
             >
               {post.title}

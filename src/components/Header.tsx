@@ -32,8 +32,6 @@ export const Branding = () => {
           "border-black",
           "border",
           "actionable",
-          "group-hover:text-primary-hover",
-          "group-hover:border-primary-hover",
           "relative",
           "group",
         )}
