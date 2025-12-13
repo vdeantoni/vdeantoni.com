@@ -1,10 +1,11 @@
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import MobileNav from "./MobileNav";
 import SocialLinks from "./SocialLinks";
 import dynamic from "next/dynamic";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {});
 const NavLinks = dynamic(() => import("./NavLinks"), {});
@@ -21,29 +22,10 @@ export const Branding = () => {
         "group",
       )}
     >
-      <div
-        className={cn(
-          "w-10",
-          "h-10",
-          "overflow-hidden",
-          "text-black",
-          "bg-white",
-          "rounded-full",
-          "border-black",
-          "border",
-          "actionable",
-          "relative",
-          "group",
-        )}
-      >
-        <Image
-          src={"/logo.svg"}
-          loading="eager"
-          fill={true}
-          alt={"Stylized picture of the author"}
-          priority={true}
-        />
-      </div>
+      <Avatar className={cn("w-10", "h-10", "border", "border-foreground", "bg-background", "actionable")}>
+        <AvatarImage src="/logo.svg" alt="Stylized picture of the author" className="dark:invert" />
+        <AvatarFallback>VD</AvatarFallback>
+      </Avatar>
       <span className={cn("ml-3")}>vdeantoni.com</span>
     </Link>
   );

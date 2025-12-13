@@ -4,9 +4,10 @@ import { format } from "date-fns";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import ParallaxImage from "@/components/ParallaxImage";
+import { Badge } from "@/components/ui/badge";
 
 interface PostPageProps {
   params: Promise<{
@@ -68,12 +69,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className={cn("mb-4")}>
           <Link
             href="/posts"
-            className={cn(
-              "text-primary",
-              "hover:text-primary-hover",
-              "transition-colors",
-              "duration-200",
-            )}
+            className={cn("transition-colors", "duration-200")}
           >
             ← Back to Posts
           </Link>
@@ -104,7 +100,6 @@ export default async function PostPage({ params }: PostPageProps) {
             "md:text-5xl",
             "font-bold",
             "mb-4",
-            "text-primary",
           )}
         >
           {post.title}
@@ -139,21 +134,9 @@ export default async function PostPage({ params }: PostPageProps) {
           {post.tags && post.tags.length > 0 && (
             <div className={cn("flex", "flex-wrap", "gap-2")}>
               {post.tags.map((tag: any, index: number) => (
-                <span
-                  key={index}
-                  className={cn(
-                    "px-2",
-                    "py-1",
-                    "text-xs",
-                    "bg-background-accent",
-                    "text-text",
-                    "rounded-full",
-                    "border",
-                    "border-border",
-                  )}
-                >
+                <Badge key={index} variant="secondary">
                   {tag.name}
-                </span>
+                </Badge>
               ))}
             </div>
           )}
@@ -165,9 +148,9 @@ export default async function PostPage({ params }: PostPageProps) {
         <div
           className={cn(
             "text-text",
-            "[&>h1]:text-primary",
-            "[&>h2]:text-primary",
-            "[&>h3]:text-primary",
+            "[&>h1]:text-foreground",
+            "[&>h2]:text-foreground",
+            "[&>h3]:text-foreground",
             "[&>a]:text-primary",
             "[&>a]:hover:text-primary-hover",
           )}

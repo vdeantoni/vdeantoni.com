@@ -1,69 +1,80 @@
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
-import { faMedium } from "@fortawesome/free-brands-svg-icons/faMedium";
-import { faStackOverflow } from "@fortawesome/free-brands-svg-icons/faStackOverflow";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cn from "classnames";
-import React, { FC } from "react";
+import { Github, Linkedin, type LucideIcon, Mail, Twitter } from "lucide-react";
+import { cn } from "@/lib/utils";
+import React, { type ComponentType } from "react";
+import { StackOverflowIcon } from "./icons";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+type SocialLink = {
+  name: string;
+  link: string;
+  icon: LucideIcon | ComponentType<{ className?: string }>;
+};
+
+const socialLinks: SocialLink[] = [
+  {
+    name: "Email",
+    link: "mailto:admin@vdeantoni.com",
+    icon: Mail,
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/vdeantoni",
+    icon: Linkedin,
+  },
+  {
+    name: "Stack Overflow",
+    link: "https://stackoverflow.com/users/621767/deantoni?tab=profile",
+    icon: StackOverflowIcon,
+  },
+  {
+    name: "Github",
+    link: "https://github.com/vdeantoni",
+    icon: Github,
+  },
+  {
+    name: "Twitter",
+    link: "https://twitter.com/vinideantoni",
+    icon: Twitter,
+  },
+];
 
 const SocialLinks = ({ className = "" }: { className?: string }) => {
-  const socialLinks = [
-    {
-      name: "Email",
-      link: "mailto:admin@vdeantoni.com",
-      icon: faEnvelope,
-    },
-    {
-      name: "LinkedIn",
-      link: "https://www.linkedin.com/in/vdeantoni",
-      icon: faLinkedin,
-    },
-    {
-      name: "Medium",
-      link: "https://medium.com/@vdeantoni",
-      icon: faMedium,
-    },
-    {
-      name: "Stack Overflow",
-      link: "https://stackoverflow.com/users/621767/deantoni?tab=profile",
-      icon: faStackOverflow,
-    },
-    {
-      name: "Github",
-      link: "https://github.com/vdeantoni",
-      icon: faGithub,
-    },
-    {
-      name: "Twitter",
-      link: "https://twitter.com/vinideantoni",
-      icon: faTwitter,
-    },
-  ];
-
   return (
-    <div className={cn("flex", className)}>
-      {socialLinks?.map((link) => (
-        <a
-          href={link.link}
-          key={link.name}
-          title={link.name}
-          className={cn("mx-2", "text-text", "hover:text-primary")}
-        >
-          <FontAwesomeIcon
-            icon={link.icon}
-            className={cn(
-              "w-5",
-              "h-5",
-              "transform",
-              "transition-all",
-              "hover:scale-125",
-            )}
-          />
-        </a>
-      ))}
-    </div>
+    <TooltipProvider>
+      <div className={cn("flex", className)}>
+        {socialLinks.map((link) => {
+          const Icon = link.icon;
+          return (
+            <Tooltip key={link.name}>
+              <TooltipTrigger asChild>
+                <a
+                  href={link.link}
+                  className={cn("mx-2", "text-text", "hover:text-primary")}
+                >
+                  <Icon
+                    className={cn(
+                      "w-5",
+                      "h-5",
+                      "transform",
+                      "transition-all",
+                      "hover:scale-125",
+                    )}
+                  />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{link.name}</p>
+              </TooltipContent>
+            </Tooltip>
+          );
+        })}
+      </div>
+    </TooltipProvider>
   );
 };
 

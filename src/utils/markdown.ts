@@ -18,14 +18,14 @@ function rehypeCodeBlocks() {
         node.properties = {
           ...node.properties,
           className:
-            `${node.properties?.className || ""} bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4`.trim(),
+            `${node.properties?.className || ""} bg-stone-100 dark:bg-stone-900 p-4 rounded-lg overflow-x-auto my-4`.trim(),
         };
         // Let rehype-highlight handle the code element classes
       } else if (node.tagName === "code" && node.parent?.tagName !== "pre") {
         // This is inline code, add inline styling
         node.properties = {
           ...node.properties,
-          className: "bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm",
+          className: "bg-stone-100 dark:bg-stone-900 px-2 py-1 rounded text-sm",
         };
       }
     });
@@ -45,9 +45,9 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(rehypeHighlight) // Add syntax highlighting
     .use(rehypeAddClasses, {
       // Headers
-      h1: "text-3xl font-bold mt-8 mb-6 text-primary",
-      h2: "text-2xl font-bold mt-8 mb-6 text-primary",
-      h3: "text-xl font-semibold mt-6 mb-4 text-primary",
+      h1: "text-3xl font-bold mt-8 mb-6 text-text",
+      h2: "text-2xl font-bold mt-8 mb-6 text-text",
+      h3: "text-xl font-semibold mt-6 mb-4 text-text",
       // Paragraphs
       p: "mb-4 leading-relaxed",
       // Links
