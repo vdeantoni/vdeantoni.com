@@ -1,117 +1,83 @@
 "use client";
 
-import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cn from "classnames";
-import React, { useState } from "react";
+import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
+import React from "react";
 import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
 import { Branding } from "./Header";
-import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {
   ssr: false,
 });
 
 export default function MobileNav() {
-  const [showMenu, setShowMenu] = useState(false);
-  const pathname = usePathname();
-  const [prevPathname, setPrevPathname] = useState(pathname);
-
-  if (pathname !== prevPathname) {
-    setPrevPathname(pathname);
-    setShowMenu(false);
-  }
-
   return (
     <nav
       className={cn(
         "mobile",
         "flex",
         "md:hidden",
-        "flex-col",
-        "justify-center",
+        "justify-between",
         "items-center",
+        "w-full",
       )}
     >
-      <div
-        className={cn(
-          "flex",
-          "w-full",
-          "justify-between",
-          "items-center",
-          "transition-all",
-          "duration-150",
-          "ease-in",
-          { invisible: showMenu },
-          { "opacity-0": showMenu },
-          { visible: !showMenu },
-          { "opacity-100": !showMenu },
-        )}
-      >
-        <Branding />
-        <button
-          aria-label="Open menu"
-          onClick={() => setShowMenu(true)}
-          className={cn("outline-hidden", "text-text", "hover:text-text", "py-3")}
-        >
-          <FontAwesomeIcon icon={faBars} size="2x" className={"w-5 h-5"} />
-        </button>
-      </div>
-      <div
-        className={cn(
-          "absolute",
-          "top-0",
-          "left-0",
-          "w-full",
-          "my-4",
-          "px-4",
-          "bg-background",
-          "rounded-lg",
-          "overflow-scroll",
-          "shadow-lg",
-          "border",
-          "transition-all",
-          "duration-200",
-          "ease-in",
-          "transform",
-          "origin-center",
-          "max-h-screen",
-          { visible: showMenu },
-          { "opacity-100": showMenu },
-          { "scale-100": showMenu },
-          { invisible: !showMenu },
-          { "opacity-0": !showMenu },
-          { "scale-90": !showMenu },
-        )}
-      >
-        <div
-          className={cn(
-            "flex",
-            "justify-between",
-            "items-center",
-            "w-full",
-            "py-2",
-            "px-0",
-          )}
-        >
-          <Branding />
-          <button
-            aria-label="Close menu"
-            onClick={() => setShowMenu(false)}
-            className={cn("outline-hidden", "text-text", "hover:text-text")}
-          >
-            <FontAwesomeIcon icon={faTimes} size="2x" className={"w-5 h-5"} />
-          </button>
-        </div>
-        <NavLinks className={cn("border-t")} />
-        <div className={cn("flex", "justify-between", "items-center", "py-4")}>
-          <SocialLinks />
-          <ColorSchemeToggle className={cn("ml-auto")} />
-        </div>
-      </div>
+      <Branding />
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" aria-label="Open menu">
+            <Menu className="w-5 h-5" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right" className="w-[300px] sm:w-[350px] px-6">
+          <SheetHeader>
+            <SheetTitle>
+              <Avatar
+                className={cn(
+                  "w-10",
+                  "h-10",
+                  "border",
+                  "border-foreground",
+                  "bg-background",
+                )}
+              >
+                <AvatarImage
+                  src="/logo.svg"
+                  alt="vdeantoni.com"
+                  className="dark:invert"
+                />
+                <AvatarFallback>VD</AvatarFallback>
+              </Avatar>
+            </SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-col h-full">
+            <NavLinks className={cn("border-t", "mt-4")} mobile />
+            <div
+              className={cn(
+                "flex",
+                "justify-between",
+                "items-center",
+                "py-4",
+                "mt-auto",
+              )}
+            >
+              <SocialLinks />
+              <ColorSchemeToggle className={cn("ml-auto")} />
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </nav>
   );
 }

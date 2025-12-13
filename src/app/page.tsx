@@ -1,10 +1,10 @@
 import Me from "@/components/Me";
 import Link from "next/link";
-import cn from "classnames";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 import { getPosts, getProjects } from "@/data";
 import PostCard from "@/components/PostCard";
+import { Button } from "@/components/ui/button";
 
 const LatestProject = async () => {
   const project = await getProjects();
@@ -162,11 +162,10 @@ export default async function Home() {
       <LatestProject />
 
       <div className={cn("flex", "justify-end")}>
-        <Link href={"/projects"}>
-          <button className={cn("button", "mt-6", "group")}>
+        <Button asChild className="mt-6 group">
+          <Link href={"/projects"}>
             View all projects
-            <FontAwesomeIcon
-              icon={faArrowRight}
+            <ArrowRight
               className={cn(
                 "ml-2",
                 "w-4",
@@ -174,8 +173,8 @@ export default async function Home() {
                 "transition",
               )}
             />
-          </button>
-        </Link>
+          </Link>
+        </Button>
       </div>
 
       <h2 className={cn("h3", "mt-10")}>Latest post</h2>
@@ -183,11 +182,10 @@ export default async function Home() {
       <LatestPost />
 
       <div className={cn("flex", "justify-end")}>
-        <Link href={"/posts"}>
-          <button className={cn("button", "mt-6", "group")}>
+        <Button asChild className="mt-6 group">
+          <Link href={"/posts"}>
             View all posts
-            <FontAwesomeIcon
-              icon={faArrowRight}
+            <ArrowRight
               className={cn(
                 "ml-2",
                 "w-4",
@@ -195,8 +193,8 @@ export default async function Home() {
                 "transition",
               )}
             />
-          </button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </>
   );

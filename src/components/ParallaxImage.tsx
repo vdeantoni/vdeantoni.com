@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 
 interface ParallaxImageProps {
   src: string;

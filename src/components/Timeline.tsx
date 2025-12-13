@@ -1,4 +1,4 @@
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import { addYears } from "date-fns";
 import first from "lodash/first";
 import groupBy from "lodash/groupBy";

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ColorSchemeProvider } from "@/contexts/ColorSchemeContext";

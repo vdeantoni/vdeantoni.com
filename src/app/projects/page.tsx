@@ -1,5 +1,5 @@
 import { getProjects } from "@/data";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import PostCard from "@/components/PostCard";
 import type { Metadata } from "next";
 

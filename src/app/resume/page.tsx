@@ -1,10 +1,6 @@
-import { faAward } from "@fortawesome/free-solid-svg-icons/faAward";
-import { faBriefcase } from "@fortawesome/free-solid-svg-icons/faBriefcase";
-import { faStream } from "@fortawesome/free-solid-svg-icons/faStream";
-import { faUniversity } from "@fortawesome/free-solid-svg-icons/faUniversity";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Award, Briefcase, GraduationCap, LayoutList, type LucideIcon } from "lucide-react";
 import { getResume } from "@/data";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import { formatISO, addYears } from "date-fns";
 import first from "lodash/first";
 import groupBy from "lodash/groupBy";
@@ -32,10 +28,10 @@ const timePeriod = (start: string, end: string): string => {
   return `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
 };
 
-const SectionTitle = ({ title, icon }: { title: string; icon: any }) => {
+const SectionTitle = ({ title, icon: Icon }: { title: string; icon: LucideIcon }) => {
   return (
     <h2 className={cn("h4", "mt-10", "flex", "items-center")}>
-      <FontAwesomeIcon icon={icon} size="1x" className={cn("w-6", "mr-3")} />
+      <Icon className={cn("w-6", "h-6", "mr-3")} />
       {title}
     </h2>
   );
@@ -148,7 +144,7 @@ export default async function Resume() {
       </div>
 
       <div className={"hidden md:block"}>
-        <SectionTitle title="Timeline" icon={faStream} />
+        <SectionTitle title="Timeline" icon={LayoutList} />
         <div
           className={cn(
             "mt-10",
@@ -163,7 +159,7 @@ export default async function Resume() {
         </div>
       </div>
 
-      <SectionTitle title="Employment" icon={faBriefcase} />
+      <SectionTitle title="Employment" icon={Briefcase} />
       {companies.map((entry, entryIndex) => (
         <div key={entryIndex} className={cn("section-grid", "mt-10")}>
           <EntryTitle
@@ -188,7 +184,7 @@ export default async function Resume() {
         </div>
       ))}
 
-      <SectionTitle title="Education" icon={faUniversity} />
+      <SectionTitle title="Education" icon={GraduationCap} />
       {schools.map((entry, entryIndex) => (
         <div key={entryIndex} className={cn("section-grid", "mt-10")}>
           <EntryTitle title={entry.name} slug={entry.slug} />
@@ -206,7 +202,7 @@ export default async function Resume() {
         </div>
       ))}
 
-      <SectionTitle title="Certifications" icon={faAward} />
+      <SectionTitle title="Certifications" icon={Award} />
       {certifications.map((entry, entryIndex) => (
         <div key={entryIndex} className={cn("section-grid", "mt-10")}>
           <EntryTitle title={entry.entity} slug={entry.slug} />

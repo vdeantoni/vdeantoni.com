@@ -1,9 +1,7 @@
 "use client";
 
-import { faMoon } from "@fortawesome/free-solid-svg-icons/faMoon";
-import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cn from "classnames";
+import { Moon, Sun } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
 import React from "react";
 import { useColorScheme } from "../hooks/useColorScheme";
@@ -40,10 +38,11 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
           transition: { duration: 0.5 }
         }}
       >
-        <FontAwesomeIcon
-          icon={scheme === "default" ? faSun : faMoon}
-          className={cn("w-5", "h-5")}
-        />
+        {scheme === "default" ? (
+          <Sun className="w-5 h-5" />
+        ) : (
+          <Moon className="w-5 h-5" />
+        )}
       </motion.div>
     </button>
   );

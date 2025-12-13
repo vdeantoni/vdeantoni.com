@@ -1,6 +1,6 @@
 "use client";
 
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -33,10 +33,12 @@ const ActiveNavLink = ({
   link,
   currentPathname,
   footer = false,
+  mobile = false,
 }: {
   link: NavLink;
   currentPathname: string;
   footer?: boolean;
+  mobile?: boolean;
 }) => {
   const isActive =
     link.link === "/"
@@ -55,13 +57,19 @@ const ActiveNavLink = ({
         { "font-bold": isActive },
         { "py-3": !footer },
         { "border-b": !footer },
+        // Desktop: centered underline animation
         {
-          "relative group overflow-hidden": !footer && !isActive,
+          "relative group overflow-hidden": !footer && !isActive && !mobile,
+        },
+        // Mobile: simple hover color change
+        {
+          "hover:text-primary transition-colors": mobile && !isActive,
         },
       )}
     >
       {link.name}
-      {!footer && (
+      {/* Desktop underline animation - centered */}
+      {!footer && !mobile && (
         <span
           className={cn(
             "absolute",
@@ -84,9 +92,11 @@ const ActiveNavLink = ({
 
 const NavLinks = ({
   footer = false,
+  mobile = false,
   className,
 }: {
   footer?: boolean;
+  mobile?: boolean;
   className?: string;
 }) => {
   const pathname = usePathname();
@@ -109,6 +119,7 @@ const NavLinks = ({
           link={link}
           currentPathname={pathname}
           footer={footer}
+          mobile={mobile}
         />
       ))}
     </div>

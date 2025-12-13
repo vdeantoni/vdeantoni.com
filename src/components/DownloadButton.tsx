@@ -1,27 +1,22 @@
 "use client";
 
-import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cn from "classnames";
+import { Download } from "lucide-react";
+import { cn } from "@/lib/utils";
 import React, { FC } from "react";
+import { Button } from "@/components/ui/button";
 
 const DownloadButton: FC = () => {
   return (
-    <a
-      href="/resume.pdf"
-      download="vdeantoni-resume.pdf"
-      className={cn(
-        "button",
-        "inline-flex",
-        "items-center",
-        "gap-2",
-        "no-print",
-      )}
-      title="Download Resume as PDF"
-    >
-      <FontAwesomeIcon icon={faDownload} className={cn("w-4", "h-4")} />
-      <span>Download PDF</span>
-    </a>
+    <Button asChild className={cn("no-print")}>
+      <a
+        href="/resume.pdf"
+        download="vdeantoni-resume.pdf"
+        title="Download Resume as PDF"
+      >
+        <Download className="w-4 h-4" />
+        <span>Download PDF</span>
+      </a>
+    </Button>
   );
 };
 
