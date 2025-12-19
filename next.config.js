@@ -32,6 +32,12 @@ export default withSentryConfig(
     silent: true,
     org: "vdeantoni",
     project: "vdeantoni",
+    authToken: process.env.SENTRY_AUTH_TOKEN,
+
+    // Automatically create releases
+    release: {
+      autoGenerate: true,
+    },
   },
   {
     // For all available options, see:
