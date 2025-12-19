@@ -3,7 +3,6 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
-import { Replay } from "@sentry/replay";
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -34,12 +33,12 @@ Sentry.init({
 
   // Session Replay integration with better privacy settings
   integrations: [
-    new Replay({
+    Sentry.replayIntegration({
       // Balance between privacy and debugging value
       maskAllText: isProduction, // Only mask in production
       blockAllMedia: true,
       maskAllInputs: true,
-      
+
       // Sample network requests
       networkDetailAllowUrls: [
         // Allow your API endpoints for better debugging
