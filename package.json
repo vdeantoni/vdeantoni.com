@@ -34,7 +34,7 @@
     "jotai": "^2.10.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.561.0",
-    "next": "^16.0.10",
+    "next": "^16.1.5",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-loading-skeleton": "^3.5.0",
