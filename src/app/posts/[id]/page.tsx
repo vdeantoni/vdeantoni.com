@@ -1,4 +1,4 @@
-import { getPostById, getPosts, getPostContent } from "@/data";
+import { getPostById, getPosts, getPostContent, type PostTag } from "@/data";
 import { markdownToHtml } from "@/utils/markdown";
 import { format } from "date-fns";
 import { notFound } from "next/navigation";
@@ -133,7 +133,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {post.tags && post.tags.length > 0 && (
             <div className={cn("flex", "flex-wrap", "gap-2")}>
-              {post.tags.map((tag: any, index: number) => (
+              {post.tags.map((tag: PostTag, index: number) => (
                 <Badge key={index} variant="secondary">
                   {tag.name}
                 </Badge>
@@ -144,7 +144,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </header>
 
       {/* Content */}
-      <div className={cn("prose", "prose-lg", "max-w-none", "mb-8")}>
+      <div className={cn("max-w-none", "mb-8")}>
         <div
           className={cn(
             "text-text",

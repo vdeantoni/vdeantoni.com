@@ -4,7 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const PostCard = ({ post }: { post: any }) => (
+interface PostCardProps {
+  title: string;
+  subtitle: string;
+  image: string;
+  link: string;
+  date?: string;
+  timeToRead?: number;
+}
+
+const PostCard = ({ post }: { post: PostCardProps }) => (
   <Link
     href={`${post.link}`}
     className={cn("group", "block")}
