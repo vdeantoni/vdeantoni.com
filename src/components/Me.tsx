@@ -12,9 +12,11 @@ const Me = () => {
           "relative",
           "w-[512px]",
           "h-[480px]",
-          "rounded-lg",
+          "rounded-xl",
           "overflow-hidden",
           "shadow-lg",
+          "ring-1",
+          "ring-primary/20",
         )}
       >
         {/* Background image */}

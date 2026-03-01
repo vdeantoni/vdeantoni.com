@@ -46,6 +46,19 @@ const LatestPost = async () => {
   );
 };
 
+const Highlight = ({ children }: { children: React.ReactNode }) => (
+  <span
+    className={cn(
+      "font-semibold",
+      "transition-colors duration-300",
+      "border-b-2 border-primary/30 pb-[1px]",
+      "hover:border-primary",
+    )}
+  >
+    {children}
+  </span>
+);
+
 export default async function Home() {
   return (
     <>
@@ -63,7 +76,16 @@ export default async function Home() {
         <div
           className={cn("flex", "flex-col", "items-center", "md:items-start")}
         >
-          <h1 className={cn("font-extrabold")}>Hello</h1>
+          <h1 className={cn("font-extrabold")}>
+            <span
+              className={cn(
+                "bg-gradient-to-r from-primary via-accent to-secondary",
+                "bg-clip-text text-transparent",
+              )}
+            >
+              Hello
+            </span>
+          </h1>
 
           <p className={cn("text-xl", "leading-loose", "mt-10")}>
             I&apos;m{" "}
@@ -71,88 +93,26 @@ export default async function Home() {
               className={cn(
                 "font-bold",
                 "text-xl",
-                "bg-gradient-to-br from-text to-secondary bg-clip-text text-transparent",
+                "bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent",
               )}
             >
               Vinicius De Antoni
             </span>
             , a versatile software engineer. I build everything from robust{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              back-end services
-            </span>{" "}
-            to engaging{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              user experiences
-            </span>{" "}
-            for web, desktop, and mobile.
+            <Highlight>back-end services</Highlight> to engaging{" "}
+            <Highlight>user experiences</Highlight> for web, desktop, and
+            mobile.
           </p>
 
           <p className={cn("text-xl", "leading-loose", "mt-4")}>
-            My journey has taken me through diverse problem spaces, ranging from{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              embedded software
-            </span>{" "}
-            to large-scale{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              e-commerce platforms
-            </span>
-            . While my professional focus is on{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              distributed systems
-            </span>{" "}
-            and{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              AI-driven development
-            </span>
-            , I channel that same appreciation for flow and strategy into creating{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              music
-            </span>{" "}
-            and watching{" "}
-            <span
-              className={cn(
-                "font-semibold",
-                "font-medium transition-colors duration-300 border-b-2 border-transparent pb-[1px] hover:border-text",
-              )}
-            >
-              soccer
-            </span>
-            .
+            My journey has taken me through diverse problem spaces, ranging
+            from <Highlight>embedded software</Highlight> to large-scale{" "}
+            <Highlight>e-commerce platforms</Highlight>. While my professional
+            focus is on <Highlight>distributed systems</Highlight> and{" "}
+            <Highlight>AI-driven development</Highlight>, I channel that same
+            appreciation for flow and strategy into creating{" "}
+            <Highlight>music</Highlight> and watching{" "}
+            <Highlight>soccer</Highlight>.
           </p>
         </div>
       </div>

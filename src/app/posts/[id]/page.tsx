@@ -96,9 +96,11 @@ export default async function PostPage({ params }: PostPageProps) {
         <h1
           className={cn(
             "relative",
-            "text-4xl",
-            "md:text-5xl",
+            "text-5xl",
+            "md:text-6xl",
             "font-bold",
+            "font-display",
+            "tracking-tight",
             "mb-4",
           )}
         >

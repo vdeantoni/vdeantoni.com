@@ -29,7 +29,8 @@ const PostCard = ({ post }: { post: PostCardProps }) => (
               "w-full",
               "h-40",
               "lg:h-60",
-              "group-hover:shadow-outline-angled",
+              "rounded-lg",
+              "group-hover:shadow-glow",
               "actionable",
             )}
           >

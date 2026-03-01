@@ -22,11 +22,11 @@ export const Branding = () => {
         "group",
       )}
     >
-      <Avatar className={cn("w-10", "h-10", "border", "border-foreground", "bg-background", "actionable")}>
+      <Avatar className={cn("w-10", "h-10", "border", "border-primary/40", "bg-background", "actionable")}>
         <AvatarImage src="/logo.svg" alt="Stylized picture of the author" className="dark:invert" />
         <AvatarFallback>VD</AvatarFallback>
       </Avatar>
-      <span className={cn("ml-3")}>vdeantoni.com</span>
+      <span className={cn("ml-3", "font-display", "font-bold", "tracking-tight")}>vdeantoni.com</span>
     </Link>
   );
 };
