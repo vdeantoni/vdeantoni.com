@@ -52,6 +52,9 @@ const ActiveNavLink = ({
       className={cn(
         "text-text",
         "text-base",
+        "font-display",
+        "font-semibold",
+        "tracking-tight",
         "md:border-b-0",
         { "cursor-default": isActive },
         { "font-bold": isActive },
@@ -76,7 +79,7 @@ const ActiveNavLink = ({
             "left-1/2",
             "w-0",
             "h-[2px]",
-            "bg-current",
+            "bg-primary",
             "transition-all",
             "duration-300",
             "ease-in-out",
