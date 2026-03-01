@@ -3,9 +3,8 @@ import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { ColorSchemeProvider } from "@/contexts/ColorSchemeContext";
+import { ColorSchemeProvider } from "@/components/ColorSchemeProvider";
 import "@/styles/globals.css";
-import "react-loading-skeleton/dist/skeleton.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import HighlightThemeLoader from "@/components/HighlightThemeLoader";
@@ -27,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ColorSchemeProvider>
           <HighlightThemeLoader />
