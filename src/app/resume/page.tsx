@@ -1,10 +1,18 @@
-import { Award, Briefcase, GraduationCap, LayoutList, type LucideIcon } from "lucide-react";
-import { getResume } from "@/data";
+import {
+  Award,
+  Briefcase,
+  GraduationCap,
+  LayoutList,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  getResume,
+  type ResumeCompany,
+  type ResumeSchool,
+  type ResumeCertification,
+} from "@/data";
 import { cn } from "@/lib/utils";
 import { formatISO, addYears } from "date-fns";
-import first from "lodash/first";
-import groupBy from "lodash/groupBy";
-import last from "lodash/last";
 import Timeline from "@/components/Timeline";
 import { formatDate, formatTimeDifference } from "@/utils/date";
 import type { Metadata } from "next";
@@ -16,19 +24,27 @@ export const metadata: Metadata = {
     "A page with information about my employment and education history.",
 };
 
-const timeDifference = (periods: any[]): string => {
+const timeDifference = (
+  periods: { start: string; end: string | null }[],
+): string => {
   if (!periods || periods.length < 1) {
     return "";
   }
 
-  return formatTimeDifference(last(periods).start, first(periods).end);
+  return formatTimeDifference(periods.at(-1)!.start, periods.at(0)!.end!);
 };
 
-const timePeriod = (start: string, end: string): string => {
+const timePeriod = (start: string, end: string | null): string => {
   return `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
 };
 
-const SectionTitle = ({ title, icon: Icon }: { title: string; icon: LucideIcon }) => {
+const SectionTitle = ({
+  title,
+  icon: Icon,
+}: {
+  title: string;
+  icon: LucideIcon;
+}) => {
   return (
     <h2 className={cn("h4", "mt-10", "flex", "items-center")}>
       <Icon className={cn("w-6", "h-6", "mr-3")} />
@@ -67,7 +83,16 @@ const EntryItem = ({
   subItems,
   links,
   itemColor,
-}: any) => {
+}: {
+  title: string;
+  start: string;
+  end: string | null;
+  location?: string;
+  blurb?: string;
+  subItems?: string[];
+  links?: { name: string; url: string }[];
+  itemColor: string;
+}) => {
   return (
     <div
       className={cn(
@@ -111,14 +136,14 @@ const EntryItem = ({
       <div className={cn("text-sm", "opacity-75")}>{location}</div>
       <div className={cn("mt-2")}>{blurb}</div>
       <ul className={cn("list-inside", "list-disc", "mt-2", "mb-4")}>
-        {subItems?.map((subItem: any, subItemIndex: number) => (
+        {subItems?.map((subItem, subItemIndex) => (
           <li key={subItemIndex} className={cn("text-sm", "leading-relaxed")}>
             {subItem}
           </li>
         ))}
       </ul>
 
-      {links?.map((link: any, linkIndex: number) => (
+      {links?.map((link, linkIndex) => (
         <a key={linkIndex} href={link.url} className={cn("mt-2")}>
           {link.name}
         </a>
@@ -130,11 +155,15 @@ const EntryItem = ({
 export default async function Resume() {
   const resume = await getResume();
 
-  const {
-    company: companies,
-    school: schools,
-    certification: certifications,
-  } = groupBy(resume, "type");
+  const companies = resume.filter(
+    (e): e is ResumeCompany => e.type === "company",
+  );
+  const schools = resume.filter(
+    (e): e is ResumeSchool => e.type === "school",
+  );
+  const certifications = resume.filter(
+    (e): e is ResumeCertification => e.type === "certification",
+  );
 
   return (
     <>
@@ -168,7 +197,7 @@ export default async function Resume() {
             subTitle={timeDifference(entry.items)}
           />
           <div>
-            {entry.items?.map((item: any, itemIndex: number) => (
+            {entry.items?.map((item, itemIndex) => (
               <EntryItem
                 key={itemIndex}
                 title={item.title}
