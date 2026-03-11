@@ -14,7 +14,7 @@
         "blurb": "Work as a Software Engineer on Apple Services Engineering.",
         "subItems": [
           "Full-stack development with React, Typescript and Java.",
-          "Micro-service architecture with Protobuf, REST APIs, PostgreSQL and Kafka.",
+          "Micro-service architecture with Protobuf, REST APIs, Federated GraphQL (DGS), PostgreSQL and Kafka.",
           "Build and Test with Bazel.",
           "Kubernetes and Spinnaker.",
           "Test automation with Cypress",
