@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { ArrowUpRight } from "lucide-react";
+import { formatDate } from "@/utils/date";
 
 interface PostCardProps {
   title: string;
@@ -14,80 +15,57 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post }: { post: PostCardProps }) => (
-  <Link
-    href={`${post.link}`}
-    className={cn("group", "block")}
-    title={post.title}
-  >
-    <article>
-      <div className={"section-grid"}>
-        {post.image && (
-          <div
-            className={cn(
-              "relative",
-              "overflow-hidden",
-              "w-full",
-              "h-40",
-              "lg:h-60",
-              "group-hover:shadow-outline-angled",
-              "actionable",
-            )}
-          >
-            <Image
-              loading="lazy"
-              src={post.image}
-              title={post.title}
-              alt={post.title}
-              fill={true}
-              style={{
-                objectFit: "cover",
-              }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-              className={cn("transform group-hover:scale-105 duration-300")}
-            />
-          </div>
-        )}
-        <div className={cn("flex", "flex-col", "items-start", "self-stretch")}>
-          {post.title && (
-            <h2
-              className={cn(
-                "h3",
-                "mb-4",
-                "text-text",
-                "actionable",
-                "transition-all",
-                "duration-300",
-                "ease-in-out",
-                "group-hover:text-primary",
-                "group-hover:translate-x-1",
-              )}
-            >
-              {post.title}
-            </h2>
-          )}
-          {post.subtitle && (
-            <p className={cn("mt-1", "text-text")}>{post.subtitle}</p>
-          )}
-          <div
-            className={cn(
-              "flex",
-              "flex-1",
-              "items-end",
-              "text-text",
-              "opacity-75",
-              "mt-2",
-            )}
-          >
-            {post.date && (
-              <time dateTime={post.date}>
-                {format(new Date(post.date), "MM/dd/yyyy")}
-              </time>
-            )}
-            {post.timeToRead && (
-              <span className={cn("ml-2")}> · {post.timeToRead} min read</span>
-            )}
-          </div>
+  <Link href={post.link} className="group block" title={post.title}>
+    <article className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 md:gap-10 items-start">
+      {post.image && (
+        <div className="relative h-48 md:h-64 overflow-hidden rounded-xl">
+          <Image
+            loading="lazy"
+            src={post.image}
+            title={post.title}
+            alt={post.title}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 500px"
+            className="transition-transform duration-700 group-hover:scale-105"
+          />
         </div>
+      )}
+      <div className="flex flex-col items-start">
+        <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground mb-4">
+          {post.date && (
+            <time dateTime={post.date}>
+              {formatDate(post.date, {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </time>
+          )}
+          {post.timeToRead && (
+            <>
+              <span className="w-1 h-1 rounded-full bg-border" />
+              <span>{post.timeToRead} min read</span>
+            </>
+          )}
+        </div>
+        <h2
+          className={cn(
+            "text-2xl md:text-3xl font-semibold text-heading leading-snug tracking-tight",
+            "group-hover:text-primary transition-colors duration-200",
+          )}
+        >
+          {post.title}
+        </h2>
+        {post.subtitle && (
+          <p className="mt-3 text-muted-foreground leading-relaxed line-clamp-3">
+            {post.subtitle}
+          </p>
+        )}
+        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors duration-200">
+          Read more
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
       </div>
     </article>
   </Link>

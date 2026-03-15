@@ -29,8 +29,8 @@ export default function FaceTracker({
   spriteGridSize = 11,
   showDebug = false,
   facePosition = {
-    top: "180px",
-    left: "267px",
+    top: "181px",
+    left: "268px",
     transform: "translate(-50%, -50%) scale(0.725)",
   },
   faceSize = 512,

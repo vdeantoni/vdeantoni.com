@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
-import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ColorSchemeProvider } from "@/components/ColorSchemeProvider";
@@ -10,13 +9,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import HighlightThemeLoader from "@/components/HighlightThemeLoader";
 
 export const metadata: Metadata = {
-  title: "vdeantoni.com",
-  description: "Web site about the software engineer Vinicius De Antoni",
+  title: "Vinicius De Antoni — Software Engineer",
+  description:
+    "Portfolio of Vinicius De Antoni, a software engineer building distributed systems, user experiences, and creative side projects.",
   icons: ["favicon.png"],
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
 };
 
@@ -27,26 +27,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <ColorSchemeProvider>
           <HighlightThemeLoader />
-          <div
-            className={cn(
-              "flex",
-              "flex-col",
-              "max-w-6xl",
-              "min-h-screen",
-              "px-4",
-              "mx-auto",
-              "sm:px-6",
-              "lg:px-8",
-              "bg-muted",
-            )}
-          >
-            <Header />
-            <main className={cn("flex-1", "py-4", "md:py-8")}>{children}</main>
-            <Footer />
-          </div>
+          <div className="grain-overlay" aria-hidden="true" />
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
         </ColorSchemeProvider>
         <SpeedInsights />
         <Analytics />
