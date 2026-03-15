@@ -11,7 +11,7 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
   const { resolvedTheme, setTheme } = useTheme();
 
   if (!resolvedTheme) {
-    return <div className={cn("w-5", "h-5", className)} />;
+    return <div className={cn("w-8 h-8", className)} />;
   }
 
   return (
@@ -21,22 +21,23 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
         controls.stop();
         e.currentTarget.blur();
         await controls.start({
-          y: -20,
+          y: -16,
           opacity: 0,
-          transition: { duration: 0.3 },
-          transitionEnd: { y: 10 },
+          transition: { duration: 0.25 },
+          transitionEnd: { y: 8 },
         });
         setTheme(resolvedTheme === "dark" ? "light" : "dark");
         await controls.start({
           y: 0,
           opacity: 1,
-          transition: { duration: 0.5 },
+          transition: { duration: 0.4 },
         });
       }}
       className={cn(
-        "a",
-        "text-text",
-        "hover:text-primary",
+        "flex items-center justify-center",
+        "w-8 h-8 rounded-full",
+        "text-muted-foreground hover:text-heading hover:bg-surface",
+        "transition-colors duration-200",
         "overflow-hidden",
         className,
       )}
@@ -49,9 +50,9 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
         }}
       >
         {resolvedTheme === "light" ? (
-          <Sun className="w-5 h-5" />
+          <Sun className="w-4 h-4" />
         ) : (
-          <Moon className="w-5 h-5" />
+          <Moon className="w-4 h-4" />
         )}
       </motion.div>
     </button>
