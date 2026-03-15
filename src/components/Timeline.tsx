@@ -21,7 +21,6 @@ const getStartIndex = (items: TimelinePeriod[], years: number[]): number =>
 const getSpanSize = (items: TimelinePeriod[]): number => {
   const start = new Date(items.at(-1)!.start);
   const end = items.at(0)!.end ? new Date(items.at(0)!.end!) : new Date();
-
   return (
     (end.getFullYear() - start.getFullYear()) * 12 +
     end.getMonth() -
@@ -34,58 +33,36 @@ const TimelineEntry = ({
   slug,
   items,
   years,
-  itemColor,
+  color,
 }: {
   name: string;
   slug: string;
   items: TimelinePeriod[];
   years: number[];
-  itemColor: string;
+  color: "primary" | "secondary" | "tertiary";
 }) => {
-  const borderColor =
-    itemColor === "secondary"
-      ? "border-secondary"
-      : itemColor === "tertiary"
-        ? "border-tertiary"
-        : itemColor === "fourtiary"
-          ? "border-fourtiary"
-          : "border-primary";
-  const borderColorHover =
-    itemColor === "secondary"
-      ? "group-hover:border-secondary-hover"
-      : itemColor === "tertiary"
-        ? "group-hover:border-tertiary-hover"
-        : itemColor === "fourtiary"
-          ? "group-hover:border-fourtiary-hover"
-          : "group-hover:border-primary-hover";
+  const bgColor =
+    color === "primary"
+      ? "bg-primary/80 hover:bg-primary"
+      : color === "secondary"
+        ? "bg-secondary/60 hover:bg-secondary/80"
+        : "bg-muted-foreground/40 hover:bg-muted-foreground/60";
+
   return (
     <a
       href={`#${slug}`}
-      className={cn(
-        "group",
-        "flex",
-        "justify-center",
-        "overflow-hidden",
-        "hover:overflow-visible",
-      )}
+      className="group flex items-center overflow-hidden hover:overflow-visible"
       style={{
         gridColumn: `${getStartIndex(items, years)} / span ${getSpanSize(items)}`,
       }}
     >
       <span
         className={cn(
-          "text-text",
-          "text-xs",
-          "opacity-90",
-          "group-hover:opacity-100",
-          "p-1",
-          borderColor,
-          borderColorHover,
-          "border-b-8",
-          "whitespace-nowrap",
-          "actionable",
+          "block w-full h-6 rounded-full text-[10px] font-mono leading-6",
+          "text-white text-center whitespace-nowrap overflow-hidden",
+          "transition-all duration-200",
+          bgColor,
         )}
-        style={{ width: "calc(100% - 10px)" }}
       >
         {name}
       </span>
@@ -112,11 +89,12 @@ const Timeline = ({ data = [] }: { data: ResumeEntry[] }) => {
 
   return (
     <div
-      className={cn("grid")}
+      className="grid gap-y-1.5"
       style={{
         gridTemplateColumns: `repeat(${years.length * 12}, minmax(0, 1fr))`,
       }}
     >
+      {/* Companies row */}
       {[...companies].reverse().map((company) => (
         <TimelineEntry
           key={company.name}
@@ -124,12 +102,13 @@ const Timeline = ({ data = [] }: { data: ResumeEntry[] }) => {
           slug={company.slug}
           items={company.items}
           years={years}
-          itemColor="secondary"
+          color="primary"
         />
       ))}
 
-      <div className={cn("col-start-1", "col-span-full", "h-1")} />
+      <div className="col-start-1 col-span-full h-2" />
 
+      {/* Schools row */}
       {[...schools].reverse().map((school) => (
         <TimelineEntry
           key={school.name}
@@ -137,12 +116,13 @@ const Timeline = ({ data = [] }: { data: ResumeEntry[] }) => {
           slug={school.slug}
           items={[school]}
           years={years}
-          itemColor="tertiary"
+          color="secondary"
         />
       ))}
 
-      <div className={cn("col-start-1", "col-span-full", "h-1")} />
+      <div className="col-start-1 col-span-full h-2" />
 
+      {/* Certifications row */}
       {[...certifications].reverse().map((certification) => (
         <TimelineEntry
           key={certification.name}
@@ -155,30 +135,23 @@ const Timeline = ({ data = [] }: { data: ResumeEntry[] }) => {
             },
           ]}
           years={years}
-          itemColor="fourtiary"
+          color="tertiary"
         />
       ))}
 
-      <div className={cn("col-start-1", "col-span-full", "h-3")} />
+      <div className="col-start-1 col-span-full h-3" />
 
+      {/* Year labels */}
       {years.map((year, index) => (
         <div
           key={year}
-          className={cn(
-            "text-sm",
-            "text-center",
-            "pt-2",
-            "border-t",
-            "border-border",
-          )}
-          style={{
-            gridColumn: `span 12 / span 12`,
-          }}
+          className="text-center pt-2 border-t border-border/50"
+          style={{ gridColumn: "span 12 / span 12" }}
         >
-          <span className={cn("opacity-75")}>
+          <span className="text-[10px] font-mono text-muted-foreground">
             {index === years.length - 1
-              ? "Present"
-              : index % 5 === 0
+              ? "Now"
+              : index % 4 === 0
                 ? year
                 : ""}
           </span>

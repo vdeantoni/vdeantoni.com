@@ -2,7 +2,8 @@ import {
   Award,
   Briefcase,
   GraduationCap,
-  LayoutList,
+  Download,
+  ExternalLink,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -16,27 +17,21 @@ import { formatISO, addYears } from "date-fns";
 import Timeline from "@/components/Timeline";
 import { formatDate, formatTimeDifference } from "@/utils/date";
 import type { Metadata } from "next";
-import DownloadButton from "@/components/DownloadButton";
 
 export const metadata: Metadata = {
-  title: "vdeantoni.com | Resume",
-  description:
-    "A page with information about my employment and education history.",
+  title: "Resume — Vinicius De Antoni",
+  description: "Employment, education, and certification history.",
 };
 
 const timeDifference = (
   periods: { start: string; end: string | null }[],
 ): string => {
-  if (!periods || periods.length < 1) {
-    return "";
-  }
-
+  if (!periods || periods.length < 1) return "";
   return formatTimeDifference(periods.at(-1)!.start, periods.at(0)!.end!);
 };
 
-const timePeriod = (start: string, end: string | null): string => {
-  return `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
-};
+const timePeriod = (start: string, end: string | null): string =>
+  `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
 
 const SectionTitle = ({
   title,
@@ -44,35 +39,45 @@ const SectionTitle = ({
 }: {
   title: string;
   icon: LucideIcon;
-}) => {
-  return (
-    <h2 className={cn("h4", "mt-10", "flex", "items-center")}>
-      <Icon className={cn("w-6", "h-6", "mr-3")} />
-      {title}
-    </h2>
-  );
-};
+}) => (
+  <div className="flex items-center gap-3 mt-20 mb-10">
+    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-surface border border-border">
+      <Icon className="w-5 h-5 text-primary" />
+    </div>
+    <h2 className="text-3xl md:text-4xl">{title}</h2>
+  </div>
+);
 
 const EntryTitle = ({
   title,
   subTitle,
   slug,
+  link,
 }: {
   title: string;
   subTitle?: string;
   slug: string;
-}) => {
-  return (
-    <div
-      className={cn("flex", "flex-col", "md:items-end", "md:sticky", "top-2")}
-    >
-      <h3 id={slug} className={cn("h6")}>
-        {title}
-      </h3>
-      <span className={cn("opacity-75", "text-sm")}>{subTitle}</span>
-    </div>
-  );
-};
+  link?: string;
+}) => (
+  <div className="flex flex-col md:items-end md:sticky top-24">
+    <h3 id={slug} className="text-xl font-semibold text-heading tracking-tight">
+      {link ? (
+        <a
+          href={link}
+          className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+        >
+          {title}
+          <ExternalLink className="w-3.5 h-3.5 opacity-40" />
+        </a>
+      ) : (
+        title
+      )}
+    </h3>
+    {subTitle && (
+      <span className="text-sm text-muted-foreground mt-1">{subTitle}</span>
+    )}
+  </div>
+);
 
 const EntryItem = ({
   title,
@@ -82,7 +87,6 @@ const EntryItem = ({
   blurb,
   subItems,
   links,
-  itemColor,
 }: {
   title: string;
   start: string;
@@ -91,66 +95,42 @@ const EntryItem = ({
   blurb?: string;
   subItems?: string[];
   links?: { name: string; url: string }[];
-  itemColor: string;
-}) => {
-  return (
-    <div
-      className={cn(
-        "relative",
-        "before:hidden",
-        "md:before:block",
-        "before:absolute",
-        "before:opacity-50",
-        "before:h-full",
-        "before:top-5",
-        "before:left-[-1.2rem]",
-        "before:border-dashed",
-        "before:border-l",
-      )}
-    >
-      <div
-        className={cn(
-          "relative",
-          "text-lg",
-          "before:hidden",
-          "md:before:block",
-          "before:absolute",
-          "before:rounded-md",
-          "before:opacity-50",
-          "before:top-[5px]",
-          "before:left-[-1.65rem]",
-          "before:w-4",
-          "before:h-4",
-          itemColor === "secondary"
-            ? "before:bg-secondary"
-            : itemColor === "tertiary"
-              ? "before:bg-tertiary"
-              : "before:bg-primary",
-        )}
-      >
-        {title}
-      </div>
-      <div className={cn("text-sm", "opacity-75")}>
-        {timePeriod(start, end)}
-      </div>
-      <div className={cn("text-sm", "opacity-75")}>{location}</div>
-      <div className={cn("mt-2")}>{blurb}</div>
-      <ul className={cn("list-inside", "list-disc", "mt-2", "mb-4")}>
-        {subItems?.map((subItem, subItemIndex) => (
-          <li key={subItemIndex} className={cn("text-sm", "leading-relaxed")}>
+}) => (
+  <div className="relative pl-6 pb-8 last:pb-0 border-l border-border/60">
+    {/* Timeline dot */}
+    <div className="absolute left-0 top-1 w-2.5 h-2.5 rounded-full bg-primary -translate-x-[calc(50%+0.5px)]" />
+    <div className="text-lg font-medium text-heading">{title}</div>
+    <div className="flex flex-wrap gap-x-4 text-sm text-muted-foreground mt-1">
+      <span>{timePeriod(start, end)}</span>
+      {location && <span>{location}</span>}
+    </div>
+    {blurb && (
+      <p className="mt-3 text-text leading-relaxed">{blurb}</p>
+    )}
+    {subItems && subItems.length > 0 && (
+      <ul className="mt-3 space-y-1.5">
+        {subItems.map((subItem, i) => (
+          <li
+            key={i}
+            className="text-sm text-text leading-relaxed pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-border"
+          >
             {subItem}
           </li>
         ))}
       </ul>
-
-      {links?.map((link, linkIndex) => (
-        <a key={linkIndex} href={link.url} className={cn("mt-2")}>
-          {link.name}
-        </a>
-      ))}
-    </div>
-  );
-};
+    )}
+    {links?.map((link, i) => (
+      <a
+        key={i}
+        href={link.url}
+        className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:text-primary-hover transition-colors"
+      >
+        {link.name}
+        <ExternalLink className="w-3 h-3" />
+      </a>
+    ))}
+  </div>
+);
 
 export default async function Resume() {
   const resume = await getResume();
@@ -166,85 +146,117 @@ export default async function Resume() {
   );
 
   return (
-    <>
-      <div className={cn("flex", "items-center", "justify-between", "mb-10")}>
-        <h1 className={cn("font-extrabold")}>Resume</h1>
-        <DownloadButton />
-      </div>
-
-      <div className={"hidden md:block"}>
-        <SectionTitle title="Timeline" icon={LayoutList} />
-        <div
-          className={cn(
-            "mt-10",
-            "xl:w-[calc(100vw-4rem)]",
-            "xl:ml-[calc(36rem-50vw)]",
-            "py-4",
-            "rounded",
-            "bg-muted",
-          )}
-        >
-          <Timeline data={resume} />
-        </div>
-      </div>
-
-      <SectionTitle title="Employment" icon={Briefcase} />
-      {companies.map((entry, entryIndex) => (
-        <div key={entryIndex} className={cn("section-grid", "mt-10")}>
-          <EntryTitle
-            title={entry.name}
-            slug={entry.slug}
-            subTitle={timeDifference(entry.items)}
-          />
+    <section className="px-6 md:px-12 lg:px-20 pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
           <div>
-            {entry.items?.map((item, itemIndex) => (
-              <EntryItem
-                key={itemIndex}
-                title={item.title}
-                itemColor="primary"
-                start={item.start}
-                end={item.end}
-                location={item.location}
-                blurb={item.blurb}
-                subItems={item.subItems}
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
+              Experience
+            </span>
+            <h1 className="mt-3">Resume</h1>
+          </div>
+          <a
+            href="/resume.pdf"
+            download="vdeantoni-resume.pdf"
+            title="Download Resume as PDF"
+            className={cn(
+              "inline-flex items-center gap-2 mt-6 md:mt-0",
+              "px-5 py-2.5 rounded-full text-sm font-medium",
+              "bg-foreground text-background hover:opacity-90",
+              "transition-opacity no-print",
+            )}
+          >
+            <Download className="w-4 h-4" />
+            Download PDF
+          </a>
+        </div>
+
+        {/* Timeline */}
+        <div className="hidden md:block">
+          <div className="bg-surface border border-border rounded-2xl p-6 overflow-x-auto no-scrollbar">
+            <Timeline data={resume} />
+          </div>
+        </div>
+
+        {/* Employment */}
+        <SectionTitle title="Employment" icon={Briefcase} />
+        <div className="space-y-16">
+          {companies.map((entry, i) => (
+            <div
+              key={i}
+              className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 md:gap-12"
+            >
+              <EntryTitle
+                title={entry.name}
+                slug={entry.slug}
+                link={entry.link}
+                subTitle={timeDifference(entry.items)}
               />
-            ))}
-          </div>
+              <div className="space-y-0">
+                {entry.items?.map((item, j) => (
+                  <EntryItem
+                    key={j}
+                    title={item.title}
+                    start={item.start}
+                    end={item.end}
+                    location={item.location}
+                    blurb={item.blurb}
+                    subItems={item.subItems}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
 
-      <SectionTitle title="Education" icon={GraduationCap} />
-      {schools.map((entry, entryIndex) => (
-        <div key={entryIndex} className={cn("section-grid", "mt-10")}>
-          <EntryTitle title={entry.name} slug={entry.slug} />
-          <div>
-            <EntryItem
-              title={`${entry.degree} in ${entry.field}`}
-              itemColor="secondary"
-              start={entry.start}
-              end={entry.end}
-              location={entry.location}
-              blurb={entry.blurb}
-              links={entry.publications}
-            />
-          </div>
+        {/* Education */}
+        <SectionTitle title="Education" icon={GraduationCap} />
+        <div className="space-y-16">
+          {schools.map((entry, i) => (
+            <div
+              key={i}
+              className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 md:gap-12"
+            >
+              <EntryTitle title={entry.name} slug={entry.slug} link={entry.link} />
+              <div>
+                <EntryItem
+                  title={`${entry.degree} in ${entry.field}`}
+                  start={entry.start}
+                  end={entry.end}
+                  location={entry.location}
+                  blurb={entry.blurb}
+                  links={entry.publications}
+                />
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
 
-      <SectionTitle title="Certifications" icon={Award} />
-      {certifications.map((entry, entryIndex) => (
-        <div key={entryIndex} className={cn("section-grid", "mt-10")}>
-          <EntryTitle title={entry.entity} slug={entry.slug} />
-          <div>
-            <EntryItem
-              title={entry.name}
-              itemColor="tertiary"
-              start={entry.date}
-              end={formatISO(addYears(new Date(entry.date), 1))}
-            />
-          </div>
+        {/* Certifications */}
+        <SectionTitle title="Certifications" icon={Award} />
+        <div className="space-y-16">
+          {certifications.map((entry, i) => (
+            <div
+              key={i}
+              className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 md:gap-12"
+            >
+              <EntryTitle
+                title={entry.entity}
+                slug={entry.slug}
+                link={entry.link}
+              />
+              <div>
+                <EntryItem
+                  title={entry.name}
+                  start={entry.date}
+                  end={formatISO(addYears(new Date(entry.date), 1))}
+                />
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </>
+      </div>
+    </section>
   );
 }

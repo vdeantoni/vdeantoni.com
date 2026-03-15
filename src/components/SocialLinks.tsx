@@ -1,4 +1,10 @@
-import { Github, Linkedin, type LucideIcon, Mail, Twitter } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  type LucideIcon,
+  Mail,
+  Twitter,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import React, { type ComponentType } from "react";
 import { StackOverflowIcon } from "./icons";
@@ -16,11 +22,7 @@ type SocialLink = {
 };
 
 const socialLinks: SocialLink[] = [
-  {
-    name: "Email",
-    link: "mailto:admin@vdeantoni.com",
-    icon: Mail,
-  },
+  { name: "Email", link: "mailto:admin@vdeantoni.com", icon: Mail },
   {
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/vdeantoni",
@@ -31,11 +33,7 @@ const socialLinks: SocialLink[] = [
     link: "https://stackoverflow.com/users/621767/deantoni?tab=profile",
     icon: StackOverflowIcon,
   },
-  {
-    name: "Github",
-    link: "https://github.com/vdeantoni",
-    icon: Github,
-  },
+  { name: "Github", link: "https://github.com/vdeantoni", icon: Github },
   {
     name: "Twitter",
     link: "https://twitter.com/vinideantoni",
@@ -46,7 +44,7 @@ const socialLinks: SocialLink[] = [
 const SocialLinks = ({ className = "" }: { className?: string }) => {
   return (
     <TooltipProvider>
-      <div className={cn("flex", className)}>
+      <div className={cn("flex items-center gap-1", className)}>
         {socialLinks.map((link) => {
           const Icon = link.icon;
           return (
@@ -54,17 +52,13 @@ const SocialLinks = ({ className = "" }: { className?: string }) => {
               <TooltipTrigger asChild>
                 <a
                   href={link.link}
-                  className={cn("mx-2", "text-text", "hover:text-primary")}
+                  className={cn(
+                    "p-2 rounded-full text-muted-foreground",
+                    "hover:text-heading hover:bg-surface",
+                    "transition-all duration-200",
+                  )}
                 >
-                  <Icon
-                    className={cn(
-                      "w-5",
-                      "h-5",
-                      "transform",
-                      "transition-all",
-                      "hover:scale-125",
-                    )}
-                  />
+                  <Icon className="w-4 h-4" />
                 </a>
               </TooltipTrigger>
               <TooltipContent>

@@ -1,43 +1,18 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { navLinks, type NavLink } from "@/lib/nav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-interface NavLink {
-  name: string;
-  link: string;
-}
-
-const navLinks: NavLink[] = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "Posts",
-    link: "/posts",
-  },
-  {
-    name: "Projects",
-    link: "/projects",
-  },
-  {
-    name: "Resume",
-    link: "/resume",
-  },
-];
-
 const ActiveNavLink = ({
   link,
   currentPathname,
-  footer = false,
   mobile = false,
 }: {
   link: NavLink;
   currentPathname: string;
-  footer?: boolean;
   mobile?: boolean;
 }) => {
   const isActive =
@@ -45,57 +20,45 @@ const ActiveNavLink = ({
       ? currentPathname === link.link
       : currentPathname.startsWith(link.link);
 
+  if (mobile) {
+    return (
+      <Link
+        href={link.link}
+        title={link.name}
+        className={cn(
+          "text-lg py-3 border-b border-border/50",
+          "transition-colors duration-200",
+          isActive
+            ? "text-primary font-medium"
+            : "text-text hover:text-primary",
+        )}
+      >
+        {link.name}
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={link.link}
       title={link.name}
       className={cn(
-        "text-text",
-        "text-base",
-        "md:border-b-0",
-        { "cursor-default": isActive },
-        { "font-bold": isActive },
-        { "py-3": !footer },
-        { "border-b": !footer },
-        // Desktop: centered underline animation
-        {
-          "relative group overflow-hidden": !footer && !isActive && !mobile,
-        },
-        // Mobile: simple hover color change
-        {
-          "hover:text-primary transition-colors": mobile && !isActive,
-        },
+        "relative px-4 py-1.5 rounded-full text-sm font-medium",
+        "transition-all duration-200",
+        isActive
+          ? "bg-foreground text-background"
+          : "text-text hover:text-heading hover:bg-surface",
       )}
     >
       {link.name}
-      {/* Desktop underline animation - centered */}
-      {!footer && !mobile && (
-        <span
-          className={cn(
-            "absolute",
-            "left-1/2",
-            "w-0",
-            "h-[2px]",
-            "bg-current",
-            "transition-all",
-            "duration-300",
-            "ease-in-out",
-            "group-hover:w-full",
-            "-translate-x-1/2",
-            "translate-y-4",
-          )}
-        />
-      )}
     </Link>
   );
 };
 
 const NavLinks = ({
-  footer = false,
   mobile = false,
   className,
 }: {
-  footer?: boolean;
   mobile?: boolean;
   className?: string;
 }) => {
@@ -104,12 +67,7 @@ const NavLinks = ({
   return (
     <div
       className={cn(
-        "flex",
-        "flex-col",
-        "md:flex-row",
-        "gap-0",
-        "md:gap-2",
-        "lg:gap-8",
+        mobile ? "flex flex-col gap-0" : "flex items-center gap-0.5",
         className,
       )}
     >
@@ -118,7 +76,6 @@ const NavLinks = ({
           key={link.name}
           link={link}
           currentPathname={pathname}
-          footer={footer}
           mobile={mobile}
         />
       ))}
