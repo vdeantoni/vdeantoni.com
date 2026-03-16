@@ -4,15 +4,16 @@
 
 ## Overview
 
-This is the code repository for [vdeantoni.com](https://vdeantoni.com).
+Personal portfolio and blog for [vdeantoni.com](https://vdeantoni.com).
 
-The current version is built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
+Built with [Next.js](https://nextjs.org/) 16, [React](https://react.dev/) 19, [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/) 4, and [shadcn/ui](https://ui.shadcn.com/). Typography by [Sora](https://fonts.google.com/specimen/Sora) + [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono).
 
 Deployed to production via [Vercel](https://vercel.com/).
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/)
+- [Node.js](https://nodejs.org/) 18+
+- [pnpm](https://pnpm.io/)
 
 ## Install
 
@@ -23,5 +24,11 @@ pnpm install
 ## Run
 
 ```
-pnpm run dev
+pnpm dev
+```
+
+## Build
+
+```
+pnpm build
 ```
