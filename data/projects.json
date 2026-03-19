@@ -1,20 +1,26 @@
 [
   {
+    "title": "asd",
+    "subtitle": "A blazing-fast terminal diff viewer with split panes, syntax highlighting, and word-level change detection.",
+    "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_750/v1773917891/SCR-20260319-eeys_q3ieml.jpg",
+    "link": "https://github.com/vdeantoni/asd"
+  },
+  {
     "title": "yava",
     "subtitle": "Trim, cut, crop, resize and export video files. You can select a file from your device, record your camera, and even capture your screen. Everything is processed locally, nothing leaves your device!",
-    "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_250/v1725927241/yava_hdz9r2.png",
+    "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_300/v1725927241/yava_hdz9r2.png",
     "link": "https://yetanothervideo.app"
   },
   {
     "title": "CSSColors.dev",
     "subtitle": "Simple tool to browse CSS named colors.",
-    "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_250,w_1024/v1661143311/csscolors_kbgpcy.png",
+    "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_300,w_1024/v1661143311/csscolors_kbgpcy.png",
     "link": "https://www.csscolors.dev"
   },
   {
     "title": "Touch2Color.com",
     "subtitle": "An online coloring game, for mobile and desktop.",
-    "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_250,w_1024/v1623081616/touch2color.png",
+    "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_300,w_1024/v1623081616/touch2color.png",
     "link": "https://www.touch2color.com"
   },
   {
@@ -26,7 +32,7 @@
   {
     "title": "Proximity Graph Simulator",
     "subtitle": "A simple particle simulator.",
-    "image": "https://res.cloudinary.com/vdeantoni/video/upload/v1757531063/graph_irmsip.gif",
+    "image": "https://res.cloudinary.com/vdeantoni/video/upload/c_fill,g_center,h_300,w_1024/v1757531063/graph_irmsip.gif",
     "link": "https://proximity-graph-animation.vercel.app"
   }
 ]
