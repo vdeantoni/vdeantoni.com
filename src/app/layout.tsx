@@ -42,7 +42,6 @@ export default function RootLayout({
       <body>
         <ColorSchemeProvider>
           <HighlightThemeLoader />
-          <div className="grain-overlay" aria-hidden="true" />
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
