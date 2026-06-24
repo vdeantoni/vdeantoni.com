@@ -185,6 +185,8 @@
   --primary-hover: oklch(0.68 0.24 260);
   --secondary: oklch(0.55 0.2 260);
   --secondary-hover: oklch(0.6 0.22 260);
+  --tertiary: oklch(0.48 0.1 260);
+  --tertiary-hover: oklch(0.54 0.12 260);
   --muted: oklch(0.12 0 0);
   --muted-hover: oklch(0.16 0 0);
   --muted-foreground: oklch(0.5 0 0);
