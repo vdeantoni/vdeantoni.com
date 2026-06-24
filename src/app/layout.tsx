@@ -34,6 +34,11 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        {/* Fonts loaded via <link> rather than next/font/google, which is
+            incompatible with the Turbopack build in Next.js 16. The
+            no-page-custom-font rule targets the pages router and does not
+            apply to an app-router root layout. */}
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
