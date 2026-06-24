@@ -25,7 +25,7 @@ export default function MobileNav() {
       <Sheet>
         <SheetTrigger asChild>
           <button
-            className="nav-glass p-2.5 rounded-full shadow-lg shadow-black/[0.03]"
+            className="fixed top-5 right-4 z-50 nav-glass p-2.5 rounded-full shadow-lg shadow-black/[0.03]"
             aria-label="Open menu"
           >
             <Menu className="w-5 h-5" />

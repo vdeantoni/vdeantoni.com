@@ -46,7 +46,7 @@ const TimelineEntry = ({
       ? "bg-primary/80 hover:bg-primary"
       : color === "secondary"
         ? "bg-secondary/60 hover:bg-secondary/80"
-        : "bg-muted-foreground/40 hover:bg-muted-foreground/60";
+        : "bg-tertiary/80 hover:bg-tertiary";
 
   return (
     <a
@@ -94,17 +94,24 @@ const Timeline = ({ data = [] }: { data: ResumeEntry[] }) => {
         gridTemplateColumns: `repeat(${years.length * 12}, minmax(0, 1fr))`,
       }}
     >
-      {/* Companies row */}
-      {[...companies].reverse().map((company) => (
-        <TimelineEntry
-          key={company.name}
-          name={company.name}
-          slug={company.slug}
-          items={company.items}
-          years={years}
-          color="primary"
-        />
-      ))}
+      {/* Companies row — sorted by start date ascending so grid auto-placement
+          packs non-overlapping roles onto one row and only drops a line on
+          overlap (earliest start wins the top row). ISO date strings sort
+          lexicographically. */}
+      {[...companies]
+        .sort((a, b) =>
+          a.items.at(-1)!.start.localeCompare(b.items.at(-1)!.start),
+        )
+        .map((company) => (
+          <TimelineEntry
+            key={company.name}
+            name={company.name}
+            slug={company.slug}
+            items={company.items}
+            years={years}
+            color="primary"
+          />
+        ))}
 
       <div className="col-start-1 col-span-full h-2" />
 
@@ -149,11 +156,7 @@ const Timeline = ({ data = [] }: { data: ResumeEntry[] }) => {
           style={{ gridColumn: "span 12 / span 12" }}
         >
           <span className="text-[10px] font-mono text-muted-foreground">
-            {index === years.length - 1
-              ? "Now"
-              : index % 4 === 0
-                ? year
-                : ""}
+            {index === years.length - 1 ? "Now" : index % 4 === 0 ? year : ""}
           </span>
         </div>
       ))}
