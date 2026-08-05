@@ -37,7 +37,7 @@ Posts render through `src/utils/markdown.ts` (`remark` → `remark-gfm` → `rem
 
 Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match *direct* children.
 
-`@next/mdx` is wired up (`pageExtensions` includes `md`/`mdx`, stub `src/mdx-components.tsx`) but nothing currently renders via MDX — do not assume markdown in `/data` goes through it.
+There is no MDX path: `@next/mdx` and the `@mdx-js/*` packages were removed once it was clear nothing rendered through them, so `/data` markdown only ever travels the pipeline above. `pageExtensions` is left at its default.
 
 Syntax-highlighting themes are swapped at runtime by `HighlightThemeLoader`, which dynamically imports `highlight.js/styles/github{,-dark}.css` based on `resolvedTheme`.
 
