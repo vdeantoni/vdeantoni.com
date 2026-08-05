@@ -13,15 +13,16 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
+      # No `version:` input on purpose: pnpm/action-setup fails outright when
+      # it is set alongside `packageManager` in package.json, and that field is
+      # the single source of truth here (Vercel builds through corepack too).
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24.x
           cache: 'pnpm'
@@ -34,6 +35,20 @@ jobs:
 
       - name: Start server (in background)
         run: pnpm start &
+
+      # Lost Pixel screenshots localhost with no retry, so start it only once
+      # the server actually answers instead of racing it.
+      - name: Wait for server
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sfo /dev/null http://localhost:3000/; then
+              echo "Server ready after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Server was still not answering on port 3000 after 60s" >&2
+          exit 1
 
       - name: Lost Pixel
         uses: lost-pixel/lost-pixel@v3.22.0

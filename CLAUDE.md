@@ -60,7 +60,7 @@ Syntax-highlighting themes are swapped at runtime by `HighlightThemeLoader`, whi
 
 ### Build & Deploy
 
-- Vercel overrides install/build to run through corepack (`vercel.json`); `packageManager` is pinned to `pnpm@11.9.0`. CI uses pnpm 11 / Node 24.
+- Vercel overrides install/build to run through corepack (`vercel.json`); `packageManager` is pinned to `pnpm@11.9.0`. CI takes its pnpm version from that same field and runs Node 24 — do **not** add a `version:` input to `pnpm/action-setup`, which fails the job outright when both are set.
 - `pnpm-workspace.yaml` carries security `overrides` and an `allowBuilds` allowlist — a new dependency with install scripts must be added to `allowBuilds` or its build is silently skipped.
 - Do **not** set `turbopack.root` in `next.config.ts` — both `import.meta.dirname` and `process.cwd()` trigger `Can't resolve 'tailwindcss'` from the parent dir during `next dev`. It is tempting because Next logs an "inferred workspace root" warning at startup; that warning is benign (a stray lockfile above the repo plus `pnpm-workspace.yaml`) and is accepted as-is.
 
