@@ -10,10 +10,6 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
   const controls = useAnimation();
   const { resolvedTheme, setTheme } = useTheme();
 
-  if (!resolvedTheme) {
-    return <div className={cn("w-8 h-8", className)} />;
-  }
-
   return (
     <button
       title="Toggle color mode"
@@ -49,11 +45,13 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
           transition: { duration: 0.5 },
         }}
       >
-        {resolvedTheme === "light" ? (
-          <Sun className="w-4 h-4" />
-        ) : (
-          <Moon className="w-4 h-4" />
-        )}
+        {/* Both icons are always rendered and CSS picks one, so the markup is
+            identical on the server and on the client. Branching on
+            `resolvedTheme` here instead would hydrate-mismatch: it is
+            undefined during SSR but already resolved on the first client
+            render. */}
+        <Sun className="w-4 h-4 dark:hidden" />
+        <Moon className="hidden w-4 h-4 dark:block" />
       </motion.div>
     </button>
   );
