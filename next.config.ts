@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
-import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
     remotePatterns: [
       {
@@ -18,11 +16,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-const mdxConfig = createMDX({
-  extension: /\.(md|mdx)$/,
-})(nextConfig);
-
-export default withSentryConfig(mdxConfig, {
+export default withSentryConfig(nextConfig, {
   silent: true,
   org: "vdeantoni",
   project: "vdeantoni",

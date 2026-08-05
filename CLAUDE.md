@@ -17,7 +17,7 @@ pnpm lint             # ESLint (next/core-web-vitals)
 pnpm exec tsc --noEmit # Type check (no `typecheck` script; lint does not type check)
 ```
 
-No test runner is configured. Visual regression testing (Lost Pixel) runs in CI only (`.github/workflows/vrt.yml`): build → `pnpm start` → screenshot the four routes listed in `lostpixel.config.ts` at desktop + mobile viewports, `threshold: 0`. **Adding a route means adding its page shots to `lostpixel.config.ts`**, or it is never visually covered.
+No test runner and no CI are configured. Visual regression testing used to run through Lost Pixel, but that product was sunset (the team joined Figma, the repo is archived, and its hosted API no longer serves a valid certificate), so the workflow, `lostpixel.config.ts` and the dependency were removed. There is currently nothing guarding against visual regressions — verify UI changes by eye against `pnpm dev`.
 
 ## Architecture
 
@@ -37,7 +37,7 @@ Posts render through `src/utils/markdown.ts` (`remark` → `remark-gfm` → `rem
 
 Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match *direct* children.
 
-`@next/mdx` is wired up (`pageExtensions` includes `md`/`mdx`, stub `src/mdx-components.tsx`) but nothing currently renders via MDX — do not assume markdown in `/data` goes through it.
+There is no MDX path: `@next/mdx` and the `@mdx-js/*` packages were removed once it was clear nothing rendered through them, so `/data` markdown only ever travels the pipeline above. `pageExtensions` is left at its default.
 
 Syntax-highlighting themes are swapped at runtime by `HighlightThemeLoader`, which dynamically imports `highlight.js/styles/github{,-dark}.css` based on `resolvedTheme`.
 
@@ -60,7 +60,7 @@ Syntax-highlighting themes are swapped at runtime by `HighlightThemeLoader`, whi
 
 ### Build & Deploy
 
-- Vercel overrides install/build to run through corepack (`vercel.json`); `packageManager` is pinned to `pnpm@11.9.0`. CI uses pnpm 11 / Node 24.
+- Vercel overrides install/build to run through corepack (`vercel.json`); `packageManager` is pinned to `pnpm@11.9.0`, which is the single source of truth for the pnpm version. Vercel is the only automation left — there are no GitHub Actions workflows.
 - `pnpm-workspace.yaml` carries security `overrides` and an `allowBuilds` allowlist — a new dependency with install scripts must be added to `allowBuilds` or its build is silently skipped.
 - Do **not** set `turbopack.root` in `next.config.ts` — both `import.meta.dirname` and `process.cwd()` trigger `Can't resolve 'tailwindcss'` from the parent dir during `next dev`. It is tempting because Next logs an "inferred workspace root" warning at startup; that warning is benign (a stray lockfile above the repo plus `pnpm-workspace.yaml`) and is accepted as-is.
 
