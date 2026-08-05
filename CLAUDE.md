@@ -35,7 +35,7 @@ Cross-file invariants that are easy to break:
 
 Posts render through `src/utils/markdown.ts` (`remark` → `remark-gfm` → `remark-toc` → `remark-rehype` → `rehype-slug` → `rehype-highlight` → `rehype-add-classes` → custom `rehypeCodeBlocks` → `rehype-stringify`) and are injected with `dangerouslySetInnerHTML` in `src/app/posts/[id]/page.tsx`. Frontmatter is parsed by `gray-matter` and discarded.
 
-Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match *direct* children.
+Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match _direct_ children.
 
 There is no MDX path: `@next/mdx` and the `@mdx-js/*` packages were removed once it was clear nothing rendered through them, so `/data` markdown only ever travels the pipeline above. `pageExtensions` is left at its default.
 

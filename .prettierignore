@@ -1,0 +1,15 @@
+# Generated / vendored
+pnpm-lock.yaml
+.next
+node_modules
+
+# Tooling scratch output
+.playwright-mcp
+
+# Local agent + editor config, not project source
+.claude
+
+# Authored post content: Prettier rewraps prose and normalises list and
+# emphasis markers, which churns the markdown that feeds the remark pipeline
+# for no benefit.
+data/posts

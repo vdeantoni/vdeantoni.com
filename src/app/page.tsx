@@ -34,8 +34,7 @@ export default async function Home() {
                 previously at{" "}
                 <span className="text-heading font-semibold">Riot Games</span>,{" "}
                 <span className="text-heading font-semibold">Blizzard</span>,
-                and{" "}
-                <span className="text-heading font-semibold">Amazon</span>.
+                and <span className="text-heading font-semibold">Amazon</span>.
               </p>
               <div className="mt-10 flex items-center gap-6">
                 <Link
@@ -154,9 +153,7 @@ export default async function Home() {
                     />
                   </div>
                   <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground mb-3">
-                    <time dateTime={post.date}>
-                      {formatDate(post.date)}
-                    </time>
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>
                     <span className="w-1 h-1 rounded-full bg-border" />
                     <span>{post.timeToRead} min</span>
                   </div>

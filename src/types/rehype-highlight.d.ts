@@ -1,4 +1,4 @@
-declare module 'rehype-highlight' {
+declare module "rehype-highlight" {
   interface HighlightOptions {
     detect?: boolean;
     subset?: string[] | boolean;
@@ -7,7 +7,7 @@ declare module 'rehype-highlight' {
     aliases?: Record<string, string | string[]>;
     languages?: Record<string, any>;
   }
-  
+
   function rehypeHighlight(options?: HighlightOptions): any;
   export = rehypeHighlight;
 }

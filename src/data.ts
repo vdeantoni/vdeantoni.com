@@ -93,10 +93,7 @@ export const getPostContent = async (id: string): Promise<string | null> => {
 };
 
 export const getProjects = async (): Promise<Project[]> => {
-  const file = await fs.readFile(
-    process.cwd() + "/data/projects.json",
-    "utf8",
-  );
+  const file = await fs.readFile(process.cwd() + "/data/projects.json", "utf8");
   const data = JSON.parse(file);
 
   return data;

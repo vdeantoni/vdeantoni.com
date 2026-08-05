@@ -4,7 +4,7 @@ import { getPosts } from "@/data";
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const posts = await getPosts();
 
-  const postUrls = posts.map(post => ({
+  const postUrls = posts.map((post) => ({
     url: `https://vdeantoni.com${post.link}`,
     lastModified: new Date(post.date),
   }));
