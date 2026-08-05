@@ -1,10 +1,4 @@
-import {
-  Github,
-  Linkedin,
-  type LucideIcon,
-  Mail,
-  Twitter,
-} from "lucide-react";
+import { Github, Linkedin, type LucideIcon, Mail, Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React, { type ComponentType } from "react";
 import { StackOverflowIcon } from "./icons";

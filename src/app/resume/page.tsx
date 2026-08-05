@@ -104,9 +104,7 @@ const EntryItem = ({
       <span>{timePeriod(start, end)}</span>
       {location && <span>{location}</span>}
     </div>
-    {blurb && (
-      <p className="mt-3 text-text leading-relaxed">{blurb}</p>
-    )}
+    {blurb && <p className="mt-3 text-text leading-relaxed">{blurb}</p>}
     {subItems && subItems.length > 0 && (
       <ul className="mt-3 space-y-1.5">
         {subItems.map((subItem, i) => (
@@ -138,9 +136,7 @@ export default async function Resume() {
   const companies = resume.filter(
     (e): e is ResumeCompany => e.type === "company",
   );
-  const schools = resume.filter(
-    (e): e is ResumeSchool => e.type === "school",
-  );
+  const schools = resume.filter((e): e is ResumeSchool => e.type === "school");
   const certifications = resume.filter(
     (e): e is ResumeCertification => e.type === "certification",
   );
@@ -218,7 +214,11 @@ export default async function Resume() {
               key={i}
               className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 md:gap-12"
             >
-              <EntryTitle title={entry.name} slug={entry.slug} link={entry.link} />
+              <EntryTitle
+                title={entry.name}
+                slug={entry.slug}
+                link={entry.link}
+              />
               <div>
                 <EntryItem
                   title={`${entry.degree} in ${entry.field}`}

@@ -40,9 +40,7 @@ export default function MobileNav() {
           <div className="flex flex-col h-full">
             <NavLinks className={cn("mt-4")} mobile />
             <div
-              className={cn(
-                "flex justify-between items-center py-4 mt-auto",
-              )}
+              className={cn("flex justify-between items-center py-4 mt-auto")}
             >
               <SocialLinks />
               <ColorSchemeToggle className="ml-auto" />

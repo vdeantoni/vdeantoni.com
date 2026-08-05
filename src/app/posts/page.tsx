@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Posts — Vinicius De Antoni",
-  description: "Writing about software engineering, web development, and tools.",
+  description:
+    "Writing about software engineering, web development, and tools.",
 };
 
 export default async function Posts() {
