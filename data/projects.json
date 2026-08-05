@@ -9,19 +9,19 @@
     "title": "yava",
     "subtitle": "Trim, cut, crop, resize and export video files. You can select a file from your device, record your camera, and even capture your screen. Everything is processed locally, nothing leaves your device!",
     "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_300/v1725927241/yava_hdz9r2.png",
-    "link": "https://yetanothervideo.app"
+    "link": "https://www.yava.video"
   },
   {
-    "title": "CSSColors.dev",
+    "title": "CSSColors",
     "subtitle": "Simple tool to browse CSS named colors.",
     "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_300,w_1024/v1661143311/csscolors_kbgpcy.png",
-    "link": "https://www.csscolors.dev"
+    "link": "https://csscolors.vercel.app"
   },
   {
-    "title": "Touch2Color.com",
+    "title": "Touch2Color",
     "subtitle": "An online coloring game, for mobile and desktop.",
     "image": "https://res.cloudinary.com/vdeantoni/image/upload/c_fill,g_center,h_300,w_1024/v1623081616/touch2color.png",
-    "link": "https://www.touch2color.com"
+    "link": "https://touch2color.vercel.app"
   },
   {
     "title": "TOC Medium",
