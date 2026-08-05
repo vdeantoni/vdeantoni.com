@@ -57,7 +57,7 @@ function normalizedToGrid(
  */
 export function useGazeTracking(
   containerRef: RefObject<HTMLElement>,
-  options: UseGazeTrackingOptions = {}
+  options: UseGazeTrackingOptions = {},
 ): UseGazeTrackingReturn {
   const { inactivityDelay = 3000, spriteGridSize = 11 } = options;
 
@@ -67,10 +67,9 @@ export function useGazeTracking(
     py: 0,
   });
   const [spritePosition, setSpritePosition] = useState<SpritePosition | null>(
-    facePositionToSprite({ px: 0, py: 0 }, spriteGridSize)
+    facePositionToSprite({ px: 0, py: 0 }, spriteGridSize),
   );
-  const [animationState, setAnimationState] =
-    useState<AnimationState>("idle");
+  const [animationState, setAnimationState] = useState<AnimationState>("idle");
 
   // Refs for accessing latest state (avoids closure issues)
   const animationStateRef = useRef<AnimationState>(animationState);
@@ -96,7 +95,7 @@ export function useGazeTracking(
       setSpritePosition(sprite);
       setCurrentPosition(position);
     },
-    [spriteGridSize]
+    [spriteGridSize],
   );
 
   // Animation sequencer hook
@@ -109,7 +108,7 @@ export function useGazeTracking(
     updatePosition,
     setAnimationState,
     currentPositionRef,
-    spriteGridSize
+    spriteGridSize,
   );
 
   /**
@@ -121,11 +120,14 @@ export function useGazeTracking(
   }, [returnToCenter]);
 
   // Inactivity timer hook
-  const { resetInactivityTimer, clearAllTimers, cleanup: cleanupTimers } =
-    useInactivityTimers({
-      inactivityDelay,
-      onInactive: handleInactive,
-    });
+  const {
+    resetInactivityTimer,
+    clearAllTimers,
+    cleanup: cleanupTimers,
+  } = useInactivityTimers({
+    inactivityDelay,
+    onInactive: handleInactive,
+  });
 
   /**
    * Update gaze based on mouse/touch coordinates
@@ -172,7 +174,7 @@ export function useGazeTracking(
           () => {
             isActivatingRef.current = false;
             setAnimationState("active");
-          }
+          },
         );
       } else {
         // Already active, update immediately
@@ -180,7 +182,13 @@ export function useGazeTracking(
         updatePosition(position);
       }
     },
-    [containerRef, updatePosition, spriteGridSize, animateToPosition, cancelAnimations]
+    [
+      containerRef,
+      updatePosition,
+      spriteGridSize,
+      animateToPosition,
+      cancelAnimations,
+    ],
   );
 
   /**
@@ -200,7 +208,7 @@ export function useGazeTracking(
       updateGaze(clientX, clientY);
       resetInactivityTimer();
     },
-    [updateGaze, resetInactivityTimer]
+    [updateGaze, resetInactivityTimer],
   );
 
   /**
@@ -210,7 +218,7 @@ export function useGazeTracking(
     (e: MouseEvent) => {
       handlePointerMove(e.clientX, e.clientY);
     },
-    [handlePointerMove]
+    [handlePointerMove],
   );
 
   /**
@@ -223,7 +231,7 @@ export function useGazeTracking(
         handlePointerMove(touch.clientX, touch.clientY);
       }
     },
-    [handlePointerMove]
+    [handlePointerMove],
   );
 
   /**

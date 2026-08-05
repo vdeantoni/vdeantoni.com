@@ -4,14 +4,18 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === "production";
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN || "https://5a4561df5ba745d8b6f7103e2e8ea107@o428318.ingest.sentry.io/5373641",
+  dsn:
+    process.env.NEXT_PUBLIC_SENTRY_DSN ||
+    "https://5a4561df5ba745d8b6f7103e2e8ea107@o428318.ingest.sentry.io/5373641",
 
-  environment: process.env.NODE_ENV || 'development',
-  release: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || process.env.VERCEL_GIT_COMMIT_SHA,
-  
+  environment: process.env.NODE_ENV || "development",
+  release:
+    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
+    process.env.VERCEL_GIT_COMMIT_SHA,
+
   // Use lower sample rates in production
   tracesSampleRate: isProduction ? 0.1 : 1.0,
 
