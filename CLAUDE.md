@@ -15,7 +15,10 @@ pnpm build            # Production build (turbopack)
 pnpm start            # Serve the production build on port 3000
 pnpm lint             # ESLint (next/core-web-vitals)
 pnpm exec tsc --noEmit # Type check (no `typecheck` script; lint does not type check)
+pnpm exec prettier --check . # Format check (no script; `data/posts` is ignored on purpose)
 ```
+
+Requires Node ≥ 20.9 (`next`'s `engines` field).
 
 No test runner and no CI are configured. Visual regression testing used to run through Lost Pixel, but that product was sunset (the team joined Figma, the repo is archived, and its hosted API no longer serves a valid certificate), so the workflow, `lostpixel.config.ts` and the dependency were removed. There is currently nothing guarding against visual regressions — verify UI changes by eye against `pnpm dev`.
 
@@ -28,12 +31,15 @@ No test runner and no CI are configured. Visual regression testing used to run t
 Cross-file invariants that are easy to break:
 
 - **Adding a post touches two files**: an entry in `data/posts.json` and `data/posts/<id>.md`. The `id` must equal the markdown filename, and `link` must be `/posts/<id>` — `generateStaticParams()` keys off `id` while `sitemap.ts` emits `link`, so a mismatch produces a page with no sitemap entry (or vice versa).
-- **`data/resume.json` must stay newest-first**, both in the top-level array and in each company's `items` array. `Timeline` derives a span from `items.at(-1).start` (earliest) and `items.at(0).end` (latest), and `resume/page.tsx` does the same for durations. Oldest-first data renders a negative/garbage span with no error.
+- **`data/resume.json` must stay newest-first** in each company's `items` array: `Timeline` derives a span from `items.at(-1).start` (earliest) and `items.at(0).end` (latest), and `resume/page.tsx` does the same for durations. Oldest-first data renders a negative/garbage span with no error. The top-level array is current-first too: it sets the page's display order, and `Timeline` reverses it for schools and certifications (companies it re-sorts by start itself).
+- `Timeline`'s year axis starts at a hardcoded 2002, so an entry starting earlier lands in the wrong grid column.
 - `ResumeEntry` is a discriminated union on `type` (`"company" | "school" | "certification"`); both the resume page and `Timeline` branch on it, so a new entry kind needs changes in three places.
 
 ### Markdown Rendering
 
 Posts render through `src/utils/markdown.ts` (`remark` → `remark-gfm` → `remark-toc` → `remark-rehype` → `rehype-slug` → `rehype-highlight` → `rehype-add-classes` → custom `rehypeCodeBlocks` → `rehype-stringify`) and are injected with `dangerouslySetInnerHTML` in `src/app/posts/[id]/page.tsx`. Frontmatter is parsed by `gray-matter` and discarded.
+
+Raw HTML in posts passes through unsanitized (`allowDangerousHtml` on both `remark-rehype` and `rehype-stringify`). `remark-toc` fills in the list under a heading named "Contents", so a post gets a table of contents by including that heading.
 
 Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match _direct_ children.
 
@@ -54,7 +60,7 @@ Syntax-highlighting themes are swapped at runtime by `HighlightThemeLoader`, whi
 
 - Server components by default; `"use client"` only where interaction demands it. Blog posts are statically generated via `generateStaticParams()`.
 - **Navigation**: floating pill nav (desktop, `.nav-glass`) in `Header`, Sheet drawer in `MobileNav`. Both consume the shared `navLinks` array in `src/lib/nav.ts` — add routes there, not in the components.
-- **Dynamic imports**: `ColorSchemeToggle` (in both `Header` and `MobileNav`) and `NavLinks` are `next/dynamic` for code splitting.
+- **Dynamic imports**: `Header` loads `ColorSchemeToggle` and `NavLinks` through `next/dynamic`; `MobileNav` imports `NavLinks` statically and `ColorSchemeToggle` dynamically with `ssr: false`.
 - **Face tracking**: `Me` → `FaceTracker` → `useGazeTracking` → (`useAnimationSequencer`, `useInactivityTimers`), with grid math in `src/utils/faceAnimations.ts`. An 11×11 sprite sheet of 512px tiles (`public/faces/gaze_grid.webp`) is positioned by `background-position`; grid coords run −15…15 in steps of `STEP = 3`. Calibrated at 512×480, so `Me` renders a fixed 512×480 inner box and CSS-`scale()`s it to fit responsive containers — changing container sizes means updating those scale factors.
 - Path alias `@/*` → `src/*`. `cn()` (`src/lib/utils.ts`) composes classNames via `clsx` + `tailwind-merge`.
 
