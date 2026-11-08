@@ -44,8 +44,8 @@ importers:
         specifier: ^10.75.2
         version: 10.78.0(@opentelemetry/core@2.10.0(@opentelemetry/api@1.9.1))(@opentelemetry/sdk-trace-base@2.10.0(@opentelemetry/api@1.9.1))(next@16.4.3(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@types/node@24.11.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(webpack@5.101.3(postcss@8.5.25))
       '@vdeantoni/particle-network':
-        specifier: ^0.1.0
-        version: 0.1.0(react@19.2.8)
+        specifier: ^0.2.0
+        version: 0.2.0(react@19.2.8)
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.4.3(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(@types/node@24.11.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
@@ -1557,8 +1557,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vdeantoni/particle-network@0.1.0':
-    resolution: {integrity: sha512-wPFJz2t/IW2dMB8a5HEAgD8Pc2qHykZl9fHcSjtcmrdLDu2U2uxImgsbpc3vqrwY/l08zhgaPHVDLSdji1GZLQ==}
+  '@vdeantoni/particle-network@0.2.0':
+    resolution: {integrity: sha512-HHtK1m//3eRQ/StXHPDTekaLfS59KD6IxYgw/6lKwyibntQCDiQJdMxjZOu7FtApilIbfFTuYM6L200/Aakr5w==}
     peerDependencies:
       react: '>=19'
     peerDependenciesMeta:
@@ -4892,7 +4892,7 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vdeantoni/particle-network@0.1.0(react@19.2.8)':
+  '@vdeantoni/particle-network@0.2.0(react@19.2.8)':
     dependencies:
       delaunator: 5.1.0
       tweakpane: 4.0.5

@@ -6,7 +6,7 @@ import { SlidersHorizontal } from "lucide-react";
 import type { ParticleNetwork, Settings } from "@vdeantoni/particle-network";
 import {
   ParticleNetworkCanvas,
-  ParticleNetworkPanel,
+  ParticleNetworkSettings,
 } from "@vdeantoni/particle-network/react";
 import { cn } from "@/lib/utils";
 
@@ -31,12 +31,9 @@ const LIGHT: Partial<Settings> = {
   triangleColor: "#0062fa",
 };
 
-const PANEL_ID = "hero-animation-settings";
-
 const HeroBackground = () => {
   const { resolvedTheme } = useTheme();
   const [network, setNetwork] = useState<ParticleNetwork | null>(null);
-  const [panelOpen, setPanelOpen] = useState(false);
 
   return (
     <>
@@ -46,30 +43,18 @@ const HeroBackground = () => {
         settings={resolvedTheme === "light" ? LIGHT : DARK}
         className="absolute inset-0 -z-10 size-full"
       />
-      <button
-        type="button"
-        title="Animation settings"
-        aria-expanded={panelOpen}
-        aria-controls={PANEL_ID}
-        onClick={() => setPanelOpen((open) => !open)}
-        className={cn(
-          "absolute bottom-8 right-6 md:right-12",
+      <ParticleNetworkSettings
+        network={network}
+        className="absolute bottom-8 right-6 md:right-12 z-10"
+        buttonClassName={cn(
           "flex items-center justify-center w-8 h-8 rounded-full",
           "text-muted-foreground hover:text-heading hover:bg-surface",
+          "aria-expanded:text-heading aria-expanded:bg-surface",
           "transition-colors duration-200",
-          panelOpen && "text-heading bg-surface",
         )}
       >
         <SlidersHorizontal className="w-4 h-4" />
-      </button>
-      {network && panelOpen && (
-        <div
-          id={PANEL_ID}
-          className="absolute bottom-20 right-6 md:right-12 z-10 w-72 max-h-[60svh] overflow-y-auto"
-        >
-          <ParticleNetworkPanel network={network} />
-        </div>
-      )}
+      </ParticleNetworkSettings>
     </>
   );
 };
