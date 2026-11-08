@@ -75,16 +75,19 @@ export default async function Home() {
         className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-baseline justify-between mb-12">
-            <div>
+          <div className="flex items-end justify-between gap-8 mb-12">
+            <div className="max-w-2xl">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
                 Featured
               </span>
-              <h2 className="mt-2">Latest Project</h2>
+              <h2 className="mt-2">{latestProject.title}</h2>
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                {latestProject.subtitle}
+              </p>
             </div>
             <Link
               href="/projects"
-              className="hidden md:inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="hidden md:inline-flex shrink-0 items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               All projects
               <ArrowRight className="w-3.5 h-3.5" />
@@ -92,28 +95,17 @@ export default async function Home() {
           </div>
 
           <Link href={latestProject.link} className="group block">
-            <div className="relative overflow-hidden rounded-2xl bg-surface">
-              <div className="relative h-64 md:h-96 overflow-hidden">
-                <Image
-                  src={latestProject.image}
-                  alt={latestProject.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 1200px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                <h3 className="text-white text-3xl md:text-4xl font-bold tracking-tight">
-                  {latestProject.title}
-                </h3>
-                <p className="mt-2 text-white/70 max-w-lg text-lg">
-                  {latestProject.subtitle}
-                </p>
-                <div className="mt-4 inline-flex items-center gap-2 text-white/80 text-sm font-medium group-hover:text-white transition-colors">
-                  View project
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
+            <div className="relative h-64 md:h-96 overflow-hidden rounded-2xl bg-surface">
+              <Image
+                src={latestProject.image}
+                alt={latestProject.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 1200px"
+              />
+              <div className="absolute bottom-5 right-5 md:bottom-8 md:right-8 inline-flex items-center gap-2 rounded-full bg-black/70 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors group-hover:bg-black/85">
+                View project
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
           </Link>
@@ -175,29 +167,6 @@ export default async function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section
-        data-particle-network-ignore
-        className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
-            About
-          </span>
-          <p className="mt-8 text-2xl md:text-3xl lg:text-4xl font-medium text-heading leading-snug tracking-tight">
-            A curious engineer who has written{" "}
-            <span className="text-primary">embedded software</span> for
-            printers, led the teams behind the{" "}
-            <span className="text-primary">Battle.net</span> shop and desktop
-            app, and mentored new web developers. Focused on{" "}
-            <span className="text-primary">distributed systems</span> and{" "}
-            <span className="text-primary">AI-driven development</span>. Outside
-            work, builds small open-source tools and makes{" "}
-            <span className="text-primary">music</span>.
-          </p>
         </div>
       </section>
     </>
