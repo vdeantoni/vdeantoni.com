@@ -59,7 +59,7 @@ const EntryTitle = ({
   slug: string;
   link?: string;
 }) => (
-  <div className="flex flex-col md:items-end md:sticky top-24">
+  <div className="flex flex-col md:items-end md:sticky md:self-start top-24">
     <h3 id={slug} className="text-xl font-semibold text-heading tracking-tight">
       {link ? (
         <a
