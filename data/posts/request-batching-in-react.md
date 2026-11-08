@@ -4,7 +4,7 @@ I noticed that this approach resulted in many calls being made in quick successi
 
 The API already supported a batch version (taking a list of permissions) so it was a frontend only effort.
 
-A few years ago I worked on a API that used [Hystrix](https://github.com/Netflix/Hystrix), it was a Java library that provided many things including [Request Collapsing](https://github.com/Netflix/Hystrix/wiki/How-it-Works#request-collapsing), so I went on a quest to find a Javascript equivalent, I was really trying not to reinvent the wheel if possible.
+A few years ago I worked on an API that used [Hystrix](https://github.com/Netflix/Hystrix), a Java library that provided many things including [Request Collapsing](https://github.com/Netflix/Hystrix/wiki/How-it-Works#request-collapsing), so I went on a quest to find a JavaScript equivalent. I was really trying not to reinvent the wheel if possible.
 
 And I found it! It’s [dataloader](https://github.com/graphql/dataloader):
 
@@ -14,19 +14,19 @@ And I found it! It’s [dataloader](https://github.com/graphql/dataloader):
 
 * * *
 
-## Dataloader Usage
+## DataLoader Usage
 
-Basically, you define your `Dataloader`:
+Basically, you define your `DataLoader`:
 
 ```javascript
 const fetcher = async (requests) => {
- // this function takes an array of collapsed requests makes a batch call and return an array of responses
+  // this function takes an array of collapsed requests, makes a batch call and returns an array of responses
 };
 
-const loader = new Dataloader(fetcher);
+const loader = new DataLoader(fetcher);
 ```
 
-And then use its promise-based API to load one (or more items):
+And then use its promise-based API to load one item (or more, with `loadMany`):
 
 ```javascript
 const data = await loader.load(request);
@@ -44,15 +44,15 @@ Also, it’s possible to limit the number of requests that are collapsed togethe
 
 ## React-query integration
 
-The application also used [react-query](https://react-query.tanstack.com/), to manage the API calls, so the challenge was to integrate the two. Luckily they play really well together, as you can see it in this [demo](https://codesandbox.io/s/react-query-dataloader-lgosp).
+The application also used [react-query](https://tanstack.com/query/latest) to manage the API calls, so the challenge was to integrate the two. Luckily they play really well together, as you can see in this [demo](https://codesandbox.io/s/react-query-dataloader-lgosp).
 
 All that needed to be done was to use the loader as the react-query fetcher function:
 
 ```javascript
 const { data } = useQuery(
-    getKey(request),
-    () => loader.load(request)
-  );
+  getKey(request),
+  () => loader.load(request)
+);
 ```
 
 And that’s it! The loader will do all the heavy lifting to collapse the calls, making it completely transparent to consumers.
