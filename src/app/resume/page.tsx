@@ -67,7 +67,7 @@ const EntryTitle = ({
           className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
         >
           {title}
-          <ExternalLink className="w-3.5 h-3.5 opacity-40" />
+          <ExternalLink className="w-3.5 h-3.5 shrink-0 opacity-40" />
         </a>
       ) : (
         title
@@ -124,7 +124,7 @@ const EntryItem = ({
         className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:text-primary-hover transition-colors"
       >
         {link.name}
-        <ExternalLink className="w-3 h-3" />
+        <ExternalLink className="w-3 h-3 shrink-0" />
       </a>
     ))}
   </div>
