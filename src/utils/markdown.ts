@@ -12,16 +12,16 @@ import { visit } from "unist-util-visit";
 // Custom rehype plugin to handle code blocks properly
 function rehypeCodeBlocks() {
   return (tree: any) => {
-    visit(tree, "element", (node) => {
+    visit(tree, "element", (node, _index, parent) => {
       if (node.tagName === "pre" && node.children[0]?.tagName === "code") {
         // This is a code block, add classes to pre but let rehype-highlight handle code
         node.properties = {
           ...node.properties,
           className:
-            `${node.properties?.className || ""} bg-stone-100 dark:bg-stone-900 p-4 rounded-lg overflow-x-auto my-4`.trim(),
+            `${node.properties?.className || ""} bg-stone-100 dark:bg-stone-900 p-4 rounded-lg overflow-x-auto my-4 text-sm`.trim(),
         };
         // Let rehype-highlight handle the code element classes
-      } else if (node.tagName === "code" && node.parent?.tagName !== "pre") {
+      } else if (node.tagName === "code" && parent?.tagName !== "pre") {
         // This is inline code, add inline styling
         node.properties = {
           ...node.properties,

@@ -11,6 +11,7 @@ const Header = () => {
     <header className="absolute md:fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-5">
       {/* Desktop floating pill nav */}
       <nav
+        data-particle-network-ignore
         className={cn(
           "hidden md:flex items-center gap-1",
           "px-2 py-1.5 rounded-full",

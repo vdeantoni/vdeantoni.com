@@ -3,7 +3,9 @@ I’m trying to make the best out of these quarantine days, and learning new thi
 ![](https://cdn-images-1.medium.com/max/800/1*tNQmBoNt0q_Ph8BT9GWhYA.gif)
 [How to GraphQL](https://www.howtographql.com/) background animation
 
-If you are curious to see the end result, I have published a [demo](https://proximity-graph-animation.netlify.app/) and the source code on [GitHub](https://github.com/vdeantoni/proximity-graph-animation) and [CodePen](https://codepen.io/vdeantoni/pen/wvaEoxE).
+If you are curious to see the end result, the complete code and its live demo are at the end. Each step along the way has a demo of its own.
+
+> **Update, November 2026:** this experiment grew into [Particle Network](https://particle-network-live.vercel.app/), a TypeScript library published on npm as [`@vdeantoni/particle-network`](https://www.npmjs.com/package/@vdeantoni/particle-network), with a settings panel and React components. It's the animation behind this site's homepage, and its source is on [GitHub](https://github.com/vdeantoni/particle-network). The code in this article is the original, simpler version.
 
 Without further ado, let’s get started.
 
@@ -48,7 +50,7 @@ We’ve given an ID to the `<canvas>` element, which we’ll use to access the e
 
 ## Draw the Points
 
-With the`<canvas>` element in place, we can start drawing things on it by using JavaScript and the 2D-rendering context [API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
+With the `<canvas>` element in place, we can start drawing things on it by using JavaScript and the 2D-rendering context [API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
 
 ```javascript
 const canvas = document.getElementById("myCanvas");
@@ -97,13 +99,9 @@ points.forEach(point => {
 
 By putting that all together, we have all our random points drawn on the canvas.
 
-You can see it live with the CodePen below:
+You can see it live below:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Draw points" src="https://codepen.io/vdeantoni/embed/preview/QWbVNjx?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/QWbVNjx">
-  Draw points</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Draw points" src="/demos/create-a-particle-network-animation/draw-points.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 ---
 
@@ -162,12 +160,12 @@ Enough math, let’s code.
 
 ```javascript
 const movePoint = point => {
-  point.x += point.s * Math.cos(point.d);
-  point.y += point.s * Math.sin(point.d);
+  point.x += point.s * Math.cos(point.a);
+  point.y += point.s * Math.sin(point.a);
 };
 ```
 
-We created a function called `movePoint` that given a point object, now with two new properties `s` and `d`, updates the point’s position. This function will be called as part of the animation loop.
+We created a function called `movePoint` that given a point object, now with two new properties `s` and `a`, updates the point’s position. This function will be called as part of the animation loop.
 
 We also need to change the point creation to set the two new properties.
 
@@ -176,33 +174,29 @@ for (let i = 0; i < TOTAL_POINTS; i++) {
   points.push({
     x: getRandomInRange(0, canvas.width),
     y: getRandomInRange(0, canvas.height),
-    d: getRandomInRange(0, 360),
+    a: getRandomInRange(0, 360),
     s: 1
   });
 }
 ```
 
-We set `d` to be a random number between 0 and 360 degrees, so points will move in random directions, and `s` to be 1 px/fd.
+We set `a` to a random number between 0 and 360, so points will move in random directions, and `s` to 1 px/fd. `Math.cos` and `Math.sin` take the angle in radians, not degrees. Any number still gives a random direction, so this works, but `getRandomInRange(0, 2 * Math.PI)` would cover each direction exactly once.
 
 Putting together all we have so far, we should have moving points!
 
 See it live below:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Move points" src="https://codepen.io/vdeantoni/embed/preview/mdJGrGP?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/mdJGrGP">
-  Move points</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Move points" src="/demos/create-a-particle-network-animation/move-points.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
-Wait a minute — why are the points leaving a trail? Well, that’s how the canvas work. It’s a limitation that, once a shape gets drawn, it stays that way. Fortunately, there’s an easy way to solve that. All we need to do is call [`clearRect`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect)`(0, 0, canvas.width, canvas.height)` at the start of the animation loop, and it will clear the canvas removing any shapes that have been drawn previously.
+Wait a minute — why are the points leaving a trail? Well, that’s how the canvas works. It’s a limitation that, once a shape gets drawn, it stays that way. Fortunately, there’s an easy way to solve that. All we need to do is call [`clearRect`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect)`(0, 0, canvas.width, canvas.height)` at the start of the animation loop, and it will clear the canvas removing any shapes that have been drawn previously.
 
 ---
 
 ## Draw the Lines
 
-We will now draw the lines that connect any two points that are close enough. We will say two points are close enough when the distance between then is less than 100px.
+We will now draw the lines that connect any two points that are close enough. We will say two points are close enough when the distance between them is less than 100px.
 
-How do we find all the pairs of points where the distance between them is 100px or less? For the sake of this article, we will chose a non-optimal but simple approach.
+How do we find all the pairs of points where the distance between them is 100px or less? For the sake of this article, we will choose a non-optimal but simple approach.
 
 For each point, we will look at all the other points, calculate the distance, and decide whether or not a line needs to be drawn.
 
@@ -236,18 +230,14 @@ points.forEach(point => {
 
 There are several performance improvements we can make to this piece of code, for example:
 
-- Eliminate obvious points by checking if `other.x > point.x + CONNECT_DISTANCE` or `other.x < point.x — CONNECT_DISTANCE` or `other.y > point.y + CONNECT_DISTANCE` or `other.y < point.y — CONNECT_DISTANCE`
+- Eliminate obvious points by checking if `other.x > point.x + CONNECT_DISTANCE` or `other.x < point.x - CONNECT_DISTANCE` or `other.y > point.y + CONNECT_DISTANCE` or `other.y < point.y - CONNECT_DISTANCE`
 - Keep track of the connections so lines are not drawn twice, `point — other` and `other — point`
 
-Regardless of the improvements, as long as we have two nested loops, the time complexity will still be O(n²)_._ If you are interested in learning about better, though more complex, solutions to this problem, I recommend reading about Q[uadtrees](https://en.wikipedia.org/wiki/Quadtree), [_k_\-d trees](https://en.wikipedia.org/wiki/K-d_tree), and [range searching](https://en.wikipedia.org/wiki/Range_searching).
+Regardless of the improvements, as long as we have two nested loops, the time complexity will still be O(n²). If you are interested in learning about better, though more complex, solutions to this problem, I recommend reading about [quadtrees](https://en.wikipedia.org/wiki/Quadtree), [_k_\-d trees](https://en.wikipedia.org/wiki/K-d_tree), and [range searching](https://en.wikipedia.org/wiki/Range_searching).
 
 Let’s see where we are at:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Draw lines" src="https://codepen.io/vdeantoni/embed/preview/QWbVGvZ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/QWbVGvZ">
-  Draw lines</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Draw lines" src="/demos/create-a-particle-network-animation/draw-lines.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 Nice! We’re almost there.
 
@@ -255,11 +245,11 @@ Nice! We’re almost there.
 
 ## Polish
 
-We’ve come a long way. We started with an empty canvas, and now we have points moving around and lines been drawn when they are close enough.
+We’ve come a long way. We started with an empty canvas, and now we have points moving around and lines being drawn when they are close enough.
 
 There are still two more things that we want to do in this article: restore points once they move outside of the canvas and add the line-stretch effect.
 
-There are several ways to approach the former. We could remove points from the list as soon as they move outside of the canvas. then for each point we remove, we add a new one back in a random position. We could also bounce them back as soon as they hit a border, or we could “teleport” to the opposite site _à la_ PacMan.
+There are several ways to approach the former. We could remove points from the list as soon as they move outside of the canvas. then for each point we remove, we add a new one back in a random position. We could also bounce them back as soon as they hit a border, or we could “teleport” to the opposite side _à la_ PacMan.
 
 For this article, we will implement the first approach as we already have most of the code for it anyway.
 
@@ -373,11 +363,7 @@ loop();
 
 And here is a live demo:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Final" src="https://codepen.io/vdeantoni/embed/preview/wvaEoxE?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/wvaEoxE">
-  Final</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Final" src="/demos/create-a-particle-network-animation/final.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 ---
 

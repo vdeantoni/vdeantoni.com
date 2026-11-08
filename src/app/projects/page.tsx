@@ -20,7 +20,7 @@ export default async function Projects() {
           Work
         </span>
         <h1 className="mt-3 mb-4">Projects</h1>
-        <p className="text-lg text-muted-foreground max-w-xl mb-16">
+        <p className="text-lg text-muted-foreground mb-16">
           Side projects, experiments, and creative explorations built in spare
           time.
         </p>

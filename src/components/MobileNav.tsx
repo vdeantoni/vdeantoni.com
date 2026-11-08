@@ -31,7 +31,11 @@ export default function MobileNav() {
             <Menu className="w-5 h-5" />
           </button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-[300px] sm:w-[350px] px-6">
+        <SheetContent
+          data-particle-network-ignore
+          side="right"
+          className="w-[300px] sm:w-[350px] px-6"
+        >
           <SheetHeader>
             <SheetTitle className="font-bold text-2xl text-heading tracking-tight">
               Navigation

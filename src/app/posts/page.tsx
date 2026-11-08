@@ -13,12 +13,12 @@ export default async function Posts() {
 
   return (
     <section className="px-6 md:px-12 lg:px-20 pt-32 pb-24 md:pt-40 md:pb-32">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
           Writing
         </span>
         <h1 className="mt-3 mb-4">Posts</h1>
-        <p className="text-lg text-muted-foreground max-w-xl mb-16">
+        <p className="text-lg text-muted-foreground mb-16">
           Thoughts on software engineering, web development, developer tools,
           and the occasional deep dive.
         </p>
