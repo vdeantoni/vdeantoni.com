@@ -43,6 +43,7 @@ const HeroBackground = () => {
         ref={setNetwork}
         pointerTarget="window"
         settings={resolvedTheme === "light" ? LIGHT : DARK}
+        storageKey="vdeantoni-particle-network"
         className="fixed inset-x-0 top-0 -z-10 h-lvh w-full"
       />
       <ParticleNetworkSettings
