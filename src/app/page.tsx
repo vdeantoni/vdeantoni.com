@@ -75,7 +75,7 @@ export default async function Home() {
         className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between gap-8 mb-12">
+          <div className="flex items-baseline justify-between gap-8 mb-12">
             <div className="max-w-2xl">
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
                 Featured
@@ -87,7 +87,7 @@ export default async function Home() {
             </div>
             <Link
               href="/projects"
-              className="hidden md:inline-flex shrink-0 items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="inline-flex shrink-0 items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               All projects
               <ArrowRight className="w-3.5 h-3.5" />
@@ -108,14 +108,6 @@ export default async function Home() {
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
-          </Link>
-
-          <Link
-            href="/projects"
-            className="md:hidden flex items-center gap-1 mt-6 text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            All projects
-            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </section>
