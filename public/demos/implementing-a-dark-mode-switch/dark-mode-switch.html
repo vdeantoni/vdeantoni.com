@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dark mode switch</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        box-sizing: border-box;
+        padding: 24px 32px;
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+      }
+    </style>
+    <style>
+      :root {
+        --color-text: #191924;
+        --color-background: #fff;
+      }
+
+      :root[data-color-scheme="dark"] {
+        --color-text: #fff;
+        --color-background: #0d202d;
+      }
+
+      body {
+        color: var(--color-text);
+        background-color: var(--color-background);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lorem ipsum</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Quis varius quam
+      quisque id diam. Felis imperdiet proin fermentum leo vel orci porta non.
+      Scelerisque viverra mauris in aliquam.
+    </p>
+    <button id="button">Toggle Dark Mode</button>
+    <script>
+      const getPreferredColorScheme = () => {
+        const darkQuery = "(prefers-color-scheme: dark)";
+        const darkMQL = window.matchMedia ? window.matchMedia(darkQuery) : {};
+        if (darkMQL.media === darkQuery && darkMQL.matches) {
+          return "dark";
+        }
+
+        return "default";
+      };
+
+      document.documentElement.setAttribute("data-color-scheme", getPreferredColorScheme());
+
+      document.getElementById("button").onclick = () => {
+        const colorScheme = document.documentElement.getAttribute("data-color-scheme");
+
+        document.documentElement.setAttribute("data-color-scheme", colorScheme === "default" ? "dark" : "default");
+      };
+    </script>
+  </body>
+</html>
