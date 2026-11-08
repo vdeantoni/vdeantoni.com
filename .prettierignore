@@ -15,5 +15,7 @@ node_modules
 data/posts
 
 # Post demos repeat the code their article shows, character for character;
-# formatting them would make the two differ.
+# formatting them would make the two differ. demos/ holds the sources that
+# bundle into public/demos.
 public/demos
+demos/*/
