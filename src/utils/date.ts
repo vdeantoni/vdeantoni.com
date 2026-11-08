@@ -32,7 +32,10 @@ export const formatDate = (
     month: "short",
   };
 
-  return new Intl.DateTimeFormat("en-US", options).format(
-    date ? new Date(date) : new Date(),
-  );
+  // Stored dates are calendar days at midnight, UTC for posts and Pacific for
+  // the resume. Both fall on that day in UTC, but not in a US time zone.
+  return new Intl.DateTimeFormat("en-US", {
+    ...options,
+    timeZone: "UTC",
+  }).format(date ? new Date(date) : new Date());
 };

@@ -2,6 +2,16 @@ import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs/config";
 
 const nextConfig: NextConfig = {
+  redirects() {
+    return [
+      // Links elsewhere on the web still use the post's old URL
+      {
+        source: "/posts/create-a-proximity-graph-animation",
+        destination: "/posts/create-a-particle-network-animation",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

@@ -196,12 +196,12 @@
   },
   {
     "type": "medium",
-    "id": "create-a-proximity-graph-animation",
+    "id": "create-a-particle-network-animation",
     "date": "2020-03-22T00:00:00.000Z",
-    "title": "Create a Proximity Graph Animation",
+    "title": "Create a Particle Network Animation",
     "subtitle": "An introduction to 2D HTML5 Canvas and the animation loop",
     "image": "https://res.cloudinary.com/vdeantoni/video/upload/c_fill,g_center,h_450,w_1424/v1757531063/graph_irmsip.gif",
-    "link": "/posts/create-a-proximity-graph-animation",
+    "link": "/posts/create-a-particle-network-animation",
     "timeToRead": 7,
     "tags": [
       {

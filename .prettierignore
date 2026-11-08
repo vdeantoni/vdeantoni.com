@@ -13,3 +13,7 @@ node_modules
 # emphasis markers, which churns the markdown that feeds the remark pipeline
 # for no benefit.
 data/posts
+
+# Post demos repeat the code their article shows, character for character;
+# formatting them would make the two differ.
+public/demos

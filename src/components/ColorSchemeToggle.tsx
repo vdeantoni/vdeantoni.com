@@ -31,7 +31,7 @@ const ColorSchemeToggle = ({ className }: { className?: string }) => {
       }}
       className={cn(
         "flex items-center justify-center",
-        "w-8 h-8 rounded-full",
+        "w-8 h-8 rounded-full cursor-pointer",
         "text-muted-foreground hover:text-heading hover:bg-surface",
         "transition-colors duration-200",
         "overflow-hidden",

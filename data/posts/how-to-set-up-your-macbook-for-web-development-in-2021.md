@@ -298,7 +298,7 @@ You can find many other useful tips [here](https://reasoniamhere.com/2014/01/11/
 
 And my list of keyboard shortcuts:
 
-[Boost Your Command Line Productivity With Keyboard Shortcuts: Level up your CLI skills with keyboard shortcuts](/posts/4de2f6cbd069)
+[All the Command-Line Keyboard Shortcuts You Need to Know: Level up your CLI skills with these keyboard shortcuts](/posts/all-the-command-line-keyboard-shortcuts-you-need-to-know)
 
 ### [Oh My Zsh](https://ohmyz.sh/)
 
@@ -504,7 +504,7 @@ A command-line fuzzy finder.
 
 I wrote a dedicated article for fzf, check it out:
 
-[Boost Your Command-Line Productivity With Fuzzy Finder: Tips and tricks to level up your Command-line skills with Fuzzy Finder_medium.com](/posts/985aa162ba5d)
+[Boost Your Command-Line Productivity With Fuzzy Finder: Level up your CLI skills with fzf](/posts/boost-your-command-line-productivity-with-fuzzy-finder)
 
 To install it, run these two lines:
 

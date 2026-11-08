@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Draw points</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #fff;
+      }
+      body {
+        display: grid;
+        place-items: center;
+      }
+      canvas {
+        max-width: 100%;
+        height: auto;
+      }
+      button {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border: 1px solid #e4e4e7;
+        border-radius: 999px;
+        background: #fff;
+        color: #3f3f46;
+        font: 500 13px/1 system-ui, sans-serif;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #f4f4f5;
+        color: #18181b;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" onclick="location.reload()">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+        <path d="M3 3v5h5" />
+      </svg>
+      Run again
+    </button>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const getRandomInRange = (min, max) => {
+        return Math.random() * (max - min) + min;
+      };
+
+      const TOTAL_POINTS = 20;
+
+      const points = [];
+      for (let i = 0; i < TOTAL_POINTS; i++) {
+        points.push({
+          x: getRandomInRange(0, canvas.width),
+          y: getRandomInRange(0, canvas.height)
+        });
+      }
+
+      const drawPoint = point => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+
+      points.forEach(point => {
+        drawPoint(point);
+      });
+    </script>
+  </body>
+</html>
