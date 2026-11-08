@@ -51,6 +51,7 @@ Syntax-highlighting themes are swapped at runtime by `HighlightThemeLoader`, whi
 
 - `src/styles/globals.css` is the single source of truth: Tailwind 4 CSS-first config with `@theme inline`, brand + shadcn CSS variables in OKLCH, `@utility` blocks, and base element styles (`h1`–`h6` are globally styled — headings usually need no classes).
 - **Dark mode**: `next-themes` with `attribute="data-color-scheme"` and `defaultTheme="dark"`. `dark:` works only because of `@custom-variant dark (&:is([data-color-scheme="dark"] *))` at the top of `globals.css`.
+- **Landing page rhythm**: below the hero, sections alternate `bg-surface` and the page background, starting with gray About. The hero ends in a gradient to `bg-surface`, so the section after it must stay gray. The footer uses its own `--footer` token, a `color-mix()` of `--primary` into the surface (light) or background (dark), so it never matches the section above it on any page.
 - Custom utilities: `actionable`, `heading`, `absolute-center`, `no-scrollbar` (`@utility`); `section-grid`, `nav-glass` (`@layer components`).
 - Additional `@custom-variant` helpers for Radix state attributes: `data-open`, `data-closed`, `data-checked`, `data-unchecked`, `data-selected`, `data-disabled`, `data-active`, `data-horizontal`, `data-vertical`.
 - **Typography**: Sora (display/body) + JetBrains Mono (code), loaded via Google Fonts `<link>` in `layout.tsx`. `next/font/google` is NOT used — incompatible with the turbopack build in Next.js 16.

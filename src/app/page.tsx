@@ -18,6 +18,11 @@ export default async function Home() {
           select text, so the text keeps the default cursor. */}
       <section className="relative isolate cursor-default min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-20 pb-28 md:pb-0">
         <HeroBackground />
+        {/* Fades the animation into the About section's bg-surface below */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-b from-transparent to-surface"
+        />
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
             {/* Text content */}
