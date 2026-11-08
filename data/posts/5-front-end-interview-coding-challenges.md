@@ -506,7 +506,7 @@ And you can see the result here:
 <br/>
 If you are interested in Javascript animations, I wrote an article about it:
 
-[**Create a Proximity Graph Animation** : An introduction to 2D HTML5 Canvas and the animation loop](/posts/create-a-proximity-graph-animation)
+[**Create a Particle Network Animation** : An introduction to 2D HTML5 Canvas and the animation loop](/posts/create-a-particle-network-animation)
 
 * * *
 
