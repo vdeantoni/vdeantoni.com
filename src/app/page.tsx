@@ -5,6 +5,7 @@ import { getPosts, getProjects } from "@/data";
 import { formatDate } from "@/utils/date";
 import Image from "next/image";
 import SocialLinks from "@/components/SocialLinks";
+import HeroBackground from "@/components/HeroBackground";
 
 export default async function Home() {
   const [posts, projects] = await Promise.all([getPosts(), getProjects()]);
@@ -13,8 +14,10 @@ export default async function Home() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-20">
+      {/* Hero Section. Presses here drag animation particles rather than
+          select text, so the text keeps the default cursor. */}
+      <section className="relative isolate cursor-default min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-20 pb-28 md:pb-0">
+        <HeroBackground />
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
             {/* Text content */}
