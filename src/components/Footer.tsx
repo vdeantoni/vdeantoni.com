@@ -10,7 +10,7 @@ const Footer: FC = () => {
     // particles behind it
     <footer
       data-particle-network-ignore
-      className="border-t border-border bg-footer"
+      className="border-t border-border bg-surface"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-end">
