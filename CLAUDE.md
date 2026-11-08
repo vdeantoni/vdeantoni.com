@@ -43,7 +43,7 @@ Raw HTML in posts passes through unsanitized (`allowDangerousHtml` on both `rema
 
 Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match _direct_ children.
 
-Live code demos in posts are static pages under `public/demos/<post id>/`, embedded with `<iframe sandbox="allow-scripts">`, so a demo's script runs without reaching the site and nothing depends on CodePen or another host. The post page's `[&>iframe]` classes size and frame them, so the iframe tags in the markdown carry only `title`, `src`, `sandbox` and `loading`.
+Live code demos in posts are static pages under `public/demos/<post id>/`, embedded with `<iframe sandbox="allow-scripts">`, so a demo's script runs without reaching the site and nothing depends on CodePen or another host. The post page's `[&>iframe]` classes size and frame them, so the iframe tags in the markdown carry only `title`, `src`, `sandbox` and `loading`. A demo with a form needs `allow-forms` too: without it the browser never fires the form's `submit` event.
 
 A demo repeats its post's code character for character, which is why Prettier and ESLint skip demos. React demos can't run as written in a static page, so their sources live in `demos/<post id>/<demo>/` and `pnpm --dir demos build` bundles each `index.js` into `public/demos/<post id>/<demo>.js`, which is committed; rerun it after editing a source. `demos/` is a separate pnpm package with its own lockfile, so the demos' libraries stay out of the site's dependencies, and neither the site build nor Vercel installs it.
 
