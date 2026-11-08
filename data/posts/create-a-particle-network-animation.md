@@ -3,7 +3,7 @@ I’m trying to make the best out of these quarantine days, and learning new thi
 ![](https://cdn-images-1.medium.com/max/800/1*tNQmBoNt0q_Ph8BT9GWhYA.gif)
 [How to GraphQL](https://www.howtographql.com/) background animation
 
-If you are curious to see the end result, the source code is on [CodePen](https://codepen.io/vdeantoni/pen/wvaEoxE), and each step below has a live demo.
+If you are curious to see the end result, the complete code and its live demo are at the end. Each step along the way has a demo of its own.
 
 > **Update, November 2026:** this experiment grew into [Particle Network](https://particle-network-live.vercel.app/), a TypeScript library published on npm as [`@vdeantoni/particle-network`](https://www.npmjs.com/package/@vdeantoni/particle-network), with a settings panel and React components. It's the animation behind this site's homepage, and its source is on [GitHub](https://github.com/vdeantoni/particle-network). The code in this article is the original, simpler version.
 
@@ -99,13 +99,9 @@ points.forEach(point => {
 
 By putting that all together, we have all our random points drawn on the canvas.
 
-You can see it live with the CodePen below:
+You can see it live below:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Draw points" src="https://codepen.io/vdeantoni/embed/preview/QWbVNjx?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/QWbVNjx">
-  Draw points</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Draw points" src="/demos/create-a-particle-network-animation/draw-points.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 ---
 
@@ -190,11 +186,7 @@ Putting together all we have so far, we should have moving points!
 
 See it live below:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Move points" src="https://codepen.io/vdeantoni/embed/preview/mdJGrGP?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/mdJGrGP">
-  Move points</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Move points" src="/demos/create-a-particle-network-animation/move-points.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 Wait a minute — why are the points leaving a trail? Well, that’s how the canvas works. It’s a limitation that, once a shape gets drawn, it stays that way. Fortunately, there’s an easy way to solve that. All we need to do is call [`clearRect`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect)`(0, 0, canvas.width, canvas.height)` at the start of the animation loop, and it will clear the canvas removing any shapes that have been drawn previously.
 
@@ -245,11 +237,7 @@ Regardless of the improvements, as long as we have two nested loops, the time co
 
 Let’s see where we are at:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Draw lines" src="https://codepen.io/vdeantoni/embed/preview/QWbVGvZ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/QWbVGvZ">
-  Draw lines</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Draw lines" src="/demos/create-a-particle-network-animation/draw-lines.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 Nice! We’re almost there.
 
@@ -375,11 +363,7 @@ loop();
 
 And here is a live demo:
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Final" src="https://codepen.io/vdeantoni/embed/preview/wvaEoxE?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/vdeantoni/pen/wvaEoxE">
-  Final</a> by Vinicius De Antoni (<a href="https://codepen.io/vdeantoni">@vdeantoni</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+<iframe title="Final" src="/demos/create-a-particle-network-animation/final.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 ---
 

@@ -145,6 +145,7 @@ export default async function PostPage({ params }: PostPageProps) {
               "[&>blockquote]:border-l-2 [&>blockquote]:border-primary [&>blockquote]:pl-6 [&>blockquote]:italic [&>blockquote]:my-8 [&>blockquote]:text-muted-foreground",
               "[&>hr]:border-border [&>hr]:my-12",
               "[&>img]:rounded-xl [&>img]:my-8",
+              "[&>iframe]:w-full [&>iframe]:h-[420px] [&>iframe]:my-8 [&>iframe]:rounded-xl [&>iframe]:border [&>iframe]:border-border [&>iframe]:bg-white",
               "[&>pre]:rounded-xl [&>pre]:my-6 [&>pre]:overflow-x-auto",
             )}
             dangerouslySetInnerHTML={{ __html: htmlContent }}

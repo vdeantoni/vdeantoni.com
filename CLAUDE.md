@@ -43,6 +43,8 @@ Raw HTML in posts passes through unsanitized (`allowDangerousHtml` on both `rema
 
 Two separate styling layers apply to the same HTML: `rehype-add-classes` in `markdown.ts` and arbitrary child selectors (`[&>h1]:…`) on the wrapper in `posts/[id]/page.tsx`. Editing post typography usually means editing both, and the page-level classes only match _direct_ children.
 
+Live code demos in posts are static pages under `public/demos/<post id>/`, embedded with `<iframe sandbox="allow-scripts">`, so a demo's script runs without reaching the site and nothing depends on CodePen or another host. The post page's `[&>iframe]` classes size and frame them, so the iframe tags in the markdown carry only `title`, `src`, `sandbox` and `loading`.
+
 There is no MDX path: `@next/mdx` and the `@mdx-js/*` packages were removed once it was clear nothing rendered through them, so `/data` markdown only ever travels the pipeline above. `pageExtensions` is left at its default.
 
 Syntax-highlighting colors are highlight.js's GitHub and GitHub Dark palettes, defined as `--hljs-*` variables per color scheme at the end of `globals.css`, so they switch with the theme in plain CSS. Importing highlight.js theme stylesheets at runtime doesn't work for this: an imported stylesheet stays in the page, so after a toggle both themes are loaded and the last one inserted wins.

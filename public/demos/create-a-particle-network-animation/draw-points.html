@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Draw points</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #fff;
+      }
+      body {
+        display: grid;
+        place-items: center;
+      }
+      canvas {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const getRandomInRange = (min, max) => {
+        return Math.random() * (max - min) + min;
+      };
+
+      const TOTAL_POINTS = 20;
+
+      const points = [];
+      for (let i = 0; i < TOTAL_POINTS; i++) {
+        points.push({
+          x: getRandomInRange(0, canvas.width),
+          y: getRandomInRange(0, canvas.height)
+        });
+      }
+
+      const drawPoint = point => {
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 1, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+
+      points.forEach(point => {
+        drawPoint(point);
+      });
+    </script>
+  </body>
+</html>
