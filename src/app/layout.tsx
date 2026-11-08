@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Vinicius De Antoni — Software Engineer",
   description:
     "Portfolio of Vinicius De Antoni, a software engineer building distributed systems, user experiences, and creative side projects.",
-  icons: ["favicon.png"],
+  icons: ["/favicon.png"],
 };
 
 export const viewport: Viewport = {

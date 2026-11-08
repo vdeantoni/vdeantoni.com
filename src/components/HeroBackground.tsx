@@ -10,14 +10,15 @@ import {
 } from "@vdeantoni/particle-network/react";
 import { cn } from "@/lib/utils";
 
-// Black particles and lines add nothing under additive blending, so only the
-// white triangles show
+// Zero-size particles and lines still move and link, so only the triangles
+// are drawn
 const DARK: Partial<Settings> = {
   background: false,
   backgroundInner: "#101010",
   density: 0.8,
   maxSpeed: 0.4,
   minRadius: 0,
+  maxRadius: 0,
   particleColor: "#000000",
   linkDistance: 160,
   lineWidth: 0,
@@ -30,13 +31,10 @@ const DARK: Partial<Settings> = {
   pointerForce: "repel",
 };
 
-// Additive blending can only lighten, so the dark triangles need normal
-// blending; the white particles and lines then show only where they cross them
+// Additive blending can only lighten, so the dark triangles need normal blending
 const LIGHT: Partial<Settings> = {
   ...DARK,
   additive: false,
-  particleColor: "#ffffff",
-  lineColor: "#ffffff",
   triangleColor: "#000000",
 };
 
@@ -50,9 +48,6 @@ const HeroBackground = () => {
       {/* Fixed to the viewport behind the whole page. lvh rather than 100%,
           so a phone's toolbar showing and hiding doesn't resize the canvas. */}
       <ParticleNetworkCanvas
-        // Each theme saves its own panel changes. A new storageKey alone would
-        // build the network from the previous theme's preset, so remount.
-        key={scheme}
         ref={setNetwork}
         pointerTarget="window"
         settings={scheme === "light" ? LIGHT : DARK}
