@@ -75,23 +75,25 @@ export default async function Home() {
         className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-baseline justify-between gap-8 mb-12">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
-                Featured
-              </span>
-              <h2 className="mt-2">{latestProject.title}</h2>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                {latestProject.subtitle}
-              </p>
+          <div className="mb-12">
+            <div className="flex items-baseline justify-between gap-8">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
+                  Featured
+                </span>
+                <h2 className="mt-2">{latestProject.title}</h2>
+              </div>
+              <Link
+                href="/projects"
+                className="inline-flex shrink-0 items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                All projects
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
-            <Link
-              href="/projects"
-              className="inline-flex shrink-0 items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              All projects
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              {latestProject.subtitle}
+            </p>
           </div>
 
           <Link href={latestProject.link} className="group block">
