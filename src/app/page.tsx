@@ -67,6 +67,26 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
+            About
+          </span>
+          <p className="mt-8 text-2xl md:text-3xl lg:text-4xl font-medium text-heading leading-snug tracking-tight">
+            A curious engineer who has written{" "}
+            <span className="text-primary">embedded software</span> for
+            printers, led the teams behind the{" "}
+            <span className="text-primary">Battle.net</span> shop and desktop
+            app, and mentored new web developers. Focused on{" "}
+            <span className="text-primary">distributed systems</span> and{" "}
+            <span className="text-primary">AI-driven development</span>. Outside
+            work, builds small open-source tools and makes{" "}
+            <span className="text-primary">music</span>.
+          </p>
+        </div>
+      </section>
+
       {/* Featured Project */}
       <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32">
         <div className="max-w-6xl mx-auto">
@@ -170,26 +190,6 @@ export default async function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
-            About
-          </span>
-          <p className="mt-8 text-2xl md:text-3xl lg:text-4xl font-medium text-heading leading-snug tracking-tight">
-            A curious engineer who has written{" "}
-            <span className="text-primary">embedded software</span> for
-            printers, led the teams behind the{" "}
-            <span className="text-primary">Battle.net</span> shop and desktop
-            app, and mentored new web developers. Focused on{" "}
-            <span className="text-primary">distributed systems</span> and{" "}
-            <span className="text-primary">AI-driven development</span>. Outside
-            work, builds small open-source tools and makes{" "}
-            <span className="text-primary">music</span>.
-          </p>
         </div>
       </section>
     </>
