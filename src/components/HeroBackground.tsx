@@ -37,11 +37,13 @@ const HeroBackground = () => {
 
   return (
     <>
+      {/* Fixed to the viewport behind the whole page. lvh rather than 100%,
+          so a phone's toolbar showing and hiding doesn't resize the canvas. */}
       <ParticleNetworkCanvas
         ref={setNetwork}
         pointerTarget="window"
         settings={resolvedTheme === "light" ? LIGHT : DARK}
-        className="absolute inset-0 -z-10 size-full"
+        className="fixed inset-x-0 top-0 -z-10 h-lvh w-full"
       />
       <ParticleNetworkSettings
         network={network}

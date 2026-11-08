@@ -14,15 +14,11 @@ export default async function Home() {
 
   return (
     <>
-      {/* Hero Section. Presses here drag animation particles rather than
-          select text, so the text keeps the default cursor. */}
-      <section className="relative isolate cursor-default min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-20 pb-28 md:pb-0">
+      {/* Hero Section. The animation stays fixed behind the page and shows
+          through the plain sections, where presses drag particles instead of
+          selecting text, so they keep the default cursor. */}
+      <section className="relative cursor-default min-h-[100svh] flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-20 pb-28 md:pb-0">
         <HeroBackground />
-        {/* Fades the animation into the About section's bg-surface below */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-b from-transparent to-surface"
-        />
         <div className="max-w-6xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
             {/* Text content */}
@@ -72,28 +68,12 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
-            About
-          </span>
-          <p className="mt-8 text-2xl md:text-3xl lg:text-4xl font-medium text-heading leading-snug tracking-tight">
-            A curious engineer who has written{" "}
-            <span className="text-primary">embedded software</span> for
-            printers, led the teams behind the{" "}
-            <span className="text-primary">Battle.net</span> shop and desktop
-            app, and mentored new web developers. Focused on{" "}
-            <span className="text-primary">distributed systems</span> and{" "}
-            <span className="text-primary">AI-driven development</span>. Outside
-            work, builds small open-source tools and makes{" "}
-            <span className="text-primary">music</span>.
-          </p>
-        </div>
-      </section>
-
-      {/* Featured Project */}
-      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32">
+      {/* Featured Project. Gray sections cover the animation, so presses on
+          them don't add particles behind them. */}
+      <section
+        data-particle-network-ignore
+        className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="flex items-baseline justify-between mb-12">
             <div>
@@ -149,7 +129,7 @@ export default async function Home() {
       </section>
 
       {/* Latest Posts */}
-      <section className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface">
+      <section className="cursor-default px-6 md:px-12 lg:px-20 py-24 md:py-32">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-baseline justify-between mb-16">
             <div>
@@ -195,6 +175,29 @@ export default async function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section
+        data-particle-network-ignore
+        className="px-6 md:px-12 lg:px-20 py-24 md:py-32 bg-surface"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
+            About
+          </span>
+          <p className="mt-8 text-2xl md:text-3xl lg:text-4xl font-medium text-heading leading-snug tracking-tight">
+            A curious engineer who has written{" "}
+            <span className="text-primary">embedded software</span> for
+            printers, led the teams behind the{" "}
+            <span className="text-primary">Battle.net</span> shop and desktop
+            app, and mentored new web developers. Focused on{" "}
+            <span className="text-primary">distributed systems</span> and{" "}
+            <span className="text-primary">AI-driven development</span>. Outside
+            work, builds small open-source tools and makes{" "}
+            <span className="text-primary">music</span>.
+          </p>
         </div>
       </section>
     </>
