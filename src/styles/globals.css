@@ -431,8 +431,9 @@
 
   /* Floating nav glass effect */
   .nav-glass {
+    /* Lightning CSS adds the -webkit- copy Safari needs. A hand-written one
+       after this line makes it drop the unprefixed property Chrome reads. */
     backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
     background: color-mix(in oklch, var(--background), transparent 20%);
     border: 1px solid color-mix(in oklch, var(--foreground), transparent 94%);
   }

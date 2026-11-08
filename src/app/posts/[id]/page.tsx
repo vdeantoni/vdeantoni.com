@@ -55,8 +55,10 @@ export default async function PostPage({ params }: PostPageProps) {
   const htmlContent = await markdownToHtml(markdownContent);
 
   return (
-    <article className="pt-32 pb-24 md:pt-40 md:pb-32">
-      {/* Hero image */}
+    <article
+      className={cn("pb-24 md:pb-32", !post.image && "pt-64 md:pt-[28rem]")}
+    >
+      {/* Hero image; its height must match the article's no-image padding */}
       {post.image && (
         <div className="relative w-full h-64 md:h-[28rem] overflow-hidden">
           <Image
