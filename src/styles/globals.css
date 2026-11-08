@@ -478,6 +478,10 @@
   --hljs-deletion-background: #67060c;
 }
 
+.hljs {
+  color: var(--hljs-text);
+}
+
 .hljs-doctag,
 .hljs-keyword,
 .hljs-meta .hljs-keyword,
