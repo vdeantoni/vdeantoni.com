@@ -177,15 +177,15 @@ export default async function Home() {
             About
           </span>
           <p className="mt-8 text-2xl md:text-3xl lg:text-4xl font-medium text-heading leading-snug tracking-tight">
-            A versatile engineer whose journey spans{" "}
-            <span className="text-primary">embedded software</span> to
-            large-scale{" "}
-            <span className="text-primary">e-commerce platforms</span>. Focused
-            on <span className="text-primary">distributed systems</span> and{" "}
-            <span className="text-primary">AI-driven development</span>, while
-            channeling creativity into{" "}
-            <span className="text-primary">music</span> and{" "}
-            <span className="text-primary">soccer</span>.
+            A curious engineer who has written{" "}
+            <span className="text-primary">embedded software</span> for
+            printers, led the teams behind the{" "}
+            <span className="text-primary">Battle.net</span> shop and desktop
+            app, and mentored new web developers. Focused on{" "}
+            <span className="text-primary">distributed systems</span> and{" "}
+            <span className="text-primary">AI-driven development</span>. Outside
+            work, builds small open-source tools and makes{" "}
+            <span className="text-primary">music</span>.
           </p>
         </div>
       </section>
