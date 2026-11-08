@@ -76,7 +76,7 @@ export default async function Home() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="flex items-baseline justify-between gap-8 mb-12">
-            <div className="max-w-2xl">
+            <div>
               <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
                 Featured
               </span>
