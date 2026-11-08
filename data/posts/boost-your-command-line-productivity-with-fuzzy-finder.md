@@ -1,6 +1,6 @@
 As developers, when coding, we spend most of our time on IDEs and/or text editors, and although they do a great job abstracting lower-level commands to build, test, run, and debug our code, eventually you will find yourself having to run a command or change a file through the command line.
 
-You can get by just fine with built-in commands and POSIX utilities like `pwd`, `ls`, `cd`, `mv`, `cp`, `rm`, `mkdir`, `touch`,`cat`, `grep`, `find`, etc.
+You can get by just fine with built-in commands and POSIX utilities like `pwd`, `ls`, `cd`, `mv`, `cp`, `rm`, `mkdir`, `touch`, `cat`, `grep`, `find`, etc.
 
 But if you want to boost your productivity when working with CLI tools, [fzf](https://github.com/junegunn/fzf) is:
 
@@ -20,7 +20,7 @@ In this article, I will show you how to configure and customize `fzf`, along wit
 
 ## Installation
 
-You can install `fzf` on Linux, macOS, and Windows. If you are on macOS or Linux, it’s available via [Homebrew](http://brew.sh/) and [Linuxbrew](http://linuxbrew.sh/), to install it, run:
+You can install `fzf` on Linux, macOS, and Windows. If you are on macOS or Linux, it’s available via [Homebrew](https://brew.sh/), which also [runs on Linux](https://docs.brew.sh/Homebrew-on-Linux). To install it, run:
 
 ```sh
 brew install fzf
@@ -34,7 +34,7 @@ It’s also recommended to install the key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
 ```
 
-This will generate a file for `bash` and `zsh` (and source it in your `.bashrc` or `.zshrc` file) that includes three key bindings and the fuzzy completion alias.
+This will generate a file for `bash` and `zsh` (and source it in your `.bashrc` or `.zshrc` file) that includes three key bindings and the fuzzy completion alias. Since fzf 0.48, you can instead add `eval "$(fzf --bash)"` to your `.bashrc` or `source <(fzf --zsh)` to your `.zshrc`.
 
 * * *
 
@@ -50,7 +50,7 @@ When no arguments are supplied, `fzf` launches an interactive finder with file s
 
 You can then enter search terms separated by `SPACE`, navigate with `Arrow-UP` and `Arrow-DOWN`, select multiple files with `TAB`, and confirm by pressing `ENTER`. When done, the paths of the selected files will be printed on the screen.
 
-In the example below, I run `fzf`, search for _READ,_ select the files with `TAB`, and confirm with `ENTER`:
+In the example below, I run `fzf`, search for _READ_, select the files with `TAB`, and confirm with `ENTER`:
 
 ![](https://cdn-images-1.medium.com/max/800/1*iq5wfRyK8rvoUjogaoOIDQ.gif)
 
@@ -119,7 +119,7 @@ In the example below, I can quickly `cd` (without typing `cd`) to the `src` fold
 
 ![](https://cdn-images-1.medium.com/max/800/1*7FeV4XuY8zyrVSIa0bxiSg.gif)
 
-If your terminal processes `ALT-C` as _ç,_ you can add the following line to your `.(ba|z)shrc` file after the source commands:
+If your terminal processes `ALT-C` as _ç_, you can add the following line to your `.(ba|z)shrc` file after the source commands:
 
 ```sh
 bindkey "ç" fzf-cd-widget
@@ -129,7 +129,7 @@ bindkey "ç" fzf-cd-widget
 
 By default, the install script defines the fuzzy completion trigger as `**`.
 
-If you, like me, use `zsh`, you probably use `**` a lot as part of its [filename generation](http://zsh.sourceforge.net/Intro/intro_2.html) (a.k.a. [Glob](https://en.wikipedia.org/wiki/Glob_%28programming%29)) and that can be confusing, but worry not, we can easily customize it by setting `FZF_COMPLETION_TRIGGER` in your `.zshrc` file:
+If you, like me, use `zsh`, you probably use `**` a lot as part of its [filename generation](https://zsh.sourceforge.io/Intro/intro_2.html) (a.k.a. [Glob](https://en.wikipedia.org/wiki/Glob_%28programming%29)) and that can be confusing, but worry not, we can easily customize it by setting `FZF_COMPLETION_TRIGGER` in your `.zshrc` file:
 
 ```sh
 export FZF_COMPLETION_TRIGGER='**' # change ** to whatever you like
@@ -162,7 +162,7 @@ Also, fuzzy completion for PIDs is provided for kill command. In this case, ther
 kill -9 <TAB>
 ```
 
-There are some [experimental APIs](https://github.com/junegunn/fzf#settings) for customizing fuzzy completion and enabling it for other commands.
+There are some [experimental APIs](https://github.com/junegunn/fzf#customizing-fuzzy-completion-for-bash-and-zsh) for customizing fuzzy completion and enabling it for other commands.
 
 ### Search syntax
 
@@ -191,7 +191,7 @@ Note that `SPACE` acts as an `AND` operator and `|` as an `OR`. For example, a q
 
 The `default` layout displays from the bottom of the screen. I personally prefer `reverse`, which displays from the top of the screen. I also set `height=80%` so when the finder is up, I can still see the terminal for context.
 
-You can see if for yourself by running:
+You can see it for yourself by running:
 
 ```sh
 fzf --layout=reverse --height=80%
@@ -215,7 +215,7 @@ Let’s take a closer look at how that works:
 
 The `--preview` option takes a command that is executed for the current line and its output is displayed on the preview window. The command can use the placeholder `{}` that will be replaced with the string of the current line.
 
-There are more placeholders you can use like `{+}` , `{q}`, and `{n}`. Please refer to the `man` page (`man fzf`) for more information.
+There are more placeholders you can use like `{+}`, `{q}`, and `{n}`. Please refer to the `man` page (`man fzf`) for more information.
 
 A simpler command that uses `cat` would look like this:
 
@@ -225,19 +225,19 @@ fzf --preview 'cat {}'
 
 So, going back to our more complex command, let’s break it up:
 
-First, we check if the string is a file, and if so, we try to open it with `[bat](https://github.com/sharkdp/bat)` (like `cat` but with syntax highlighting), if that fails, we fall back to `cat`:
+First, we check if the string is a file, and if so, we try to open it with [`bat`](https://github.com/sharkdp/bat) (like `cat` but with syntax highlighting), if that fails, we fall back to `cat`:
 
 ```sh
 ([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {}))
 ```
 
-If the string is not a file, we check if it is a directory. If so, we try to open it with `[tree](https://linux.die.net/man/1/tree)`, if that fails, we fall back to `less`:
+If the string is not a file, we check if it is a directory. If so, we list it with [`tree`](https://linux.die.net/man/1/tree), piped through `less`:
 
 ```sh
 ([[ -d {} ]] && (tree -C {} | less))
 ```
 
-If it’s not a file or directory, our last resource is to `echo` it:
+If it’s not a file or directory, our last resort is to `echo` it:
 
 ```sh
 echo {}
@@ -259,7 +259,7 @@ For example, the colors that I’ve been using:
 fzf --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
 ```
 
-If you want to see what the ANSI colors are that you can use, run:
+If you want to see what the ANSI colors are that you can use, run (in `zsh`):
 
 ```sh
 for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
@@ -285,13 +285,13 @@ fzf --bind '?:toggle-preview'
 fzf --bind 'ctrl-a:select-all'
 
 # Copy the selected entries to the clipboard with 'CTRL-Y'
---bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+fzf --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
 
 # Open the selected entries in vim with 'CTRL-E'
---bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+fzf --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 
-#Open the selected entries in vscode with 'CTRL-V'
---bind 'ctrl-v:execute(code {+})'
+# Open the selected entries in vscode with 'CTRL-V'
+fzf --bind 'ctrl-v:execute(code {+})'
 ```
 
 ### Setting options as default
@@ -309,7 +309,7 @@ export FZF_DEFAULT_OPTS="
 --preview-window=:hidden
 --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
---prompt='∼ ' --pointer='▶' --marker='✓'
+--prompt='~ ' --pointer='▶' --marker='✗'
 --bind '?:toggle-preview'
 --bind 'ctrl-a:select-all'
 --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
@@ -330,7 +330,7 @@ After adding that `export` to your `.bashrc` or `.zshrc`, every time you interac
 
 ### Changing the default command
 
-By default, `fzf` uses `find` to generate the file system entries. If you want to switch to a more user-friendly tool like `[fd](https://github.com/sharkdp/fd)`, follow these steps:
+By default, `fzf` uses `find` to generate the file system entries. If you want to switch to a more user-friendly tool like [`fd`](https://github.com/sharkdp/fd), follow these steps:
 
 Set the following environment variables:
 
@@ -366,7 +366,7 @@ I personally like to show `hidden` files, `follow` links, and `exclude` any `.gi
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 ```
 
-Make sure to check `fd`’s `man` page more options.
+Make sure to check `fd`’s `man` page for more options.
 
 ### Forgit
 
@@ -378,15 +378,15 @@ It adds a few aliases you can use:
 
 *   `ga`: Interactive `git add` selector.
 *   `glo`: Interactive `git log` viewer.
-*   `gd`: Interactive `git diff` viewer. For better diffs, `[delta](https://github.com/dandavison/delta)` is recommended.
+*   `gd`: Interactive `git diff` viewer. For better diffs, [`delta`](https://github.com/dandavison/delta) is recommended.
 *   `grh`: Interactive `git reset HEAD <file>` selector.
 *   `gcf`: Interactive `git checkout <file>` selector.
 *   `gss`: Interactive `git stash` viewer.
 *   `gclean`: Interactive `git clean` selector.
 
-To install it, you need to download and source the plugin file for your shell. For other options see the [official page](https://github.com/wfxr/forgit#manual-installation).
+To install it, you need to download and source the plugin file for your shell. For other options see the [official page](https://github.com/wfxr/forgit#-installation).
 
-One thing to keep in mind is that forgit defines its own default options for `fzf` and they might conflict with the ones you already have. If that is the case, you will need to remove some from the plugin file (e.g. [https://github.com/wfxr/forgit/blob/master/forgit.plugin.zsh#L205-L213](https://github.com/wfxr/forgit/blob/master/forgit.plugin.zsh#L205-L213))
+One thing to keep in mind is that forgit defines its own default options for `fzf` and they might conflict with the ones you already have. If that is the case, you can override them with [`FORGIT_FZF_DEFAULT_OPTS`](https://github.com/wfxr/forgit#fzf-options), which forgit applies after `FZF_DEFAULT_OPTS`.
 
 ### Searching file contents
 
@@ -451,14 +451,14 @@ Check out these functions to help you manage [Homebrew](https://brew.sh/):
 
 ```sh
 # Install (one or multiple) selected application(s)
-# using "brew search" as source input
+# using "brew formulae" as source input
 # mnemonic [B]rew [I]nstall [P]lugin
 bip() {
-  local inst=$(brew search | fzf -m)
+  local inst=$(brew formulae | fzf -m)
 
   if [[ $inst ]]; then
     for prog in $(echo $inst);
-    do; brew install $prog; done;
+    do brew install $prog; done
   fi
 }
 
@@ -469,7 +469,7 @@ bup() {
 
   if [[ $upd ]]; then
     for prog in $(echo $upd);
-    do; brew upgrade $prog; done;
+    do brew upgrade $prog; done
   fi
 }
 
@@ -480,7 +480,7 @@ bcp() {
 
   if [[ $uninst ]]; then
     for prog in $(echo $uninst);
-    do; brew uninstall $prog; done;
+    do brew uninstall $prog; done
   fi
 }
 ```
@@ -489,41 +489,41 @@ And [Homebrew Cask](https://github.com/Homebrew/homebrew-cask):
 
 ```sh
 # Install or open the webpage for the selected application
-# using brew cask search as input source
+# using brew casks as input source
 # and display a info quickview window for the currently marked application
 install() {
     local token
-    token=$(brew search --casks | fzf-tmux --query="$1" +m --preview 'brew cask info {}')
+    token=$(brew casks | fzf-tmux --query="$1" +m --preview 'brew info --cask {}')
 
     if [ "x$token" != "x" ]
     then
         echo "(I)nstall or open the (h)omepage of $token"
         read input
         if [ $input = "i" ] || [ $input = "I" ]; then
-            brew cask install $token
+            brew install --cask $token
         fi
         if [ $input = "h" ] || [ $input = "H" ]; then
-            brew cask home $token
+            brew home $token
         fi
     fi
 }
 
 # Uninstall or open the webpage for the selected application
-# using brew list as input source (all brew cask installed applications)
+# using brew list as input source (all installed casks)
 # and display a info quickview window for the currently marked application
 uninstall() {
     local token
-    token=$(brew cask list | fzf-tmux --query="$1" +m --preview 'brew cask info {}')
+    token=$(brew list --cask | fzf-tmux --query="$1" +m --preview 'brew info --cask {}')
 
     if [ "x$token" != "x" ]
     then
         echo "(U)ninstall or open the (h)omepage of $token"
         read input
         if [ $input = "u" ] || [ $input = "U" ]; then
-            brew cask uninstall $token
+            brew uninstall --cask $token
         fi
-        if [ $input = "h" ] || [ $token = "h" ]; then
-            brew cask home $token
+        if [ $input = "h" ] || [ $input = "H" ]; then
+            brew home $token
         fi
     fi
 }
@@ -543,7 +543,7 @@ npm install -g npm-fzf
 
 ### z
 
-The `[z](https://github.com/rupa/z)` command tracks your most visited directories and allows you to access them with very few keystrokes. If you use `zsh` and [Oh My Zsh](https://ohmyz.sh/), to enable it, simply add `z` to your plugins list in your `.zshrc`:
+The [`z`](https://github.com/rupa/z) command tracks your most visited directories and allows you to access them with very few keystrokes. If you use `zsh` and [Oh My Zsh](https://ohmyz.sh/), to enable it, simply add `z` to your plugins list in your `.zshrc`:
 
 ```sh
 plugins=(... z)
@@ -559,14 +559,14 @@ z project
 z cool-assets
 ```
 
-To make `z` even better, you can integrate it with `fzf`:
+To make `z` even better, you can integrate it with `fzf`. Oh My Zsh’s `z` plugin is now [Zsh-z](https://github.com/agkozak/zsh-z), whose command is `zshz` (with rupa/z, use `_z` instead):
 
 ```sh
 # like normal z when used with arguments but displays an fzf prompt when used without.
 unalias z 2> /dev/null
 z() {
-    [ $# -gt 0 ] && _z "$*" && return
-    cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+    [ $# -gt 0 ] && zshz "$*" && return
+    cd "$(zshz -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
 }
 ```
 
@@ -576,7 +576,7 @@ Most of those examples were taken from `fzf`’s [Wiki page](https://github.com/
 
 ### Chrome bookmark browser (macOS)
 
-Access your chrome bookmarks directly from your shell. Requires `[jq](https://stedolan.github.io/jq/)`.
+Access your Chrome bookmarks directly from your shell. Requires [`jq`](https://jqlang.org/).
 
 ![](https://cdn-images-1.medium.com/max/800/1*yvp7eSiFUXVK33N_EAb_nA.gif)
 
