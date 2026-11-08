@@ -1,15 +1,15 @@
 [
   {
+    "title": "yava",
+    "subtitle": "Trim, cut, crop, resize and export video files. You can select a file from your device, record your camera, and even capture your screen. Everything is processed locally, nothing leaves your device!",
+    "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_750/v1787446500/yava_rudklx.jpg",
+    "link": "https://www.yava.video"
+  },
+  {
     "title": "asd",
     "subtitle": "A blazing-fast terminal diff viewer with split panes, syntax highlighting, and word-level change detection.",
     "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_750/v1773917891/SCR-20260319-eeys_q3ieml.jpg",
     "link": "https://github.com/vdeantoni/asd"
-  },
-  {
-    "title": "yava",
-    "subtitle": "Trim, cut, crop, resize and export video files. You can select a file from your device, record your camera, and even capture your screen. Everything is processed locally, nothing leaves your device!",
-    "image": "https://res.cloudinary.com/vdeantoni/image/upload/ar_16:9,c_fill,g_auto,e_sharpen,h_300/v1787446500/yava_rudklx.jpg",
-    "link": "https://www.yava.video"
   },
   {
     "title": "CSSColors",
@@ -30,9 +30,9 @@
     "link": "https://chrome.google.com/webstore/detail/toc-medium/ppcdgggkanhfoghepgomkbbnkggbiecn"
   },
   {
-    "title": "Proximity Graph Simulator",
-    "subtitle": "A simple particle simulator.",
+    "title": "Particle Network",
+    "subtitle": "Drifting particles linked to their neighbors, with pointer interactions and a live settings panel. Published on npm and running behind this site's homepage.",
     "image": "https://res.cloudinary.com/vdeantoni/video/upload/c_fill,g_center,h_300,w_1024/v1757531063/graph_irmsip.gif",
-    "link": "https://proximity-graph-animation.vercel.app"
+    "link": "https://particle-network-live.vercel.app"
   }
 ]
