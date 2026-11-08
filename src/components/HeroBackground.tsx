@@ -10,25 +10,33 @@ import {
 } from "@vdeantoni/particle-network/react";
 import { cn } from "@/lib/utils";
 
-// Colors are --primary and --foreground in hex: the animation's settings and
-// its panel's color pickers don't take oklch()
+// Black particles and lines add nothing under additive blending, so only the
+// white triangles show
 const DARK: Partial<Settings> = {
   background: false,
+  backgroundInner: "#101010",
   density: 0.8,
-  particleColor: "#157aff",
-  lineColor: "#f8f8f8",
+  maxSpeed: 0.88,
+  minRadius: 0,
+  particleColor: "#000000",
+  linkDistance: 160,
+  lineWidth: 0,
+  lineColor: "#000000",
   triangles: true,
-  triangleColor: "#157aff",
-  triangleOpacity: 0.15,
+  triangleColor: "#ffffff",
+  triangleOpacity: 0.29,
+  triangleTransition: 750,
+  pointerLinks: false,
 };
 
-// Additive blending pushes colors toward white, which vanishes on a light page
+// Additive blending can only lighten, so the dark triangles need normal
+// blending; the white particles and lines then show only where they cross them
 const LIGHT: Partial<Settings> = {
   ...DARK,
   additive: false,
-  particleColor: "#0062fa",
-  lineColor: "#555555",
-  triangleColor: "#0062fa",
+  particleColor: "#ffffff",
+  lineColor: "#ffffff",
+  triangleColor: "#000000",
 };
 
 const HeroBackground = () => {
