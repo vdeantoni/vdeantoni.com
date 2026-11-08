@@ -134,7 +134,7 @@ export default async function PostPage({ params }: PostPageProps) {
           {/* Content */}
           <div
             className={cn(
-              "prose-editorial max-w-3xl",
+              "prose-editorial",
               "[&>h1]:text-3xl [&>h1]:font-bold [&>h1]:text-heading [&>h1]:mt-12 [&>h1]:mb-6",
               "[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-heading [&>h2]:mt-10 [&>h2]:mb-5",
               "[&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-heading [&>h3]:mt-8 [&>h3]:mb-4",
