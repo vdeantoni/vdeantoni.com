@@ -16,7 +16,7 @@ const DARK: Partial<Settings> = {
   background: false,
   backgroundInner: "#101010",
   density: 0.8,
-  maxSpeed: 0.88,
+  maxSpeed: 0.4,
   minRadius: 0,
   particleColor: "#000000",
   linkDistance: 160,
@@ -27,6 +27,7 @@ const DARK: Partial<Settings> = {
   triangleOpacity: 0.29,
   triangleTransition: 750,
   pointerLinks: false,
+  pointerForce: "repel",
 };
 
 // Additive blending can only lighten, so the dark triangles need normal
