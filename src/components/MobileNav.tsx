@@ -23,6 +23,17 @@ export default function MobileNav() {
   return (
     <nav className="flex md:hidden items-center justify-between w-full">
       <span className="font-bold text-xl text-heading tracking-tight">VDA</span>
+      <div
+        data-particle-network-ignore
+        className="fixed top-5 right-16 z-50 nav-glass p-1 rounded-full shadow-lg shadow-black/[0.03]"
+      >
+        {/* The panel hangs left from the button's right edge, 68px from the
+            screen's, so its width is capped to keep it on narrow screens */}
+        <ParticleSettingsButton
+          placement="below"
+          className="[&>div>div[id]]:max-w-[calc(100vw-5.25rem)]"
+        />
+      </div>
       <Sheet>
         <SheetTrigger asChild>
           <button
@@ -48,10 +59,7 @@ export default function MobileNav() {
               className={cn("flex justify-between items-center py-4 mt-auto")}
             >
               <SocialLinks />
-              <div className="ml-auto flex items-center gap-1">
-                <ParticleSettingsButton placement="above" />
-                <ColorSchemeToggle />
-              </div>
+              <ColorSchemeToggle className="ml-auto" />
             </div>
           </div>
         </SheetContent>

@@ -63,15 +63,19 @@ const ParticleBackground = ({ children }: { children: ReactNode }) => {
 
 export const ParticleSettingsButton = ({
   placement,
+  className,
 }: {
   placement: "above" | "below";
+  className?: string;
 }) => {
   const network = useContext(NetworkContext);
 
   return (
     <ParticleNetworkSettings
       network={network}
+      shortcut={null}
       placement={placement}
+      className={className}
       buttonClassName={cn(
         "flex items-center justify-center w-8 h-8 rounded-full cursor-pointer",
         "text-muted-foreground hover:text-heading hover:bg-surface",
