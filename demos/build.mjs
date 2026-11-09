@@ -19,13 +19,13 @@ await build({
   jsx: "automatic",
   loader: { ".js": "jsx" },
   define: { "process.env.NODE_ENV": '"production"' },
-  // The sources import React as their posts do. Redact stands in for it but
-  // renders synchronously, so a demo that needs concurrent rendering can't
-  // use these aliases.
+  // The sources import React and lodash as their posts do. Redact renders
+  // synchronously, so a demo that needs concurrent rendering can't use these.
   alias: {
     react: "@tanstack/redact",
     "react-dom/client": "@tanstack/redact/dom-client",
     "react-dom": "@tanstack/redact/dom",
+    lodash: "lodash-es",
   },
   logLevel: "info",
 });
