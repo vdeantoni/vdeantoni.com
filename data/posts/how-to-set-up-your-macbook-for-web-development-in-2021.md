@@ -16,7 +16,7 @@ Let’s start with a few changes you can make to macOS and the built-in apps.
 
 **Keyboard**
 
-`Keyboard > T️️ouch Bar Shows: F1, F2, etc. Keys`
+`Keyboard > Touch Bar Shows: F1, F2, etc. Keys`
 
 `Keyboard > Press Fn key to: Show Control Strip`
 
@@ -24,19 +24,19 @@ These two settings are about the touch bar. As a developer, I find myself using 
 
 **Dock**
 
-`️️☑️ Automatically hide and show the Dock`
+`☑️ Automatically hide and show the Dock`
 
 More often than not, I use Spotlight (**⌘ Space**) or the terminal to launch applications instead of the dock — it’s hard to justify dedicating such display real estate to it. Besides, you can easily access it by moving your mouse to the bottom of the screen or by pressing **⌃ F3**.
 
 **Trackpad**
 
-`Point & Click > ️️☑️ Tap to click`
+`Point & Click > ☑️ Tap to click`
 
 Once you get used to it, it’s way faster to tap instead of click.
 
 **Accessibility**
 
-`Pointer Control > Mouse & Trackpad > Trackpad Options… > ️️☑️ Enable dragging`
+`Pointer Control > Mouse & Trackpad > Trackpad Options… > ☑️ Enable dragging`
 
 By enabling trackpad dragging, you’ll be able to drag files, select text, etc., by double tapping (and holding the second tap).
 
@@ -48,23 +48,25 @@ By enabling trackpad dragging, you’ll be able to drag files, select text, etc.
 
 **View options**
 
-`View > Show Path Bar   View > Show Status Bar`
+`View > Show Path Bar`
+
+`View > Show Status Bar`
 
 **Show hidden files**
 
-Type `defaults write com.apple.Finder AppleShowAllFiles true` into the terminal, or press **⇧⌘** .
+Type `defaults write com.apple.Finder AppleShowAllFiles true && killall Finder` into the terminal, or press **⇧⌘ .**
 
 ### Screenshot
 
 **Change where screenshots are saved**
 
-Open the Screenshot app via Spotlight search or by pressing **⇧⌘ 5**, find the `Options` menu at the bottom of the screen, then select a folder under `Save to`
+Open the Screenshot app via Spotlight search or by pressing **⇧⌘ 5**, find the `Options` menu at the bottom of the screen, then select a folder under `Save to`.
 
 * * *
 
 ## macOS Shortcuts
 
-These are the mac shortcuts I use the most (I won’t list the very basic ones like ⌘ C, ⌘ V, ⌘ Tab, etc.). For a more comprehensive list, click [here](https://support.apple.com/en-us/HT201236).
+These are the Mac shortcuts I use the most (I won’t list the very basic ones like ⌘ C, ⌘ V, ⌘ Tab, etc.). For a more comprehensive list, click [here](https://support.apple.com/en-us/102650).
 
 
 **System wide**
@@ -109,7 +111,7 @@ Copy screenshot of a window: **⇧⌃⌘ 4 + Space**
 
 Open the home folder: **⇧⌘ H**
 
-Open the desktop folder. **⇧⌘ D**
+Open the desktop folder: **⇧⌘ D**
 
 Open the parent folder: **⌘ Arrow-Up**
 
@@ -132,7 +134,7 @@ This is _the_ package manager. It allows you to install, uninstall, and update c
 To install it, open the terminal, and run this command:
 
 ```sh
-/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 During the installation, you might be asked to install the Xcode Command Line Tools if you haven’t already — just follow the instructions on the screen.
@@ -145,9 +147,9 @@ To update the packages’ local registry you can run `brew update`, and to upgra
 
 I recommend running `brew doctor` every now and then to make sure things are good and `brew cleanup` to remove unused files.
 
-### [iTerm2](https://www.iterm2.com/)
+### [iTerm2](https://iterm2.com/)
 
-This is an optional replacement for the terminal app. It offers a [lot of really useful features](https://www.iterm2.com/features.html). I’ll list my favorite ones below.
+This is an optional replacement for the terminal app. It offers a [lot of really useful features](https://iterm2.com/features.html). I’ll list my favorite ones below.
 
 To install it, open the terminal (this is the last time you’ll need it), and run the following:
 
@@ -167,7 +169,7 @@ I recommend using **⌘ \`** as the hotkey.
 
 **Unixyness**
 
-Copy on selection, paste on middle click, and focus follow the mouse.
+Copy on selection, paste on middle click, and focus follows the mouse.
 
 `Preferences > General > Selection > ☑️ Copy to pasteboard on selection`
 
@@ -181,11 +183,11 @@ By disabling native full screen, you can quickly make iTerm2 take the whole scre
 
 `Preferences > General > Window > ☐ Native full screen windows`
 
-Shortcut for full screen: **⌘Return**
+Shortcut for full screen: **⌘ Return**
 
 **Split panes**
 
-You can divide up your tabs into multiple panes with separate sessions and quickly switch between them. This works very nicely with focus-follow mouse.
+You can divide up your tabs into multiple panes with separate sessions and quickly switch between them. This works very nicely with focus follows mouse.
 
 `Right Click > Split Pane Vertically`
 
@@ -203,7 +205,7 @@ You can enable better integration between your shell and iTerm2.
 
 Then, add the following to your `.zshrc` (more details about Zsh can be found in the next sections): `source ~/.iterm2_shell_integration.zsh`.
 
-See the [docs](https://www.iterm2.com/features.html#shell-integration) for more information.
+See the [docs](https://iterm2.com/documentation-shell-integration.html) for more information.
 
 **Profile settings**
 
@@ -249,7 +251,7 @@ brew install git-delta
 
 ### [Zsh](https://www.zsh.org/)
 
-As macOS’s default shell since Catalina, Zsh is built on top of Bash and provides many cool features.
+As macOS’s default shell since Catalina, Zsh is a Bourne-style shell, like Bash, that provides many cool features.
 
 The first thing I recommend is having Homebrew manage its installation — open iTerm2, and run:
 
@@ -257,16 +259,16 @@ The first thing I recommend is having Homebrew manage its installation — open 
 brew install zsh
 ```
 
-To update our default shell to be Homebrew’s Zsh, we need to edit the shell’s whitelist: `sudo vim /etc/shells`. (If you’re not comfortable with Vim, you can use TextEdit instead by running `sudo open /etc/shells`.)
+To update our default shell to be Homebrew’s Zsh, we need to edit the list of allowed shells: `sudo vim /etc/shells`. (If you’re not comfortable with Vim, you can use TextEdit instead by running `sudo open /etc/shells`.)
 
-Add a new line with `/usr/local/bin/zsh`, save, and close.
+Add a new line with Homebrew’s Zsh path, which `echo $(brew --prefix)/bin/zsh` prints: `/opt/homebrew/bin/zsh` on Apple silicon, `/usr/local/bin/zsh` on Intel Macs. Save, and close.
 
-To change the default shell, run: `chsh -s /usr/local/bin/zsh`.
+To change the default shell, run: `chsh -s $(brew --prefix)/bin/zsh`.
 
 Restart the terminal, and confirm we’re on the correct Zsh by running:
-`echo $SHELL`. You should see `/usr/local/bin/zsh`.
+`echo $SHELL`. You should see the same path.
 
-Now, we have access to [many](http://zsh.sourceforge.net/Intro/intro_toc.html) features. My favorites are:
+Now, we have access to [many](https://zsh.sourceforge.io/Intro/intro_toc.html) features. My favorites are:
 
 **Tab completion**
 
@@ -290,11 +292,11 @@ List only folders in the current directory and its subdirectories: `ls **/*(/)`
 
 Remove all `.DS_Store` files recursively: `rm -rf **/.DS_Store`. (If you want to be sure which files will be deleted, you can press `TAB` before running the command, and Zsh will expand the pattern)
 
-There are [lots of qualifiers](http://zsh.sourceforge.net/Doc/Release/Expansion.html#Glob-Qualifiers) you can use to target files with specific attributes. You can enable the more complex ones by running `setopt extended_glob`.
+There are [lots of qualifiers](https://zsh.sourceforge.io/Doc/Release/Expansion.html#Glob-Qualifiers) you can use to target files with specific attributes. You can enable the more complex ones by running `setopt extended_glob`.
 
 [Here](https://www.refining-linux.org/archives/37-ZSH-Gem-2-Extended-globbing-and-expansion.html)’s one command to recursively match all normal files that have no uppercase characters or numbers in the name. They’re executable for the owner but not for the rest of the world. The owner must have the UID 1002, the file size must be above 30MB, and it must have been modified within the last month: `ls -l **/([^A-Z[:digit:]])##(#q.x^X^u1002Lm+30mM-1)`
 
-You can find many other useful tips [here](https://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/).
+You can find many other useful tips [here](https://web.archive.org/web/20250828062224/http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/).
 
 And my list of keyboard shortcuts:
 
@@ -307,12 +309,12 @@ Oh My Zsh is a community-driven framework for managing your Zsh configuration. I
 To install Oh My Zsh, run:
 
 ```sh
-sh -c “$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 We can configure Zsh by running `vim ~/.zshrc` or (`open ~/.zshrc` if you prefer TextEdit over Vim). You’ll see a lot of configurations added by Oh My Zsh that you can play with. If you ever need to reset your `.zshrc`, you can find the template [here](https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template).
 
-I’ll list my recommendations below, but I highly recommend you browse the available [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins) and [plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins) later.
+I’ll list my recommendations below, but I highly recommend you browse the available [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) and [plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins) later.
 
 **Theme**
 
@@ -329,19 +331,19 @@ I highly recommend enabling [Transient Prompt](https://github.com/romkatv/powerl
 To install it with Homebrew, run:
 
 ```sh
-brew install romkatv/powerlevel10k/powerlevel10k
+brew install powerlevel10k
 ```
 
 And add the following line to your `.zshrc`:
-`source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme`
+`source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme`
 
-It’ll override any value you have set to`$ZSH_THEME`.
+It’ll override any value you have set to `$ZSH_THEME`.
 
 Restart iTerm2, and you should see the configuration wizard. In the future, you can run it again with `p10k configure`.
 
 **Zsh plugins**
 
-[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting): It enables highlighting of commands while they’re typed. This helps in reviewing commands before running them, particularly in catching syntax errors.
+*   [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting): It enables highlighting of commands while they’re typed. This helps in reviewing commands before running them, particularly in catching syntax errors.
 
 ![](https://cdn-images-1.medium.com/max/800/1*LaQlzAxXMa1RDI5ZG64upg.png)
 
@@ -352,7 +354,7 @@ brew install zsh-syntax-highlighting
 ```
 
 And add the following line to your `.zshrc`:
-`source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
+`source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 
 *   [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions): It suggests commands as you type based on your history and completions.
 
@@ -365,7 +367,7 @@ brew install zsh-autosuggestions
 ```
 
 And add the following line to your `.zshrc`:
-`source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh`
+`source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh`
 
 *   [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search): Type in any part of any command from your history, and then press chosen keys, such as the `UP` and `DOWN` arrows, to cycle through matches.
 
@@ -378,15 +380,15 @@ brew install zsh-history-substring-search
 ```
 
 And add the following line to your `.zshrc`:
-`source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh`
+`source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh`
 
 If you want to use [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) along with this script, then make sure you load it _before_ you load this script.
 
 Also, you need to map your arrow keys. Add the following _after_ the source command.
 
 ```sh
-bindkey '^\[OA' history-substring-search-up
-bindkey '^\[OB' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 ```
 
 **Oh My Zsh plugins**
@@ -396,13 +398,13 @@ The following plugins are made available by Oh My Zsh, like any other plugin fou
 For example, to install all the recommended plugins:
 
 ```sh
-plugins=(alias-finder brew common-aliases copydir copyfile docker docker-compose dotenv encode64 extract git jira jsontools node npm npx osx urltools vscode web-search z)
+plugins=(alias-finder brew common-aliases copypath copyfile docker docker-compose dotenv encode64 extract git jira jsontools node npm macos urltools vscode web-search z)
 ```
 
 *   [alias-finder](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder): This plugin searches the defined aliases and outputs any that match the command inputted. This makes learning new aliases easier.
 *   [brew](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/brew): The plugin adds several aliases for common [brew](https://brew.sh/) commands
 *   [common-aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases): This plugin creates helpful shortcut aliases for many commonly used commands
-*   [copydir](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copydir): Copies the path of your current folder to the system clipboard
+*   [copypath](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copypath): Copies the path of the current folder, or of a given file or folder, to the system clipboard
 *   [copyfile](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copyfile): Puts the contents of a file in your system clipboard so you can paste it anywhere
 *   [docker](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker): This plugin adds auto-completion for [Docker](https://www.docker.com/).
 *   [docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose): This plugin provides completion for [Docker Compose](https://docs.docker.com/compose/) — as well as some aliases for frequent Docker Compose commands
@@ -414,8 +416,7 @@ plugins=(alias-finder brew common-aliases copydir copyfile docker docker-compose
 *   [jsontools](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/jsontools): Handy command-line tools for dealing with JSON data
 *   [node](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/node): This plugin adds the `node-docs` function, which opens the specific section in the [Node.js](https://nodejs.org/) documentation
 *   [npm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/npm): The npm plugin provides completion as well as adding many useful aliases.
-*   [npx](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/npx): This plugin automatically registers the npx command-not-found handler if `npx` exists in your `$PATH`
-*   [osx](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/osx): This plugin provides a few macOS utilities
+*   [macos](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos): This plugin provides a few macOS utilities
 *   [urltools](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/urltools): This plugin provides two aliases to URL encode and URL decode strings
 *   [vscode](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode): This plugin makes interaction between the command line and the VS Code editor easier
 *   [web-search](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search): This plugin adds aliases for searching with Google, Wikipedia, Bing, YouTube, and other popular services
@@ -423,17 +424,17 @@ plugins=(alias-finder brew common-aliases copydir copyfile docker docker-compose
 
 **Aliases**
 
-Often-used commands can be abbreviated with an alias. `alias tf=”tail -f”` makes it so you can run `tf` instead of typing `tail -f`.
+Often-used commands can be abbreviated with an alias. `alias tf="tail -f"` makes it so you can run `tf` instead of typing `tail -f`.
 
 You can add as many aliases as you want to your `.zshrc`.
 
-Plugins like Git and Common Alias add a lot of aliases that will make you type less, but it can be hard to learn them all. That’s what the `alias-finder` plugin is for.
+Plugins like git and common-aliases add a lot of aliases that will make you type less, but it can be hard to learn them all. That’s what the `alias-finder` plugin is for.
 
-If you want to know what aliases exist for`git commit`:
+If you want to know what aliases exist for `git commit`:
 
 ![](https://cdn-images-1.medium.com/max/800/1*CgnhXUi6ArgPUTAFhddLiA.png)
 
-You can also set `ZSH_ALIAS_FINDER_AUTOMATIC=”true”` in your `.zshrc` to have it run automatically before each command.
+You can also add `zstyle ':omz:plugins:alias-finder' autoload yes` to your `.zshrc` to have it run automatically before each command.
 
 There are three types of aliases:
 
@@ -442,15 +443,15 @@ There are three types of aliases:
     `ls G foobar` => `ls | grep foobar`
 *   _suffix_ aliases: These are special aliases that are triggered when a file name is passed as the command. For example: `alias -s pdf=acroread` invokes `acroread` when you run `file.pdf`.
 
-Command aliases can also access the original command’s arguments by using the array `$`:
+Functions can also access their arguments through the array `$@`:
 
 ```sh
 loop() {
-  for x in {1..$1}; do $@\[2,-1\]; done
+  for x in {1..$1}; do $@[2,-1]; done
 }
 ```
 
-This alias runs a given command _x_ times. For example: `loop 10 echo ‘hello’` will print `hello` 10 times.
+This function runs a given command _x_ times. For example: `loop 10 echo 'hello'` will print `hello` 10 times.
 
 ### [Node.js](https://nodejs.org/)
 
@@ -471,7 +472,7 @@ Docker allows you to develop and deliver software in packages called containers.
 To install it, run:
 
 ```sh
-brew install --cask `docker`
+brew install --cask docker-desktop
 ```
 
 You should also check out [lazydocker](https://github.com/jesseduffield/lazydocker), a great CLI tool for docker and docker-compose.
@@ -488,7 +489,7 @@ To install it, run:
 brew install tldr
 ```
 
-### [htop](https://linux.die.net/man/1/htop)
+### [htop](https://htop.dev/)
 
 It’s similar to top but allows you to scroll vertically and horizontally so you can see all the processes running on the system, along with their full command lines.
 
@@ -506,7 +507,7 @@ I wrote a dedicated article for fzf, check it out:
 
 [Boost Your Command-Line Productivity With Fuzzy Finder: Level up your CLI skills with fzf](/posts/boost-your-command-line-productivity-with-fuzzy-finder)
 
-To install it, run these two lines:
+To install it, run:
 
 ```sh
 brew install fzf
@@ -524,7 +525,7 @@ To install it, run:
 brew install ripgrep
 ```
 
-### [lnav](http://lnav.org/)
+### [lnav](https://lnav.org/)
 
 Watch and analyze your log files from a terminal.
 
@@ -534,7 +535,7 @@ brew install lnav
 
 * * *
 
-## MacOS Applications
+## macOS Applications
 
 These are the macOS applications I recommend.
 
@@ -546,12 +547,12 @@ You can install it from the [App Store](https://apps.apple.com/us/app/amphetamin
 
 ### [Maccy](https://maccy.app/)
 
-Clipboard manager for macOS
+Clipboard manager for macOS.
 
 To install it, run:
 
 ```sh
-brew install maccy
+brew install --cask maccy
 ```
 
 ### [Visual Studio Code](https://code.visualstudio.com/)
@@ -600,7 +601,7 @@ brew install --cask rectangle
 
 ### [GIMP](https://www.gimp.org/)
 
-A feature rich image editor, and it’s free.
+A feature-rich image editor, and it’s free.
 
 To install it, run:
 
@@ -612,7 +613,7 @@ brew install --cask gimp
 
 Alfred is a productivity app that replaces Spotlight. There’s a free and a paid version.
 
-This is more like a honorable mention because I don’t really use it anymore, as Spotlight is good enough for me. But if you are interested you can give it a try.
+This is more like an honorable mention because I don’t really use it anymore, as Spotlight is good enough for me. But if you are interested you can give it a try.
 
 To install it, run:
 
@@ -658,13 +659,13 @@ Gradient generator.
 
 ### [Get Waves](https://getwaves.io/)
 
-Generate svg waves.
+Generate SVG waves.
 
 ### [Create App](https://createapp.dev/)
 
 Frontend build config generator.
 
-### [keycode.info](http://keycode.info/)
+### [Key Code](https://www.toptal.com/developers/keycode)
 
 Press any key to get the JavaScript event keycode.
 
@@ -672,7 +673,7 @@ Press any key to get the JavaScript event keycode.
 
 SVG editor.
 
-### [Mastershot](http://mastershot.app)
+### [Mastershot](https://mastershot.app/)
 
 Video editor.
 

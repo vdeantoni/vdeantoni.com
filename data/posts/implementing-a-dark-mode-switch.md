@@ -10,34 +10,32 @@ In this article, I’ll show you how you can make your web application responsiv
 
 ## prefers-color-scheme
 
-Just as we use [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Media_features) to make our web applications responsive to [screen resolutions](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width), so we can also use media queries to add responsiveness to the [user’s preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+Just as we use [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Using#targeting_media_features) to make our web applications responsive to [screen resolutions](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/width), so we can also use media queries to add responsiveness to the [user’s preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-color-scheme).
 
 ```css
 body {
-  background: white; color: black;
+  background: white;
+  color: black;
 }
 
 @media (prefers-color-scheme: light) {
   body {
-    background: white; color: black;
+    background: white;
+    color: black;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: black; color: white;
+    background: black;
+    color: white;
   }
 }
 ```
 
-You can see it live in the code sandbox below:
+You can see it live below. It follows the color scheme set in your operating system:
 
-<iframe src="https://codesandbox.io/embed/m9fkn?view=editor+%2B+preview&module=%2Findex.html"
-     style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="dark-mode"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe title="prefers-color-scheme" src="/demos/implementing-a-dark-mode-switch/prefers-color-scheme.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 ### Pro-tip
 
@@ -55,15 +53,15 @@ You can also find these options by clicking on the three vertical dots on the ri
 
 ## Dark mode switch
 
-In order allow the users to toggle dark mode on and off regardless of their [operating system preferences](https://web.dev/prefers-color-scheme/#activating-dark-mode-in-the-operating-system), we will need to use some Javascript.
-We’ll start by adding `data-color-scheme` [data attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) to the [root element](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement). When the page first loads the value will be set according to the system preferences.
+To let users toggle dark mode on and off regardless of their [operating system preferences](https://web.dev/articles/prefers-color-scheme#activating_dark_mode_in_the_operating_system), we will need to use some JavaScript.
+We’ll start by adding a `data-color-scheme` [data attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes) to the [root element](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement). When the page first loads the value will be set according to the system preferences.
 
 ```javascript
 const getPreferredColorScheme = () => {
   const darkQuery = "(prefers-color-scheme: dark)";
   const darkMQL = window.matchMedia ? window.matchMedia(darkQuery) : {};
   if (darkMQL.media === darkQuery && darkMQL.matches) {
-   return "dark";
+    return "dark";
   }
 
   return "default";
@@ -80,7 +78,7 @@ Next, we’ll add a set of variables that will change based on this data-attribu
   --color-background: #fff;
 }
 
-:root\[data-color-scheme="dark"\] {
+:root[data-color-scheme="dark"] {
   --color-text: #fff;
   --color-background: #0d202d;
 }
@@ -97,7 +95,7 @@ Finally, for the switch, add a button to your HTML:
 <button id="button">Toggle Dark Mode</button>
 ```
 
-and a click event handler to your Javascript:
+and a click event handler to your JavaScript:
 
 ```javascript
 document.getElementById("button").onclick = () => {
@@ -109,18 +107,13 @@ document.getElementById("button").onclick = () => {
 
 You can see a live demo here:
 
-<iframe src="https://codesandbox.io/embed/seche?view=editor+%2B+preview&module=%2Fsrc%2Findex.js"
-     style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="dark-mode-toggle"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+<iframe title="Dark mode switch" src="/demos/implementing-a-dark-mode-switch/dark-mode-switch.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
 * * *
 
-## Remembering user’s choice
+## Remembering the user’s choice
 
-You’ll notice that if the page is reloaded the value of the data-attribute is reset. In order to remember the user’s choice of color scheme, we’ll be using [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to save the data-attribute value.
+You’ll notice that if the page is reloaded the value of the data-attribute is reset. To remember the user’s choice of color scheme, we’ll be using [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to save the data-attribute value.
 
 When the page loads, we need to check if there’s a value we can use:
 

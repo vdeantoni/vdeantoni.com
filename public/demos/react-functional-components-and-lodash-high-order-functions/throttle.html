@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Throttled Scroll</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #fff;
+        color: #18181b;
+      }
+      #height {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        padding: 6px 12px;
+        border: 1px solid #e4e4e7;
+        border-radius: 999px;
+        background: #fff;
+        color: #3f3f46;
+        font: 500 13px/1 system-ui, sans-serif;
+      }
+    </style>
+    <style>
+      .App {
+        font-family: sans-serif;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <output id="height" aria-live="polite"></output>
+    <script>
+      // The demo only grows the page, so show its height as it changes
+      const output = document.getElementById("height");
+      new ResizeObserver(() => {
+        output.textContent = `Scroll down · page height ${Math.round(document.body.scrollHeight)}px`;
+      }).observe(document.body);
+    </script>
+    <script src="throttle.js"></script>
+  </body>
+</html>

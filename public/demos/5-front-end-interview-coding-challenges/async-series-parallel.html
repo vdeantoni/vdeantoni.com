@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Async series and parallel</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #fff;
+      }
+      body {
+        display: flex;
+        box-sizing: border-box;
+        padding: 56px 24px 24px;
+      }
+      #console {
+        flex: 1;
+        margin: 0;
+        padding: 12px 16px;
+        overflow: auto;
+        border: 1px solid #e4e4e7;
+        border-radius: 8px;
+        background: #fafafa;
+        color: #3f3f46;
+        font: 13px/1.6 ui-monospace, monospace;
+      }
+      button {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border: 1px solid #e4e4e7;
+        border-radius: 999px;
+        background: #fff;
+        color: #3f3f46;
+        font: 500 13px/1 system-ui, sans-serif;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #f4f4f5;
+        color: #18181b;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" onclick="location.reload()">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+        <path d="M3 3v5h5" />
+      </svg>
+      Run again
+    </button>
+    <pre id="console" aria-live="polite"></pre>
+    <script>
+      // The demo logs with console.log, so copy each call onto the page
+      const output = document.getElementById("console");
+      const log = console.log;
+      console.log = (...args) => {
+        log(...args);
+        output.textContent += args.map((arg) => JSON.stringify(arg)).join(" ") + "\n";
+      };
+    </script>
+    <script>
+      const async = {
+        series: (tasks, callback) => {
+          let i = 0;
+
+          const results = [];
+          const _callback = (err, result) => {
+            results[i] = result;
+            if (err || ++i >= tasks.length) {
+              callback(err, results);
+              return;
+            }
+
+            tasks[i](_callback);
+          };
+
+          tasks[0](_callback);
+        },
+        parallel: (tasks, callback) => {
+          let done = false;
+          let count = 0;
+          const results = [];
+
+          const _callback = (i, err, result) => {
+            count++;
+            results[i] = result;
+            if (!done && (err || count === tasks.length)) {
+              callback(err, results);
+              done = true;
+              return;
+            }
+          };
+
+          tasks.forEach((task, i) => {
+            task((err, result) => _callback(i, err, result));
+          });
+        }
+      };
+
+      async.series([
+          function(callback) {
+              // do some stuff ...
+              callback(null, 'one');
+          },
+          function(callback) {
+              // do some more stuff ...
+              callback(null, 'two');
+          }
+      ],
+      // optional callback
+      function(err, results) {
+          // results is now equal to ['one', 'two']
+          console.log(err, results);
+      });
+
+      async.parallel([
+          function(callback) {
+              setTimeout(function() {
+                  callback(null, 'one');
+              }, 200);
+          },
+          function(callback) {
+              setTimeout(function() {
+                  callback(null, 'two');
+              }, 100);
+          }
+      ],
+      // optional callback
+      function(err, results) {
+          // the results array will equal ['one','two'] even though
+          // the second function had a shorter timeout.
+          console.log(err, results);
+      });
+    </script>
+  </body>
+</html>
