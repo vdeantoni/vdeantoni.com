@@ -3,7 +3,11 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { useTheme } from "next-themes";
 import { SlidersHorizontal } from "lucide-react";
-import type { ParticleNetwork, Settings } from "@vdeantoni/particle-network";
+import {
+  BUILT_IN_PRESETS,
+  type ParticleNetwork,
+  type Settings,
+} from "@vdeantoni/particle-network";
 import {
   ParticleNetworkCanvas,
   ParticleNetworkSettings,
@@ -41,7 +45,46 @@ const LIGHT: Partial<Settings> = {
   triangleColor: "#000000",
 };
 
-const NetworkContext = createContext<ParticleNetwork | null>(null);
+// Panel presets apply over the library's defaults, which paint an opaque
+// gradient, so each turns it off to let the page's background show through
+const DARK_PRESETS: Record<string, Partial<Settings>> = {
+  Classic: { ...BUILT_IN_PRESETS.Classic, background: false },
+  Constellation: { ...BUILT_IN_PRESETS.Constellation, background: false },
+  Web: { ...BUILT_IN_PRESETS.Web, background: false },
+  Paint: { ...BUILT_IN_PRESETS.Paint, background: false },
+};
+
+const LIGHT_PRESETS: Record<string, Partial<Settings>> = {
+  Classic: {
+    ...DARK_PRESETS.Classic,
+    additive: false,
+    particleColor: "#000000",
+    lineColor: "#000000",
+  },
+  Constellation: {
+    ...DARK_PRESETS.Constellation,
+    additive: false,
+    particleColor: "#1f2450",
+    lineColor: "#4a5ba8",
+  },
+  Web: {
+    ...DARK_PRESETS.Web,
+    additive: false,
+    particleColor: "#0086b3",
+    lineColor: "#0086b3",
+  },
+  Paint: {
+    ...DARK_PRESETS.Paint,
+    additive: false,
+    particleColor: "#d91a8f",
+    lineColor: "#e67700",
+  },
+};
+
+const NetworkContext = createContext<{
+  network: ParticleNetwork | null;
+  scheme: "dark" | "light";
+}>({ network: null, scheme: "dark" });
 
 const ParticleBackground = ({ children }: { children: ReactNode }) => {
   const { resolvedTheme } = useTheme();
@@ -49,7 +92,7 @@ const ParticleBackground = ({ children }: { children: ReactNode }) => {
   const scheme = resolvedTheme === "light" ? "light" : "dark";
 
   return (
-    <NetworkContext value={network}>
+    <NetworkContext value={{ network, scheme }}>
       {/* Fixed to the viewport behind every page. lvh rather than 100%, so a
           phone's toolbar showing and hiding doesn't resize the canvas. */}
       <ParticleNetworkCanvas
@@ -71,11 +114,12 @@ export const ParticleSettingsButton = ({
   placement: "above" | "below";
   className?: string;
 }) => {
-  const network = useContext(NetworkContext);
+  const { network, scheme } = useContext(NetworkContext);
 
   return (
     <ParticleNetworkSettings
       network={network}
+      presets={scheme === "light" ? LIGHT_PRESETS : DARK_PRESETS}
       shortcut={null}
       placement={placement}
       className={className}

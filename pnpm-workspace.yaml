@@ -13,4 +13,4 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
-  - "@vdeantoni/particle-network@0.5.0"
+  - "@vdeantoni/particle-network@0.6.0"
