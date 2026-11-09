@@ -7,9 +7,8 @@
     "build": "node build.mjs"
   },
   "dependencies": {
+    "@tanstack/redact": "^0.3.1",
     "lodash": "^4.18.1",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
