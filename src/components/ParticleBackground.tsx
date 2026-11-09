@@ -16,6 +16,9 @@ const DARK: Partial<Settings> = {
   background: false,
   backgroundInner: "#101010",
   density: 0.8,
+  // Without it, the default of 1 is pulled down to maxSpeed and every
+  // particle drifts at the same speed
+  minSpeed: 0.13,
   maxSpeed: 0.4,
   minRadius: 0,
   maxRadius: 0,
