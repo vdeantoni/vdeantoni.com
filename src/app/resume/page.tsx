@@ -141,8 +141,13 @@ export default async function Resume() {
     (e): e is ResumeCertification => e.type === "certification",
   );
 
+  // Presses on the page select its text instead of adding particles to the
+  // background animation
   return (
-    <section className="px-6 md:px-12 lg:px-20 pt-32 pb-24 md:pt-40 md:pb-32">
+    <section
+      data-particle-network-ignore
+      className="px-6 md:px-12 lg:px-20 pt-32 pb-24 md:pt-40 md:pb-32"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">

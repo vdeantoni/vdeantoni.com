@@ -6,7 +6,7 @@ import { navLinks } from "@/lib/nav";
 
 const Footer: FC = () => {
   return (
-    // Covers the homepage's fixed animation, so presses here mustn't add
+    // Covers the fixed background animation, so presses here mustn't add
     // particles behind it
     <footer
       data-particle-network-ignore

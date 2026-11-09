@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ColorSchemeProvider } from "@/components/ColorSchemeProvider";
+import ParticleBackground from "@/components/ParticleBackground";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -45,9 +46,11 @@ export default function RootLayout({
       </head>
       <body>
         <ColorSchemeProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <ParticleBackground>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </ParticleBackground>
         </ColorSchemeProvider>
         <SpeedInsights />
         <Analytics />

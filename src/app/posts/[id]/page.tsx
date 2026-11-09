@@ -54,8 +54,11 @@ export default async function PostPage({ params }: PostPageProps) {
 
   const htmlContent = await markdownToHtml(markdownContent);
 
+  // Presses on the page select its text instead of adding particles to the
+  // background animation
   return (
     <article
+      data-particle-network-ignore
       className={cn("pb-24 md:pb-32", !post.image && "pt-64 md:pt-[28rem]")}
     >
       {/* Hero image; its height must match the article's no-image padding */}
