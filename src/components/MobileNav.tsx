@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import NavLinks from "./NavLinks";
 import SocialLinks from "./SocialLinks";
+import { ParticleSettingsButton } from "./ParticleBackground";
 import dynamic from "next/dynamic";
 import {
   Sheet,
@@ -47,7 +48,10 @@ export default function MobileNav() {
               className={cn("flex justify-between items-center py-4 mt-auto")}
             >
               <SocialLinks />
-              <ColorSchemeToggle className="ml-auto" />
+              <div className="ml-auto flex items-center gap-1">
+                <ParticleSettingsButton placement="above" />
+                <ColorSchemeToggle />
+              </div>
             </div>
           </div>
         </SheetContent>
