@@ -327,6 +327,8 @@ Before we talk about a possible solution, try the result:
 
 <iframe title="A draggable button that changes the background color" src="/demos/5-front-end-interview-coding-challenges/drag-to-change-background-color.html" sandbox="allow-scripts" loading="lazy"></iframe>
 
+The demo works in Chrome and Safari. Firefox doesn’t report the pointer position in `drag` events, which the solution below relies on.
+
 Let’s start by creating our markup:
 
 ```html
