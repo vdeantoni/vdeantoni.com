@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import { useTheme } from "next-themes";
 import { SlidersHorizontal } from "lucide-react";
 import type { ParticleNetwork, Settings } from "@vdeantoni/particle-network";
@@ -38,15 +38,17 @@ const LIGHT: Partial<Settings> = {
   triangleColor: "#000000",
 };
 
-const HeroBackground = () => {
+const NetworkContext = createContext<ParticleNetwork | null>(null);
+
+const ParticleBackground = ({ children }: { children: ReactNode }) => {
   const { resolvedTheme } = useTheme();
   const [network, setNetwork] = useState<ParticleNetwork | null>(null);
   const scheme = resolvedTheme === "light" ? "light" : "dark";
 
   return (
-    <>
-      {/* Fixed to the viewport behind the whole page. lvh rather than 100%,
-          so a phone's toolbar showing and hiding doesn't resize the canvas. */}
+    <NetworkContext value={network}>
+      {/* Fixed to the viewport behind every page. lvh rather than 100%, so a
+          phone's toolbar showing and hiding doesn't resize the canvas. */}
       <ParticleNetworkCanvas
         ref={setNetwork}
         pointerTarget="window"
@@ -54,26 +56,36 @@ const HeroBackground = () => {
         storageKey={`vdeantoni-particle-network-${scheme}`}
         className="fixed inset-x-0 top-0 -z-10 h-lvh w-full"
       />
-      {/* Same padding and width as the hero's content, so the button lines up
-          with its right edge */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-8 z-10 px-6 md:px-12 lg:px-20">
-        <div className="mx-auto flex max-w-6xl justify-end">
-          <ParticleNetworkSettings
-            network={network}
-            className="pointer-events-auto"
-            buttonClassName={cn(
-              "flex items-center justify-center w-8 h-8 rounded-full cursor-pointer",
-              "text-muted-foreground hover:text-heading hover:bg-surface",
-              "aria-expanded:text-heading aria-expanded:bg-surface",
-              "transition-colors duration-200",
-            )}
-          >
-            <SlidersHorizontal className="w-4 h-4" />
-          </ParticleNetworkSettings>
-        </div>
-      </div>
-    </>
+      {children}
+    </NetworkContext>
   );
 };
 
-export default HeroBackground;
+export const ParticleSettingsButton = ({
+  placement,
+  className,
+}: {
+  placement: "above" | "below";
+  className?: string;
+}) => {
+  const network = useContext(NetworkContext);
+
+  return (
+    <ParticleNetworkSettings
+      network={network}
+      shortcut={null}
+      placement={placement}
+      className={className}
+      buttonClassName={cn(
+        "flex items-center justify-center w-8 h-8 rounded-full cursor-pointer",
+        "text-muted-foreground hover:text-heading hover:bg-surface",
+        "aria-expanded:text-heading aria-expanded:bg-surface",
+        "transition-colors duration-200",
+      )}
+    >
+      <SlidersHorizontal className="w-4 h-4" />
+    </ParticleNetworkSettings>
+  );
+};
+
+export default ParticleBackground;

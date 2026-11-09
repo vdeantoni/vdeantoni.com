@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import MobileNav from "./MobileNav";
 import dynamic from "next/dynamic";
+import { ParticleSettingsButton } from "./ParticleBackground";
 
 const ColorSchemeToggle = dynamic(() => import("./ColorSchemeToggle"), {});
 const NavLinks = dynamic(() => import("./NavLinks"), {});
@@ -20,6 +21,7 @@ const Header = () => {
       >
         <NavLinks />
         <div className="w-px h-5 bg-border mx-1" />
+        <ParticleSettingsButton placement="below" />
         <ColorSchemeToggle />
       </nav>
 

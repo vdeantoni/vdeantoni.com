@@ -13,8 +13,13 @@ export const metadata: Metadata = {
 export default async function Projects() {
   const projects = await getProjects();
 
+  // Presses on the page select its text instead of adding particles to the
+  // background animation
   return (
-    <section className="px-6 md:px-12 lg:px-20 pt-32 pb-24 md:pt-40 md:pb-32">
+    <section
+      data-particle-network-ignore
+      className="px-6 md:px-12 lg:px-20 pt-32 pb-24 md:pt-40 md:pb-32"
+    >
       <div className="max-w-6xl mx-auto">
         <span className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
           Work
