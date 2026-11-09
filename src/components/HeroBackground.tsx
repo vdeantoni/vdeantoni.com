@@ -62,7 +62,7 @@ const HeroBackground = () => {
             network={network}
             className="pointer-events-auto"
             buttonClassName={cn(
-              "flex items-center justify-center w-8 h-8 rounded-full",
+              "flex items-center justify-center w-8 h-8 rounded-full cursor-pointer",
               "text-muted-foreground hover:text-heading hover:bg-surface",
               "aria-expanded:text-heading aria-expanded:bg-surface",
               "transition-colors duration-200",
